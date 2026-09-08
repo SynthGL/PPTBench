@@ -1,0 +1,125 @@
+{
+  "corpus": {
+    "fixtures": [
+      {
+        "description": "Deterministic 60-slide mixed template with named table and bullet mutation targets, notes, media, and an opaque package part.",
+        "id": "mixed-60",
+        "sha256": "1204a0fb452aece087c4786c0b2ca92bccbfedf66347c41b4b7b3b913c3afc2d"
+      },
+      {
+        "description": "Three-slide category, XY, and bubble chart fixture with deterministic embedded workbooks.",
+        "id": "charts",
+        "sha256": "172ed05b83cd7fb33ba565d275a0662f40d3f7f598883cb824045a8ac7885c93"
+      }
+    ],
+    "kind": "project-authored synthetic",
+    "not_ground_truth": true,
+    "recipe": "pptbench.fixtures.FROZEN_RECIPE",
+    "recipe_sha256": "68bbb3a7df2ed4d70443b3cf0162116b9c9f8b52e04bbebf0b41e09e601bdb2d"
+  },
+  "lanes": {
+    "chart-data": {
+      "charts": [
+        {
+          "categories": [
+            "East",
+            "42",
+            "84"
+          ],
+          "kind": "category",
+          "series": "Revenue",
+          "slide": 1,
+          "values": [
+            42,
+            84,
+            126
+          ]
+        },
+        {
+          "kind": "xy",
+          "points": [
+            [
+              5,
+              13
+            ],
+            [
+              21,
+              34
+            ],
+            [
+              55,
+              89
+            ]
+          ],
+          "series": "Trend",
+          "slide": 2
+        },
+        {
+          "kind": "bubble",
+          "points": [
+            [
+              5,
+              13,
+              21
+            ],
+            [
+              34,
+              55,
+              89
+            ],
+            [
+              8,
+              13,
+              21
+            ]
+          ],
+          "series": "Pipeline",
+          "slide": 3
+        }
+      ],
+      "fixture": "charts"
+    },
+    "feature-matrix": {
+      "checks": [
+        "slide-count",
+        "slide-order-and-identifiers",
+        "slide-relationship-graph",
+        "shape-tree-semantics",
+        "text-content-and-order",
+        "text-run-formatting",
+        "table-cell-grid-and-text",
+        "table-cell-formatting",
+        "bullet-paragraph-properties",
+        "layout-geometry",
+        "slide-layout-semantics",
+        "notes-content",
+        "notes-relationships",
+        "media-part-presence",
+        "media-exact-bytes",
+        "theme-semantics",
+        "master-semantics",
+        "relationship-semantics",
+        "opaque-package-part"
+      ],
+      "fixture": "mixed-60"
+    },
+    "template-mutation": {
+      "edits": {
+        "bullet": {
+          "paragraph": 1,
+          "shape": "PPTBenchBullets",
+          "slide": 7,
+          "text": "UPDATED-BULLET"
+        },
+        "cells": {
+          "1,1": "UPDATED-TABLE-A",
+          "2,2": "UPDATED-TABLE-B"
+        },
+        "slide": 5,
+        "table_shape": "PPTBenchTable"
+      },
+      "fixture": "mixed-60"
+    }
+  },
+  "schema_version": 2
+}

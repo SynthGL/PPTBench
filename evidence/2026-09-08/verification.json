@@ -1,0 +1,143 @@
+{
+  "cache_state": "fresh copied frozen fixtures; each sample is a new child process; OS filesystem caches were not flushed or controlled",
+  "checks": [
+    "uv run ruff check .",
+    "uv run ruff format --check .",
+    "uv run mypy src",
+    "uv run pytest",
+    "uv build"
+  ],
+  "configuration": {
+    "adapters": [
+      "python-pptx",
+      "wolfppt-wheel"
+    ],
+    "cache_mode": "fresh-fixtures",
+    "cold_subprocess": true,
+    "fixtures": [
+      "charts",
+      "mixed-60"
+    ],
+    "iterations": 2,
+    "lanes": [
+      "feature-matrix",
+      "template-mutation",
+      "chart-data"
+    ],
+    "overall_timeout_seconds": 120.0,
+    "timeout_seconds": 20.0,
+    "warmup_disclosure": "warmups are retained but do not remove interpreter startup",
+    "warmups": 1,
+    "wolfppt_receipt": {
+      "artifact": {
+        "name": "wolfppt-0.1.0-cp314-cp314-macosx_11_0_arm64.whl",
+        "sha256": "6195a2bc52e8c9f23effa990d17386bb30295f0af2236688c40d98e238cd3b79"
+      },
+      "build_mode": "provided-release-wheel",
+      "source_revision": "5929d925536c3aa2e8ce49399c5d220bbf57df2a"
+    }
+  },
+  "date": "2026-09-08",
+  "engine_source_checkouts": "read-only",
+  "execution_wheel": {
+    "path": "artifacts/8b10ef44a50e/pptbench-0.1.0-py3-none-any.whl",
+    "sha256": "8b10ef44a50ecd8ed05504c18749fba4bd9621a52967a15c71bad65d3712c336"
+  },
+  "failed_candidate_tamper_smoke": {
+    "original_evidence": "unchanged",
+    "outcome": "tampered",
+    "problems": [
+      "candidate wolfppt-wheel/chart-data hash does not match"
+    ],
+    "scenario": "append one byte to a retained real failed chart candidate in an isolated copy; regenerate with installed final reporting wheel"
+  },
+  "hardware": "Apple M5 Pro, arm64 (harness-reported workstation identity)",
+  "heatmap": "wheel-comparison/report/heatmap.svg",
+  "installed_wheel_smoke": "performed from an isolated environment outside both checkouts",
+  "limitations": [
+    "project-authored synthetic fixtures, not Office-authored ground truth",
+    "two measured iterations and one warmup per adapter/lane",
+    "reported adapter failures remain evidence; no engine code was changed"
+  ],
+  "observed_outcomes": [
+    {
+      "adapter": "python-pptx",
+      "failed_scored_checks": [
+        "opaque-package-part"
+      ],
+      "lane": "feature-matrix",
+      "outcome": "failure"
+    },
+    {
+      "adapter": "wolfppt-wheel",
+      "failed_scored_checks": [],
+      "lane": "feature-matrix",
+      "outcome": "success"
+    },
+    {
+      "adapter": "python-pptx",
+      "failed_scored_checks": [
+        "only-declared-text-nodes-changed",
+        "opaque-parts-preserved"
+      ],
+      "lane": "template-mutation",
+      "outcome": "failure"
+    },
+    {
+      "adapter": "wolfppt-wheel",
+      "failed_scored_checks": [],
+      "lane": "template-mutation",
+      "outcome": "success"
+    },
+    {
+      "adapter": "python-pptx",
+      "failed_scored_checks": [],
+      "lane": "chart-data",
+      "outcome": "success"
+    },
+    {
+      "adapter": "wolfppt-wheel",
+      "failed_scored_checks": [
+        "chart-formatting-preserved",
+        "related-workbook-structure-and-formatting",
+        "related-workbook-values"
+      ],
+      "lane": "chart-data",
+      "outcome": "failure"
+    }
+  ],
+  "optional_evidence": {
+    "openxml": "unavailable; no validator configured",
+    "render": "successful scored candidates converted to PDF using isolated LibreOffice profiles; no visual-equivalence assertion"
+  },
+  "performance_claim": "none; the bounded smoke is not a speed ranking",
+  "project": "PPTBench",
+  "publication": "local-only; no push, registry upload, or deployment",
+  "python": "3.14.0",
+  "raw_run_sha256": "86aeec397c95b578c16c8a2028044d6595ec0befc8ad2a3adb7708b98ae25741",
+  "report": "wheel-comparison/report/index.html",
+  "report_manifest_sha256": "9cdc7dcf0b4cac50b5793975e1270b3fcc1693913a61964568380a8f220dfdef",
+  "reporting_changes_after_execution": [
+    "hash-check retained failed candidates",
+    "public report punctuation"
+  ],
+  "reporting_wheel": {
+    "path": "artifacts/f4705c26880e/pptbench-0.1.0-py3-none-any.whl",
+    "sha256": "f4705c26880ebf2e27f30c3a21d0a3ca9563dee84460343ec5fb4470149d8b9f"
+  },
+  "run": "wheel-comparison/run.json",
+  "schema_version": 1,
+  "suite_lock": "unchanged",
+  "timing_boundary": "adapter child invocation includes interpreter startup; warmups do not establish a warm persistent process",
+  "ui_checks": [
+    "dashboard opened in a browser",
+    "adapter and lane filters reduced visible results to the selected row",
+    "expanded retained samples displayed exact failed checks",
+    "SVG heatmap visually inspected"
+  ],
+  "verification_platform": "macOS-26.5.1-arm64-arm-64bit-Mach-O",
+  "visual_artifact": {
+    "path": "dashboard-filtered.webp",
+    "sha256": "553a45f5b74aaadd8fb723af63f464844b533b53d0d4a5c416c2edda1ef1081b"
+  }
+}

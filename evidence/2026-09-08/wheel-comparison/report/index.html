@@ -1,0 +1,2384 @@
+<!doctype html>
+<html lang='en'><head><meta charset='utf-8'><title>PPTBench report: run.json</title>
+<style>body{font:14px system-ui;margin:2rem;color:#18212b}table{border-collapse:collapse;width:100%}th,td{border:1px solid #ccd;padding:.45rem;text-align:left;vertical-align:top}pre{white-space:pre-wrap;max-width:70rem}.success{color:#146c43}.failure,.timeout,.tampered{color:#b42318}.unavailable,.unsupported{color:#7a5700}</style></head>
+<body><h1>PPTBench report: run.json</h1><p>Raw evidence: <code>run.json</code>, SHA-256 <code>86aeec397c95b578c16c8a2028044d6595ec0befc8ad2a3adb7708b98ae25741</code>. Integrity: <strong class='success'>success</strong>; hashes verified.</p>
+<p><label>adapter <select id='adapter'><option value=''>all</option><option>python-pptx</option><option>wolfppt-wheel</option></select></label> <label>lane <select id='lane'><option value=''>all</option><option>chart-data</option><option>feature-matrix</option><option>template-mutation</option></select></label></p>
+<object type='image/svg+xml' data='heatmap.svg' aria-label='PPTBench status heatmap'></object>
+<table><thead><tr><th>adapter</th><th>lane</th><th>fixture</th><th>outcome</th><th>iterations, reasons, and feature results</th><th>result reason</th></tr></thead><tbody><tr data-adapter='python-pptx' data-lane='feature-matrix'><td>python-pptx</td><td>feature-matrix</td><td>mixed-60</td><td>failure</td><td><details><summary>all retained samples</summary><pre>[
+  {
+    &quot;checks&quot;: [
+      {
+        &quot;category&quot;: &quot;semantic&quot;,
+        &quot;detail&quot;: null,
+        &quot;name&quot;: &quot;package-readable&quot;,
+        &quot;outcome&quot;: &quot;success&quot;,
+        &quot;scored&quot;: true
+      },
+      {
+        &quot;category&quot;: &quot;feature&quot;,
+        &quot;detail&quot;: null,
+        &quot;name&quot;: &quot;slide-count&quot;,
+        &quot;outcome&quot;: &quot;success&quot;,
+        &quot;scored&quot;: true
+      },
+      {
+        &quot;category&quot;: &quot;feature&quot;,
+        &quot;detail&quot;: null,
+        &quot;name&quot;: &quot;slide-order-and-identifiers&quot;,
+        &quot;outcome&quot;: &quot;success&quot;,
+        &quot;scored&quot;: true
+      },
+      {
+        &quot;category&quot;: &quot;feature&quot;,
+        &quot;detail&quot;: null,
+        &quot;name&quot;: &quot;slide-relationship-graph&quot;,
+        &quot;outcome&quot;: &quot;success&quot;,
+        &quot;scored&quot;: true
+      },
+      {
+        &quot;category&quot;: &quot;feature&quot;,
+        &quot;detail&quot;: null,
+        &quot;name&quot;: &quot;shape-tree-semantics&quot;,
+        &quot;outcome&quot;: &quot;success&quot;,
+        &quot;scored&quot;: true
+      },
+      {
+        &quot;category&quot;: &quot;feature&quot;,
+        &quot;detail&quot;: null,
+        &quot;name&quot;: &quot;text-content-and-order&quot;,
+        &quot;outcome&quot;: &quot;success&quot;,
+        &quot;scored&quot;: true
+      },
+      {
+        &quot;category&quot;: &quot;feature&quot;,
+        &quot;detail&quot;: null,
+        &quot;name&quot;: &quot;text-run-formatting&quot;,
+        &quot;outcome&quot;: &quot;success&quot;,
+        &quot;scored&quot;: true
+      },
+      {
+        &quot;category&quot;: &quot;feature&quot;,
+        &quot;detail&quot;: null,
+        &quot;name&quot;: &quot;table-cell-grid-and-text&quot;,
+        &quot;outcome&quot;: &quot;success&quot;,
+        &quot;scored&quot;: true
+      },
+      {
+        &quot;category&quot;: &quot;feature&quot;,
+        &quot;detail&quot;: null,
+        &quot;name&quot;: &quot;table-cell-formatting&quot;,
+        &quot;outcome&quot;: &quot;success&quot;,
+        &quot;scored&quot;: true
+      },
+      {
+        &quot;category&quot;: &quot;feature&quot;,
+        &quot;detail&quot;: null,
+        &quot;name&quot;: &quot;bullet-paragraph-properties&quot;,
+        &quot;outcome&quot;: &quot;success&quot;,
+        &quot;scored&quot;: true
+      },
+      {
+        &quot;category&quot;: &quot;feature&quot;,
+        &quot;detail&quot;: null,
+        &quot;name&quot;: &quot;layout-geometry&quot;,
+        &quot;outcome&quot;: &quot;success&quot;,
+        &quot;scored&quot;: true
+      },
+      {
+        &quot;category&quot;: &quot;feature&quot;,
+        &quot;detail&quot;: null,
+        &quot;name&quot;: &quot;slide-layout-semantics&quot;,
+        &quot;outcome&quot;: &quot;success&quot;,
+        &quot;scored&quot;: true
+      },
+      {
+        &quot;category&quot;: &quot;feature&quot;,
+        &quot;detail&quot;: null,
+        &quot;name&quot;: &quot;notes-content&quot;,
+        &quot;outcome&quot;: &quot;success&quot;,
+        &quot;scored&quot;: true
+      },
+      {
+        &quot;category&quot;: &quot;feature&quot;,
+        &quot;detail&quot;: null,
+        &quot;name&quot;: &quot;notes-relationships&quot;,
+        &quot;outcome&quot;: &quot;success&quot;,
+        &quot;scored&quot;: true
+      },
+      {
+        &quot;category&quot;: &quot;feature&quot;,
+        &quot;detail&quot;: null,
+        &quot;name&quot;: &quot;media-part-presence&quot;,
+        &quot;outcome&quot;: &quot;success&quot;,
+        &quot;scored&quot;: true
+      },
+      {
+        &quot;category&quot;: &quot;feature&quot;,
+        &quot;detail&quot;: null,
+        &quot;name&quot;: &quot;media-exact-bytes&quot;,
+        &quot;outcome&quot;: &quot;success&quot;,
+        &quot;scored&quot;: true
+      },
+      {
+        &quot;category&quot;: &quot;feature&quot;,
+        &quot;detail&quot;: null,
+        &quot;name&quot;: &quot;theme-semantics&quot;,
+        &quot;outcome&quot;: &quot;success&quot;,
+        &quot;scored&quot;: true
+      },
+      {
+        &quot;category&quot;: &quot;feature&quot;,
+        &quot;detail&quot;: null,
+        &quot;name&quot;: &quot;master-semantics&quot;,
+        &quot;outcome&quot;: &quot;success&quot;,
+        &quot;scored&quot;: true
+      },
+      {
+        &quot;category&quot;: &quot;feature&quot;,
+        &quot;detail&quot;: null,
+        &quot;name&quot;: &quot;relationship-semantics&quot;,
+        &quot;outcome&quot;: &quot;success&quot;,
+        &quot;scored&quot;: true
+      },
+      {
+        &quot;category&quot;: &quot;feature&quot;,
+        &quot;detail&quot;: &quot;source and result differ&quot;,
+        &quot;name&quot;: &quot;opaque-package-part&quot;,
+        &quot;outcome&quot;: &quot;failure&quot;,
+        &quot;scored&quot;: true
+      },
+      {
+        &quot;category&quot;: &quot;byte-only&quot;,
+        &quot;detail&quot;: &quot;raw untouched part bytes differ&quot;,
+        &quot;name&quot;: &quot;raw-untouched-part-equality&quot;,
+        &quot;outcome&quot;: &quot;failure&quot;,
+        &quot;scored&quot;: false
+      }
+    ],
+    &quot;details&quot;: {
+      &quot;artifact_dir&quot;: &quot;raw/python-pptx/feature-matrix/warmup-1.pptx.adapter&quot;,
+      &quot;candidate_path&quot;: &quot;raw/python-pptx/feature-matrix/warmup-1.pptx&quot;,
+      &quot;candidate_sha256&quot;: &quot;4b713283fe513d59e05b7d7adf4820d572b7a4f431bfd6c532ac954f7ef9c83b&quot;,
+      &quot;command&quot;: [
+        &quot;python&quot;,
+        &quot;-m&quot;,
+        &quot;pptbench.worker&quot;,
+        &quot;python-pptx&quot;,
+        &quot;feature-matrix&quot;,
+        &quot;mixed-60.pptx&quot;,
+        &quot;warmup-1.pptx&quot;
+      ],
+      &quot;diagnostic&quot;: null,
+      &quot;stderr_artifact&quot;: &quot;raw/python-pptx/feature-matrix/warmup-1.pptx.adapter/stderr.bin&quot;,
+      &quot;stderr_bytes&quot;: 0,
+      &quot;stdout_artifact&quot;: &quot;raw/python-pptx/feature-matrix/warmup-1.pptx.adapter/stdout.bin&quot;,
+      &quot;stdout_bytes&quot;: 0
+    },
+    &quot;elapsed_ms&quot;: 2214.561415996286,
+    &quot;iteration&quot;: 1,
+    &quot;outcome&quot;: &quot;failure&quot;,
+    &quot;output_path&quot;: null,
+    &quot;output_sha256&quot;: null,
+    &quot;peak_rss_bytes&quot;: 57556992,
+    &quot;phase&quot;: &quot;warmup&quot;,
+    &quot;reason&quot;: &quot;one or more scored semantic or preservation checks failed&quot;
+  },
+  {
+    &quot;checks&quot;: [
+      {
+        &quot;category&quot;: &quot;semantic&quot;,
+        &quot;detail&quot;: null,
+        &quot;name&quot;: &quot;package-readable&quot;,
+        &quot;outcome&quot;: &quot;success&quot;,
+        &quot;scored&quot;: true
+      },
+      {
+        &quot;category&quot;: &quot;feature&quot;,
+        &quot;detail&quot;: null,
+        &quot;name&quot;: &quot;slide-count&quot;,
+        &quot;outcome&quot;: &quot;success&quot;,
+        &quot;scored&quot;: true
+      },
+      {
+        &quot;category&quot;: &quot;feature&quot;,
+        &quot;detail&quot;: null,
+        &quot;name&quot;: &quot;slide-order-and-identifiers&quot;,
+        &quot;outcome&quot;: &quot;success&quot;,
+        &quot;scored&quot;: true
+      },
+      {
+        &quot;category&quot;: &quot;feature&quot;,
+        &quot;detail&quot;: null,
+        &quot;name&quot;: &quot;slide-relationship-graph&quot;,
+        &quot;outcome&quot;: &quot;success&quot;,
+        &quot;scored&quot;: true
+      },
+      {
+        &quot;category&quot;: &quot;feature&quot;,
+        &quot;detail&quot;: null,
+        &quot;name&quot;: &quot;shape-tree-semantics&quot;,
+        &quot;outcome&quot;: &quot;success&quot;,
+        &quot;scored&quot;: true
+      },
+      {
+        &quot;category&quot;: &quot;feature&quot;,
+        &quot;detail&quot;: null,
+        &quot;name&quot;: &quot;text-content-and-order&quot;,
+        &quot;outcome&quot;: &quot;success&quot;,
+        &quot;scored&quot;: true
+      },
+      {
+        &quot;category&quot;: &quot;feature&quot;,
+        &quot;detail&quot;: null,
+        &quot;name&quot;: &quot;text-run-formatting&quot;,
+        &quot;outcome&quot;: &quot;success&quot;,
+        &quot;scored&quot;: true
+      },
+      {
+        &quot;category&quot;: &quot;feature&quot;,
+        &quot;detail&quot;: null,
+        &quot;name&quot;: &quot;table-cell-grid-and-text&quot;,
+        &quot;outcome&quot;: &quot;success&quot;,
+        &quot;scored&quot;: true
+      },
+      {
+        &quot;category&quot;: &quot;feature&quot;,
+        &quot;detail&quot;: null,
+        &quot;name&quot;: &quot;table-cell-formatting&quot;,
+        &quot;outcome&quot;: &quot;success&quot;,
+        &quot;scored&quot;: true
+      },
+      {
+        &quot;category&quot;: &quot;feature&quot;,
+        &quot;detail&quot;: null,
+        &quot;name&quot;: &quot;bullet-paragraph-properties&quot;,
+        &quot;outcome&quot;: &quot;success&quot;,
+        &quot;scored&quot;: true
+      },
+      {
+        &quot;category&quot;: &quot;feature&quot;,
+        &quot;detail&quot;: null,
+        &quot;name&quot;: &quot;layout-geometry&quot;,
+        &quot;outcome&quot;: &quot;success&quot;,
+        &quot;scored&quot;: true
+      },
+      {
+        &quot;category&quot;: &quot;feature&quot;,
+        &quot;detail&quot;: null,
+        &quot;name&quot;: &quot;slide-layout-semantics&quot;,
+        &quot;outcome&quot;: &quot;success&quot;,
+        &quot;scored&quot;: true
+      },
+      {
+        &quot;category&quot;: &quot;feature&quot;,
+        &quot;detail&quot;: null,
+        &quot;name&quot;: &quot;notes-content&quot;,
+        &quot;outcome&quot;: &quot;success&quot;,
+        &quot;scored&quot;: true
+      },
+      {
+        &quot;category&quot;: &quot;feature&quot;,
+        &quot;detail&quot;: null,
+        &quot;name&quot;: &quot;notes-relationships&quot;,
+        &quot;outcome&quot;: &quot;success&quot;,
+        &quot;scored&quot;: true
+      },
+      {
+        &quot;category&quot;: &quot;feature&quot;,
+        &quot;detail&quot;: null,
+        &quot;name&quot;: &quot;media-part-presence&quot;,
+        &quot;outcome&quot;: &quot;success&quot;,
+        &quot;scored&quot;: true
+      },
+      {
+        &quot;category&quot;: &quot;feature&quot;,
+        &quot;detail&quot;: null,
+        &quot;name&quot;: &quot;media-exact-bytes&quot;,
+        &quot;outcome&quot;: &quot;success&quot;,
+        &quot;scored&quot;: true
+      },
+      {
+        &quot;category&quot;: &quot;feature&quot;,
+        &quot;detail&quot;: null,
+        &quot;name&quot;: &quot;theme-semantics&quot;,
+        &quot;outcome&quot;: &quot;success&quot;,
+        &quot;scored&quot;: true
+      },
+      {
+        &quot;category&quot;: &quot;feature&quot;,
+        &quot;detail&quot;: null,
+        &quot;name&quot;: &quot;master-semantics&quot;,
+        &quot;outcome&quot;: &quot;success&quot;,
+        &quot;scored&quot;: true
+      },
+      {
+        &quot;category&quot;: &quot;feature&quot;,
+        &quot;detail&quot;: null,
+        &quot;name&quot;: &quot;relationship-semantics&quot;,
+        &quot;outcome&quot;: &quot;success&quot;,
+        &quot;scored&quot;: true
+      },
+      {
+        &quot;category&quot;: &quot;feature&quot;,
+        &quot;detail&quot;: &quot;source and result differ&quot;,
+        &quot;name&quot;: &quot;opaque-package-part&quot;,
+        &quot;outcome&quot;: &quot;failure&quot;,
+        &quot;scored&quot;: true
+      },
+      {
+        &quot;category&quot;: &quot;byte-only&quot;,
+        &quot;detail&quot;: &quot;raw untouched part bytes differ&quot;,
+        &quot;name&quot;: &quot;raw-untouched-part-equality&quot;,
+        &quot;outcome&quot;: &quot;failure&quot;,
+        &quot;scored&quot;: false
+      }
+    ],
+    &quot;details&quot;: {
+      &quot;artifact_dir&quot;: &quot;raw/python-pptx/feature-matrix/measured-1.pptx.adapter&quot;,
+      &quot;candidate_path&quot;: &quot;raw/python-pptx/feature-matrix/measured-1.pptx&quot;,
+      &quot;candidate_sha256&quot;: &quot;4b713283fe513d59e05b7d7adf4820d572b7a4f431bfd6c532ac954f7ef9c83b&quot;,
+      &quot;command&quot;: [
+        &quot;python&quot;,
+        &quot;-m&quot;,
+        &quot;pptbench.worker&quot;,
+        &quot;python-pptx&quot;,
+        &quot;feature-matrix&quot;,
+        &quot;mixed-60.pptx&quot;,
+        &quot;measured-1.pptx&quot;
+      ],
+      &quot;diagnostic&quot;: null,
+      &quot;stderr_artifact&quot;: &quot;raw/python-pptx/feature-matrix/measured-1.pptx.adapter/stderr.bin&quot;,
+      &quot;stderr_bytes&quot;: 0,
+      &quot;stdout_artifact&quot;: &quot;raw/python-pptx/feature-matrix/measured-1.pptx.adapter/stdout.bin&quot;,
+      &quot;stdout_bytes&quot;: 0
+    },
+    &quot;elapsed_ms&quot;: 130.79400000424357,
+    &quot;iteration&quot;: 1,
+    &quot;outcome&quot;: &quot;failure&quot;,
+    &quot;output_path&quot;: null,
+    &quot;output_sha256&quot;: null,
+    &quot;peak_rss_bytes&quot;: 47431680,
+    &quot;phase&quot;: &quot;measured&quot;,
+    &quot;reason&quot;: &quot;one or more scored semantic or preservation checks failed&quot;
+  },
+  {
+    &quot;checks&quot;: [
+      {
+        &quot;category&quot;: &quot;semantic&quot;,
+        &quot;detail&quot;: null,
+        &quot;name&quot;: &quot;package-readable&quot;,
+        &quot;outcome&quot;: &quot;success&quot;,
+        &quot;scored&quot;: true
+      },
+      {
+        &quot;category&quot;: &quot;feature&quot;,
+        &quot;detail&quot;: null,
+        &quot;name&quot;: &quot;slide-count&quot;,
+        &quot;outcome&quot;: &quot;success&quot;,
+        &quot;scored&quot;: true
+      },
+      {
+        &quot;category&quot;: &quot;feature&quot;,
+        &quot;detail&quot;: null,
+        &quot;name&quot;: &quot;slide-order-and-identifiers&quot;,
+        &quot;outcome&quot;: &quot;success&quot;,
+        &quot;scored&quot;: true
+      },
+      {
+        &quot;category&quot;: &quot;feature&quot;,
+        &quot;detail&quot;: null,
+        &quot;name&quot;: &quot;slide-relationship-graph&quot;,
+        &quot;outcome&quot;: &quot;success&quot;,
+        &quot;scored&quot;: true
+      },
+      {
+        &quot;category&quot;: &quot;feature&quot;,
+        &quot;detail&quot;: null,
+        &quot;name&quot;: &quot;shape-tree-semantics&quot;,
+        &quot;outcome&quot;: &quot;success&quot;,
+        &quot;scored&quot;: true
+      },
+      {
+        &quot;category&quot;: &quot;feature&quot;,
+        &quot;detail&quot;: null,
+        &quot;name&quot;: &quot;text-content-and-order&quot;,
+        &quot;outcome&quot;: &quot;success&quot;,
+        &quot;scored&quot;: true
+      },
+      {
+        &quot;category&quot;: &quot;feature&quot;,
+        &quot;detail&quot;: null,
+        &quot;name&quot;: &quot;text-run-formatting&quot;,
+        &quot;outcome&quot;: &quot;success&quot;,
+        &quot;scored&quot;: true
+      },
+      {
+        &quot;category&quot;: &quot;feature&quot;,
+        &quot;detail&quot;: null,
+        &quot;name&quot;: &quot;table-cell-grid-and-text&quot;,
+        &quot;outcome&quot;: &quot;success&quot;,
+        &quot;scored&quot;: true
+      },
+      {
+        &quot;category&quot;: &quot;feature&quot;,
+        &quot;detail&quot;: null,
+        &quot;name&quot;: &quot;table-cell-formatting&quot;,
+        &quot;outcome&quot;: &quot;success&quot;,
+        &quot;scored&quot;: true
+      },
+      {
+        &quot;category&quot;: &quot;feature&quot;,
+        &quot;detail&quot;: null,
+        &quot;name&quot;: &quot;bullet-paragraph-properties&quot;,
+        &quot;outcome&quot;: &quot;success&quot;,
+        &quot;scored&quot;: true
+      },
+      {
+        &quot;category&quot;: &quot;feature&quot;,
+        &quot;detail&quot;: null,
+        &quot;name&quot;: &quot;layout-geometry&quot;,
+        &quot;outcome&quot;: &quot;success&quot;,
+        &quot;scored&quot;: true
+      },
+      {
+        &quot;category&quot;: &quot;feature&quot;,
+        &quot;detail&quot;: null,
+        &quot;name&quot;: &quot;slide-layout-semantics&quot;,
+        &quot;outcome&quot;: &quot;success&quot;,
+        &quot;scored&quot;: true
+      },
+      {
+        &quot;category&quot;: &quot;feature&quot;,
+        &quot;detail&quot;: null,
+        &quot;name&quot;: &quot;notes-content&quot;,
+        &quot;outcome&quot;: &quot;success&quot;,
+        &quot;scored&quot;: true
+      },
+      {
+        &quot;category&quot;: &quot;feature&quot;,
+        &quot;detail&quot;: null,
+        &quot;name&quot;: &quot;notes-relationships&quot;,
+        &quot;outcome&quot;: &quot;success&quot;,
+        &quot;scored&quot;: true
+      },
+      {
+        &quot;category&quot;: &quot;feature&quot;,
+        &quot;detail&quot;: null,
+        &quot;name&quot;: &quot;media-part-presence&quot;,
+        &quot;outcome&quot;: &quot;success&quot;,
+        &quot;scored&quot;: true
+      },
+      {
+        &quot;category&quot;: &quot;feature&quot;,
+        &quot;detail&quot;: null,
+        &quot;name&quot;: &quot;media-exact-bytes&quot;,
+        &quot;outcome&quot;: &quot;success&quot;,
+        &quot;scored&quot;: true
+      },
+      {
+        &quot;category&quot;: &quot;feature&quot;,
+        &quot;detail&quot;: null,
+        &quot;name&quot;: &quot;theme-semantics&quot;,
+        &quot;outcome&quot;: &quot;success&quot;,
+        &quot;scored&quot;: true
+      },
+      {
+        &quot;category&quot;: &quot;feature&quot;,
+        &quot;detail&quot;: null,
+        &quot;name&quot;: &quot;master-semantics&quot;,
+        &quot;outcome&quot;: &quot;success&quot;,
+        &quot;scored&quot;: true
+      },
+      {
+        &quot;category&quot;: &quot;feature&quot;,
+        &quot;detail&quot;: null,
+        &quot;name&quot;: &quot;relationship-semantics&quot;,
+        &quot;outcome&quot;: &quot;success&quot;,
+        &quot;scored&quot;: true
+      },
+      {
+        &quot;category&quot;: &quot;feature&quot;,
+        &quot;detail&quot;: &quot;source and result differ&quot;,
+        &quot;name&quot;: &quot;opaque-package-part&quot;,
+        &quot;outcome&quot;: &quot;failure&quot;,
+        &quot;scored&quot;: true
+      },
+      {
+        &quot;category&quot;: &quot;byte-only&quot;,
+        &quot;detail&quot;: &quot;raw untouched part bytes differ&quot;,
+        &quot;name&quot;: &quot;raw-untouched-part-equality&quot;,
+        &quot;outcome&quot;: &quot;failure&quot;,
+        &quot;scored&quot;: false
+      }
+    ],
+    &quot;details&quot;: {
+      &quot;artifact_dir&quot;: &quot;raw/python-pptx/feature-matrix/measured-2.pptx.adapter&quot;,
+      &quot;candidate_path&quot;: &quot;raw/python-pptx/feature-matrix/measured-2.pptx&quot;,
+      &quot;candidate_sha256&quot;: &quot;4b713283fe513d59e05b7d7adf4820d572b7a4f431bfd6c532ac954f7ef9c83b&quot;,
+      &quot;command&quot;: [
+        &quot;python&quot;,
+        &quot;-m&quot;,
+        &quot;pptbench.worker&quot;,
+        &quot;python-pptx&quot;,
+        &quot;feature-matrix&quot;,
+        &quot;mixed-60.pptx&quot;,
+        &quot;measured-2.pptx&quot;
+      ],
+      &quot;diagnostic&quot;: null,
+      &quot;stderr_artifact&quot;: &quot;raw/python-pptx/feature-matrix/measured-2.pptx.adapter/stderr.bin&quot;,
+      &quot;stderr_bytes&quot;: 0,
+      &quot;stdout_artifact&quot;: &quot;raw/python-pptx/feature-matrix/measured-2.pptx.adapter/stdout.bin&quot;,
+      &quot;stdout_bytes&quot;: 0
+    },
+    &quot;elapsed_ms&quot;: 127.41187500068918,
+    &quot;iteration&quot;: 2,
+    &quot;outcome&quot;: &quot;failure&quot;,
+    &quot;output_path&quot;: null,
+    &quot;output_sha256&quot;: null,
+    &quot;peak_rss_bytes&quot;: 47382528,
+    &quot;phase&quot;: &quot;measured&quot;,
+    &quot;reason&quot;: &quot;one or more scored semantic or preservation checks failed&quot;
+  }
+]</pre></details></td><td>one or more scored semantic or preservation checks failed</td></tr>
+<tr data-adapter='wolfppt-wheel' data-lane='feature-matrix'><td>wolfppt-wheel</td><td>feature-matrix</td><td>mixed-60</td><td>success</td><td><details><summary>all retained samples</summary><pre>[
+  {
+    &quot;checks&quot;: [
+      {
+        &quot;category&quot;: &quot;semantic&quot;,
+        &quot;detail&quot;: null,
+        &quot;name&quot;: &quot;package-readable&quot;,
+        &quot;outcome&quot;: &quot;success&quot;,
+        &quot;scored&quot;: true
+      },
+      {
+        &quot;category&quot;: &quot;feature&quot;,
+        &quot;detail&quot;: null,
+        &quot;name&quot;: &quot;slide-count&quot;,
+        &quot;outcome&quot;: &quot;success&quot;,
+        &quot;scored&quot;: true
+      },
+      {
+        &quot;category&quot;: &quot;feature&quot;,
+        &quot;detail&quot;: null,
+        &quot;name&quot;: &quot;slide-order-and-identifiers&quot;,
+        &quot;outcome&quot;: &quot;success&quot;,
+        &quot;scored&quot;: true
+      },
+      {
+        &quot;category&quot;: &quot;feature&quot;,
+        &quot;detail&quot;: null,
+        &quot;name&quot;: &quot;slide-relationship-graph&quot;,
+        &quot;outcome&quot;: &quot;success&quot;,
+        &quot;scored&quot;: true
+      },
+      {
+        &quot;category&quot;: &quot;feature&quot;,
+        &quot;detail&quot;: null,
+        &quot;name&quot;: &quot;shape-tree-semantics&quot;,
+        &quot;outcome&quot;: &quot;success&quot;,
+        &quot;scored&quot;: true
+      },
+      {
+        &quot;category&quot;: &quot;feature&quot;,
+        &quot;detail&quot;: null,
+        &quot;name&quot;: &quot;text-content-and-order&quot;,
+        &quot;outcome&quot;: &quot;success&quot;,
+        &quot;scored&quot;: true
+      },
+      {
+        &quot;category&quot;: &quot;feature&quot;,
+        &quot;detail&quot;: null,
+        &quot;name&quot;: &quot;text-run-formatting&quot;,
+        &quot;outcome&quot;: &quot;success&quot;,
+        &quot;scored&quot;: true
+      },
+      {
+        &quot;category&quot;: &quot;feature&quot;,
+        &quot;detail&quot;: null,
+        &quot;name&quot;: &quot;table-cell-grid-and-text&quot;,
+        &quot;outcome&quot;: &quot;success&quot;,
+        &quot;scored&quot;: true
+      },
+      {
+        &quot;category&quot;: &quot;feature&quot;,
+        &quot;detail&quot;: null,
+        &quot;name&quot;: &quot;table-cell-formatting&quot;,
+        &quot;outcome&quot;: &quot;success&quot;,
+        &quot;scored&quot;: true
+      },
+      {
+        &quot;category&quot;: &quot;feature&quot;,
+        &quot;detail&quot;: null,
+        &quot;name&quot;: &quot;bullet-paragraph-properties&quot;,
+        &quot;outcome&quot;: &quot;success&quot;,
+        &quot;scored&quot;: true
+      },
+      {
+        &quot;category&quot;: &quot;feature&quot;,
+        &quot;detail&quot;: null,
+        &quot;name&quot;: &quot;layout-geometry&quot;,
+        &quot;outcome&quot;: &quot;success&quot;,
+        &quot;scored&quot;: true
+      },
+      {
+        &quot;category&quot;: &quot;feature&quot;,
+        &quot;detail&quot;: null,
+        &quot;name&quot;: &quot;slide-layout-semantics&quot;,
+        &quot;outcome&quot;: &quot;success&quot;,
+        &quot;scored&quot;: true
+      },
+      {
+        &quot;category&quot;: &quot;feature&quot;,
+        &quot;detail&quot;: null,
+        &quot;name&quot;: &quot;notes-content&quot;,
+        &quot;outcome&quot;: &quot;success&quot;,
+        &quot;scored&quot;: true
+      },
+      {
+        &quot;category&quot;: &quot;feature&quot;,
+        &quot;detail&quot;: null,
+        &quot;name&quot;: &quot;notes-relationships&quot;,
+        &quot;outcome&quot;: &quot;success&quot;,
+        &quot;scored&quot;: true
+      },
+      {
+        &quot;category&quot;: &quot;feature&quot;,
+        &quot;detail&quot;: null,
+        &quot;name&quot;: &quot;media-part-presence&quot;,
+        &quot;outcome&quot;: &quot;success&quot;,
+        &quot;scored&quot;: true
+      },
+      {
+        &quot;category&quot;: &quot;feature&quot;,
+        &quot;detail&quot;: null,
+        &quot;name&quot;: &quot;media-exact-bytes&quot;,
+        &quot;outcome&quot;: &quot;success&quot;,
+        &quot;scored&quot;: true
+      },
+      {
+        &quot;category&quot;: &quot;feature&quot;,
+        &quot;detail&quot;: null,
+        &quot;name&quot;: &quot;theme-semantics&quot;,
+        &quot;outcome&quot;: &quot;success&quot;,
+        &quot;scored&quot;: true
+      },
+      {
+        &quot;category&quot;: &quot;feature&quot;,
+        &quot;detail&quot;: null,
+        &quot;name&quot;: &quot;master-semantics&quot;,
+        &quot;outcome&quot;: &quot;success&quot;,
+        &quot;scored&quot;: true
+      },
+      {
+        &quot;category&quot;: &quot;feature&quot;,
+        &quot;detail&quot;: null,
+        &quot;name&quot;: &quot;relationship-semantics&quot;,
+        &quot;outcome&quot;: &quot;success&quot;,
+        &quot;scored&quot;: true
+      },
+      {
+        &quot;category&quot;: &quot;feature&quot;,
+        &quot;detail&quot;: null,
+        &quot;name&quot;: &quot;opaque-package-part&quot;,
+        &quot;outcome&quot;: &quot;success&quot;,
+        &quot;scored&quot;: true
+      },
+      {
+        &quot;category&quot;: &quot;byte-only&quot;,
+        &quot;detail&quot;: null,
+        &quot;name&quot;: &quot;raw-untouched-part-equality&quot;,
+        &quot;outcome&quot;: &quot;success&quot;,
+        &quot;scored&quot;: false
+      }
+    ],
+    &quot;details&quot;: {
+      &quot;artifact_dir&quot;: &quot;raw/wolfppt-wheel/feature-matrix/warmup-1.pptx.adapter&quot;,
+      &quot;candidate_path&quot;: &quot;raw/wolfppt-wheel/feature-matrix/warmup-1.pptx&quot;,
+      &quot;candidate_sha256&quot;: &quot;1204a0fb452aece087c4786c0b2ca92bccbfedf66347c41b4b7b3b913c3afc2d&quot;,
+      &quot;command&quot;: [
+        &quot;python&quot;,
+        &quot;-m&quot;,
+        &quot;pptbench.worker&quot;,
+        &quot;wolfppt-wheel&quot;,
+        &quot;feature-matrix&quot;,
+        &quot;mixed-60.pptx&quot;,
+        &quot;warmup-1.pptx&quot;
+      ],
+      &quot;diagnostic&quot;: null,
+      &quot;stderr_artifact&quot;: &quot;raw/wolfppt-wheel/feature-matrix/warmup-1.pptx.adapter/stderr.bin&quot;,
+      &quot;stderr_bytes&quot;: 0,
+      &quot;stdout_artifact&quot;: &quot;raw/wolfppt-wheel/feature-matrix/warmup-1.pptx.adapter/stdout.bin&quot;,
+      &quot;stdout_bytes&quot;: 0
+    },
+    &quot;elapsed_ms&quot;: 500.81341699842596,
+    &quot;iteration&quot;: 1,
+    &quot;outcome&quot;: &quot;success&quot;,
+    &quot;output_path&quot;: &quot;raw/wolfppt-wheel/feature-matrix/warmup-1.pptx&quot;,
+    &quot;output_sha256&quot;: &quot;1204a0fb452aece087c4786c0b2ca92bccbfedf66347c41b4b7b3b913c3afc2d&quot;,
+    &quot;peak_rss_bytes&quot;: 47251456,
+    &quot;phase&quot;: &quot;warmup&quot;,
+    &quot;reason&quot;: null
+  },
+  {
+    &quot;checks&quot;: [
+      {
+        &quot;category&quot;: &quot;semantic&quot;,
+        &quot;detail&quot;: null,
+        &quot;name&quot;: &quot;package-readable&quot;,
+        &quot;outcome&quot;: &quot;success&quot;,
+        &quot;scored&quot;: true
+      },
+      {
+        &quot;category&quot;: &quot;feature&quot;,
+        &quot;detail&quot;: null,
+        &quot;name&quot;: &quot;slide-count&quot;,
+        &quot;outcome&quot;: &quot;success&quot;,
+        &quot;scored&quot;: true
+      },
+      {
+        &quot;category&quot;: &quot;feature&quot;,
+        &quot;detail&quot;: null,
+        &quot;name&quot;: &quot;slide-order-and-identifiers&quot;,
+        &quot;outcome&quot;: &quot;success&quot;,
+        &quot;scored&quot;: true
+      },
+      {
+        &quot;category&quot;: &quot;feature&quot;,
+        &quot;detail&quot;: null,
+        &quot;name&quot;: &quot;slide-relationship-graph&quot;,
+        &quot;outcome&quot;: &quot;success&quot;,
+        &quot;scored&quot;: true
+      },
+      {
+        &quot;category&quot;: &quot;feature&quot;,
+        &quot;detail&quot;: null,
+        &quot;name&quot;: &quot;shape-tree-semantics&quot;,
+        &quot;outcome&quot;: &quot;success&quot;,
+        &quot;scored&quot;: true
+      },
+      {
+        &quot;category&quot;: &quot;feature&quot;,
+        &quot;detail&quot;: null,
+        &quot;name&quot;: &quot;text-content-and-order&quot;,
+        &quot;outcome&quot;: &quot;success&quot;,
+        &quot;scored&quot;: true
+      },
+      {
+        &quot;category&quot;: &quot;feature&quot;,
+        &quot;detail&quot;: null,
+        &quot;name&quot;: &quot;text-run-formatting&quot;,
+        &quot;outcome&quot;: &quot;success&quot;,
+        &quot;scored&quot;: true
+      },
+      {
+        &quot;category&quot;: &quot;feature&quot;,
+        &quot;detail&quot;: null,
+        &quot;name&quot;: &quot;table-cell-grid-and-text&quot;,
+        &quot;outcome&quot;: &quot;success&quot;,
+        &quot;scored&quot;: true
+      },
+      {
+        &quot;category&quot;: &quot;feature&quot;,
+        &quot;detail&quot;: null,
+        &quot;name&quot;: &quot;table-cell-formatting&quot;,
+        &quot;outcome&quot;: &quot;success&quot;,
+        &quot;scored&quot;: true
+      },
+      {
+        &quot;category&quot;: &quot;feature&quot;,
+        &quot;detail&quot;: null,
+        &quot;name&quot;: &quot;bullet-paragraph-properties&quot;,
+        &quot;outcome&quot;: &quot;success&quot;,
+        &quot;scored&quot;: true
+      },
+      {
+        &quot;category&quot;: &quot;feature&quot;,
+        &quot;detail&quot;: null,
+        &quot;name&quot;: &quot;layout-geometry&quot;,
+        &quot;outcome&quot;: &quot;success&quot;,
+        &quot;scored&quot;: true
+      },
+      {
+        &quot;category&quot;: &quot;feature&quot;,
+        &quot;detail&quot;: null,
+        &quot;name&quot;: &quot;slide-layout-semantics&quot;,
+        &quot;outcome&quot;: &quot;success&quot;,
+        &quot;scored&quot;: true
+      },
+      {
+        &quot;category&quot;: &quot;feature&quot;,
+        &quot;detail&quot;: null,
+        &quot;name&quot;: &quot;notes-content&quot;,
+        &quot;outcome&quot;: &quot;success&quot;,
+        &quot;scored&quot;: true
+      },
+      {
+        &quot;category&quot;: &quot;feature&quot;,
+        &quot;detail&quot;: null,
+        &quot;name&quot;: &quot;notes-relationships&quot;,
+        &quot;outcome&quot;: &quot;success&quot;,
+        &quot;scored&quot;: true
+      },
+      {
+        &quot;category&quot;: &quot;feature&quot;,
+        &quot;detail&quot;: null,
+        &quot;name&quot;: &quot;media-part-presence&quot;,
+        &quot;outcome&quot;: &quot;success&quot;,
+        &quot;scored&quot;: true
+      },
+      {
+        &quot;category&quot;: &quot;feature&quot;,
+        &quot;detail&quot;: null,
+        &quot;name&quot;: &quot;media-exact-bytes&quot;,
+        &quot;outcome&quot;: &quot;success&quot;,
+        &quot;scored&quot;: true
+      },
+      {
+        &quot;category&quot;: &quot;feature&quot;,
+        &quot;detail&quot;: null,
+        &quot;name&quot;: &quot;theme-semantics&quot;,
+        &quot;outcome&quot;: &quot;success&quot;,
+        &quot;scored&quot;: true
+      },
+      {
+        &quot;category&quot;: &quot;feature&quot;,
+        &quot;detail&quot;: null,
+        &quot;name&quot;: &quot;master-semantics&quot;,
+        &quot;outcome&quot;: &quot;success&quot;,
+        &quot;scored&quot;: true
+      },
+      {
+        &quot;category&quot;: &quot;feature&quot;,
+        &quot;detail&quot;: null,
+        &quot;name&quot;: &quot;relationship-semantics&quot;,
+        &quot;outcome&quot;: &quot;success&quot;,
+        &quot;scored&quot;: true
+      },
+      {
+        &quot;category&quot;: &quot;feature&quot;,
+        &quot;detail&quot;: null,
+        &quot;name&quot;: &quot;opaque-package-part&quot;,
+        &quot;outcome&quot;: &quot;success&quot;,
+        &quot;scored&quot;: true
+      },
+      {
+        &quot;category&quot;: &quot;byte-only&quot;,
+        &quot;detail&quot;: null,
+        &quot;name&quot;: &quot;raw-untouched-part-equality&quot;,
+        &quot;outcome&quot;: &quot;success&quot;,
+        &quot;scored&quot;: false
+      }
+    ],
+    &quot;details&quot;: {
+      &quot;artifact_dir&quot;: &quot;raw/wolfppt-wheel/feature-matrix/measured-1.pptx.adapter&quot;,
+      &quot;candidate_path&quot;: &quot;raw/wolfppt-wheel/feature-matrix/measured-1.pptx&quot;,
+      &quot;candidate_sha256&quot;: &quot;1204a0fb452aece087c4786c0b2ca92bccbfedf66347c41b4b7b3b913c3afc2d&quot;,
+      &quot;command&quot;: [
+        &quot;python&quot;,
+        &quot;-m&quot;,
+        &quot;pptbench.worker&quot;,
+        &quot;wolfppt-wheel&quot;,
+        &quot;feature-matrix&quot;,
+        &quot;mixed-60.pptx&quot;,
+        &quot;measured-1.pptx&quot;
+      ],
+      &quot;diagnostic&quot;: null,
+      &quot;stderr_artifact&quot;: &quot;raw/wolfppt-wheel/feature-matrix/measured-1.pptx.adapter/stderr.bin&quot;,
+      &quot;stderr_bytes&quot;: 0,
+      &quot;stdout_artifact&quot;: &quot;raw/wolfppt-wheel/feature-matrix/measured-1.pptx.adapter/stdout.bin&quot;,
+      &quot;stdout_bytes&quot;: 0
+    },
+    &quot;elapsed_ms&quot;: 129.77649999811547,
+    &quot;iteration&quot;: 1,
+    &quot;outcome&quot;: &quot;success&quot;,
+    &quot;output_path&quot;: &quot;raw/wolfppt-wheel/feature-matrix/measured-1.pptx&quot;,
+    &quot;output_sha256&quot;: &quot;1204a0fb452aece087c4786c0b2ca92bccbfedf66347c41b4b7b3b913c3afc2d&quot;,
+    &quot;peak_rss_bytes&quot;: 42106880,
+    &quot;phase&quot;: &quot;measured&quot;,
+    &quot;reason&quot;: null
+  },
+  {
+    &quot;checks&quot;: [
+      {
+        &quot;category&quot;: &quot;semantic&quot;,
+        &quot;detail&quot;: null,
+        &quot;name&quot;: &quot;package-readable&quot;,
+        &quot;outcome&quot;: &quot;success&quot;,
+        &quot;scored&quot;: true
+      },
+      {
+        &quot;category&quot;: &quot;feature&quot;,
+        &quot;detail&quot;: null,
+        &quot;name&quot;: &quot;slide-count&quot;,
+        &quot;outcome&quot;: &quot;success&quot;,
+        &quot;scored&quot;: true
+      },
+      {
+        &quot;category&quot;: &quot;feature&quot;,
+        &quot;detail&quot;: null,
+        &quot;name&quot;: &quot;slide-order-and-identifiers&quot;,
+        &quot;outcome&quot;: &quot;success&quot;,
+        &quot;scored&quot;: true
+      },
+      {
+        &quot;category&quot;: &quot;feature&quot;,
+        &quot;detail&quot;: null,
+        &quot;name&quot;: &quot;slide-relationship-graph&quot;,
+        &quot;outcome&quot;: &quot;success&quot;,
+        &quot;scored&quot;: true
+      },
+      {
+        &quot;category&quot;: &quot;feature&quot;,
+        &quot;detail&quot;: null,
+        &quot;name&quot;: &quot;shape-tree-semantics&quot;,
+        &quot;outcome&quot;: &quot;success&quot;,
+        &quot;scored&quot;: true
+      },
+      {
+        &quot;category&quot;: &quot;feature&quot;,
+        &quot;detail&quot;: null,
+        &quot;name&quot;: &quot;text-content-and-order&quot;,
+        &quot;outcome&quot;: &quot;success&quot;,
+        &quot;scored&quot;: true
+      },
+      {
+        &quot;category&quot;: &quot;feature&quot;,
+        &quot;detail&quot;: null,
+        &quot;name&quot;: &quot;text-run-formatting&quot;,
+        &quot;outcome&quot;: &quot;success&quot;,
+        &quot;scored&quot;: true
+      },
+      {
+        &quot;category&quot;: &quot;feature&quot;,
+        &quot;detail&quot;: null,
+        &quot;name&quot;: &quot;table-cell-grid-and-text&quot;,
+        &quot;outcome&quot;: &quot;success&quot;,
+        &quot;scored&quot;: true
+      },
+      {
+        &quot;category&quot;: &quot;feature&quot;,
+        &quot;detail&quot;: null,
+        &quot;name&quot;: &quot;table-cell-formatting&quot;,
+        &quot;outcome&quot;: &quot;success&quot;,
+        &quot;scored&quot;: true
+      },
+      {
+        &quot;category&quot;: &quot;feature&quot;,
+        &quot;detail&quot;: null,
+        &quot;name&quot;: &quot;bullet-paragraph-properties&quot;,
+        &quot;outcome&quot;: &quot;success&quot;,
+        &quot;scored&quot;: true
+      },
+      {
+        &quot;category&quot;: &quot;feature&quot;,
+        &quot;detail&quot;: null,
+        &quot;name&quot;: &quot;layout-geometry&quot;,
+        &quot;outcome&quot;: &quot;success&quot;,
+        &quot;scored&quot;: true
+      },
+      {
+        &quot;category&quot;: &quot;feature&quot;,
+        &quot;detail&quot;: null,
+        &quot;name&quot;: &quot;slide-layout-semantics&quot;,
+        &quot;outcome&quot;: &quot;success&quot;,
+        &quot;scored&quot;: true
+      },
+      {
+        &quot;category&quot;: &quot;feature&quot;,
+        &quot;detail&quot;: null,
+        &quot;name&quot;: &quot;notes-content&quot;,
+        &quot;outcome&quot;: &quot;success&quot;,
+        &quot;scored&quot;: true
+      },
+      {
+        &quot;category&quot;: &quot;feature&quot;,
+        &quot;detail&quot;: null,
+        &quot;name&quot;: &quot;notes-relationships&quot;,
+        &quot;outcome&quot;: &quot;success&quot;,
+        &quot;scored&quot;: true
+      },
+      {
+        &quot;category&quot;: &quot;feature&quot;,
+        &quot;detail&quot;: null,
+        &quot;name&quot;: &quot;media-part-presence&quot;,
+        &quot;outcome&quot;: &quot;success&quot;,
+        &quot;scored&quot;: true
+      },
+      {
+        &quot;category&quot;: &quot;feature&quot;,
+        &quot;detail&quot;: null,
+        &quot;name&quot;: &quot;media-exact-bytes&quot;,
+        &quot;outcome&quot;: &quot;success&quot;,
+        &quot;scored&quot;: true
+      },
+      {
+        &quot;category&quot;: &quot;feature&quot;,
+        &quot;detail&quot;: null,
+        &quot;name&quot;: &quot;theme-semantics&quot;,
+        &quot;outcome&quot;: &quot;success&quot;,
+        &quot;scored&quot;: true
+      },
+      {
+        &quot;category&quot;: &quot;feature&quot;,
+        &quot;detail&quot;: null,
+        &quot;name&quot;: &quot;master-semantics&quot;,
+        &quot;outcome&quot;: &quot;success&quot;,
+        &quot;scored&quot;: true
+      },
+      {
+        &quot;category&quot;: &quot;feature&quot;,
+        &quot;detail&quot;: null,
+        &quot;name&quot;: &quot;relationship-semantics&quot;,
+        &quot;outcome&quot;: &quot;success&quot;,
+        &quot;scored&quot;: true
+      },
+      {
+        &quot;category&quot;: &quot;feature&quot;,
+        &quot;detail&quot;: null,
+        &quot;name&quot;: &quot;opaque-package-part&quot;,
+        &quot;outcome&quot;: &quot;success&quot;,
+        &quot;scored&quot;: true
+      },
+      {
+        &quot;category&quot;: &quot;byte-only&quot;,
+        &quot;detail&quot;: null,
+        &quot;name&quot;: &quot;raw-untouched-part-equality&quot;,
+        &quot;outcome&quot;: &quot;success&quot;,
+        &quot;scored&quot;: false
+      }
+    ],
+    &quot;details&quot;: {
+      &quot;artifact_dir&quot;: &quot;raw/wolfppt-wheel/feature-matrix/measured-2.pptx.adapter&quot;,
+      &quot;candidate_path&quot;: &quot;raw/wolfppt-wheel/feature-matrix/measured-2.pptx&quot;,
+      &quot;candidate_sha256&quot;: &quot;1204a0fb452aece087c4786c0b2ca92bccbfedf66347c41b4b7b3b913c3afc2d&quot;,
+      &quot;command&quot;: [
+        &quot;python&quot;,
+        &quot;-m&quot;,
+        &quot;pptbench.worker&quot;,
+        &quot;wolfppt-wheel&quot;,
+        &quot;feature-matrix&quot;,
+        &quot;mixed-60.pptx&quot;,
+        &quot;measured-2.pptx&quot;
+      ],
+      &quot;diagnostic&quot;: null,
+      &quot;stderr_artifact&quot;: &quot;raw/wolfppt-wheel/feature-matrix/measured-2.pptx.adapter/stderr.bin&quot;,
+      &quot;stderr_bytes&quot;: 0,
+      &quot;stdout_artifact&quot;: &quot;raw/wolfppt-wheel/feature-matrix/measured-2.pptx.adapter/stdout.bin&quot;,
+      &quot;stdout_bytes&quot;: 0
+    },
+    &quot;elapsed_ms&quot;: 126.96404199959943,
+    &quot;iteration&quot;: 2,
+    &quot;outcome&quot;: &quot;success&quot;,
+    &quot;output_path&quot;: &quot;raw/wolfppt-wheel/feature-matrix/measured-2.pptx&quot;,
+    &quot;output_sha256&quot;: &quot;1204a0fb452aece087c4786c0b2ca92bccbfedf66347c41b4b7b3b913c3afc2d&quot;,
+    &quot;peak_rss_bytes&quot;: 42024960,
+    &quot;phase&quot;: &quot;measured&quot;,
+    &quot;reason&quot;: null
+  }
+]</pre></details></td><td></td></tr>
+<tr data-adapter='python-pptx' data-lane='template-mutation'><td>python-pptx</td><td>template-mutation</td><td>mixed-60</td><td>failure</td><td><details><summary>all retained samples</summary><pre>[
+  {
+    &quot;checks&quot;: [
+      {
+        &quot;category&quot;: &quot;semantic&quot;,
+        &quot;detail&quot;: null,
+        &quot;name&quot;: &quot;table-cell-1-1-updated&quot;,
+        &quot;outcome&quot;: &quot;success&quot;,
+        &quot;scored&quot;: true
+      },
+      {
+        &quot;category&quot;: &quot;semantic&quot;,
+        &quot;detail&quot;: null,
+        &quot;name&quot;: &quot;table-cell-2-2-updated&quot;,
+        &quot;outcome&quot;: &quot;success&quot;,
+        &quot;scored&quot;: true
+      },
+      {
+        &quot;category&quot;: &quot;semantic&quot;,
+        &quot;detail&quot;: null,
+        &quot;name&quot;: &quot;bullet-paragraph-1-updated&quot;,
+        &quot;outcome&quot;: &quot;success&quot;,
+        &quot;scored&quot;: true
+      },
+      {
+        &quot;category&quot;: &quot;semantic&quot;,
+        &quot;detail&quot;: &quot;source and result differ&quot;,
+        &quot;name&quot;: &quot;only-declared-text-nodes-changed&quot;,
+        &quot;outcome&quot;: &quot;failure&quot;,
+        &quot;scored&quot;: true
+      },
+      {
+        &quot;category&quot;: &quot;preservation&quot;,
+        &quot;detail&quot;: null,
+        &quot;name&quot;: &quot;notes-preserved&quot;,
+        &quot;outcome&quot;: &quot;success&quot;,
+        &quot;scored&quot;: true
+      },
+      {
+        &quot;category&quot;: &quot;preservation&quot;,
+        &quot;detail&quot;: null,
+        &quot;name&quot;: &quot;media-preserved&quot;,
+        &quot;outcome&quot;: &quot;success&quot;,
+        &quot;scored&quot;: true
+      },
+      {
+        &quot;category&quot;: &quot;preservation&quot;,
+        &quot;detail&quot;: null,
+        &quot;name&quot;: &quot;relationships-preserved&quot;,
+        &quot;outcome&quot;: &quot;success&quot;,
+        &quot;scored&quot;: true
+      },
+      {
+        &quot;category&quot;: &quot;preservation&quot;,
+        &quot;detail&quot;: &quot;source and result differ&quot;,
+        &quot;name&quot;: &quot;opaque-parts-preserved&quot;,
+        &quot;outcome&quot;: &quot;failure&quot;,
+        &quot;scored&quot;: true
+      },
+      {
+        &quot;category&quot;: &quot;byte-only&quot;,
+        &quot;detail&quot;: &quot;raw untouched part bytes differ&quot;,
+        &quot;name&quot;: &quot;raw-untouched-part-equality&quot;,
+        &quot;outcome&quot;: &quot;failure&quot;,
+        &quot;scored&quot;: false
+      }
+    ],
+    &quot;details&quot;: {
+      &quot;artifact_dir&quot;: &quot;raw/python-pptx/template-mutation/warmup-1.pptx.adapter&quot;,
+      &quot;candidate_path&quot;: &quot;raw/python-pptx/template-mutation/warmup-1.pptx&quot;,
+      &quot;candidate_sha256&quot;: &quot;d88cfb240f3a2e9142c367a857b39bc90e7405f326e14e57580726aad6c2f9d5&quot;,
+      &quot;command&quot;: [
+        &quot;python&quot;,
+        &quot;-m&quot;,
+        &quot;pptbench.worker&quot;,
+        &quot;python-pptx&quot;,
+        &quot;template-mutation&quot;,
+        &quot;mixed-60.pptx&quot;,
+        &quot;warmup-1.pptx&quot;
+      ],
+      &quot;diagnostic&quot;: null,
+      &quot;stderr_artifact&quot;: &quot;raw/python-pptx/template-mutation/warmup-1.pptx.adapter/stderr.bin&quot;,
+      &quot;stderr_bytes&quot;: 0,
+      &quot;stdout_artifact&quot;: &quot;raw/python-pptx/template-mutation/warmup-1.pptx.adapter/stdout.bin&quot;,
+      &quot;stdout_bytes&quot;: 0
+    },
+    &quot;elapsed_ms&quot;: 125.70370899629779,
+    &quot;iteration&quot;: 1,
+    &quot;outcome&quot;: &quot;failure&quot;,
+    &quot;output_path&quot;: null,
+    &quot;output_sha256&quot;: null,
+    &quot;peak_rss_bytes&quot;: 47431680,
+    &quot;phase&quot;: &quot;warmup&quot;,
+    &quot;reason&quot;: &quot;one or more scored semantic or preservation checks failed&quot;
+  },
+  {
+    &quot;checks&quot;: [
+      {
+        &quot;category&quot;: &quot;semantic&quot;,
+        &quot;detail&quot;: null,
+        &quot;name&quot;: &quot;table-cell-1-1-updated&quot;,
+        &quot;outcome&quot;: &quot;success&quot;,
+        &quot;scored&quot;: true
+      },
+      {
+        &quot;category&quot;: &quot;semantic&quot;,
+        &quot;detail&quot;: null,
+        &quot;name&quot;: &quot;table-cell-2-2-updated&quot;,
+        &quot;outcome&quot;: &quot;success&quot;,
+        &quot;scored&quot;: true
+      },
+      {
+        &quot;category&quot;: &quot;semantic&quot;,
+        &quot;detail&quot;: null,
+        &quot;name&quot;: &quot;bullet-paragraph-1-updated&quot;,
+        &quot;outcome&quot;: &quot;success&quot;,
+        &quot;scored&quot;: true
+      },
+      {
+        &quot;category&quot;: &quot;semantic&quot;,
+        &quot;detail&quot;: &quot;source and result differ&quot;,
+        &quot;name&quot;: &quot;only-declared-text-nodes-changed&quot;,
+        &quot;outcome&quot;: &quot;failure&quot;,
+        &quot;scored&quot;: true
+      },
+      {
+        &quot;category&quot;: &quot;preservation&quot;,
+        &quot;detail&quot;: null,
+        &quot;name&quot;: &quot;notes-preserved&quot;,
+        &quot;outcome&quot;: &quot;success&quot;,
+        &quot;scored&quot;: true
+      },
+      {
+        &quot;category&quot;: &quot;preservation&quot;,
+        &quot;detail&quot;: null,
+        &quot;name&quot;: &quot;media-preserved&quot;,
+        &quot;outcome&quot;: &quot;success&quot;,
+        &quot;scored&quot;: true
+      },
+      {
+        &quot;category&quot;: &quot;preservation&quot;,
+        &quot;detail&quot;: null,
+        &quot;name&quot;: &quot;relationships-preserved&quot;,
+        &quot;outcome&quot;: &quot;success&quot;,
+        &quot;scored&quot;: true
+      },
+      {
+        &quot;category&quot;: &quot;preservation&quot;,
+        &quot;detail&quot;: &quot;source and result differ&quot;,
+        &quot;name&quot;: &quot;opaque-parts-preserved&quot;,
+        &quot;outcome&quot;: &quot;failure&quot;,
+        &quot;scored&quot;: true
+      },
+      {
+        &quot;category&quot;: &quot;byte-only&quot;,
+        &quot;detail&quot;: &quot;raw untouched part bytes differ&quot;,
+        &quot;name&quot;: &quot;raw-untouched-part-equality&quot;,
+        &quot;outcome&quot;: &quot;failure&quot;,
+        &quot;scored&quot;: false
+      }
+    ],
+    &quot;details&quot;: {
+      &quot;artifact_dir&quot;: &quot;raw/python-pptx/template-mutation/measured-1.pptx.adapter&quot;,
+      &quot;candidate_path&quot;: &quot;raw/python-pptx/template-mutation/measured-1.pptx&quot;,
+      &quot;candidate_sha256&quot;: &quot;5acbf0ff830ae6d75a8fd6b5a46030d62206c00130137bf11630fd74b1687fb5&quot;,
+      &quot;command&quot;: [
+        &quot;python&quot;,
+        &quot;-m&quot;,
+        &quot;pptbench.worker&quot;,
+        &quot;python-pptx&quot;,
+        &quot;template-mutation&quot;,
+        &quot;mixed-60.pptx&quot;,
+        &quot;measured-1.pptx&quot;
+      ],
+      &quot;diagnostic&quot;: null,
+      &quot;stderr_artifact&quot;: &quot;raw/python-pptx/template-mutation/measured-1.pptx.adapter/stderr.bin&quot;,
+      &quot;stderr_bytes&quot;: 0,
+      &quot;stdout_artifact&quot;: &quot;raw/python-pptx/template-mutation/measured-1.pptx.adapter/stdout.bin&quot;,
+      &quot;stdout_bytes&quot;: 0
+    },
+    &quot;elapsed_ms&quot;: 125.3677919958136,
+    &quot;iteration&quot;: 1,
+    &quot;outcome&quot;: &quot;failure&quot;,
+    &quot;output_path&quot;: null,
+    &quot;output_sha256&quot;: null,
+    &quot;peak_rss_bytes&quot;: 47366144,
+    &quot;phase&quot;: &quot;measured&quot;,
+    &quot;reason&quot;: &quot;one or more scored semantic or preservation checks failed&quot;
+  },
+  {
+    &quot;checks&quot;: [
+      {
+        &quot;category&quot;: &quot;semantic&quot;,
+        &quot;detail&quot;: null,
+        &quot;name&quot;: &quot;table-cell-1-1-updated&quot;,
+        &quot;outcome&quot;: &quot;success&quot;,
+        &quot;scored&quot;: true
+      },
+      {
+        &quot;category&quot;: &quot;semantic&quot;,
+        &quot;detail&quot;: null,
+        &quot;name&quot;: &quot;table-cell-2-2-updated&quot;,
+        &quot;outcome&quot;: &quot;success&quot;,
+        &quot;scored&quot;: true
+      },
+      {
+        &quot;category&quot;: &quot;semantic&quot;,
+        &quot;detail&quot;: null,
+        &quot;name&quot;: &quot;bullet-paragraph-1-updated&quot;,
+        &quot;outcome&quot;: &quot;success&quot;,
+        &quot;scored&quot;: true
+      },
+      {
+        &quot;category&quot;: &quot;semantic&quot;,
+        &quot;detail&quot;: &quot;source and result differ&quot;,
+        &quot;name&quot;: &quot;only-declared-text-nodes-changed&quot;,
+        &quot;outcome&quot;: &quot;failure&quot;,
+        &quot;scored&quot;: true
+      },
+      {
+        &quot;category&quot;: &quot;preservation&quot;,
+        &quot;detail&quot;: null,
+        &quot;name&quot;: &quot;notes-preserved&quot;,
+        &quot;outcome&quot;: &quot;success&quot;,
+        &quot;scored&quot;: true
+      },
+      {
+        &quot;category&quot;: &quot;preservation&quot;,
+        &quot;detail&quot;: null,
+        &quot;name&quot;: &quot;media-preserved&quot;,
+        &quot;outcome&quot;: &quot;success&quot;,
+        &quot;scored&quot;: true
+      },
+      {
+        &quot;category&quot;: &quot;preservation&quot;,
+        &quot;detail&quot;: null,
+        &quot;name&quot;: &quot;relationships-preserved&quot;,
+        &quot;outcome&quot;: &quot;success&quot;,
+        &quot;scored&quot;: true
+      },
+      {
+        &quot;category&quot;: &quot;preservation&quot;,
+        &quot;detail&quot;: &quot;source and result differ&quot;,
+        &quot;name&quot;: &quot;opaque-parts-preserved&quot;,
+        &quot;outcome&quot;: &quot;failure&quot;,
+        &quot;scored&quot;: true
+      },
+      {
+        &quot;category&quot;: &quot;byte-only&quot;,
+        &quot;detail&quot;: &quot;raw untouched part bytes differ&quot;,
+        &quot;name&quot;: &quot;raw-untouched-part-equality&quot;,
+        &quot;outcome&quot;: &quot;failure&quot;,
+        &quot;scored&quot;: false
+      }
+    ],
+    &quot;details&quot;: {
+      &quot;artifact_dir&quot;: &quot;raw/python-pptx/template-mutation/measured-2.pptx.adapter&quot;,
+      &quot;candidate_path&quot;: &quot;raw/python-pptx/template-mutation/measured-2.pptx&quot;,
+      &quot;candidate_sha256&quot;: &quot;5acbf0ff830ae6d75a8fd6b5a46030d62206c00130137bf11630fd74b1687fb5&quot;,
+      &quot;command&quot;: [
+        &quot;python&quot;,
+        &quot;-m&quot;,
+        &quot;pptbench.worker&quot;,
+        &quot;python-pptx&quot;,
+        &quot;template-mutation&quot;,
+        &quot;mixed-60.pptx&quot;,
+        &quot;measured-2.pptx&quot;
+      ],
+      &quot;diagnostic&quot;: null,
+      &quot;stderr_artifact&quot;: &quot;raw/python-pptx/template-mutation/measured-2.pptx.adapter/stderr.bin&quot;,
+      &quot;stderr_bytes&quot;: 0,
+      &quot;stdout_artifact&quot;: &quot;raw/python-pptx/template-mutation/measured-2.pptx.adapter/stdout.bin&quot;,
+      &quot;stdout_bytes&quot;: 0
+    },
+    &quot;elapsed_ms&quot;: 122.38812499708729,
+    &quot;iteration&quot;: 2,
+    &quot;outcome&quot;: &quot;failure&quot;,
+    &quot;output_path&quot;: null,
+    &quot;output_sha256&quot;: null,
+    &quot;peak_rss_bytes&quot;: 47448064,
+    &quot;phase&quot;: &quot;measured&quot;,
+    &quot;reason&quot;: &quot;one or more scored semantic or preservation checks failed&quot;
+  }
+]</pre></details></td><td>one or more scored semantic or preservation checks failed</td></tr>
+<tr data-adapter='wolfppt-wheel' data-lane='template-mutation'><td>wolfppt-wheel</td><td>template-mutation</td><td>mixed-60</td><td>success</td><td><details><summary>all retained samples</summary><pre>[
+  {
+    &quot;checks&quot;: [
+      {
+        &quot;category&quot;: &quot;semantic&quot;,
+        &quot;detail&quot;: null,
+        &quot;name&quot;: &quot;table-cell-1-1-updated&quot;,
+        &quot;outcome&quot;: &quot;success&quot;,
+        &quot;scored&quot;: true
+      },
+      {
+        &quot;category&quot;: &quot;semantic&quot;,
+        &quot;detail&quot;: null,
+        &quot;name&quot;: &quot;table-cell-2-2-updated&quot;,
+        &quot;outcome&quot;: &quot;success&quot;,
+        &quot;scored&quot;: true
+      },
+      {
+        &quot;category&quot;: &quot;semantic&quot;,
+        &quot;detail&quot;: null,
+        &quot;name&quot;: &quot;bullet-paragraph-1-updated&quot;,
+        &quot;outcome&quot;: &quot;success&quot;,
+        &quot;scored&quot;: true
+      },
+      {
+        &quot;category&quot;: &quot;semantic&quot;,
+        &quot;detail&quot;: null,
+        &quot;name&quot;: &quot;only-declared-text-nodes-changed&quot;,
+        &quot;outcome&quot;: &quot;success&quot;,
+        &quot;scored&quot;: true
+      },
+      {
+        &quot;category&quot;: &quot;preservation&quot;,
+        &quot;detail&quot;: null,
+        &quot;name&quot;: &quot;notes-preserved&quot;,
+        &quot;outcome&quot;: &quot;success&quot;,
+        &quot;scored&quot;: true
+      },
+      {
+        &quot;category&quot;: &quot;preservation&quot;,
+        &quot;detail&quot;: null,
+        &quot;name&quot;: &quot;media-preserved&quot;,
+        &quot;outcome&quot;: &quot;success&quot;,
+        &quot;scored&quot;: true
+      },
+      {
+        &quot;category&quot;: &quot;preservation&quot;,
+        &quot;detail&quot;: null,
+        &quot;name&quot;: &quot;relationships-preserved&quot;,
+        &quot;outcome&quot;: &quot;success&quot;,
+        &quot;scored&quot;: true
+      },
+      {
+        &quot;category&quot;: &quot;preservation&quot;,
+        &quot;detail&quot;: null,
+        &quot;name&quot;: &quot;opaque-parts-preserved&quot;,
+        &quot;outcome&quot;: &quot;success&quot;,
+        &quot;scored&quot;: true
+      },
+      {
+        &quot;category&quot;: &quot;byte-only&quot;,
+        &quot;detail&quot;: null,
+        &quot;name&quot;: &quot;raw-untouched-part-equality&quot;,
+        &quot;outcome&quot;: &quot;success&quot;,
+        &quot;scored&quot;: false
+      }
+    ],
+    &quot;details&quot;: {
+      &quot;artifact_dir&quot;: &quot;raw/wolfppt-wheel/template-mutation/warmup-1.pptx.adapter&quot;,
+      &quot;candidate_path&quot;: &quot;raw/wolfppt-wheel/template-mutation/warmup-1.pptx&quot;,
+      &quot;candidate_sha256&quot;: &quot;038c2ffd7e6dd2ef4a08ec923696326cb3774c53b1801e6a6a537fafe01a3eb3&quot;,
+      &quot;command&quot;: [
+        &quot;python&quot;,
+        &quot;-m&quot;,
+        &quot;pptbench.worker&quot;,
+        &quot;wolfppt-wheel&quot;,
+        &quot;template-mutation&quot;,
+        &quot;mixed-60.pptx&quot;,
+        &quot;warmup-1.pptx&quot;
+      ],
+      &quot;diagnostic&quot;: null,
+      &quot;stderr_artifact&quot;: &quot;raw/wolfppt-wheel/template-mutation/warmup-1.pptx.adapter/stderr.bin&quot;,
+      &quot;stderr_bytes&quot;: 0,
+      &quot;stdout_artifact&quot;: &quot;raw/wolfppt-wheel/template-mutation/warmup-1.pptx.adapter/stdout.bin&quot;,
+      &quot;stdout_bytes&quot;: 0
+    },
+    &quot;elapsed_ms&quot;: 126.67504099954385,
+    &quot;iteration&quot;: 1,
+    &quot;outcome&quot;: &quot;success&quot;,
+    &quot;output_path&quot;: &quot;raw/wolfppt-wheel/template-mutation/warmup-1.pptx&quot;,
+    &quot;output_sha256&quot;: &quot;038c2ffd7e6dd2ef4a08ec923696326cb3774c53b1801e6a6a537fafe01a3eb3&quot;,
+    &quot;peak_rss_bytes&quot;: 43515904,
+    &quot;phase&quot;: &quot;warmup&quot;,
+    &quot;reason&quot;: null
+  },
+  {
+    &quot;checks&quot;: [
+      {
+        &quot;category&quot;: &quot;semantic&quot;,
+        &quot;detail&quot;: null,
+        &quot;name&quot;: &quot;table-cell-1-1-updated&quot;,
+        &quot;outcome&quot;: &quot;success&quot;,
+        &quot;scored&quot;: true
+      },
+      {
+        &quot;category&quot;: &quot;semantic&quot;,
+        &quot;detail&quot;: null,
+        &quot;name&quot;: &quot;table-cell-2-2-updated&quot;,
+        &quot;outcome&quot;: &quot;success&quot;,
+        &quot;scored&quot;: true
+      },
+      {
+        &quot;category&quot;: &quot;semantic&quot;,
+        &quot;detail&quot;: null,
+        &quot;name&quot;: &quot;bullet-paragraph-1-updated&quot;,
+        &quot;outcome&quot;: &quot;success&quot;,
+        &quot;scored&quot;: true
+      },
+      {
+        &quot;category&quot;: &quot;semantic&quot;,
+        &quot;detail&quot;: null,
+        &quot;name&quot;: &quot;only-declared-text-nodes-changed&quot;,
+        &quot;outcome&quot;: &quot;success&quot;,
+        &quot;scored&quot;: true
+      },
+      {
+        &quot;category&quot;: &quot;preservation&quot;,
+        &quot;detail&quot;: null,
+        &quot;name&quot;: &quot;notes-preserved&quot;,
+        &quot;outcome&quot;: &quot;success&quot;,
+        &quot;scored&quot;: true
+      },
+      {
+        &quot;category&quot;: &quot;preservation&quot;,
+        &quot;detail&quot;: null,
+        &quot;name&quot;: &quot;media-preserved&quot;,
+        &quot;outcome&quot;: &quot;success&quot;,
+        &quot;scored&quot;: true
+      },
+      {
+        &quot;category&quot;: &quot;preservation&quot;,
+        &quot;detail&quot;: null,
+        &quot;name&quot;: &quot;relationships-preserved&quot;,
+        &quot;outcome&quot;: &quot;success&quot;,
+        &quot;scored&quot;: true
+      },
+      {
+        &quot;category&quot;: &quot;preservation&quot;,
+        &quot;detail&quot;: null,
+        &quot;name&quot;: &quot;opaque-parts-preserved&quot;,
+        &quot;outcome&quot;: &quot;success&quot;,
+        &quot;scored&quot;: true
+      },
+      {
+        &quot;category&quot;: &quot;byte-only&quot;,
+        &quot;detail&quot;: null,
+        &quot;name&quot;: &quot;raw-untouched-part-equality&quot;,
+        &quot;outcome&quot;: &quot;success&quot;,
+        &quot;scored&quot;: false
+      }
+    ],
+    &quot;details&quot;: {
+      &quot;artifact_dir&quot;: &quot;raw/wolfppt-wheel/template-mutation/measured-1.pptx.adapter&quot;,
+      &quot;candidate_path&quot;: &quot;raw/wolfppt-wheel/template-mutation/measured-1.pptx&quot;,
+      &quot;candidate_sha256&quot;: &quot;038c2ffd7e6dd2ef4a08ec923696326cb3774c53b1801e6a6a537fafe01a3eb3&quot;,
+      &quot;command&quot;: [
+        &quot;python&quot;,
+        &quot;-m&quot;,
+        &quot;pptbench.worker&quot;,
+        &quot;wolfppt-wheel&quot;,
+        &quot;template-mutation&quot;,
+        &quot;mixed-60.pptx&quot;,
+        &quot;measured-1.pptx&quot;
+      ],
+      &quot;diagnostic&quot;: null,
+      &quot;stderr_artifact&quot;: &quot;raw/wolfppt-wheel/template-mutation/measured-1.pptx.adapter/stderr.bin&quot;,
+      &quot;stderr_bytes&quot;: 0,
+      &quot;stdout_artifact&quot;: &quot;raw/wolfppt-wheel/template-mutation/measured-1.pptx.adapter/stdout.bin&quot;,
+      &quot;stdout_bytes&quot;: 0
+    },
+    &quot;elapsed_ms&quot;: 128.1608339995728,
+    &quot;iteration&quot;: 1,
+    &quot;outcome&quot;: &quot;success&quot;,
+    &quot;output_path&quot;: &quot;raw/wolfppt-wheel/template-mutation/measured-1.pptx&quot;,
+    &quot;output_sha256&quot;: &quot;038c2ffd7e6dd2ef4a08ec923696326cb3774c53b1801e6a6a537fafe01a3eb3&quot;,
+    &quot;peak_rss_bytes&quot;: 43925504,
+    &quot;phase&quot;: &quot;measured&quot;,
+    &quot;reason&quot;: null
+  },
+  {
+    &quot;checks&quot;: [
+      {
+        &quot;category&quot;: &quot;semantic&quot;,
+        &quot;detail&quot;: null,
+        &quot;name&quot;: &quot;table-cell-1-1-updated&quot;,
+        &quot;outcome&quot;: &quot;success&quot;,
+        &quot;scored&quot;: true
+      },
+      {
+        &quot;category&quot;: &quot;semantic&quot;,
+        &quot;detail&quot;: null,
+        &quot;name&quot;: &quot;table-cell-2-2-updated&quot;,
+        &quot;outcome&quot;: &quot;success&quot;,
+        &quot;scored&quot;: true
+      },
+      {
+        &quot;category&quot;: &quot;semantic&quot;,
+        &quot;detail&quot;: null,
+        &quot;name&quot;: &quot;bullet-paragraph-1-updated&quot;,
+        &quot;outcome&quot;: &quot;success&quot;,
+        &quot;scored&quot;: true
+      },
+      {
+        &quot;category&quot;: &quot;semantic&quot;,
+        &quot;detail&quot;: null,
+        &quot;name&quot;: &quot;only-declared-text-nodes-changed&quot;,
+        &quot;outcome&quot;: &quot;success&quot;,
+        &quot;scored&quot;: true
+      },
+      {
+        &quot;category&quot;: &quot;preservation&quot;,
+        &quot;detail&quot;: null,
+        &quot;name&quot;: &quot;notes-preserved&quot;,
+        &quot;outcome&quot;: &quot;success&quot;,
+        &quot;scored&quot;: true
+      },
+      {
+        &quot;category&quot;: &quot;preservation&quot;,
+        &quot;detail&quot;: null,
+        &quot;name&quot;: &quot;media-preserved&quot;,
+        &quot;outcome&quot;: &quot;success&quot;,
+        &quot;scored&quot;: true
+      },
+      {
+        &quot;category&quot;: &quot;preservation&quot;,
+        &quot;detail&quot;: null,
+        &quot;name&quot;: &quot;relationships-preserved&quot;,
+        &quot;outcome&quot;: &quot;success&quot;,
+        &quot;scored&quot;: true
+      },
+      {
+        &quot;category&quot;: &quot;preservation&quot;,
+        &quot;detail&quot;: null,
+        &quot;name&quot;: &quot;opaque-parts-preserved&quot;,
+        &quot;outcome&quot;: &quot;success&quot;,
+        &quot;scored&quot;: true
+      },
+      {
+        &quot;category&quot;: &quot;byte-only&quot;,
+        &quot;detail&quot;: null,
+        &quot;name&quot;: &quot;raw-untouched-part-equality&quot;,
+        &quot;outcome&quot;: &quot;success&quot;,
+        &quot;scored&quot;: false
+      }
+    ],
+    &quot;details&quot;: {
+      &quot;artifact_dir&quot;: &quot;raw/wolfppt-wheel/template-mutation/measured-2.pptx.adapter&quot;,
+      &quot;candidate_path&quot;: &quot;raw/wolfppt-wheel/template-mutation/measured-2.pptx&quot;,
+      &quot;candidate_sha256&quot;: &quot;038c2ffd7e6dd2ef4a08ec923696326cb3774c53b1801e6a6a537fafe01a3eb3&quot;,
+      &quot;command&quot;: [
+        &quot;python&quot;,
+        &quot;-m&quot;,
+        &quot;pptbench.worker&quot;,
+        &quot;wolfppt-wheel&quot;,
+        &quot;template-mutation&quot;,
+        &quot;mixed-60.pptx&quot;,
+        &quot;measured-2.pptx&quot;
+      ],
+      &quot;diagnostic&quot;: null,
+      &quot;stderr_artifact&quot;: &quot;raw/wolfppt-wheel/template-mutation/measured-2.pptx.adapter/stderr.bin&quot;,
+      &quot;stderr_bytes&quot;: 0,
+      &quot;stdout_artifact&quot;: &quot;raw/wolfppt-wheel/template-mutation/measured-2.pptx.adapter/stdout.bin&quot;,
+      &quot;stdout_bytes&quot;: 0
+    },
+    &quot;elapsed_ms&quot;: 121.72741600079462,
+    &quot;iteration&quot;: 2,
+    &quot;outcome&quot;: &quot;success&quot;,
+    &quot;output_path&quot;: &quot;raw/wolfppt-wheel/template-mutation/measured-2.pptx&quot;,
+    &quot;output_sha256&quot;: &quot;038c2ffd7e6dd2ef4a08ec923696326cb3774c53b1801e6a6a537fafe01a3eb3&quot;,
+    &quot;peak_rss_bytes&quot;: 43515904,
+    &quot;phase&quot;: &quot;measured&quot;,
+    &quot;reason&quot;: null
+  }
+]</pre></details></td><td></td></tr>
+<tr data-adapter='python-pptx' data-lane='chart-data'><td>python-pptx</td><td>chart-data</td><td>charts</td><td>success</td><td><details><summary>all retained samples</summary><pre>[
+  {
+    &quot;checks&quot;: [
+      {
+        &quot;category&quot;: &quot;preservation&quot;,
+        &quot;detail&quot;: null,
+        &quot;name&quot;: &quot;chart-topology-and-relations&quot;,
+        &quot;outcome&quot;: &quot;success&quot;,
+        &quot;scored&quot;: true
+      },
+      {
+        &quot;category&quot;: &quot;semantic&quot;,
+        &quot;detail&quot;: null,
+        &quot;name&quot;: &quot;chart-slide-structure&quot;,
+        &quot;outcome&quot;: &quot;success&quot;,
+        &quot;scored&quot;: true
+      },
+      {
+        &quot;category&quot;: &quot;semantic&quot;,
+        &quot;detail&quot;: null,
+        &quot;name&quot;: &quot;category-chart-exact-series-and-points&quot;,
+        &quot;outcome&quot;: &quot;success&quot;,
+        &quot;scored&quot;: true
+      },
+      {
+        &quot;category&quot;: &quot;semantic&quot;,
+        &quot;detail&quot;: null,
+        &quot;name&quot;: &quot;xy-chart-exact-series-and-points&quot;,
+        &quot;outcome&quot;: &quot;success&quot;,
+        &quot;scored&quot;: true
+      },
+      {
+        &quot;category&quot;: &quot;semantic&quot;,
+        &quot;detail&quot;: null,
+        &quot;name&quot;: &quot;bubble-chart-exact-series-and-points&quot;,
+        &quot;outcome&quot;: &quot;success&quot;,
+        &quot;scored&quot;: true
+      },
+      {
+        &quot;category&quot;: &quot;semantic&quot;,
+        &quot;detail&quot;: null,
+        &quot;name&quot;: &quot;related-workbook-values&quot;,
+        &quot;outcome&quot;: &quot;success&quot;,
+        &quot;scored&quot;: true
+      },
+      {
+        &quot;category&quot;: &quot;preservation&quot;,
+        &quot;detail&quot;: null,
+        &quot;name&quot;: &quot;related-workbook-structure-and-formatting&quot;,
+        &quot;outcome&quot;: &quot;success&quot;,
+        &quot;scored&quot;: true
+      },
+      {
+        &quot;category&quot;: &quot;preservation&quot;,
+        &quot;detail&quot;: null,
+        &quot;name&quot;: &quot;chart-formatting-preserved&quot;,
+        &quot;outcome&quot;: &quot;success&quot;,
+        &quot;scored&quot;: true
+      },
+      {
+        &quot;category&quot;: &quot;preservation&quot;,
+        &quot;detail&quot;: null,
+        &quot;name&quot;: &quot;notes-preserved&quot;,
+        &quot;outcome&quot;: &quot;success&quot;,
+        &quot;scored&quot;: true
+      },
+      {
+        &quot;category&quot;: &quot;preservation&quot;,
+        &quot;detail&quot;: null,
+        &quot;name&quot;: &quot;media-preserved&quot;,
+        &quot;outcome&quot;: &quot;success&quot;,
+        &quot;scored&quot;: true
+      },
+      {
+        &quot;category&quot;: &quot;preservation&quot;,
+        &quot;detail&quot;: null,
+        &quot;name&quot;: &quot;relationships-preserved&quot;,
+        &quot;outcome&quot;: &quot;success&quot;,
+        &quot;scored&quot;: true
+      },
+      {
+        &quot;category&quot;: &quot;preservation&quot;,
+        &quot;detail&quot;: null,
+        &quot;name&quot;: &quot;opaque-parts-preserved&quot;,
+        &quot;outcome&quot;: &quot;success&quot;,
+        &quot;scored&quot;: true
+      },
+      {
+        &quot;category&quot;: &quot;byte-only&quot;,
+        &quot;detail&quot;: null,
+        &quot;name&quot;: &quot;raw-untouched-part-equality&quot;,
+        &quot;outcome&quot;: &quot;success&quot;,
+        &quot;scored&quot;: false
+      }
+    ],
+    &quot;details&quot;: {
+      &quot;artifact_dir&quot;: &quot;raw/python-pptx/chart-data/warmup-1.pptx.adapter&quot;,
+      &quot;candidate_path&quot;: &quot;raw/python-pptx/chart-data/warmup-1.pptx&quot;,
+      &quot;candidate_sha256&quot;: &quot;cbed366db757a3f089433d4fe436efd1985e86735eae046b4bee2689df8442f5&quot;,
+      &quot;command&quot;: [
+        &quot;python&quot;,
+        &quot;-m&quot;,
+        &quot;pptbench.worker&quot;,
+        &quot;python-pptx&quot;,
+        &quot;chart-data&quot;,
+        &quot;charts.pptx&quot;,
+        &quot;warmup-1.pptx&quot;
+      ],
+      &quot;diagnostic&quot;: null,
+      &quot;stderr_artifact&quot;: &quot;raw/python-pptx/chart-data/warmup-1.pptx.adapter/stderr.bin&quot;,
+      &quot;stderr_bytes&quot;: 0,
+      &quot;stdout_artifact&quot;: &quot;raw/python-pptx/chart-data/warmup-1.pptx.adapter/stdout.bin&quot;,
+      &quot;stdout_bytes&quot;: 0
+    },
+    &quot;elapsed_ms&quot;: 231.94333299761638,
+    &quot;iteration&quot;: 1,
+    &quot;outcome&quot;: &quot;success&quot;,
+    &quot;output_path&quot;: &quot;raw/python-pptx/chart-data/warmup-1.pptx&quot;,
+    &quot;output_sha256&quot;: &quot;cbed366db757a3f089433d4fe436efd1985e86735eae046b4bee2689df8442f5&quot;,
+    &quot;peak_rss_bytes&quot;: 70336512,
+    &quot;phase&quot;: &quot;warmup&quot;,
+    &quot;reason&quot;: null
+  },
+  {
+    &quot;checks&quot;: [
+      {
+        &quot;category&quot;: &quot;preservation&quot;,
+        &quot;detail&quot;: null,
+        &quot;name&quot;: &quot;chart-topology-and-relations&quot;,
+        &quot;outcome&quot;: &quot;success&quot;,
+        &quot;scored&quot;: true
+      },
+      {
+        &quot;category&quot;: &quot;semantic&quot;,
+        &quot;detail&quot;: null,
+        &quot;name&quot;: &quot;chart-slide-structure&quot;,
+        &quot;outcome&quot;: &quot;success&quot;,
+        &quot;scored&quot;: true
+      },
+      {
+        &quot;category&quot;: &quot;semantic&quot;,
+        &quot;detail&quot;: null,
+        &quot;name&quot;: &quot;category-chart-exact-series-and-points&quot;,
+        &quot;outcome&quot;: &quot;success&quot;,
+        &quot;scored&quot;: true
+      },
+      {
+        &quot;category&quot;: &quot;semantic&quot;,
+        &quot;detail&quot;: null,
+        &quot;name&quot;: &quot;xy-chart-exact-series-and-points&quot;,
+        &quot;outcome&quot;: &quot;success&quot;,
+        &quot;scored&quot;: true
+      },
+      {
+        &quot;category&quot;: &quot;semantic&quot;,
+        &quot;detail&quot;: null,
+        &quot;name&quot;: &quot;bubble-chart-exact-series-and-points&quot;,
+        &quot;outcome&quot;: &quot;success&quot;,
+        &quot;scored&quot;: true
+      },
+      {
+        &quot;category&quot;: &quot;semantic&quot;,
+        &quot;detail&quot;: null,
+        &quot;name&quot;: &quot;related-workbook-values&quot;,
+        &quot;outcome&quot;: &quot;success&quot;,
+        &quot;scored&quot;: true
+      },
+      {
+        &quot;category&quot;: &quot;preservation&quot;,
+        &quot;detail&quot;: null,
+        &quot;name&quot;: &quot;related-workbook-structure-and-formatting&quot;,
+        &quot;outcome&quot;: &quot;success&quot;,
+        &quot;scored&quot;: true
+      },
+      {
+        &quot;category&quot;: &quot;preservation&quot;,
+        &quot;detail&quot;: null,
+        &quot;name&quot;: &quot;chart-formatting-preserved&quot;,
+        &quot;outcome&quot;: &quot;success&quot;,
+        &quot;scored&quot;: true
+      },
+      {
+        &quot;category&quot;: &quot;preservation&quot;,
+        &quot;detail&quot;: null,
+        &quot;name&quot;: &quot;notes-preserved&quot;,
+        &quot;outcome&quot;: &quot;success&quot;,
+        &quot;scored&quot;: true
+      },
+      {
+        &quot;category&quot;: &quot;preservation&quot;,
+        &quot;detail&quot;: null,
+        &quot;name&quot;: &quot;media-preserved&quot;,
+        &quot;outcome&quot;: &quot;success&quot;,
+        &quot;scored&quot;: true
+      },
+      {
+        &quot;category&quot;: &quot;preservation&quot;,
+        &quot;detail&quot;: null,
+        &quot;name&quot;: &quot;relationships-preserved&quot;,
+        &quot;outcome&quot;: &quot;success&quot;,
+        &quot;scored&quot;: true
+      },
+      {
+        &quot;category&quot;: &quot;preservation&quot;,
+        &quot;detail&quot;: null,
+        &quot;name&quot;: &quot;opaque-parts-preserved&quot;,
+        &quot;outcome&quot;: &quot;success&quot;,
+        &quot;scored&quot;: true
+      },
+      {
+        &quot;category&quot;: &quot;byte-only&quot;,
+        &quot;detail&quot;: null,
+        &quot;name&quot;: &quot;raw-untouched-part-equality&quot;,
+        &quot;outcome&quot;: &quot;success&quot;,
+        &quot;scored&quot;: false
+      }
+    ],
+    &quot;details&quot;: {
+      &quot;artifact_dir&quot;: &quot;raw/python-pptx/chart-data/measured-1.pptx.adapter&quot;,
+      &quot;candidate_path&quot;: &quot;raw/python-pptx/chart-data/measured-1.pptx&quot;,
+      &quot;candidate_sha256&quot;: &quot;cbed366db757a3f089433d4fe436efd1985e86735eae046b4bee2689df8442f5&quot;,
+      &quot;command&quot;: [
+        &quot;python&quot;,
+        &quot;-m&quot;,
+        &quot;pptbench.worker&quot;,
+        &quot;python-pptx&quot;,
+        &quot;chart-data&quot;,
+        &quot;charts.pptx&quot;,
+        &quot;measured-1.pptx&quot;
+      ],
+      &quot;diagnostic&quot;: null,
+      &quot;stderr_artifact&quot;: &quot;raw/python-pptx/chart-data/measured-1.pptx.adapter/stderr.bin&quot;,
+      &quot;stderr_bytes&quot;: 0,
+      &quot;stdout_artifact&quot;: &quot;raw/python-pptx/chart-data/measured-1.pptx.adapter/stdout.bin&quot;,
+      &quot;stdout_bytes&quot;: 0
+    },
+    &quot;elapsed_ms&quot;: 125.42633300472517,
+    &quot;iteration&quot;: 1,
+    &quot;outcome&quot;: &quot;success&quot;,
+    &quot;output_path&quot;: &quot;raw/python-pptx/chart-data/measured-1.pptx&quot;,
+    &quot;output_sha256&quot;: &quot;cbed366db757a3f089433d4fe436efd1985e86735eae046b4bee2689df8442f5&quot;,
+    &quot;peak_rss_bytes&quot;: 49512448,
+    &quot;phase&quot;: &quot;measured&quot;,
+    &quot;reason&quot;: null
+  },
+  {
+    &quot;checks&quot;: [
+      {
+        &quot;category&quot;: &quot;preservation&quot;,
+        &quot;detail&quot;: null,
+        &quot;name&quot;: &quot;chart-topology-and-relations&quot;,
+        &quot;outcome&quot;: &quot;success&quot;,
+        &quot;scored&quot;: true
+      },
+      {
+        &quot;category&quot;: &quot;semantic&quot;,
+        &quot;detail&quot;: null,
+        &quot;name&quot;: &quot;chart-slide-structure&quot;,
+        &quot;outcome&quot;: &quot;success&quot;,
+        &quot;scored&quot;: true
+      },
+      {
+        &quot;category&quot;: &quot;semantic&quot;,
+        &quot;detail&quot;: null,
+        &quot;name&quot;: &quot;category-chart-exact-series-and-points&quot;,
+        &quot;outcome&quot;: &quot;success&quot;,
+        &quot;scored&quot;: true
+      },
+      {
+        &quot;category&quot;: &quot;semantic&quot;,
+        &quot;detail&quot;: null,
+        &quot;name&quot;: &quot;xy-chart-exact-series-and-points&quot;,
+        &quot;outcome&quot;: &quot;success&quot;,
+        &quot;scored&quot;: true
+      },
+      {
+        &quot;category&quot;: &quot;semantic&quot;,
+        &quot;detail&quot;: null,
+        &quot;name&quot;: &quot;bubble-chart-exact-series-and-points&quot;,
+        &quot;outcome&quot;: &quot;success&quot;,
+        &quot;scored&quot;: true
+      },
+      {
+        &quot;category&quot;: &quot;semantic&quot;,
+        &quot;detail&quot;: null,
+        &quot;name&quot;: &quot;related-workbook-values&quot;,
+        &quot;outcome&quot;: &quot;success&quot;,
+        &quot;scored&quot;: true
+      },
+      {
+        &quot;category&quot;: &quot;preservation&quot;,
+        &quot;detail&quot;: null,
+        &quot;name&quot;: &quot;related-workbook-structure-and-formatting&quot;,
+        &quot;outcome&quot;: &quot;success&quot;,
+        &quot;scored&quot;: true
+      },
+      {
+        &quot;category&quot;: &quot;preservation&quot;,
+        &quot;detail&quot;: null,
+        &quot;name&quot;: &quot;chart-formatting-preserved&quot;,
+        &quot;outcome&quot;: &quot;success&quot;,
+        &quot;scored&quot;: true
+      },
+      {
+        &quot;category&quot;: &quot;preservation&quot;,
+        &quot;detail&quot;: null,
+        &quot;name&quot;: &quot;notes-preserved&quot;,
+        &quot;outcome&quot;: &quot;success&quot;,
+        &quot;scored&quot;: true
+      },
+      {
+        &quot;category&quot;: &quot;preservation&quot;,
+        &quot;detail&quot;: null,
+        &quot;name&quot;: &quot;media-preserved&quot;,
+        &quot;outcome&quot;: &quot;success&quot;,
+        &quot;scored&quot;: true
+      },
+      {
+        &quot;category&quot;: &quot;preservation&quot;,
+        &quot;detail&quot;: null,
+        &quot;name&quot;: &quot;relationships-preserved&quot;,
+        &quot;outcome&quot;: &quot;success&quot;,
+        &quot;scored&quot;: true
+      },
+      {
+        &quot;category&quot;: &quot;preservation&quot;,
+        &quot;detail&quot;: null,
+        &quot;name&quot;: &quot;opaque-parts-preserved&quot;,
+        &quot;outcome&quot;: &quot;success&quot;,
+        &quot;scored&quot;: true
+      },
+      {
+        &quot;category&quot;: &quot;byte-only&quot;,
+        &quot;detail&quot;: null,
+        &quot;name&quot;: &quot;raw-untouched-part-equality&quot;,
+        &quot;outcome&quot;: &quot;success&quot;,
+        &quot;scored&quot;: false
+      }
+    ],
+    &quot;details&quot;: {
+      &quot;artifact_dir&quot;: &quot;raw/python-pptx/chart-data/measured-2.pptx.adapter&quot;,
+      &quot;candidate_path&quot;: &quot;raw/python-pptx/chart-data/measured-2.pptx&quot;,
+      &quot;candidate_sha256&quot;: &quot;53ea87b6a6a116fec148f5d65159b4e0e38e52b11617e8110f47098ba733f670&quot;,
+      &quot;command&quot;: [
+        &quot;python&quot;,
+        &quot;-m&quot;,
+        &quot;pptbench.worker&quot;,
+        &quot;python-pptx&quot;,
+        &quot;chart-data&quot;,
+        &quot;charts.pptx&quot;,
+        &quot;measured-2.pptx&quot;
+      ],
+      &quot;diagnostic&quot;: null,
+      &quot;stderr_artifact&quot;: &quot;raw/python-pptx/chart-data/measured-2.pptx.adapter/stderr.bin&quot;,
+      &quot;stderr_bytes&quot;: 0,
+      &quot;stdout_artifact&quot;: &quot;raw/python-pptx/chart-data/measured-2.pptx.adapter/stdout.bin&quot;,
+      &quot;stdout_bytes&quot;: 0
+    },
+    &quot;elapsed_ms&quot;: 131.6363329970045,
+    &quot;iteration&quot;: 2,
+    &quot;outcome&quot;: &quot;success&quot;,
+    &quot;output_path&quot;: &quot;raw/python-pptx/chart-data/measured-2.pptx&quot;,
+    &quot;output_sha256&quot;: &quot;53ea87b6a6a116fec148f5d65159b4e0e38e52b11617e8110f47098ba733f670&quot;,
+    &quot;peak_rss_bytes&quot;: 49496064,
+    &quot;phase&quot;: &quot;measured&quot;,
+    &quot;reason&quot;: null
+  }
+]</pre></details></td><td></td></tr>
+<tr data-adapter='wolfppt-wheel' data-lane='chart-data'><td>wolfppt-wheel</td><td>chart-data</td><td>charts</td><td>failure</td><td><details><summary>all retained samples</summary><pre>[
+  {
+    &quot;checks&quot;: [
+      {
+        &quot;category&quot;: &quot;preservation&quot;,
+        &quot;detail&quot;: null,
+        &quot;name&quot;: &quot;chart-topology-and-relations&quot;,
+        &quot;outcome&quot;: &quot;success&quot;,
+        &quot;scored&quot;: true
+      },
+      {
+        &quot;category&quot;: &quot;semantic&quot;,
+        &quot;detail&quot;: null,
+        &quot;name&quot;: &quot;chart-slide-structure&quot;,
+        &quot;outcome&quot;: &quot;success&quot;,
+        &quot;scored&quot;: true
+      },
+      {
+        &quot;category&quot;: &quot;semantic&quot;,
+        &quot;detail&quot;: null,
+        &quot;name&quot;: &quot;category-chart-exact-series-and-points&quot;,
+        &quot;outcome&quot;: &quot;success&quot;,
+        &quot;scored&quot;: true
+      },
+      {
+        &quot;category&quot;: &quot;semantic&quot;,
+        &quot;detail&quot;: null,
+        &quot;name&quot;: &quot;xy-chart-exact-series-and-points&quot;,
+        &quot;outcome&quot;: &quot;success&quot;,
+        &quot;scored&quot;: true
+      },
+      {
+        &quot;category&quot;: &quot;semantic&quot;,
+        &quot;detail&quot;: null,
+        &quot;name&quot;: &quot;bubble-chart-exact-series-and-points&quot;,
+        &quot;outcome&quot;: &quot;success&quot;,
+        &quot;scored&quot;: true
+      },
+      {
+        &quot;category&quot;: &quot;semantic&quot;,
+        &quot;detail&quot;: &quot;source and result differ&quot;,
+        &quot;name&quot;: &quot;related-workbook-values&quot;,
+        &quot;outcome&quot;: &quot;failure&quot;,
+        &quot;scored&quot;: true
+      },
+      {
+        &quot;category&quot;: &quot;preservation&quot;,
+        &quot;detail&quot;: &quot;source and result differ&quot;,
+        &quot;name&quot;: &quot;related-workbook-structure-and-formatting&quot;,
+        &quot;outcome&quot;: &quot;failure&quot;,
+        &quot;scored&quot;: true
+      },
+      {
+        &quot;category&quot;: &quot;preservation&quot;,
+        &quot;detail&quot;: &quot;source and result differ&quot;,
+        &quot;name&quot;: &quot;chart-formatting-preserved&quot;,
+        &quot;outcome&quot;: &quot;failure&quot;,
+        &quot;scored&quot;: true
+      },
+      {
+        &quot;category&quot;: &quot;preservation&quot;,
+        &quot;detail&quot;: null,
+        &quot;name&quot;: &quot;notes-preserved&quot;,
+        &quot;outcome&quot;: &quot;success&quot;,
+        &quot;scored&quot;: true
+      },
+      {
+        &quot;category&quot;: &quot;preservation&quot;,
+        &quot;detail&quot;: null,
+        &quot;name&quot;: &quot;media-preserved&quot;,
+        &quot;outcome&quot;: &quot;success&quot;,
+        &quot;scored&quot;: true
+      },
+      {
+        &quot;category&quot;: &quot;preservation&quot;,
+        &quot;detail&quot;: null,
+        &quot;name&quot;: &quot;relationships-preserved&quot;,
+        &quot;outcome&quot;: &quot;success&quot;,
+        &quot;scored&quot;: true
+      },
+      {
+        &quot;category&quot;: &quot;preservation&quot;,
+        &quot;detail&quot;: null,
+        &quot;name&quot;: &quot;opaque-parts-preserved&quot;,
+        &quot;outcome&quot;: &quot;success&quot;,
+        &quot;scored&quot;: true
+      },
+      {
+        &quot;category&quot;: &quot;byte-only&quot;,
+        &quot;detail&quot;: null,
+        &quot;name&quot;: &quot;raw-untouched-part-equality&quot;,
+        &quot;outcome&quot;: &quot;success&quot;,
+        &quot;scored&quot;: false
+      }
+    ],
+    &quot;details&quot;: {
+      &quot;artifact_dir&quot;: &quot;raw/wolfppt-wheel/chart-data/warmup-1.pptx.adapter&quot;,
+      &quot;candidate_path&quot;: &quot;raw/wolfppt-wheel/chart-data/warmup-1.pptx&quot;,
+      &quot;candidate_sha256&quot;: &quot;c3c4e2bcb84935efc09b35a07fb97914356d6de592f9ef50e545e79e98bd7a17&quot;,
+      &quot;command&quot;: [
+        &quot;python&quot;,
+        &quot;-m&quot;,
+        &quot;pptbench.worker&quot;,
+        &quot;wolfppt-wheel&quot;,
+        &quot;chart-data&quot;,
+        &quot;charts.pptx&quot;,
+        &quot;warmup-1.pptx&quot;
+      ],
+      &quot;diagnostic&quot;: null,
+      &quot;stderr_artifact&quot;: &quot;raw/wolfppt-wheel/chart-data/warmup-1.pptx.adapter/stderr.bin&quot;,
+      &quot;stderr_bytes&quot;: 0,
+      &quot;stdout_artifact&quot;: &quot;raw/wolfppt-wheel/chart-data/warmup-1.pptx.adapter/stdout.bin&quot;,
+      &quot;stdout_bytes&quot;: 0
+    },
+    &quot;elapsed_ms&quot;: 177.43258299742592,
+    &quot;iteration&quot;: 1,
+    &quot;outcome&quot;: &quot;failure&quot;,
+    &quot;output_path&quot;: null,
+    &quot;output_sha256&quot;: null,
+    &quot;peak_rss_bytes&quot;: 58474496,
+    &quot;phase&quot;: &quot;warmup&quot;,
+    &quot;reason&quot;: &quot;one or more scored semantic or preservation checks failed&quot;
+  },
+  {
+    &quot;checks&quot;: [
+      {
+        &quot;category&quot;: &quot;preservation&quot;,
+        &quot;detail&quot;: null,
+        &quot;name&quot;: &quot;chart-topology-and-relations&quot;,
+        &quot;outcome&quot;: &quot;success&quot;,
+        &quot;scored&quot;: true
+      },
+      {
+        &quot;category&quot;: &quot;semantic&quot;,
+        &quot;detail&quot;: null,
+        &quot;name&quot;: &quot;chart-slide-structure&quot;,
+        &quot;outcome&quot;: &quot;success&quot;,
+        &quot;scored&quot;: true
+      },
+      {
+        &quot;category&quot;: &quot;semantic&quot;,
+        &quot;detail&quot;: null,
+        &quot;name&quot;: &quot;category-chart-exact-series-and-points&quot;,
+        &quot;outcome&quot;: &quot;success&quot;,
+        &quot;scored&quot;: true
+      },
+      {
+        &quot;category&quot;: &quot;semantic&quot;,
+        &quot;detail&quot;: null,
+        &quot;name&quot;: &quot;xy-chart-exact-series-and-points&quot;,
+        &quot;outcome&quot;: &quot;success&quot;,
+        &quot;scored&quot;: true
+      },
+      {
+        &quot;category&quot;: &quot;semantic&quot;,
+        &quot;detail&quot;: null,
+        &quot;name&quot;: &quot;bubble-chart-exact-series-and-points&quot;,
+        &quot;outcome&quot;: &quot;success&quot;,
+        &quot;scored&quot;: true
+      },
+      {
+        &quot;category&quot;: &quot;semantic&quot;,
+        &quot;detail&quot;: &quot;source and result differ&quot;,
+        &quot;name&quot;: &quot;related-workbook-values&quot;,
+        &quot;outcome&quot;: &quot;failure&quot;,
+        &quot;scored&quot;: true
+      },
+      {
+        &quot;category&quot;: &quot;preservation&quot;,
+        &quot;detail&quot;: &quot;source and result differ&quot;,
+        &quot;name&quot;: &quot;related-workbook-structure-and-formatting&quot;,
+        &quot;outcome&quot;: &quot;failure&quot;,
+        &quot;scored&quot;: true
+      },
+      {
+        &quot;category&quot;: &quot;preservation&quot;,
+        &quot;detail&quot;: &quot;source and result differ&quot;,
+        &quot;name&quot;: &quot;chart-formatting-preserved&quot;,
+        &quot;outcome&quot;: &quot;failure&quot;,
+        &quot;scored&quot;: true
+      },
+      {
+        &quot;category&quot;: &quot;preservation&quot;,
+        &quot;detail&quot;: null,
+        &quot;name&quot;: &quot;notes-preserved&quot;,
+        &quot;outcome&quot;: &quot;success&quot;,
+        &quot;scored&quot;: true
+      },
+      {
+        &quot;category&quot;: &quot;preservation&quot;,
+        &quot;detail&quot;: null,
+        &quot;name&quot;: &quot;media-preserved&quot;,
+        &quot;outcome&quot;: &quot;success&quot;,
+        &quot;scored&quot;: true
+      },
+      {
+        &quot;category&quot;: &quot;preservation&quot;,
+        &quot;detail&quot;: null,
+        &quot;name&quot;: &quot;relationships-preserved&quot;,
+        &quot;outcome&quot;: &quot;success&quot;,
+        &quot;scored&quot;: true
+      },
+      {
+        &quot;category&quot;: &quot;preservation&quot;,
+        &quot;detail&quot;: null,
+        &quot;name&quot;: &quot;opaque-parts-preserved&quot;,
+        &quot;outcome&quot;: &quot;success&quot;,
+        &quot;scored&quot;: true
+      },
+      {
+        &quot;category&quot;: &quot;byte-only&quot;,
+        &quot;detail&quot;: null,
+        &quot;name&quot;: &quot;raw-untouched-part-equality&quot;,
+        &quot;outcome&quot;: &quot;success&quot;,
+        &quot;scored&quot;: false
+      }
+    ],
+    &quot;details&quot;: {
+      &quot;artifact_dir&quot;: &quot;raw/wolfppt-wheel/chart-data/measured-1.pptx.adapter&quot;,
+      &quot;candidate_path&quot;: &quot;raw/wolfppt-wheel/chart-data/measured-1.pptx&quot;,
+      &quot;candidate_sha256&quot;: &quot;c3c4e2bcb84935efc09b35a07fb97914356d6de592f9ef50e545e79e98bd7a17&quot;,
+      &quot;command&quot;: [
+        &quot;python&quot;,
+        &quot;-m&quot;,
+        &quot;pptbench.worker&quot;,
+        &quot;wolfppt-wheel&quot;,
+        &quot;chart-data&quot;,
+        &quot;charts.pptx&quot;,
+        &quot;measured-1.pptx&quot;
+      ],
+      &quot;diagnostic&quot;: null,
+      &quot;stderr_artifact&quot;: &quot;raw/wolfppt-wheel/chart-data/measured-1.pptx.adapter/stderr.bin&quot;,
+      &quot;stderr_bytes&quot;: 0,
+      &quot;stdout_artifact&quot;: &quot;raw/wolfppt-wheel/chart-data/measured-1.pptx.adapter/stdout.bin&quot;,
+      &quot;stdout_bytes&quot;: 0
+    },
+    &quot;elapsed_ms&quot;: 182.62041600246448,
+    &quot;iteration&quot;: 1,
+    &quot;outcome&quot;: &quot;failure&quot;,
+    &quot;output_path&quot;: null,
+    &quot;output_sha256&quot;: null,
+    &quot;peak_rss_bytes&quot;: 58605568,
+    &quot;phase&quot;: &quot;measured&quot;,
+    &quot;reason&quot;: &quot;one or more scored semantic or preservation checks failed&quot;
+  },
+  {
+    &quot;checks&quot;: [
+      {
+        &quot;category&quot;: &quot;preservation&quot;,
+        &quot;detail&quot;: null,
+        &quot;name&quot;: &quot;chart-topology-and-relations&quot;,
+        &quot;outcome&quot;: &quot;success&quot;,
+        &quot;scored&quot;: true
+      },
+      {
+        &quot;category&quot;: &quot;semantic&quot;,
+        &quot;detail&quot;: null,
+        &quot;name&quot;: &quot;chart-slide-structure&quot;,
+        &quot;outcome&quot;: &quot;success&quot;,
+        &quot;scored&quot;: true
+      },
+      {
+        &quot;category&quot;: &quot;semantic&quot;,
+        &quot;detail&quot;: null,
+        &quot;name&quot;: &quot;category-chart-exact-series-and-points&quot;,
+        &quot;outcome&quot;: &quot;success&quot;,
+        &quot;scored&quot;: true
+      },
+      {
+        &quot;category&quot;: &quot;semantic&quot;,
+        &quot;detail&quot;: null,
+        &quot;name&quot;: &quot;xy-chart-exact-series-and-points&quot;,
+        &quot;outcome&quot;: &quot;success&quot;,
+        &quot;scored&quot;: true
+      },
+      {
+        &quot;category&quot;: &quot;semantic&quot;,
+        &quot;detail&quot;: null,
+        &quot;name&quot;: &quot;bubble-chart-exact-series-and-points&quot;,
+        &quot;outcome&quot;: &quot;success&quot;,
+        &quot;scored&quot;: true
+      },
+      {
+        &quot;category&quot;: &quot;semantic&quot;,
+        &quot;detail&quot;: &quot;source and result differ&quot;,
+        &quot;name&quot;: &quot;related-workbook-values&quot;,
+        &quot;outcome&quot;: &quot;failure&quot;,
+        &quot;scored&quot;: true
+      },
+      {
+        &quot;category&quot;: &quot;preservation&quot;,
+        &quot;detail&quot;: &quot;source and result differ&quot;,
+        &quot;name&quot;: &quot;related-workbook-structure-and-formatting&quot;,
+        &quot;outcome&quot;: &quot;failure&quot;,
+        &quot;scored&quot;: true
+      },
+      {
+        &quot;category&quot;: &quot;preservation&quot;,
+        &quot;detail&quot;: &quot;source and result differ&quot;,
+        &quot;name&quot;: &quot;chart-formatting-preserved&quot;,
+        &quot;outcome&quot;: &quot;failure&quot;,
+        &quot;scored&quot;: true
+      },
+      {
+        &quot;category&quot;: &quot;preservation&quot;,
+        &quot;detail&quot;: null,
+        &quot;name&quot;: &quot;notes-preserved&quot;,
+        &quot;outcome&quot;: &quot;success&quot;,
+        &quot;scored&quot;: true
+      },
+      {
+        &quot;category&quot;: &quot;preservation&quot;,
+        &quot;detail&quot;: null,
+        &quot;name&quot;: &quot;media-preserved&quot;,
+        &quot;outcome&quot;: &quot;success&quot;,
+        &quot;scored&quot;: true
+      },
+      {
+        &quot;category&quot;: &quot;preservation&quot;,
+        &quot;detail&quot;: null,
+        &quot;name&quot;: &quot;relationships-preserved&quot;,
+        &quot;outcome&quot;: &quot;success&quot;,
+        &quot;scored&quot;: true
+      },
+      {
+        &quot;category&quot;: &quot;preservation&quot;,
+        &quot;detail&quot;: null,
+        &quot;name&quot;: &quot;opaque-parts-preserved&quot;,
+        &quot;outcome&quot;: &quot;success&quot;,
+        &quot;scored&quot;: true
+      },
+      {
+        &quot;category&quot;: &quot;byte-only&quot;,
+        &quot;detail&quot;: null,
+        &quot;name&quot;: &quot;raw-untouched-part-equality&quot;,
+        &quot;outcome&quot;: &quot;success&quot;,
+        &quot;scored&quot;: false
+      }
+    ],
+    &quot;details&quot;: {
+      &quot;artifact_dir&quot;: &quot;raw/wolfppt-wheel/chart-data/measured-2.pptx.adapter&quot;,
+      &quot;candidate_path&quot;: &quot;raw/wolfppt-wheel/chart-data/measured-2.pptx&quot;,
+      &quot;candidate_sha256&quot;: &quot;c3c4e2bcb84935efc09b35a07fb97914356d6de592f9ef50e545e79e98bd7a17&quot;,
+      &quot;command&quot;: [
+        &quot;python&quot;,
+        &quot;-m&quot;,
+        &quot;pptbench.worker&quot;,
+        &quot;wolfppt-wheel&quot;,
+        &quot;chart-data&quot;,
+        &quot;charts.pptx&quot;,
+        &quot;measured-2.pptx&quot;
+      ],
+      &quot;diagnostic&quot;: null,
+      &quot;stderr_artifact&quot;: &quot;raw/wolfppt-wheel/chart-data/measured-2.pptx.adapter/stderr.bin&quot;,
+      &quot;stderr_bytes&quot;: 0,
+      &quot;stdout_artifact&quot;: &quot;raw/wolfppt-wheel/chart-data/measured-2.pptx.adapter/stdout.bin&quot;,
+      &quot;stdout_bytes&quot;: 0
+    },
+    &quot;elapsed_ms&quot;: 180.54775000200607,
+    &quot;iteration&quot;: 2,
+    &quot;outcome&quot;: &quot;failure&quot;,
+    &quot;output_path&quot;: null,
+    &quot;output_sha256&quot;: null,
+    &quot;peak_rss_bytes&quot;: 58638336,
+    &quot;phase&quot;: &quot;measured&quot;,
+    &quot;reason&quot;: &quot;one or more scored semantic or preservation checks failed&quot;
+  }
+]</pre></details></td><td>one or more scored semantic or preservation checks failed</td></tr></tbody></table>
+<script>for(const id of ['adapter','lane'])document.getElementById(id).onchange=()=>{for(const row of document.querySelectorAll('tbody tr'))row.hidden=['adapter','lane'].some(key=>document.getElementById(key).value&&row.dataset[key]!==document.getElementById(key).value)};</script>
+</body></html>

@@ -1,0 +1,4647 @@
+{
+  "adapters": [
+    {
+      "available": true,
+      "identity": "modules:101:73eea8af1f42546b8b4266c8594334f127649e6f9730a3fa5a330b7d48050237",
+      "name": "python-pptx",
+      "reason": null,
+      "recovery": null,
+      "version": "1.0.2"
+    },
+    {
+      "available": true,
+      "identity": "modules:285:15113ac3a33304dc8fa3fa0e7fc6b42fadbae0293fd8d196b5f184d8e005383c",
+      "name": "wolfppt-wheel",
+      "reason": null,
+      "recovery": null,
+      "version": "0.1.0"
+    },
+    {
+      "available": false,
+      "identity": null,
+      "name": "external-command",
+      "reason": "PPTBENCH_EXTERNAL_COMMAND is not configured",
+      "recovery": "set a command template containing {input}, {output}, and {lane}",
+      "version": null
+    },
+    {
+      "available": true,
+      "identity": "soffice:8bde0caf3c901ce87e9baa6df5ec6e79ede4b629423195f6e59c8c6a681efddb",
+      "name": "libreoffice-render",
+      "reason": null,
+      "recovery": null,
+      "version": "LibreOffice 26.8.0.3 bce0998afefdbc355585ca324285661a2170ba77"
+    }
+  ],
+  "configuration": {
+    "adapters": [
+      "python-pptx",
+      "wolfppt-wheel"
+    ],
+    "cache_mode": "fresh-fixtures",
+    "cold_subprocess": true,
+    "fixtures": [
+      "charts",
+      "mixed-60"
+    ],
+    "iterations": 2,
+    "lanes": [
+      "feature-matrix",
+      "template-mutation",
+      "chart-data"
+    ],
+    "overall_timeout_seconds": 120.0,
+    "timeout_seconds": 20.0,
+    "warmup_disclosure": "warmups are retained but do not remove interpreter startup",
+    "warmups": 1,
+    "wolfppt_receipt": {
+      "artifact": {
+        "name": "wolfppt-0.1.0-cp314-cp314-macosx_11_0_arm64.whl",
+        "sha256": "6195a2bc52e8c9f23effa990d17386bb30295f0af2236688c40d98e238cd3b79"
+      },
+      "build_mode": "provided-release-wheel",
+      "source_revision": "5929d925536c3aa2e8ce49399c5d220bbf57df2a"
+    }
+  },
+  "created_at_utc": "2026-09-08T09:47:18.508802+00:00",
+  "environment": {
+    "executable": "python",
+    "implementation": "CPython",
+    "pid": "9268",
+    "platform": "macOS-26.5.1-arm64-arm-64bit-Mach-O",
+    "python": "3.14.0"
+  },
+  "fixtures": [
+    {
+      "id": "mixed-60",
+      "path": "mixed-60.pptx",
+      "sha256": "1204a0fb452aece087c4786c0b2ca92bccbfedf66347c41b4b7b3b913c3afc2d"
+    },
+    {
+      "id": "charts",
+      "path": "charts.pptx",
+      "sha256": "172ed05b83cd7fb33ba565d275a0662f40d3f7f598883cb824045a8ac7885c93"
+    }
+  ],
+  "manifest": {
+    "corpus": {
+      "fixtures": [
+        {
+          "description": "Deterministic 60-slide mixed template with named table and bullet mutation targets, notes, media, and an opaque package part.",
+          "id": "mixed-60",
+          "sha256": "1204a0fb452aece087c4786c0b2ca92bccbfedf66347c41b4b7b3b913c3afc2d"
+        },
+        {
+          "description": "Three-slide category, XY, and bubble chart fixture with deterministic embedded workbooks.",
+          "id": "charts",
+          "sha256": "172ed05b83cd7fb33ba565d275a0662f40d3f7f598883cb824045a8ac7885c93"
+        }
+      ],
+      "kind": "project-authored synthetic",
+      "not_ground_truth": true,
+      "recipe": "pptbench.fixtures.FROZEN_RECIPE",
+      "recipe_sha256": "68bbb3a7df2ed4d70443b3cf0162116b9c9f8b52e04bbebf0b41e09e601bdb2d"
+    },
+    "lanes": {
+      "chart-data": {
+        "charts": [
+          {
+            "categories": [
+              "East",
+              "42",
+              "84"
+            ],
+            "kind": "category",
+            "series": "Revenue",
+            "slide": 1,
+            "values": [
+              42,
+              84,
+              126
+            ]
+          },
+          {
+            "kind": "xy",
+            "points": [
+              [
+                5,
+                13
+              ],
+              [
+                21,
+                34
+              ],
+              [
+                55,
+                89
+              ]
+            ],
+            "series": "Trend",
+            "slide": 2
+          },
+          {
+            "kind": "bubble",
+            "points": [
+              [
+                5,
+                13,
+                21
+              ],
+              [
+                34,
+                55,
+                89
+              ],
+              [
+                8,
+                13,
+                21
+              ]
+            ],
+            "series": "Pipeline",
+            "slide": 3
+          }
+        ],
+        "fixture": "charts"
+      },
+      "feature-matrix": {
+        "checks": [
+          "slide-count",
+          "slide-order-and-identifiers",
+          "slide-relationship-graph",
+          "shape-tree-semantics",
+          "text-content-and-order",
+          "text-run-formatting",
+          "table-cell-grid-and-text",
+          "table-cell-formatting",
+          "bullet-paragraph-properties",
+          "layout-geometry",
+          "slide-layout-semantics",
+          "notes-content",
+          "notes-relationships",
+          "media-part-presence",
+          "media-exact-bytes",
+          "theme-semantics",
+          "master-semantics",
+          "relationship-semantics",
+          "opaque-package-part"
+        ],
+        "fixture": "mixed-60"
+      },
+      "template-mutation": {
+        "edits": {
+          "bullet": {
+            "paragraph": 1,
+            "shape": "PPTBenchBullets",
+            "slide": 7,
+            "text": "UPDATED-BULLET"
+          },
+          "cells": {
+            "1,1": "UPDATED-TABLE-A",
+            "2,2": "UPDATED-TABLE-B"
+          },
+          "slide": 5,
+          "table_shape": "PPTBenchTable"
+        },
+        "fixture": "mixed-60"
+      }
+    },
+    "schema_version": 2
+  },
+  "optional_evidence": {
+    "openxml_validation": [
+      {
+        "outcome": "unavailable",
+        "reason": "PPTBENCH_OPENXML_VALIDATOR is not configured"
+      }
+    ],
+    "render": [
+      {
+        "command": [
+          "soffice",
+          "-env:UserInstallation=<run-owned-profile>",
+          "--headless",
+          "--convert-to",
+          "pdf",
+          "--outdir",
+          "feature-matrix",
+          "warmup-1.pptx"
+        ],
+        "elapsed_ms": 1720.4307499996503,
+        "outcome": "success",
+        "output_path": "render/wolfppt-wheel/feature-matrix/warmup-1.pdf",
+        "output_sha256": "d2099c67c83ca3c01ce0fe6a94c915e82546ebc56de761f0cf335272a9292ded",
+        "source_path": "raw/wolfppt-wheel/feature-matrix/warmup-1.pptx",
+        "source_sha256": "1204a0fb452aece087c4786c0b2ca92bccbfedf66347c41b4b7b3b913c3afc2d",
+        "stderr_bytes": 487,
+        "stdout_bytes": 301
+      },
+      {
+        "command": [
+          "soffice",
+          "-env:UserInstallation=<run-owned-profile>",
+          "--headless",
+          "--convert-to",
+          "pdf",
+          "--outdir",
+          "feature-matrix",
+          "measured-1.pptx"
+        ],
+        "elapsed_ms": 1260.5291660001967,
+        "outcome": "success",
+        "output_path": "render/wolfppt-wheel/feature-matrix/measured-1.pdf",
+        "output_sha256": "8b9e241bac3716c819389713dcc696f01bcb575b19f0998039e2c0c1cbe6fc35",
+        "source_path": "raw/wolfppt-wheel/feature-matrix/measured-1.pptx",
+        "source_sha256": "1204a0fb452aece087c4786c0b2ca92bccbfedf66347c41b4b7b3b913c3afc2d",
+        "stderr_bytes": 487,
+        "stdout_bytes": 305
+      },
+      {
+        "command": [
+          "soffice",
+          "-env:UserInstallation=<run-owned-profile>",
+          "--headless",
+          "--convert-to",
+          "pdf",
+          "--outdir",
+          "feature-matrix",
+          "measured-2.pptx"
+        ],
+        "elapsed_ms": 1231.0676250053803,
+        "outcome": "success",
+        "output_path": "render/wolfppt-wheel/feature-matrix/measured-2.pdf",
+        "output_sha256": "3adcba934aaedb3f68181bd439bd957a09d49cd04f278f87e3673163db76a8a1",
+        "source_path": "raw/wolfppt-wheel/feature-matrix/measured-2.pptx",
+        "source_sha256": "1204a0fb452aece087c4786c0b2ca92bccbfedf66347c41b4b7b3b913c3afc2d",
+        "stderr_bytes": 487,
+        "stdout_bytes": 305
+      },
+      {
+        "command": [
+          "soffice",
+          "-env:UserInstallation=<run-owned-profile>",
+          "--headless",
+          "--convert-to",
+          "pdf",
+          "--outdir",
+          "template-mutation",
+          "warmup-1.pptx"
+        ],
+        "elapsed_ms": 1269.4478330013226,
+        "outcome": "success",
+        "output_path": "render/wolfppt-wheel/template-mutation/warmup-1.pdf",
+        "output_sha256": "af7725fc911ab24fbc728996e3ff8bd14e10d9ca354b73791668138d8be275bc",
+        "source_path": "raw/wolfppt-wheel/template-mutation/warmup-1.pptx",
+        "source_sha256": "038c2ffd7e6dd2ef4a08ec923696326cb3774c53b1801e6a6a537fafe01a3eb3",
+        "stderr_bytes": 487,
+        "stdout_bytes": 307
+      },
+      {
+        "command": [
+          "soffice",
+          "-env:UserInstallation=<run-owned-profile>",
+          "--headless",
+          "--convert-to",
+          "pdf",
+          "--outdir",
+          "template-mutation",
+          "measured-1.pptx"
+        ],
+        "elapsed_ms": 1227.6652919972548,
+        "outcome": "success",
+        "output_path": "render/wolfppt-wheel/template-mutation/measured-1.pdf",
+        "output_sha256": "7fa294e4c71f40a3bf3ea38c60fba6e71b867888d1e10b29e87cb1523e7a999b",
+        "source_path": "raw/wolfppt-wheel/template-mutation/measured-1.pptx",
+        "source_sha256": "038c2ffd7e6dd2ef4a08ec923696326cb3774c53b1801e6a6a537fafe01a3eb3",
+        "stderr_bytes": 487,
+        "stdout_bytes": 311
+      },
+      {
+        "command": [
+          "soffice",
+          "-env:UserInstallation=<run-owned-profile>",
+          "--headless",
+          "--convert-to",
+          "pdf",
+          "--outdir",
+          "template-mutation",
+          "measured-2.pptx"
+        ],
+        "elapsed_ms": 1252.754165994702,
+        "outcome": "success",
+        "output_path": "render/wolfppt-wheel/template-mutation/measured-2.pdf",
+        "output_sha256": "ed594e6cb3e54de2372654d3a1132affa1226ece0b8f858948c726d0f37c6acd",
+        "source_path": "raw/wolfppt-wheel/template-mutation/measured-2.pptx",
+        "source_sha256": "038c2ffd7e6dd2ef4a08ec923696326cb3774c53b1801e6a6a537fafe01a3eb3",
+        "stderr_bytes": 487,
+        "stdout_bytes": 311
+      },
+      {
+        "command": [
+          "soffice",
+          "-env:UserInstallation=<run-owned-profile>",
+          "--headless",
+          "--convert-to",
+          "pdf",
+          "--outdir",
+          "chart-data",
+          "warmup-1.pptx"
+        ],
+        "elapsed_ms": 1203.7666250034817,
+        "outcome": "success",
+        "output_path": "render/python-pptx/chart-data/warmup-1.pdf",
+        "output_sha256": "12fd811caba031c2956ec5d29eff161a71c15ecc5b45d9a389ecd1866d37f026",
+        "source_path": "raw/python-pptx/chart-data/warmup-1.pptx",
+        "source_sha256": "cbed366db757a3f089433d4fe436efd1985e86735eae046b4bee2689df8442f5",
+        "stderr_bytes": 446,
+        "stdout_bytes": 289
+      },
+      {
+        "command": [
+          "soffice",
+          "-env:UserInstallation=<run-owned-profile>",
+          "--headless",
+          "--convert-to",
+          "pdf",
+          "--outdir",
+          "chart-data",
+          "measured-1.pptx"
+        ],
+        "elapsed_ms": 1174.3167500026175,
+        "outcome": "success",
+        "output_path": "render/python-pptx/chart-data/measured-1.pdf",
+        "output_sha256": "f454efdb2efa90d360feed6185fad233134f4f03626587bc1892e957ae872638",
+        "source_path": "raw/python-pptx/chart-data/measured-1.pptx",
+        "source_sha256": "cbed366db757a3f089433d4fe436efd1985e86735eae046b4bee2689df8442f5",
+        "stderr_bytes": 446,
+        "stdout_bytes": 293
+      },
+      {
+        "command": [
+          "soffice",
+          "-env:UserInstallation=<run-owned-profile>",
+          "--headless",
+          "--convert-to",
+          "pdf",
+          "--outdir",
+          "chart-data",
+          "measured-2.pptx"
+        ],
+        "elapsed_ms": 1247.2065420006402,
+        "outcome": "success",
+        "output_path": "render/python-pptx/chart-data/measured-2.pdf",
+        "output_sha256": "c529c2a0f0a6e315033ecf10d60c23b01367e93b8dae5938e44f87718becd8d1",
+        "source_path": "raw/python-pptx/chart-data/measured-2.pptx",
+        "source_sha256": "53ea87b6a6a116fec148f5d65159b4e0e38e52b11617e8110f47098ba733f670",
+        "stderr_bytes": 446,
+        "stdout_bytes": 293
+      }
+    ]
+  },
+  "results": [
+    {
+      "adapter": "python-pptx",
+      "checks": [
+        {
+          "category": "semantic",
+          "detail": null,
+          "name": "package-readable",
+          "outcome": "success",
+          "scored": true
+        },
+        {
+          "category": "feature",
+          "detail": null,
+          "name": "slide-count",
+          "outcome": "success",
+          "scored": true
+        },
+        {
+          "category": "feature",
+          "detail": null,
+          "name": "slide-order-and-identifiers",
+          "outcome": "success",
+          "scored": true
+        },
+        {
+          "category": "feature",
+          "detail": null,
+          "name": "slide-relationship-graph",
+          "outcome": "success",
+          "scored": true
+        },
+        {
+          "category": "feature",
+          "detail": null,
+          "name": "shape-tree-semantics",
+          "outcome": "success",
+          "scored": true
+        },
+        {
+          "category": "feature",
+          "detail": null,
+          "name": "text-content-and-order",
+          "outcome": "success",
+          "scored": true
+        },
+        {
+          "category": "feature",
+          "detail": null,
+          "name": "text-run-formatting",
+          "outcome": "success",
+          "scored": true
+        },
+        {
+          "category": "feature",
+          "detail": null,
+          "name": "table-cell-grid-and-text",
+          "outcome": "success",
+          "scored": true
+        },
+        {
+          "category": "feature",
+          "detail": null,
+          "name": "table-cell-formatting",
+          "outcome": "success",
+          "scored": true
+        },
+        {
+          "category": "feature",
+          "detail": null,
+          "name": "bullet-paragraph-properties",
+          "outcome": "success",
+          "scored": true
+        },
+        {
+          "category": "feature",
+          "detail": null,
+          "name": "layout-geometry",
+          "outcome": "success",
+          "scored": true
+        },
+        {
+          "category": "feature",
+          "detail": null,
+          "name": "slide-layout-semantics",
+          "outcome": "success",
+          "scored": true
+        },
+        {
+          "category": "feature",
+          "detail": null,
+          "name": "notes-content",
+          "outcome": "success",
+          "scored": true
+        },
+        {
+          "category": "feature",
+          "detail": null,
+          "name": "notes-relationships",
+          "outcome": "success",
+          "scored": true
+        },
+        {
+          "category": "feature",
+          "detail": null,
+          "name": "media-part-presence",
+          "outcome": "success",
+          "scored": true
+        },
+        {
+          "category": "feature",
+          "detail": null,
+          "name": "media-exact-bytes",
+          "outcome": "success",
+          "scored": true
+        },
+        {
+          "category": "feature",
+          "detail": null,
+          "name": "theme-semantics",
+          "outcome": "success",
+          "scored": true
+        },
+        {
+          "category": "feature",
+          "detail": null,
+          "name": "master-semantics",
+          "outcome": "success",
+          "scored": true
+        },
+        {
+          "category": "feature",
+          "detail": null,
+          "name": "relationship-semantics",
+          "outcome": "success",
+          "scored": true
+        },
+        {
+          "category": "feature",
+          "detail": "source and result differ",
+          "name": "opaque-package-part",
+          "outcome": "failure",
+          "scored": true
+        },
+        {
+          "category": "byte-only",
+          "detail": "raw untouched part bytes differ",
+          "name": "raw-untouched-part-equality",
+          "outcome": "failure",
+          "scored": false
+        },
+        {
+          "category": "semantic",
+          "detail": null,
+          "name": "package-readable",
+          "outcome": "success",
+          "scored": true
+        },
+        {
+          "category": "feature",
+          "detail": null,
+          "name": "slide-count",
+          "outcome": "success",
+          "scored": true
+        },
+        {
+          "category": "feature",
+          "detail": null,
+          "name": "slide-order-and-identifiers",
+          "outcome": "success",
+          "scored": true
+        },
+        {
+          "category": "feature",
+          "detail": null,
+          "name": "slide-relationship-graph",
+          "outcome": "success",
+          "scored": true
+        },
+        {
+          "category": "feature",
+          "detail": null,
+          "name": "shape-tree-semantics",
+          "outcome": "success",
+          "scored": true
+        },
+        {
+          "category": "feature",
+          "detail": null,
+          "name": "text-content-and-order",
+          "outcome": "success",
+          "scored": true
+        },
+        {
+          "category": "feature",
+          "detail": null,
+          "name": "text-run-formatting",
+          "outcome": "success",
+          "scored": true
+        },
+        {
+          "category": "feature",
+          "detail": null,
+          "name": "table-cell-grid-and-text",
+          "outcome": "success",
+          "scored": true
+        },
+        {
+          "category": "feature",
+          "detail": null,
+          "name": "table-cell-formatting",
+          "outcome": "success",
+          "scored": true
+        },
+        {
+          "category": "feature",
+          "detail": null,
+          "name": "bullet-paragraph-properties",
+          "outcome": "success",
+          "scored": true
+        },
+        {
+          "category": "feature",
+          "detail": null,
+          "name": "layout-geometry",
+          "outcome": "success",
+          "scored": true
+        },
+        {
+          "category": "feature",
+          "detail": null,
+          "name": "slide-layout-semantics",
+          "outcome": "success",
+          "scored": true
+        },
+        {
+          "category": "feature",
+          "detail": null,
+          "name": "notes-content",
+          "outcome": "success",
+          "scored": true
+        },
+        {
+          "category": "feature",
+          "detail": null,
+          "name": "notes-relationships",
+          "outcome": "success",
+          "scored": true
+        },
+        {
+          "category": "feature",
+          "detail": null,
+          "name": "media-part-presence",
+          "outcome": "success",
+          "scored": true
+        },
+        {
+          "category": "feature",
+          "detail": null,
+          "name": "media-exact-bytes",
+          "outcome": "success",
+          "scored": true
+        },
+        {
+          "category": "feature",
+          "detail": null,
+          "name": "theme-semantics",
+          "outcome": "success",
+          "scored": true
+        },
+        {
+          "category": "feature",
+          "detail": null,
+          "name": "master-semantics",
+          "outcome": "success",
+          "scored": true
+        },
+        {
+          "category": "feature",
+          "detail": null,
+          "name": "relationship-semantics",
+          "outcome": "success",
+          "scored": true
+        },
+        {
+          "category": "feature",
+          "detail": "source and result differ",
+          "name": "opaque-package-part",
+          "outcome": "failure",
+          "scored": true
+        },
+        {
+          "category": "byte-only",
+          "detail": "raw untouched part bytes differ",
+          "name": "raw-untouched-part-equality",
+          "outcome": "failure",
+          "scored": false
+        },
+        {
+          "category": "semantic",
+          "detail": null,
+          "name": "package-readable",
+          "outcome": "success",
+          "scored": true
+        },
+        {
+          "category": "feature",
+          "detail": null,
+          "name": "slide-count",
+          "outcome": "success",
+          "scored": true
+        },
+        {
+          "category": "feature",
+          "detail": null,
+          "name": "slide-order-and-identifiers",
+          "outcome": "success",
+          "scored": true
+        },
+        {
+          "category": "feature",
+          "detail": null,
+          "name": "slide-relationship-graph",
+          "outcome": "success",
+          "scored": true
+        },
+        {
+          "category": "feature",
+          "detail": null,
+          "name": "shape-tree-semantics",
+          "outcome": "success",
+          "scored": true
+        },
+        {
+          "category": "feature",
+          "detail": null,
+          "name": "text-content-and-order",
+          "outcome": "success",
+          "scored": true
+        },
+        {
+          "category": "feature",
+          "detail": null,
+          "name": "text-run-formatting",
+          "outcome": "success",
+          "scored": true
+        },
+        {
+          "category": "feature",
+          "detail": null,
+          "name": "table-cell-grid-and-text",
+          "outcome": "success",
+          "scored": true
+        },
+        {
+          "category": "feature",
+          "detail": null,
+          "name": "table-cell-formatting",
+          "outcome": "success",
+          "scored": true
+        },
+        {
+          "category": "feature",
+          "detail": null,
+          "name": "bullet-paragraph-properties",
+          "outcome": "success",
+          "scored": true
+        },
+        {
+          "category": "feature",
+          "detail": null,
+          "name": "layout-geometry",
+          "outcome": "success",
+          "scored": true
+        },
+        {
+          "category": "feature",
+          "detail": null,
+          "name": "slide-layout-semantics",
+          "outcome": "success",
+          "scored": true
+        },
+        {
+          "category": "feature",
+          "detail": null,
+          "name": "notes-content",
+          "outcome": "success",
+          "scored": true
+        },
+        {
+          "category": "feature",
+          "detail": null,
+          "name": "notes-relationships",
+          "outcome": "success",
+          "scored": true
+        },
+        {
+          "category": "feature",
+          "detail": null,
+          "name": "media-part-presence",
+          "outcome": "success",
+          "scored": true
+        },
+        {
+          "category": "feature",
+          "detail": null,
+          "name": "media-exact-bytes",
+          "outcome": "success",
+          "scored": true
+        },
+        {
+          "category": "feature",
+          "detail": null,
+          "name": "theme-semantics",
+          "outcome": "success",
+          "scored": true
+        },
+        {
+          "category": "feature",
+          "detail": null,
+          "name": "master-semantics",
+          "outcome": "success",
+          "scored": true
+        },
+        {
+          "category": "feature",
+          "detail": null,
+          "name": "relationship-semantics",
+          "outcome": "success",
+          "scored": true
+        },
+        {
+          "category": "feature",
+          "detail": "source and result differ",
+          "name": "opaque-package-part",
+          "outcome": "failure",
+          "scored": true
+        },
+        {
+          "category": "byte-only",
+          "detail": "raw untouched part bytes differ",
+          "name": "raw-untouched-part-equality",
+          "outcome": "failure",
+          "scored": false
+        }
+      ],
+      "fixture": "mixed-60",
+      "input_sha256": "1204a0fb452aece087c4786c0b2ca92bccbfedf66347c41b4b7b3b913c3afc2d",
+      "lane": "feature-matrix",
+      "outcome": "failure",
+      "reason": "one or more scored semantic or preservation checks failed",
+      "samples": [
+        {
+          "checks": [
+            {
+              "category": "semantic",
+              "detail": null,
+              "name": "package-readable",
+              "outcome": "success",
+              "scored": true
+            },
+            {
+              "category": "feature",
+              "detail": null,
+              "name": "slide-count",
+              "outcome": "success",
+              "scored": true
+            },
+            {
+              "category": "feature",
+              "detail": null,
+              "name": "slide-order-and-identifiers",
+              "outcome": "success",
+              "scored": true
+            },
+            {
+              "category": "feature",
+              "detail": null,
+              "name": "slide-relationship-graph",
+              "outcome": "success",
+              "scored": true
+            },
+            {
+              "category": "feature",
+              "detail": null,
+              "name": "shape-tree-semantics",
+              "outcome": "success",
+              "scored": true
+            },
+            {
+              "category": "feature",
+              "detail": null,
+              "name": "text-content-and-order",
+              "outcome": "success",
+              "scored": true
+            },
+            {
+              "category": "feature",
+              "detail": null,
+              "name": "text-run-formatting",
+              "outcome": "success",
+              "scored": true
+            },
+            {
+              "category": "feature",
+              "detail": null,
+              "name": "table-cell-grid-and-text",
+              "outcome": "success",
+              "scored": true
+            },
+            {
+              "category": "feature",
+              "detail": null,
+              "name": "table-cell-formatting",
+              "outcome": "success",
+              "scored": true
+            },
+            {
+              "category": "feature",
+              "detail": null,
+              "name": "bullet-paragraph-properties",
+              "outcome": "success",
+              "scored": true
+            },
+            {
+              "category": "feature",
+              "detail": null,
+              "name": "layout-geometry",
+              "outcome": "success",
+              "scored": true
+            },
+            {
+              "category": "feature",
+              "detail": null,
+              "name": "slide-layout-semantics",
+              "outcome": "success",
+              "scored": true
+            },
+            {
+              "category": "feature",
+              "detail": null,
+              "name": "notes-content",
+              "outcome": "success",
+              "scored": true
+            },
+            {
+              "category": "feature",
+              "detail": null,
+              "name": "notes-relationships",
+              "outcome": "success",
+              "scored": true
+            },
+            {
+              "category": "feature",
+              "detail": null,
+              "name": "media-part-presence",
+              "outcome": "success",
+              "scored": true
+            },
+            {
+              "category": "feature",
+              "detail": null,
+              "name": "media-exact-bytes",
+              "outcome": "success",
+              "scored": true
+            },
+            {
+              "category": "feature",
+              "detail": null,
+              "name": "theme-semantics",
+              "outcome": "success",
+              "scored": true
+            },
+            {
+              "category": "feature",
+              "detail": null,
+              "name": "master-semantics",
+              "outcome": "success",
+              "scored": true
+            },
+            {
+              "category": "feature",
+              "detail": null,
+              "name": "relationship-semantics",
+              "outcome": "success",
+              "scored": true
+            },
+            {
+              "category": "feature",
+              "detail": "source and result differ",
+              "name": "opaque-package-part",
+              "outcome": "failure",
+              "scored": true
+            },
+            {
+              "category": "byte-only",
+              "detail": "raw untouched part bytes differ",
+              "name": "raw-untouched-part-equality",
+              "outcome": "failure",
+              "scored": false
+            }
+          ],
+          "details": {
+            "artifact_dir": "raw/python-pptx/feature-matrix/warmup-1.pptx.adapter",
+            "candidate_path": "raw/python-pptx/feature-matrix/warmup-1.pptx",
+            "candidate_sha256": "4b713283fe513d59e05b7d7adf4820d572b7a4f431bfd6c532ac954f7ef9c83b",
+            "command": [
+              "python",
+              "-m",
+              "pptbench.worker",
+              "python-pptx",
+              "feature-matrix",
+              "mixed-60.pptx",
+              "warmup-1.pptx"
+            ],
+            "diagnostic": null,
+            "stderr_artifact": "raw/python-pptx/feature-matrix/warmup-1.pptx.adapter/stderr.bin",
+            "stderr_bytes": 0,
+            "stdout_artifact": "raw/python-pptx/feature-matrix/warmup-1.pptx.adapter/stdout.bin",
+            "stdout_bytes": 0
+          },
+          "elapsed_ms": 2214.561415996286,
+          "iteration": 1,
+          "outcome": "failure",
+          "output_path": null,
+          "output_sha256": null,
+          "peak_rss_bytes": 57556992,
+          "phase": "warmup",
+          "reason": "one or more scored semantic or preservation checks failed"
+        },
+        {
+          "checks": [
+            {
+              "category": "semantic",
+              "detail": null,
+              "name": "package-readable",
+              "outcome": "success",
+              "scored": true
+            },
+            {
+              "category": "feature",
+              "detail": null,
+              "name": "slide-count",
+              "outcome": "success",
+              "scored": true
+            },
+            {
+              "category": "feature",
+              "detail": null,
+              "name": "slide-order-and-identifiers",
+              "outcome": "success",
+              "scored": true
+            },
+            {
+              "category": "feature",
+              "detail": null,
+              "name": "slide-relationship-graph",
+              "outcome": "success",
+              "scored": true
+            },
+            {
+              "category": "feature",
+              "detail": null,
+              "name": "shape-tree-semantics",
+              "outcome": "success",
+              "scored": true
+            },
+            {
+              "category": "feature",
+              "detail": null,
+              "name": "text-content-and-order",
+              "outcome": "success",
+              "scored": true
+            },
+            {
+              "category": "feature",
+              "detail": null,
+              "name": "text-run-formatting",
+              "outcome": "success",
+              "scored": true
+            },
+            {
+              "category": "feature",
+              "detail": null,
+              "name": "table-cell-grid-and-text",
+              "outcome": "success",
+              "scored": true
+            },
+            {
+              "category": "feature",
+              "detail": null,
+              "name": "table-cell-formatting",
+              "outcome": "success",
+              "scored": true
+            },
+            {
+              "category": "feature",
+              "detail": null,
+              "name": "bullet-paragraph-properties",
+              "outcome": "success",
+              "scored": true
+            },
+            {
+              "category": "feature",
+              "detail": null,
+              "name": "layout-geometry",
+              "outcome": "success",
+              "scored": true
+            },
+            {
+              "category": "feature",
+              "detail": null,
+              "name": "slide-layout-semantics",
+              "outcome": "success",
+              "scored": true
+            },
+            {
+              "category": "feature",
+              "detail": null,
+              "name": "notes-content",
+              "outcome": "success",
+              "scored": true
+            },
+            {
+              "category": "feature",
+              "detail": null,
+              "name": "notes-relationships",
+              "outcome": "success",
+              "scored": true
+            },
+            {
+              "category": "feature",
+              "detail": null,
+              "name": "media-part-presence",
+              "outcome": "success",
+              "scored": true
+            },
+            {
+              "category": "feature",
+              "detail": null,
+              "name": "media-exact-bytes",
+              "outcome": "success",
+              "scored": true
+            },
+            {
+              "category": "feature",
+              "detail": null,
+              "name": "theme-semantics",
+              "outcome": "success",
+              "scored": true
+            },
+            {
+              "category": "feature",
+              "detail": null,
+              "name": "master-semantics",
+              "outcome": "success",
+              "scored": true
+            },
+            {
+              "category": "feature",
+              "detail": null,
+              "name": "relationship-semantics",
+              "outcome": "success",
+              "scored": true
+            },
+            {
+              "category": "feature",
+              "detail": "source and result differ",
+              "name": "opaque-package-part",
+              "outcome": "failure",
+              "scored": true
+            },
+            {
+              "category": "byte-only",
+              "detail": "raw untouched part bytes differ",
+              "name": "raw-untouched-part-equality",
+              "outcome": "failure",
+              "scored": false
+            }
+          ],
+          "details": {
+            "artifact_dir": "raw/python-pptx/feature-matrix/measured-1.pptx.adapter",
+            "candidate_path": "raw/python-pptx/feature-matrix/measured-1.pptx",
+            "candidate_sha256": "4b713283fe513d59e05b7d7adf4820d572b7a4f431bfd6c532ac954f7ef9c83b",
+            "command": [
+              "python",
+              "-m",
+              "pptbench.worker",
+              "python-pptx",
+              "feature-matrix",
+              "mixed-60.pptx",
+              "measured-1.pptx"
+            ],
+            "diagnostic": null,
+            "stderr_artifact": "raw/python-pptx/feature-matrix/measured-1.pptx.adapter/stderr.bin",
+            "stderr_bytes": 0,
+            "stdout_artifact": "raw/python-pptx/feature-matrix/measured-1.pptx.adapter/stdout.bin",
+            "stdout_bytes": 0
+          },
+          "elapsed_ms": 130.79400000424357,
+          "iteration": 1,
+          "outcome": "failure",
+          "output_path": null,
+          "output_sha256": null,
+          "peak_rss_bytes": 47431680,
+          "phase": "measured",
+          "reason": "one or more scored semantic or preservation checks failed"
+        },
+        {
+          "checks": [
+            {
+              "category": "semantic",
+              "detail": null,
+              "name": "package-readable",
+              "outcome": "success",
+              "scored": true
+            },
+            {
+              "category": "feature",
+              "detail": null,
+              "name": "slide-count",
+              "outcome": "success",
+              "scored": true
+            },
+            {
+              "category": "feature",
+              "detail": null,
+              "name": "slide-order-and-identifiers",
+              "outcome": "success",
+              "scored": true
+            },
+            {
+              "category": "feature",
+              "detail": null,
+              "name": "slide-relationship-graph",
+              "outcome": "success",
+              "scored": true
+            },
+            {
+              "category": "feature",
+              "detail": null,
+              "name": "shape-tree-semantics",
+              "outcome": "success",
+              "scored": true
+            },
+            {
+              "category": "feature",
+              "detail": null,
+              "name": "text-content-and-order",
+              "outcome": "success",
+              "scored": true
+            },
+            {
+              "category": "feature",
+              "detail": null,
+              "name": "text-run-formatting",
+              "outcome": "success",
+              "scored": true
+            },
+            {
+              "category": "feature",
+              "detail": null,
+              "name": "table-cell-grid-and-text",
+              "outcome": "success",
+              "scored": true
+            },
+            {
+              "category": "feature",
+              "detail": null,
+              "name": "table-cell-formatting",
+              "outcome": "success",
+              "scored": true
+            },
+            {
+              "category": "feature",
+              "detail": null,
+              "name": "bullet-paragraph-properties",
+              "outcome": "success",
+              "scored": true
+            },
+            {
+              "category": "feature",
+              "detail": null,
+              "name": "layout-geometry",
+              "outcome": "success",
+              "scored": true
+            },
+            {
+              "category": "feature",
+              "detail": null,
+              "name": "slide-layout-semantics",
+              "outcome": "success",
+              "scored": true
+            },
+            {
+              "category": "feature",
+              "detail": null,
+              "name": "notes-content",
+              "outcome": "success",
+              "scored": true
+            },
+            {
+              "category": "feature",
+              "detail": null,
+              "name": "notes-relationships",
+              "outcome": "success",
+              "scored": true
+            },
+            {
+              "category": "feature",
+              "detail": null,
+              "name": "media-part-presence",
+              "outcome": "success",
+              "scored": true
+            },
+            {
+              "category": "feature",
+              "detail": null,
+              "name": "media-exact-bytes",
+              "outcome": "success",
+              "scored": true
+            },
+            {
+              "category": "feature",
+              "detail": null,
+              "name": "theme-semantics",
+              "outcome": "success",
+              "scored": true
+            },
+            {
+              "category": "feature",
+              "detail": null,
+              "name": "master-semantics",
+              "outcome": "success",
+              "scored": true
+            },
+            {
+              "category": "feature",
+              "detail": null,
+              "name": "relationship-semantics",
+              "outcome": "success",
+              "scored": true
+            },
+            {
+              "category": "feature",
+              "detail": "source and result differ",
+              "name": "opaque-package-part",
+              "outcome": "failure",
+              "scored": true
+            },
+            {
+              "category": "byte-only",
+              "detail": "raw untouched part bytes differ",
+              "name": "raw-untouched-part-equality",
+              "outcome": "failure",
+              "scored": false
+            }
+          ],
+          "details": {
+            "artifact_dir": "raw/python-pptx/feature-matrix/measured-2.pptx.adapter",
+            "candidate_path": "raw/python-pptx/feature-matrix/measured-2.pptx",
+            "candidate_sha256": "4b713283fe513d59e05b7d7adf4820d572b7a4f431bfd6c532ac954f7ef9c83b",
+            "command": [
+              "python",
+              "-m",
+              "pptbench.worker",
+              "python-pptx",
+              "feature-matrix",
+              "mixed-60.pptx",
+              "measured-2.pptx"
+            ],
+            "diagnostic": null,
+            "stderr_artifact": "raw/python-pptx/feature-matrix/measured-2.pptx.adapter/stderr.bin",
+            "stderr_bytes": 0,
+            "stdout_artifact": "raw/python-pptx/feature-matrix/measured-2.pptx.adapter/stdout.bin",
+            "stdout_bytes": 0
+          },
+          "elapsed_ms": 127.41187500068918,
+          "iteration": 2,
+          "outcome": "failure",
+          "output_path": null,
+          "output_sha256": null,
+          "peak_rss_bytes": 47382528,
+          "phase": "measured",
+          "reason": "one or more scored semantic or preservation checks failed"
+        }
+      ]
+    },
+    {
+      "adapter": "wolfppt-wheel",
+      "checks": [
+        {
+          "category": "semantic",
+          "detail": null,
+          "name": "package-readable",
+          "outcome": "success",
+          "scored": true
+        },
+        {
+          "category": "feature",
+          "detail": null,
+          "name": "slide-count",
+          "outcome": "success",
+          "scored": true
+        },
+        {
+          "category": "feature",
+          "detail": null,
+          "name": "slide-order-and-identifiers",
+          "outcome": "success",
+          "scored": true
+        },
+        {
+          "category": "feature",
+          "detail": null,
+          "name": "slide-relationship-graph",
+          "outcome": "success",
+          "scored": true
+        },
+        {
+          "category": "feature",
+          "detail": null,
+          "name": "shape-tree-semantics",
+          "outcome": "success",
+          "scored": true
+        },
+        {
+          "category": "feature",
+          "detail": null,
+          "name": "text-content-and-order",
+          "outcome": "success",
+          "scored": true
+        },
+        {
+          "category": "feature",
+          "detail": null,
+          "name": "text-run-formatting",
+          "outcome": "success",
+          "scored": true
+        },
+        {
+          "category": "feature",
+          "detail": null,
+          "name": "table-cell-grid-and-text",
+          "outcome": "success",
+          "scored": true
+        },
+        {
+          "category": "feature",
+          "detail": null,
+          "name": "table-cell-formatting",
+          "outcome": "success",
+          "scored": true
+        },
+        {
+          "category": "feature",
+          "detail": null,
+          "name": "bullet-paragraph-properties",
+          "outcome": "success",
+          "scored": true
+        },
+        {
+          "category": "feature",
+          "detail": null,
+          "name": "layout-geometry",
+          "outcome": "success",
+          "scored": true
+        },
+        {
+          "category": "feature",
+          "detail": null,
+          "name": "slide-layout-semantics",
+          "outcome": "success",
+          "scored": true
+        },
+        {
+          "category": "feature",
+          "detail": null,
+          "name": "notes-content",
+          "outcome": "success",
+          "scored": true
+        },
+        {
+          "category": "feature",
+          "detail": null,
+          "name": "notes-relationships",
+          "outcome": "success",
+          "scored": true
+        },
+        {
+          "category": "feature",
+          "detail": null,
+          "name": "media-part-presence",
+          "outcome": "success",
+          "scored": true
+        },
+        {
+          "category": "feature",
+          "detail": null,
+          "name": "media-exact-bytes",
+          "outcome": "success",
+          "scored": true
+        },
+        {
+          "category": "feature",
+          "detail": null,
+          "name": "theme-semantics",
+          "outcome": "success",
+          "scored": true
+        },
+        {
+          "category": "feature",
+          "detail": null,
+          "name": "master-semantics",
+          "outcome": "success",
+          "scored": true
+        },
+        {
+          "category": "feature",
+          "detail": null,
+          "name": "relationship-semantics",
+          "outcome": "success",
+          "scored": true
+        },
+        {
+          "category": "feature",
+          "detail": null,
+          "name": "opaque-package-part",
+          "outcome": "success",
+          "scored": true
+        },
+        {
+          "category": "byte-only",
+          "detail": null,
+          "name": "raw-untouched-part-equality",
+          "outcome": "success",
+          "scored": false
+        },
+        {
+          "category": "semantic",
+          "detail": null,
+          "name": "package-readable",
+          "outcome": "success",
+          "scored": true
+        },
+        {
+          "category": "feature",
+          "detail": null,
+          "name": "slide-count",
+          "outcome": "success",
+          "scored": true
+        },
+        {
+          "category": "feature",
+          "detail": null,
+          "name": "slide-order-and-identifiers",
+          "outcome": "success",
+          "scored": true
+        },
+        {
+          "category": "feature",
+          "detail": null,
+          "name": "slide-relationship-graph",
+          "outcome": "success",
+          "scored": true
+        },
+        {
+          "category": "feature",
+          "detail": null,
+          "name": "shape-tree-semantics",
+          "outcome": "success",
+          "scored": true
+        },
+        {
+          "category": "feature",
+          "detail": null,
+          "name": "text-content-and-order",
+          "outcome": "success",
+          "scored": true
+        },
+        {
+          "category": "feature",
+          "detail": null,
+          "name": "text-run-formatting",
+          "outcome": "success",
+          "scored": true
+        },
+        {
+          "category": "feature",
+          "detail": null,
+          "name": "table-cell-grid-and-text",
+          "outcome": "success",
+          "scored": true
+        },
+        {
+          "category": "feature",
+          "detail": null,
+          "name": "table-cell-formatting",
+          "outcome": "success",
+          "scored": true
+        },
+        {
+          "category": "feature",
+          "detail": null,
+          "name": "bullet-paragraph-properties",
+          "outcome": "success",
+          "scored": true
+        },
+        {
+          "category": "feature",
+          "detail": null,
+          "name": "layout-geometry",
+          "outcome": "success",
+          "scored": true
+        },
+        {
+          "category": "feature",
+          "detail": null,
+          "name": "slide-layout-semantics",
+          "outcome": "success",
+          "scored": true
+        },
+        {
+          "category": "feature",
+          "detail": null,
+          "name": "notes-content",
+          "outcome": "success",
+          "scored": true
+        },
+        {
+          "category": "feature",
+          "detail": null,
+          "name": "notes-relationships",
+          "outcome": "success",
+          "scored": true
+        },
+        {
+          "category": "feature",
+          "detail": null,
+          "name": "media-part-presence",
+          "outcome": "success",
+          "scored": true
+        },
+        {
+          "category": "feature",
+          "detail": null,
+          "name": "media-exact-bytes",
+          "outcome": "success",
+          "scored": true
+        },
+        {
+          "category": "feature",
+          "detail": null,
+          "name": "theme-semantics",
+          "outcome": "success",
+          "scored": true
+        },
+        {
+          "category": "feature",
+          "detail": null,
+          "name": "master-semantics",
+          "outcome": "success",
+          "scored": true
+        },
+        {
+          "category": "feature",
+          "detail": null,
+          "name": "relationship-semantics",
+          "outcome": "success",
+          "scored": true
+        },
+        {
+          "category": "feature",
+          "detail": null,
+          "name": "opaque-package-part",
+          "outcome": "success",
+          "scored": true
+        },
+        {
+          "category": "byte-only",
+          "detail": null,
+          "name": "raw-untouched-part-equality",
+          "outcome": "success",
+          "scored": false
+        },
+        {
+          "category": "semantic",
+          "detail": null,
+          "name": "package-readable",
+          "outcome": "success",
+          "scored": true
+        },
+        {
+          "category": "feature",
+          "detail": null,
+          "name": "slide-count",
+          "outcome": "success",
+          "scored": true
+        },
+        {
+          "category": "feature",
+          "detail": null,
+          "name": "slide-order-and-identifiers",
+          "outcome": "success",
+          "scored": true
+        },
+        {
+          "category": "feature",
+          "detail": null,
+          "name": "slide-relationship-graph",
+          "outcome": "success",
+          "scored": true
+        },
+        {
+          "category": "feature",
+          "detail": null,
+          "name": "shape-tree-semantics",
+          "outcome": "success",
+          "scored": true
+        },
+        {
+          "category": "feature",
+          "detail": null,
+          "name": "text-content-and-order",
+          "outcome": "success",
+          "scored": true
+        },
+        {
+          "category": "feature",
+          "detail": null,
+          "name": "text-run-formatting",
+          "outcome": "success",
+          "scored": true
+        },
+        {
+          "category": "feature",
+          "detail": null,
+          "name": "table-cell-grid-and-text",
+          "outcome": "success",
+          "scored": true
+        },
+        {
+          "category": "feature",
+          "detail": null,
+          "name": "table-cell-formatting",
+          "outcome": "success",
+          "scored": true
+        },
+        {
+          "category": "feature",
+          "detail": null,
+          "name": "bullet-paragraph-properties",
+          "outcome": "success",
+          "scored": true
+        },
+        {
+          "category": "feature",
+          "detail": null,
+          "name": "layout-geometry",
+          "outcome": "success",
+          "scored": true
+        },
+        {
+          "category": "feature",
+          "detail": null,
+          "name": "slide-layout-semantics",
+          "outcome": "success",
+          "scored": true
+        },
+        {
+          "category": "feature",
+          "detail": null,
+          "name": "notes-content",
+          "outcome": "success",
+          "scored": true
+        },
+        {
+          "category": "feature",
+          "detail": null,
+          "name": "notes-relationships",
+          "outcome": "success",
+          "scored": true
+        },
+        {
+          "category": "feature",
+          "detail": null,
+          "name": "media-part-presence",
+          "outcome": "success",
+          "scored": true
+        },
+        {
+          "category": "feature",
+          "detail": null,
+          "name": "media-exact-bytes",
+          "outcome": "success",
+          "scored": true
+        },
+        {
+          "category": "feature",
+          "detail": null,
+          "name": "theme-semantics",
+          "outcome": "success",
+          "scored": true
+        },
+        {
+          "category": "feature",
+          "detail": null,
+          "name": "master-semantics",
+          "outcome": "success",
+          "scored": true
+        },
+        {
+          "category": "feature",
+          "detail": null,
+          "name": "relationship-semantics",
+          "outcome": "success",
+          "scored": true
+        },
+        {
+          "category": "feature",
+          "detail": null,
+          "name": "opaque-package-part",
+          "outcome": "success",
+          "scored": true
+        },
+        {
+          "category": "byte-only",
+          "detail": null,
+          "name": "raw-untouched-part-equality",
+          "outcome": "success",
+          "scored": false
+        }
+      ],
+      "fixture": "mixed-60",
+      "input_sha256": "1204a0fb452aece087c4786c0b2ca92bccbfedf66347c41b4b7b3b913c3afc2d",
+      "lane": "feature-matrix",
+      "outcome": "success",
+      "reason": null,
+      "samples": [
+        {
+          "checks": [
+            {
+              "category": "semantic",
+              "detail": null,
+              "name": "package-readable",
+              "outcome": "success",
+              "scored": true
+            },
+            {
+              "category": "feature",
+              "detail": null,
+              "name": "slide-count",
+              "outcome": "success",
+              "scored": true
+            },
+            {
+              "category": "feature",
+              "detail": null,
+              "name": "slide-order-and-identifiers",
+              "outcome": "success",
+              "scored": true
+            },
+            {
+              "category": "feature",
+              "detail": null,
+              "name": "slide-relationship-graph",
+              "outcome": "success",
+              "scored": true
+            },
+            {
+              "category": "feature",
+              "detail": null,
+              "name": "shape-tree-semantics",
+              "outcome": "success",
+              "scored": true
+            },
+            {
+              "category": "feature",
+              "detail": null,
+              "name": "text-content-and-order",
+              "outcome": "success",
+              "scored": true
+            },
+            {
+              "category": "feature",
+              "detail": null,
+              "name": "text-run-formatting",
+              "outcome": "success",
+              "scored": true
+            },
+            {
+              "category": "feature",
+              "detail": null,
+              "name": "table-cell-grid-and-text",
+              "outcome": "success",
+              "scored": true
+            },
+            {
+              "category": "feature",
+              "detail": null,
+              "name": "table-cell-formatting",
+              "outcome": "success",
+              "scored": true
+            },
+            {
+              "category": "feature",
+              "detail": null,
+              "name": "bullet-paragraph-properties",
+              "outcome": "success",
+              "scored": true
+            },
+            {
+              "category": "feature",
+              "detail": null,
+              "name": "layout-geometry",
+              "outcome": "success",
+              "scored": true
+            },
+            {
+              "category": "feature",
+              "detail": null,
+              "name": "slide-layout-semantics",
+              "outcome": "success",
+              "scored": true
+            },
+            {
+              "category": "feature",
+              "detail": null,
+              "name": "notes-content",
+              "outcome": "success",
+              "scored": true
+            },
+            {
+              "category": "feature",
+              "detail": null,
+              "name": "notes-relationships",
+              "outcome": "success",
+              "scored": true
+            },
+            {
+              "category": "feature",
+              "detail": null,
+              "name": "media-part-presence",
+              "outcome": "success",
+              "scored": true
+            },
+            {
+              "category": "feature",
+              "detail": null,
+              "name": "media-exact-bytes",
+              "outcome": "success",
+              "scored": true
+            },
+            {
+              "category": "feature",
+              "detail": null,
+              "name": "theme-semantics",
+              "outcome": "success",
+              "scored": true
+            },
+            {
+              "category": "feature",
+              "detail": null,
+              "name": "master-semantics",
+              "outcome": "success",
+              "scored": true
+            },
+            {
+              "category": "feature",
+              "detail": null,
+              "name": "relationship-semantics",
+              "outcome": "success",
+              "scored": true
+            },
+            {
+              "category": "feature",
+              "detail": null,
+              "name": "opaque-package-part",
+              "outcome": "success",
+              "scored": true
+            },
+            {
+              "category": "byte-only",
+              "detail": null,
+              "name": "raw-untouched-part-equality",
+              "outcome": "success",
+              "scored": false
+            }
+          ],
+          "details": {
+            "artifact_dir": "raw/wolfppt-wheel/feature-matrix/warmup-1.pptx.adapter",
+            "candidate_path": "raw/wolfppt-wheel/feature-matrix/warmup-1.pptx",
+            "candidate_sha256": "1204a0fb452aece087c4786c0b2ca92bccbfedf66347c41b4b7b3b913c3afc2d",
+            "command": [
+              "python",
+              "-m",
+              "pptbench.worker",
+              "wolfppt-wheel",
+              "feature-matrix",
+              "mixed-60.pptx",
+              "warmup-1.pptx"
+            ],
+            "diagnostic": null,
+            "stderr_artifact": "raw/wolfppt-wheel/feature-matrix/warmup-1.pptx.adapter/stderr.bin",
+            "stderr_bytes": 0,
+            "stdout_artifact": "raw/wolfppt-wheel/feature-matrix/warmup-1.pptx.adapter/stdout.bin",
+            "stdout_bytes": 0
+          },
+          "elapsed_ms": 500.81341699842596,
+          "iteration": 1,
+          "outcome": "success",
+          "output_path": "raw/wolfppt-wheel/feature-matrix/warmup-1.pptx",
+          "output_sha256": "1204a0fb452aece087c4786c0b2ca92bccbfedf66347c41b4b7b3b913c3afc2d",
+          "peak_rss_bytes": 47251456,
+          "phase": "warmup",
+          "reason": null
+        },
+        {
+          "checks": [
+            {
+              "category": "semantic",
+              "detail": null,
+              "name": "package-readable",
+              "outcome": "success",
+              "scored": true
+            },
+            {
+              "category": "feature",
+              "detail": null,
+              "name": "slide-count",
+              "outcome": "success",
+              "scored": true
+            },
+            {
+              "category": "feature",
+              "detail": null,
+              "name": "slide-order-and-identifiers",
+              "outcome": "success",
+              "scored": true
+            },
+            {
+              "category": "feature",
+              "detail": null,
+              "name": "slide-relationship-graph",
+              "outcome": "success",
+              "scored": true
+            },
+            {
+              "category": "feature",
+              "detail": null,
+              "name": "shape-tree-semantics",
+              "outcome": "success",
+              "scored": true
+            },
+            {
+              "category": "feature",
+              "detail": null,
+              "name": "text-content-and-order",
+              "outcome": "success",
+              "scored": true
+            },
+            {
+              "category": "feature",
+              "detail": null,
+              "name": "text-run-formatting",
+              "outcome": "success",
+              "scored": true
+            },
+            {
+              "category": "feature",
+              "detail": null,
+              "name": "table-cell-grid-and-text",
+              "outcome": "success",
+              "scored": true
+            },
+            {
+              "category": "feature",
+              "detail": null,
+              "name": "table-cell-formatting",
+              "outcome": "success",
+              "scored": true
+            },
+            {
+              "category": "feature",
+              "detail": null,
+              "name": "bullet-paragraph-properties",
+              "outcome": "success",
+              "scored": true
+            },
+            {
+              "category": "feature",
+              "detail": null,
+              "name": "layout-geometry",
+              "outcome": "success",
+              "scored": true
+            },
+            {
+              "category": "feature",
+              "detail": null,
+              "name": "slide-layout-semantics",
+              "outcome": "success",
+              "scored": true
+            },
+            {
+              "category": "feature",
+              "detail": null,
+              "name": "notes-content",
+              "outcome": "success",
+              "scored": true
+            },
+            {
+              "category": "feature",
+              "detail": null,
+              "name": "notes-relationships",
+              "outcome": "success",
+              "scored": true
+            },
+            {
+              "category": "feature",
+              "detail": null,
+              "name": "media-part-presence",
+              "outcome": "success",
+              "scored": true
+            },
+            {
+              "category": "feature",
+              "detail": null,
+              "name": "media-exact-bytes",
+              "outcome": "success",
+              "scored": true
+            },
+            {
+              "category": "feature",
+              "detail": null,
+              "name": "theme-semantics",
+              "outcome": "success",
+              "scored": true
+            },
+            {
+              "category": "feature",
+              "detail": null,
+              "name": "master-semantics",
+              "outcome": "success",
+              "scored": true
+            },
+            {
+              "category": "feature",
+              "detail": null,
+              "name": "relationship-semantics",
+              "outcome": "success",
+              "scored": true
+            },
+            {
+              "category": "feature",
+              "detail": null,
+              "name": "opaque-package-part",
+              "outcome": "success",
+              "scored": true
+            },
+            {
+              "category": "byte-only",
+              "detail": null,
+              "name": "raw-untouched-part-equality",
+              "outcome": "success",
+              "scored": false
+            }
+          ],
+          "details": {
+            "artifact_dir": "raw/wolfppt-wheel/feature-matrix/measured-1.pptx.adapter",
+            "candidate_path": "raw/wolfppt-wheel/feature-matrix/measured-1.pptx",
+            "candidate_sha256": "1204a0fb452aece087c4786c0b2ca92bccbfedf66347c41b4b7b3b913c3afc2d",
+            "command": [
+              "python",
+              "-m",
+              "pptbench.worker",
+              "wolfppt-wheel",
+              "feature-matrix",
+              "mixed-60.pptx",
+              "measured-1.pptx"
+            ],
+            "diagnostic": null,
+            "stderr_artifact": "raw/wolfppt-wheel/feature-matrix/measured-1.pptx.adapter/stderr.bin",
+            "stderr_bytes": 0,
+            "stdout_artifact": "raw/wolfppt-wheel/feature-matrix/measured-1.pptx.adapter/stdout.bin",
+            "stdout_bytes": 0
+          },
+          "elapsed_ms": 129.77649999811547,
+          "iteration": 1,
+          "outcome": "success",
+          "output_path": "raw/wolfppt-wheel/feature-matrix/measured-1.pptx",
+          "output_sha256": "1204a0fb452aece087c4786c0b2ca92bccbfedf66347c41b4b7b3b913c3afc2d",
+          "peak_rss_bytes": 42106880,
+          "phase": "measured",
+          "reason": null
+        },
+        {
+          "checks": [
+            {
+              "category": "semantic",
+              "detail": null,
+              "name": "package-readable",
+              "outcome": "success",
+              "scored": true
+            },
+            {
+              "category": "feature",
+              "detail": null,
+              "name": "slide-count",
+              "outcome": "success",
+              "scored": true
+            },
+            {
+              "category": "feature",
+              "detail": null,
+              "name": "slide-order-and-identifiers",
+              "outcome": "success",
+              "scored": true
+            },
+            {
+              "category": "feature",
+              "detail": null,
+              "name": "slide-relationship-graph",
+              "outcome": "success",
+              "scored": true
+            },
+            {
+              "category": "feature",
+              "detail": null,
+              "name": "shape-tree-semantics",
+              "outcome": "success",
+              "scored": true
+            },
+            {
+              "category": "feature",
+              "detail": null,
+              "name": "text-content-and-order",
+              "outcome": "success",
+              "scored": true
+            },
+            {
+              "category": "feature",
+              "detail": null,
+              "name": "text-run-formatting",
+              "outcome": "success",
+              "scored": true
+            },
+            {
+              "category": "feature",
+              "detail": null,
+              "name": "table-cell-grid-and-text",
+              "outcome": "success",
+              "scored": true
+            },
+            {
+              "category": "feature",
+              "detail": null,
+              "name": "table-cell-formatting",
+              "outcome": "success",
+              "scored": true
+            },
+            {
+              "category": "feature",
+              "detail": null,
+              "name": "bullet-paragraph-properties",
+              "outcome": "success",
+              "scored": true
+            },
+            {
+              "category": "feature",
+              "detail": null,
+              "name": "layout-geometry",
+              "outcome": "success",
+              "scored": true
+            },
+            {
+              "category": "feature",
+              "detail": null,
+              "name": "slide-layout-semantics",
+              "outcome": "success",
+              "scored": true
+            },
+            {
+              "category": "feature",
+              "detail": null,
+              "name": "notes-content",
+              "outcome": "success",
+              "scored": true
+            },
+            {
+              "category": "feature",
+              "detail": null,
+              "name": "notes-relationships",
+              "outcome": "success",
+              "scored": true
+            },
+            {
+              "category": "feature",
+              "detail": null,
+              "name": "media-part-presence",
+              "outcome": "success",
+              "scored": true
+            },
+            {
+              "category": "feature",
+              "detail": null,
+              "name": "media-exact-bytes",
+              "outcome": "success",
+              "scored": true
+            },
+            {
+              "category": "feature",
+              "detail": null,
+              "name": "theme-semantics",
+              "outcome": "success",
+              "scored": true
+            },
+            {
+              "category": "feature",
+              "detail": null,
+              "name": "master-semantics",
+              "outcome": "success",
+              "scored": true
+            },
+            {
+              "category": "feature",
+              "detail": null,
+              "name": "relationship-semantics",
+              "outcome": "success",
+              "scored": true
+            },
+            {
+              "category": "feature",
+              "detail": null,
+              "name": "opaque-package-part",
+              "outcome": "success",
+              "scored": true
+            },
+            {
+              "category": "byte-only",
+              "detail": null,
+              "name": "raw-untouched-part-equality",
+              "outcome": "success",
+              "scored": false
+            }
+          ],
+          "details": {
+            "artifact_dir": "raw/wolfppt-wheel/feature-matrix/measured-2.pptx.adapter",
+            "candidate_path": "raw/wolfppt-wheel/feature-matrix/measured-2.pptx",
+            "candidate_sha256": "1204a0fb452aece087c4786c0b2ca92bccbfedf66347c41b4b7b3b913c3afc2d",
+            "command": [
+              "python",
+              "-m",
+              "pptbench.worker",
+              "wolfppt-wheel",
+              "feature-matrix",
+              "mixed-60.pptx",
+              "measured-2.pptx"
+            ],
+            "diagnostic": null,
+            "stderr_artifact": "raw/wolfppt-wheel/feature-matrix/measured-2.pptx.adapter/stderr.bin",
+            "stderr_bytes": 0,
+            "stdout_artifact": "raw/wolfppt-wheel/feature-matrix/measured-2.pptx.adapter/stdout.bin",
+            "stdout_bytes": 0
+          },
+          "elapsed_ms": 126.96404199959943,
+          "iteration": 2,
+          "outcome": "success",
+          "output_path": "raw/wolfppt-wheel/feature-matrix/measured-2.pptx",
+          "output_sha256": "1204a0fb452aece087c4786c0b2ca92bccbfedf66347c41b4b7b3b913c3afc2d",
+          "peak_rss_bytes": 42024960,
+          "phase": "measured",
+          "reason": null
+        }
+      ]
+    },
+    {
+      "adapter": "python-pptx",
+      "checks": [
+        {
+          "category": "semantic",
+          "detail": null,
+          "name": "table-cell-1-1-updated",
+          "outcome": "success",
+          "scored": true
+        },
+        {
+          "category": "semantic",
+          "detail": null,
+          "name": "table-cell-2-2-updated",
+          "outcome": "success",
+          "scored": true
+        },
+        {
+          "category": "semantic",
+          "detail": null,
+          "name": "bullet-paragraph-1-updated",
+          "outcome": "success",
+          "scored": true
+        },
+        {
+          "category": "semantic",
+          "detail": "source and result differ",
+          "name": "only-declared-text-nodes-changed",
+          "outcome": "failure",
+          "scored": true
+        },
+        {
+          "category": "preservation",
+          "detail": null,
+          "name": "notes-preserved",
+          "outcome": "success",
+          "scored": true
+        },
+        {
+          "category": "preservation",
+          "detail": null,
+          "name": "media-preserved",
+          "outcome": "success",
+          "scored": true
+        },
+        {
+          "category": "preservation",
+          "detail": null,
+          "name": "relationships-preserved",
+          "outcome": "success",
+          "scored": true
+        },
+        {
+          "category": "preservation",
+          "detail": "source and result differ",
+          "name": "opaque-parts-preserved",
+          "outcome": "failure",
+          "scored": true
+        },
+        {
+          "category": "byte-only",
+          "detail": "raw untouched part bytes differ",
+          "name": "raw-untouched-part-equality",
+          "outcome": "failure",
+          "scored": false
+        },
+        {
+          "category": "semantic",
+          "detail": null,
+          "name": "table-cell-1-1-updated",
+          "outcome": "success",
+          "scored": true
+        },
+        {
+          "category": "semantic",
+          "detail": null,
+          "name": "table-cell-2-2-updated",
+          "outcome": "success",
+          "scored": true
+        },
+        {
+          "category": "semantic",
+          "detail": null,
+          "name": "bullet-paragraph-1-updated",
+          "outcome": "success",
+          "scored": true
+        },
+        {
+          "category": "semantic",
+          "detail": "source and result differ",
+          "name": "only-declared-text-nodes-changed",
+          "outcome": "failure",
+          "scored": true
+        },
+        {
+          "category": "preservation",
+          "detail": null,
+          "name": "notes-preserved",
+          "outcome": "success",
+          "scored": true
+        },
+        {
+          "category": "preservation",
+          "detail": null,
+          "name": "media-preserved",
+          "outcome": "success",
+          "scored": true
+        },
+        {
+          "category": "preservation",
+          "detail": null,
+          "name": "relationships-preserved",
+          "outcome": "success",
+          "scored": true
+        },
+        {
+          "category": "preservation",
+          "detail": "source and result differ",
+          "name": "opaque-parts-preserved",
+          "outcome": "failure",
+          "scored": true
+        },
+        {
+          "category": "byte-only",
+          "detail": "raw untouched part bytes differ",
+          "name": "raw-untouched-part-equality",
+          "outcome": "failure",
+          "scored": false
+        },
+        {
+          "category": "semantic",
+          "detail": null,
+          "name": "table-cell-1-1-updated",
+          "outcome": "success",
+          "scored": true
+        },
+        {
+          "category": "semantic",
+          "detail": null,
+          "name": "table-cell-2-2-updated",
+          "outcome": "success",
+          "scored": true
+        },
+        {
+          "category": "semantic",
+          "detail": null,
+          "name": "bullet-paragraph-1-updated",
+          "outcome": "success",
+          "scored": true
+        },
+        {
+          "category": "semantic",
+          "detail": "source and result differ",
+          "name": "only-declared-text-nodes-changed",
+          "outcome": "failure",
+          "scored": true
+        },
+        {
+          "category": "preservation",
+          "detail": null,
+          "name": "notes-preserved",
+          "outcome": "success",
+          "scored": true
+        },
+        {
+          "category": "preservation",
+          "detail": null,
+          "name": "media-preserved",
+          "outcome": "success",
+          "scored": true
+        },
+        {
+          "category": "preservation",
+          "detail": null,
+          "name": "relationships-preserved",
+          "outcome": "success",
+          "scored": true
+        },
+        {
+          "category": "preservation",
+          "detail": "source and result differ",
+          "name": "opaque-parts-preserved",
+          "outcome": "failure",
+          "scored": true
+        },
+        {
+          "category": "byte-only",
+          "detail": "raw untouched part bytes differ",
+          "name": "raw-untouched-part-equality",
+          "outcome": "failure",
+          "scored": false
+        }
+      ],
+      "fixture": "mixed-60",
+      "input_sha256": "1204a0fb452aece087c4786c0b2ca92bccbfedf66347c41b4b7b3b913c3afc2d",
+      "lane": "template-mutation",
+      "outcome": "failure",
+      "reason": "one or more scored semantic or preservation checks failed",
+      "samples": [
+        {
+          "checks": [
+            {
+              "category": "semantic",
+              "detail": null,
+              "name": "table-cell-1-1-updated",
+              "outcome": "success",
+              "scored": true
+            },
+            {
+              "category": "semantic",
+              "detail": null,
+              "name": "table-cell-2-2-updated",
+              "outcome": "success",
+              "scored": true
+            },
+            {
+              "category": "semantic",
+              "detail": null,
+              "name": "bullet-paragraph-1-updated",
+              "outcome": "success",
+              "scored": true
+            },
+            {
+              "category": "semantic",
+              "detail": "source and result differ",
+              "name": "only-declared-text-nodes-changed",
+              "outcome": "failure",
+              "scored": true
+            },
+            {
+              "category": "preservation",
+              "detail": null,
+              "name": "notes-preserved",
+              "outcome": "success",
+              "scored": true
+            },
+            {
+              "category": "preservation",
+              "detail": null,
+              "name": "media-preserved",
+              "outcome": "success",
+              "scored": true
+            },
+            {
+              "category": "preservation",
+              "detail": null,
+              "name": "relationships-preserved",
+              "outcome": "success",
+              "scored": true
+            },
+            {
+              "category": "preservation",
+              "detail": "source and result differ",
+              "name": "opaque-parts-preserved",
+              "outcome": "failure",
+              "scored": true
+            },
+            {
+              "category": "byte-only",
+              "detail": "raw untouched part bytes differ",
+              "name": "raw-untouched-part-equality",
+              "outcome": "failure",
+              "scored": false
+            }
+          ],
+          "details": {
+            "artifact_dir": "raw/python-pptx/template-mutation/warmup-1.pptx.adapter",
+            "candidate_path": "raw/python-pptx/template-mutation/warmup-1.pptx",
+            "candidate_sha256": "d88cfb240f3a2e9142c367a857b39bc90e7405f326e14e57580726aad6c2f9d5",
+            "command": [
+              "python",
+              "-m",
+              "pptbench.worker",
+              "python-pptx",
+              "template-mutation",
+              "mixed-60.pptx",
+              "warmup-1.pptx"
+            ],
+            "diagnostic": null,
+            "stderr_artifact": "raw/python-pptx/template-mutation/warmup-1.pptx.adapter/stderr.bin",
+            "stderr_bytes": 0,
+            "stdout_artifact": "raw/python-pptx/template-mutation/warmup-1.pptx.adapter/stdout.bin",
+            "stdout_bytes": 0
+          },
+          "elapsed_ms": 125.70370899629779,
+          "iteration": 1,
+          "outcome": "failure",
+          "output_path": null,
+          "output_sha256": null,
+          "peak_rss_bytes": 47431680,
+          "phase": "warmup",
+          "reason": "one or more scored semantic or preservation checks failed"
+        },
+        {
+          "checks": [
+            {
+              "category": "semantic",
+              "detail": null,
+              "name": "table-cell-1-1-updated",
+              "outcome": "success",
+              "scored": true
+            },
+            {
+              "category": "semantic",
+              "detail": null,
+              "name": "table-cell-2-2-updated",
+              "outcome": "success",
+              "scored": true
+            },
+            {
+              "category": "semantic",
+              "detail": null,
+              "name": "bullet-paragraph-1-updated",
+              "outcome": "success",
+              "scored": true
+            },
+            {
+              "category": "semantic",
+              "detail": "source and result differ",
+              "name": "only-declared-text-nodes-changed",
+              "outcome": "failure",
+              "scored": true
+            },
+            {
+              "category": "preservation",
+              "detail": null,
+              "name": "notes-preserved",
+              "outcome": "success",
+              "scored": true
+            },
+            {
+              "category": "preservation",
+              "detail": null,
+              "name": "media-preserved",
+              "outcome": "success",
+              "scored": true
+            },
+            {
+              "category": "preservation",
+              "detail": null,
+              "name": "relationships-preserved",
+              "outcome": "success",
+              "scored": true
+            },
+            {
+              "category": "preservation",
+              "detail": "source and result differ",
+              "name": "opaque-parts-preserved",
+              "outcome": "failure",
+              "scored": true
+            },
+            {
+              "category": "byte-only",
+              "detail": "raw untouched part bytes differ",
+              "name": "raw-untouched-part-equality",
+              "outcome": "failure",
+              "scored": false
+            }
+          ],
+          "details": {
+            "artifact_dir": "raw/python-pptx/template-mutation/measured-1.pptx.adapter",
+            "candidate_path": "raw/python-pptx/template-mutation/measured-1.pptx",
+            "candidate_sha256": "5acbf0ff830ae6d75a8fd6b5a46030d62206c00130137bf11630fd74b1687fb5",
+            "command": [
+              "python",
+              "-m",
+              "pptbench.worker",
+              "python-pptx",
+              "template-mutation",
+              "mixed-60.pptx",
+              "measured-1.pptx"
+            ],
+            "diagnostic": null,
+            "stderr_artifact": "raw/python-pptx/template-mutation/measured-1.pptx.adapter/stderr.bin",
+            "stderr_bytes": 0,
+            "stdout_artifact": "raw/python-pptx/template-mutation/measured-1.pptx.adapter/stdout.bin",
+            "stdout_bytes": 0
+          },
+          "elapsed_ms": 125.3677919958136,
+          "iteration": 1,
+          "outcome": "failure",
+          "output_path": null,
+          "output_sha256": null,
+          "peak_rss_bytes": 47366144,
+          "phase": "measured",
+          "reason": "one or more scored semantic or preservation checks failed"
+        },
+        {
+          "checks": [
+            {
+              "category": "semantic",
+              "detail": null,
+              "name": "table-cell-1-1-updated",
+              "outcome": "success",
+              "scored": true
+            },
+            {
+              "category": "semantic",
+              "detail": null,
+              "name": "table-cell-2-2-updated",
+              "outcome": "success",
+              "scored": true
+            },
+            {
+              "category": "semantic",
+              "detail": null,
+              "name": "bullet-paragraph-1-updated",
+              "outcome": "success",
+              "scored": true
+            },
+            {
+              "category": "semantic",
+              "detail": "source and result differ",
+              "name": "only-declared-text-nodes-changed",
+              "outcome": "failure",
+              "scored": true
+            },
+            {
+              "category": "preservation",
+              "detail": null,
+              "name": "notes-preserved",
+              "outcome": "success",
+              "scored": true
+            },
+            {
+              "category": "preservation",
+              "detail": null,
+              "name": "media-preserved",
+              "outcome": "success",
+              "scored": true
+            },
+            {
+              "category": "preservation",
+              "detail": null,
+              "name": "relationships-preserved",
+              "outcome": "success",
+              "scored": true
+            },
+            {
+              "category": "preservation",
+              "detail": "source and result differ",
+              "name": "opaque-parts-preserved",
+              "outcome": "failure",
+              "scored": true
+            },
+            {
+              "category": "byte-only",
+              "detail": "raw untouched part bytes differ",
+              "name": "raw-untouched-part-equality",
+              "outcome": "failure",
+              "scored": false
+            }
+          ],
+          "details": {
+            "artifact_dir": "raw/python-pptx/template-mutation/measured-2.pptx.adapter",
+            "candidate_path": "raw/python-pptx/template-mutation/measured-2.pptx",
+            "candidate_sha256": "5acbf0ff830ae6d75a8fd6b5a46030d62206c00130137bf11630fd74b1687fb5",
+            "command": [
+              "python",
+              "-m",
+              "pptbench.worker",
+              "python-pptx",
+              "template-mutation",
+              "mixed-60.pptx",
+              "measured-2.pptx"
+            ],
+            "diagnostic": null,
+            "stderr_artifact": "raw/python-pptx/template-mutation/measured-2.pptx.adapter/stderr.bin",
+            "stderr_bytes": 0,
+            "stdout_artifact": "raw/python-pptx/template-mutation/measured-2.pptx.adapter/stdout.bin",
+            "stdout_bytes": 0
+          },
+          "elapsed_ms": 122.38812499708729,
+          "iteration": 2,
+          "outcome": "failure",
+          "output_path": null,
+          "output_sha256": null,
+          "peak_rss_bytes": 47448064,
+          "phase": "measured",
+          "reason": "one or more scored semantic or preservation checks failed"
+        }
+      ]
+    },
+    {
+      "adapter": "wolfppt-wheel",
+      "checks": [
+        {
+          "category": "semantic",
+          "detail": null,
+          "name": "table-cell-1-1-updated",
+          "outcome": "success",
+          "scored": true
+        },
+        {
+          "category": "semantic",
+          "detail": null,
+          "name": "table-cell-2-2-updated",
+          "outcome": "success",
+          "scored": true
+        },
+        {
+          "category": "semantic",
+          "detail": null,
+          "name": "bullet-paragraph-1-updated",
+          "outcome": "success",
+          "scored": true
+        },
+        {
+          "category": "semantic",
+          "detail": null,
+          "name": "only-declared-text-nodes-changed",
+          "outcome": "success",
+          "scored": true
+        },
+        {
+          "category": "preservation",
+          "detail": null,
+          "name": "notes-preserved",
+          "outcome": "success",
+          "scored": true
+        },
+        {
+          "category": "preservation",
+          "detail": null,
+          "name": "media-preserved",
+          "outcome": "success",
+          "scored": true
+        },
+        {
+          "category": "preservation",
+          "detail": null,
+          "name": "relationships-preserved",
+          "outcome": "success",
+          "scored": true
+        },
+        {
+          "category": "preservation",
+          "detail": null,
+          "name": "opaque-parts-preserved",
+          "outcome": "success",
+          "scored": true
+        },
+        {
+          "category": "byte-only",
+          "detail": null,
+          "name": "raw-untouched-part-equality",
+          "outcome": "success",
+          "scored": false
+        },
+        {
+          "category": "semantic",
+          "detail": null,
+          "name": "table-cell-1-1-updated",
+          "outcome": "success",
+          "scored": true
+        },
+        {
+          "category": "semantic",
+          "detail": null,
+          "name": "table-cell-2-2-updated",
+          "outcome": "success",
+          "scored": true
+        },
+        {
+          "category": "semantic",
+          "detail": null,
+          "name": "bullet-paragraph-1-updated",
+          "outcome": "success",
+          "scored": true
+        },
+        {
+          "category": "semantic",
+          "detail": null,
+          "name": "only-declared-text-nodes-changed",
+          "outcome": "success",
+          "scored": true
+        },
+        {
+          "category": "preservation",
+          "detail": null,
+          "name": "notes-preserved",
+          "outcome": "success",
+          "scored": true
+        },
+        {
+          "category": "preservation",
+          "detail": null,
+          "name": "media-preserved",
+          "outcome": "success",
+          "scored": true
+        },
+        {
+          "category": "preservation",
+          "detail": null,
+          "name": "relationships-preserved",
+          "outcome": "success",
+          "scored": true
+        },
+        {
+          "category": "preservation",
+          "detail": null,
+          "name": "opaque-parts-preserved",
+          "outcome": "success",
+          "scored": true
+        },
+        {
+          "category": "byte-only",
+          "detail": null,
+          "name": "raw-untouched-part-equality",
+          "outcome": "success",
+          "scored": false
+        },
+        {
+          "category": "semantic",
+          "detail": null,
+          "name": "table-cell-1-1-updated",
+          "outcome": "success",
+          "scored": true
+        },
+        {
+          "category": "semantic",
+          "detail": null,
+          "name": "table-cell-2-2-updated",
+          "outcome": "success",
+          "scored": true
+        },
+        {
+          "category": "semantic",
+          "detail": null,
+          "name": "bullet-paragraph-1-updated",
+          "outcome": "success",
+          "scored": true
+        },
+        {
+          "category": "semantic",
+          "detail": null,
+          "name": "only-declared-text-nodes-changed",
+          "outcome": "success",
+          "scored": true
+        },
+        {
+          "category": "preservation",
+          "detail": null,
+          "name": "notes-preserved",
+          "outcome": "success",
+          "scored": true
+        },
+        {
+          "category": "preservation",
+          "detail": null,
+          "name": "media-preserved",
+          "outcome": "success",
+          "scored": true
+        },
+        {
+          "category": "preservation",
+          "detail": null,
+          "name": "relationships-preserved",
+          "outcome": "success",
+          "scored": true
+        },
+        {
+          "category": "preservation",
+          "detail": null,
+          "name": "opaque-parts-preserved",
+          "outcome": "success",
+          "scored": true
+        },
+        {
+          "category": "byte-only",
+          "detail": null,
+          "name": "raw-untouched-part-equality",
+          "outcome": "success",
+          "scored": false
+        }
+      ],
+      "fixture": "mixed-60",
+      "input_sha256": "1204a0fb452aece087c4786c0b2ca92bccbfedf66347c41b4b7b3b913c3afc2d",
+      "lane": "template-mutation",
+      "outcome": "success",
+      "reason": null,
+      "samples": [
+        {
+          "checks": [
+            {
+              "category": "semantic",
+              "detail": null,
+              "name": "table-cell-1-1-updated",
+              "outcome": "success",
+              "scored": true
+            },
+            {
+              "category": "semantic",
+              "detail": null,
+              "name": "table-cell-2-2-updated",
+              "outcome": "success",
+              "scored": true
+            },
+            {
+              "category": "semantic",
+              "detail": null,
+              "name": "bullet-paragraph-1-updated",
+              "outcome": "success",
+              "scored": true
+            },
+            {
+              "category": "semantic",
+              "detail": null,
+              "name": "only-declared-text-nodes-changed",
+              "outcome": "success",
+              "scored": true
+            },
+            {
+              "category": "preservation",
+              "detail": null,
+              "name": "notes-preserved",
+              "outcome": "success",
+              "scored": true
+            },
+            {
+              "category": "preservation",
+              "detail": null,
+              "name": "media-preserved",
+              "outcome": "success",
+              "scored": true
+            },
+            {
+              "category": "preservation",
+              "detail": null,
+              "name": "relationships-preserved",
+              "outcome": "success",
+              "scored": true
+            },
+            {
+              "category": "preservation",
+              "detail": null,
+              "name": "opaque-parts-preserved",
+              "outcome": "success",
+              "scored": true
+            },
+            {
+              "category": "byte-only",
+              "detail": null,
+              "name": "raw-untouched-part-equality",
+              "outcome": "success",
+              "scored": false
+            }
+          ],
+          "details": {
+            "artifact_dir": "raw/wolfppt-wheel/template-mutation/warmup-1.pptx.adapter",
+            "candidate_path": "raw/wolfppt-wheel/template-mutation/warmup-1.pptx",
+            "candidate_sha256": "038c2ffd7e6dd2ef4a08ec923696326cb3774c53b1801e6a6a537fafe01a3eb3",
+            "command": [
+              "python",
+              "-m",
+              "pptbench.worker",
+              "wolfppt-wheel",
+              "template-mutation",
+              "mixed-60.pptx",
+              "warmup-1.pptx"
+            ],
+            "diagnostic": null,
+            "stderr_artifact": "raw/wolfppt-wheel/template-mutation/warmup-1.pptx.adapter/stderr.bin",
+            "stderr_bytes": 0,
+            "stdout_artifact": "raw/wolfppt-wheel/template-mutation/warmup-1.pptx.adapter/stdout.bin",
+            "stdout_bytes": 0
+          },
+          "elapsed_ms": 126.67504099954385,
+          "iteration": 1,
+          "outcome": "success",
+          "output_path": "raw/wolfppt-wheel/template-mutation/warmup-1.pptx",
+          "output_sha256": "038c2ffd7e6dd2ef4a08ec923696326cb3774c53b1801e6a6a537fafe01a3eb3",
+          "peak_rss_bytes": 43515904,
+          "phase": "warmup",
+          "reason": null
+        },
+        {
+          "checks": [
+            {
+              "category": "semantic",
+              "detail": null,
+              "name": "table-cell-1-1-updated",
+              "outcome": "success",
+              "scored": true
+            },
+            {
+              "category": "semantic",
+              "detail": null,
+              "name": "table-cell-2-2-updated",
+              "outcome": "success",
+              "scored": true
+            },
+            {
+              "category": "semantic",
+              "detail": null,
+              "name": "bullet-paragraph-1-updated",
+              "outcome": "success",
+              "scored": true
+            },
+            {
+              "category": "semantic",
+              "detail": null,
+              "name": "only-declared-text-nodes-changed",
+              "outcome": "success",
+              "scored": true
+            },
+            {
+              "category": "preservation",
+              "detail": null,
+              "name": "notes-preserved",
+              "outcome": "success",
+              "scored": true
+            },
+            {
+              "category": "preservation",
+              "detail": null,
+              "name": "media-preserved",
+              "outcome": "success",
+              "scored": true
+            },
+            {
+              "category": "preservation",
+              "detail": null,
+              "name": "relationships-preserved",
+              "outcome": "success",
+              "scored": true
+            },
+            {
+              "category": "preservation",
+              "detail": null,
+              "name": "opaque-parts-preserved",
+              "outcome": "success",
+              "scored": true
+            },
+            {
+              "category": "byte-only",
+              "detail": null,
+              "name": "raw-untouched-part-equality",
+              "outcome": "success",
+              "scored": false
+            }
+          ],
+          "details": {
+            "artifact_dir": "raw/wolfppt-wheel/template-mutation/measured-1.pptx.adapter",
+            "candidate_path": "raw/wolfppt-wheel/template-mutation/measured-1.pptx",
+            "candidate_sha256": "038c2ffd7e6dd2ef4a08ec923696326cb3774c53b1801e6a6a537fafe01a3eb3",
+            "command": [
+              "python",
+              "-m",
+              "pptbench.worker",
+              "wolfppt-wheel",
+              "template-mutation",
+              "mixed-60.pptx",
+              "measured-1.pptx"
+            ],
+            "diagnostic": null,
+            "stderr_artifact": "raw/wolfppt-wheel/template-mutation/measured-1.pptx.adapter/stderr.bin",
+            "stderr_bytes": 0,
+            "stdout_artifact": "raw/wolfppt-wheel/template-mutation/measured-1.pptx.adapter/stdout.bin",
+            "stdout_bytes": 0
+          },
+          "elapsed_ms": 128.1608339995728,
+          "iteration": 1,
+          "outcome": "success",
+          "output_path": "raw/wolfppt-wheel/template-mutation/measured-1.pptx",
+          "output_sha256": "038c2ffd7e6dd2ef4a08ec923696326cb3774c53b1801e6a6a537fafe01a3eb3",
+          "peak_rss_bytes": 43925504,
+          "phase": "measured",
+          "reason": null
+        },
+        {
+          "checks": [
+            {
+              "category": "semantic",
+              "detail": null,
+              "name": "table-cell-1-1-updated",
+              "outcome": "success",
+              "scored": true
+            },
+            {
+              "category": "semantic",
+              "detail": null,
+              "name": "table-cell-2-2-updated",
+              "outcome": "success",
+              "scored": true
+            },
+            {
+              "category": "semantic",
+              "detail": null,
+              "name": "bullet-paragraph-1-updated",
+              "outcome": "success",
+              "scored": true
+            },
+            {
+              "category": "semantic",
+              "detail": null,
+              "name": "only-declared-text-nodes-changed",
+              "outcome": "success",
+              "scored": true
+            },
+            {
+              "category": "preservation",
+              "detail": null,
+              "name": "notes-preserved",
+              "outcome": "success",
+              "scored": true
+            },
+            {
+              "category": "preservation",
+              "detail": null,
+              "name": "media-preserved",
+              "outcome": "success",
+              "scored": true
+            },
+            {
+              "category": "preservation",
+              "detail": null,
+              "name": "relationships-preserved",
+              "outcome": "success",
+              "scored": true
+            },
+            {
+              "category": "preservation",
+              "detail": null,
+              "name": "opaque-parts-preserved",
+              "outcome": "success",
+              "scored": true
+            },
+            {
+              "category": "byte-only",
+              "detail": null,
+              "name": "raw-untouched-part-equality",
+              "outcome": "success",
+              "scored": false
+            }
+          ],
+          "details": {
+            "artifact_dir": "raw/wolfppt-wheel/template-mutation/measured-2.pptx.adapter",
+            "candidate_path": "raw/wolfppt-wheel/template-mutation/measured-2.pptx",
+            "candidate_sha256": "038c2ffd7e6dd2ef4a08ec923696326cb3774c53b1801e6a6a537fafe01a3eb3",
+            "command": [
+              "python",
+              "-m",
+              "pptbench.worker",
+              "wolfppt-wheel",
+              "template-mutation",
+              "mixed-60.pptx",
+              "measured-2.pptx"
+            ],
+            "diagnostic": null,
+            "stderr_artifact": "raw/wolfppt-wheel/template-mutation/measured-2.pptx.adapter/stderr.bin",
+            "stderr_bytes": 0,
+            "stdout_artifact": "raw/wolfppt-wheel/template-mutation/measured-2.pptx.adapter/stdout.bin",
+            "stdout_bytes": 0
+          },
+          "elapsed_ms": 121.72741600079462,
+          "iteration": 2,
+          "outcome": "success",
+          "output_path": "raw/wolfppt-wheel/template-mutation/measured-2.pptx",
+          "output_sha256": "038c2ffd7e6dd2ef4a08ec923696326cb3774c53b1801e6a6a537fafe01a3eb3",
+          "peak_rss_bytes": 43515904,
+          "phase": "measured",
+          "reason": null
+        }
+      ]
+    },
+    {
+      "adapter": "python-pptx",
+      "checks": [
+        {
+          "category": "preservation",
+          "detail": null,
+          "name": "chart-topology-and-relations",
+          "outcome": "success",
+          "scored": true
+        },
+        {
+          "category": "semantic",
+          "detail": null,
+          "name": "chart-slide-structure",
+          "outcome": "success",
+          "scored": true
+        },
+        {
+          "category": "semantic",
+          "detail": null,
+          "name": "category-chart-exact-series-and-points",
+          "outcome": "success",
+          "scored": true
+        },
+        {
+          "category": "semantic",
+          "detail": null,
+          "name": "xy-chart-exact-series-and-points",
+          "outcome": "success",
+          "scored": true
+        },
+        {
+          "category": "semantic",
+          "detail": null,
+          "name": "bubble-chart-exact-series-and-points",
+          "outcome": "success",
+          "scored": true
+        },
+        {
+          "category": "semantic",
+          "detail": null,
+          "name": "related-workbook-values",
+          "outcome": "success",
+          "scored": true
+        },
+        {
+          "category": "preservation",
+          "detail": null,
+          "name": "related-workbook-structure-and-formatting",
+          "outcome": "success",
+          "scored": true
+        },
+        {
+          "category": "preservation",
+          "detail": null,
+          "name": "chart-formatting-preserved",
+          "outcome": "success",
+          "scored": true
+        },
+        {
+          "category": "preservation",
+          "detail": null,
+          "name": "notes-preserved",
+          "outcome": "success",
+          "scored": true
+        },
+        {
+          "category": "preservation",
+          "detail": null,
+          "name": "media-preserved",
+          "outcome": "success",
+          "scored": true
+        },
+        {
+          "category": "preservation",
+          "detail": null,
+          "name": "relationships-preserved",
+          "outcome": "success",
+          "scored": true
+        },
+        {
+          "category": "preservation",
+          "detail": null,
+          "name": "opaque-parts-preserved",
+          "outcome": "success",
+          "scored": true
+        },
+        {
+          "category": "byte-only",
+          "detail": null,
+          "name": "raw-untouched-part-equality",
+          "outcome": "success",
+          "scored": false
+        },
+        {
+          "category": "preservation",
+          "detail": null,
+          "name": "chart-topology-and-relations",
+          "outcome": "success",
+          "scored": true
+        },
+        {
+          "category": "semantic",
+          "detail": null,
+          "name": "chart-slide-structure",
+          "outcome": "success",
+          "scored": true
+        },
+        {
+          "category": "semantic",
+          "detail": null,
+          "name": "category-chart-exact-series-and-points",
+          "outcome": "success",
+          "scored": true
+        },
+        {
+          "category": "semantic",
+          "detail": null,
+          "name": "xy-chart-exact-series-and-points",
+          "outcome": "success",
+          "scored": true
+        },
+        {
+          "category": "semantic",
+          "detail": null,
+          "name": "bubble-chart-exact-series-and-points",
+          "outcome": "success",
+          "scored": true
+        },
+        {
+          "category": "semantic",
+          "detail": null,
+          "name": "related-workbook-values",
+          "outcome": "success",
+          "scored": true
+        },
+        {
+          "category": "preservation",
+          "detail": null,
+          "name": "related-workbook-structure-and-formatting",
+          "outcome": "success",
+          "scored": true
+        },
+        {
+          "category": "preservation",
+          "detail": null,
+          "name": "chart-formatting-preserved",
+          "outcome": "success",
+          "scored": true
+        },
+        {
+          "category": "preservation",
+          "detail": null,
+          "name": "notes-preserved",
+          "outcome": "success",
+          "scored": true
+        },
+        {
+          "category": "preservation",
+          "detail": null,
+          "name": "media-preserved",
+          "outcome": "success",
+          "scored": true
+        },
+        {
+          "category": "preservation",
+          "detail": null,
+          "name": "relationships-preserved",
+          "outcome": "success",
+          "scored": true
+        },
+        {
+          "category": "preservation",
+          "detail": null,
+          "name": "opaque-parts-preserved",
+          "outcome": "success",
+          "scored": true
+        },
+        {
+          "category": "byte-only",
+          "detail": null,
+          "name": "raw-untouched-part-equality",
+          "outcome": "success",
+          "scored": false
+        },
+        {
+          "category": "preservation",
+          "detail": null,
+          "name": "chart-topology-and-relations",
+          "outcome": "success",
+          "scored": true
+        },
+        {
+          "category": "semantic",
+          "detail": null,
+          "name": "chart-slide-structure",
+          "outcome": "success",
+          "scored": true
+        },
+        {
+          "category": "semantic",
+          "detail": null,
+          "name": "category-chart-exact-series-and-points",
+          "outcome": "success",
+          "scored": true
+        },
+        {
+          "category": "semantic",
+          "detail": null,
+          "name": "xy-chart-exact-series-and-points",
+          "outcome": "success",
+          "scored": true
+        },
+        {
+          "category": "semantic",
+          "detail": null,
+          "name": "bubble-chart-exact-series-and-points",
+          "outcome": "success",
+          "scored": true
+        },
+        {
+          "category": "semantic",
+          "detail": null,
+          "name": "related-workbook-values",
+          "outcome": "success",
+          "scored": true
+        },
+        {
+          "category": "preservation",
+          "detail": null,
+          "name": "related-workbook-structure-and-formatting",
+          "outcome": "success",
+          "scored": true
+        },
+        {
+          "category": "preservation",
+          "detail": null,
+          "name": "chart-formatting-preserved",
+          "outcome": "success",
+          "scored": true
+        },
+        {
+          "category": "preservation",
+          "detail": null,
+          "name": "notes-preserved",
+          "outcome": "success",
+          "scored": true
+        },
+        {
+          "category": "preservation",
+          "detail": null,
+          "name": "media-preserved",
+          "outcome": "success",
+          "scored": true
+        },
+        {
+          "category": "preservation",
+          "detail": null,
+          "name": "relationships-preserved",
+          "outcome": "success",
+          "scored": true
+        },
+        {
+          "category": "preservation",
+          "detail": null,
+          "name": "opaque-parts-preserved",
+          "outcome": "success",
+          "scored": true
+        },
+        {
+          "category": "byte-only",
+          "detail": null,
+          "name": "raw-untouched-part-equality",
+          "outcome": "success",
+          "scored": false
+        }
+      ],
+      "fixture": "charts",
+      "input_sha256": "172ed05b83cd7fb33ba565d275a0662f40d3f7f598883cb824045a8ac7885c93",
+      "lane": "chart-data",
+      "outcome": "success",
+      "reason": null,
+      "samples": [
+        {
+          "checks": [
+            {
+              "category": "preservation",
+              "detail": null,
+              "name": "chart-topology-and-relations",
+              "outcome": "success",
+              "scored": true
+            },
+            {
+              "category": "semantic",
+              "detail": null,
+              "name": "chart-slide-structure",
+              "outcome": "success",
+              "scored": true
+            },
+            {
+              "category": "semantic",
+              "detail": null,
+              "name": "category-chart-exact-series-and-points",
+              "outcome": "success",
+              "scored": true
+            },
+            {
+              "category": "semantic",
+              "detail": null,
+              "name": "xy-chart-exact-series-and-points",
+              "outcome": "success",
+              "scored": true
+            },
+            {
+              "category": "semantic",
+              "detail": null,
+              "name": "bubble-chart-exact-series-and-points",
+              "outcome": "success",
+              "scored": true
+            },
+            {
+              "category": "semantic",
+              "detail": null,
+              "name": "related-workbook-values",
+              "outcome": "success",
+              "scored": true
+            },
+            {
+              "category": "preservation",
+              "detail": null,
+              "name": "related-workbook-structure-and-formatting",
+              "outcome": "success",
+              "scored": true
+            },
+            {
+              "category": "preservation",
+              "detail": null,
+              "name": "chart-formatting-preserved",
+              "outcome": "success",
+              "scored": true
+            },
+            {
+              "category": "preservation",
+              "detail": null,
+              "name": "notes-preserved",
+              "outcome": "success",
+              "scored": true
+            },
+            {
+              "category": "preservation",
+              "detail": null,
+              "name": "media-preserved",
+              "outcome": "success",
+              "scored": true
+            },
+            {
+              "category": "preservation",
+              "detail": null,
+              "name": "relationships-preserved",
+              "outcome": "success",
+              "scored": true
+            },
+            {
+              "category": "preservation",
+              "detail": null,
+              "name": "opaque-parts-preserved",
+              "outcome": "success",
+              "scored": true
+            },
+            {
+              "category": "byte-only",
+              "detail": null,
+              "name": "raw-untouched-part-equality",
+              "outcome": "success",
+              "scored": false
+            }
+          ],
+          "details": {
+            "artifact_dir": "raw/python-pptx/chart-data/warmup-1.pptx.adapter",
+            "candidate_path": "raw/python-pptx/chart-data/warmup-1.pptx",
+            "candidate_sha256": "cbed366db757a3f089433d4fe436efd1985e86735eae046b4bee2689df8442f5",
+            "command": [
+              "python",
+              "-m",
+              "pptbench.worker",
+              "python-pptx",
+              "chart-data",
+              "charts.pptx",
+              "warmup-1.pptx"
+            ],
+            "diagnostic": null,
+            "stderr_artifact": "raw/python-pptx/chart-data/warmup-1.pptx.adapter/stderr.bin",
+            "stderr_bytes": 0,
+            "stdout_artifact": "raw/python-pptx/chart-data/warmup-1.pptx.adapter/stdout.bin",
+            "stdout_bytes": 0
+          },
+          "elapsed_ms": 231.94333299761638,
+          "iteration": 1,
+          "outcome": "success",
+          "output_path": "raw/python-pptx/chart-data/warmup-1.pptx",
+          "output_sha256": "cbed366db757a3f089433d4fe436efd1985e86735eae046b4bee2689df8442f5",
+          "peak_rss_bytes": 70336512,
+          "phase": "warmup",
+          "reason": null
+        },
+        {
+          "checks": [
+            {
+              "category": "preservation",
+              "detail": null,
+              "name": "chart-topology-and-relations",
+              "outcome": "success",
+              "scored": true
+            },
+            {
+              "category": "semantic",
+              "detail": null,
+              "name": "chart-slide-structure",
+              "outcome": "success",
+              "scored": true
+            },
+            {
+              "category": "semantic",
+              "detail": null,
+              "name": "category-chart-exact-series-and-points",
+              "outcome": "success",
+              "scored": true
+            },
+            {
+              "category": "semantic",
+              "detail": null,
+              "name": "xy-chart-exact-series-and-points",
+              "outcome": "success",
+              "scored": true
+            },
+            {
+              "category": "semantic",
+              "detail": null,
+              "name": "bubble-chart-exact-series-and-points",
+              "outcome": "success",
+              "scored": true
+            },
+            {
+              "category": "semantic",
+              "detail": null,
+              "name": "related-workbook-values",
+              "outcome": "success",
+              "scored": true
+            },
+            {
+              "category": "preservation",
+              "detail": null,
+              "name": "related-workbook-structure-and-formatting",
+              "outcome": "success",
+              "scored": true
+            },
+            {
+              "category": "preservation",
+              "detail": null,
+              "name": "chart-formatting-preserved",
+              "outcome": "success",
+              "scored": true
+            },
+            {
+              "category": "preservation",
+              "detail": null,
+              "name": "notes-preserved",
+              "outcome": "success",
+              "scored": true
+            },
+            {
+              "category": "preservation",
+              "detail": null,
+              "name": "media-preserved",
+              "outcome": "success",
+              "scored": true
+            },
+            {
+              "category": "preservation",
+              "detail": null,
+              "name": "relationships-preserved",
+              "outcome": "success",
+              "scored": true
+            },
+            {
+              "category": "preservation",
+              "detail": null,
+              "name": "opaque-parts-preserved",
+              "outcome": "success",
+              "scored": true
+            },
+            {
+              "category": "byte-only",
+              "detail": null,
+              "name": "raw-untouched-part-equality",
+              "outcome": "success",
+              "scored": false
+            }
+          ],
+          "details": {
+            "artifact_dir": "raw/python-pptx/chart-data/measured-1.pptx.adapter",
+            "candidate_path": "raw/python-pptx/chart-data/measured-1.pptx",
+            "candidate_sha256": "cbed366db757a3f089433d4fe436efd1985e86735eae046b4bee2689df8442f5",
+            "command": [
+              "python",
+              "-m",
+              "pptbench.worker",
+              "python-pptx",
+              "chart-data",
+              "charts.pptx",
+              "measured-1.pptx"
+            ],
+            "diagnostic": null,
+            "stderr_artifact": "raw/python-pptx/chart-data/measured-1.pptx.adapter/stderr.bin",
+            "stderr_bytes": 0,
+            "stdout_artifact": "raw/python-pptx/chart-data/measured-1.pptx.adapter/stdout.bin",
+            "stdout_bytes": 0
+          },
+          "elapsed_ms": 125.42633300472517,
+          "iteration": 1,
+          "outcome": "success",
+          "output_path": "raw/python-pptx/chart-data/measured-1.pptx",
+          "output_sha256": "cbed366db757a3f089433d4fe436efd1985e86735eae046b4bee2689df8442f5",
+          "peak_rss_bytes": 49512448,
+          "phase": "measured",
+          "reason": null
+        },
+        {
+          "checks": [
+            {
+              "category": "preservation",
+              "detail": null,
+              "name": "chart-topology-and-relations",
+              "outcome": "success",
+              "scored": true
+            },
+            {
+              "category": "semantic",
+              "detail": null,
+              "name": "chart-slide-structure",
+              "outcome": "success",
+              "scored": true
+            },
+            {
+              "category": "semantic",
+              "detail": null,
+              "name": "category-chart-exact-series-and-points",
+              "outcome": "success",
+              "scored": true
+            },
+            {
+              "category": "semantic",
+              "detail": null,
+              "name": "xy-chart-exact-series-and-points",
+              "outcome": "success",
+              "scored": true
+            },
+            {
+              "category": "semantic",
+              "detail": null,
+              "name": "bubble-chart-exact-series-and-points",
+              "outcome": "success",
+              "scored": true
+            },
+            {
+              "category": "semantic",
+              "detail": null,
+              "name": "related-workbook-values",
+              "outcome": "success",
+              "scored": true
+            },
+            {
+              "category": "preservation",
+              "detail": null,
+              "name": "related-workbook-structure-and-formatting",
+              "outcome": "success",
+              "scored": true
+            },
+            {
+              "category": "preservation",
+              "detail": null,
+              "name": "chart-formatting-preserved",
+              "outcome": "success",
+              "scored": true
+            },
+            {
+              "category": "preservation",
+              "detail": null,
+              "name": "notes-preserved",
+              "outcome": "success",
+              "scored": true
+            },
+            {
+              "category": "preservation",
+              "detail": null,
+              "name": "media-preserved",
+              "outcome": "success",
+              "scored": true
+            },
+            {
+              "category": "preservation",
+              "detail": null,
+              "name": "relationships-preserved",
+              "outcome": "success",
+              "scored": true
+            },
+            {
+              "category": "preservation",
+              "detail": null,
+              "name": "opaque-parts-preserved",
+              "outcome": "success",
+              "scored": true
+            },
+            {
+              "category": "byte-only",
+              "detail": null,
+              "name": "raw-untouched-part-equality",
+              "outcome": "success",
+              "scored": false
+            }
+          ],
+          "details": {
+            "artifact_dir": "raw/python-pptx/chart-data/measured-2.pptx.adapter",
+            "candidate_path": "raw/python-pptx/chart-data/measured-2.pptx",
+            "candidate_sha256": "53ea87b6a6a116fec148f5d65159b4e0e38e52b11617e8110f47098ba733f670",
+            "command": [
+              "python",
+              "-m",
+              "pptbench.worker",
+              "python-pptx",
+              "chart-data",
+              "charts.pptx",
+              "measured-2.pptx"
+            ],
+            "diagnostic": null,
+            "stderr_artifact": "raw/python-pptx/chart-data/measured-2.pptx.adapter/stderr.bin",
+            "stderr_bytes": 0,
+            "stdout_artifact": "raw/python-pptx/chart-data/measured-2.pptx.adapter/stdout.bin",
+            "stdout_bytes": 0
+          },
+          "elapsed_ms": 131.6363329970045,
+          "iteration": 2,
+          "outcome": "success",
+          "output_path": "raw/python-pptx/chart-data/measured-2.pptx",
+          "output_sha256": "53ea87b6a6a116fec148f5d65159b4e0e38e52b11617e8110f47098ba733f670",
+          "peak_rss_bytes": 49496064,
+          "phase": "measured",
+          "reason": null
+        }
+      ]
+    },
+    {
+      "adapter": "wolfppt-wheel",
+      "checks": [
+        {
+          "category": "preservation",
+          "detail": null,
+          "name": "chart-topology-and-relations",
+          "outcome": "success",
+          "scored": true
+        },
+        {
+          "category": "semantic",
+          "detail": null,
+          "name": "chart-slide-structure",
+          "outcome": "success",
+          "scored": true
+        },
+        {
+          "category": "semantic",
+          "detail": null,
+          "name": "category-chart-exact-series-and-points",
+          "outcome": "success",
+          "scored": true
+        },
+        {
+          "category": "semantic",
+          "detail": null,
+          "name": "xy-chart-exact-series-and-points",
+          "outcome": "success",
+          "scored": true
+        },
+        {
+          "category": "semantic",
+          "detail": null,
+          "name": "bubble-chart-exact-series-and-points",
+          "outcome": "success",
+          "scored": true
+        },
+        {
+          "category": "semantic",
+          "detail": "source and result differ",
+          "name": "related-workbook-values",
+          "outcome": "failure",
+          "scored": true
+        },
+        {
+          "category": "preservation",
+          "detail": "source and result differ",
+          "name": "related-workbook-structure-and-formatting",
+          "outcome": "failure",
+          "scored": true
+        },
+        {
+          "category": "preservation",
+          "detail": "source and result differ",
+          "name": "chart-formatting-preserved",
+          "outcome": "failure",
+          "scored": true
+        },
+        {
+          "category": "preservation",
+          "detail": null,
+          "name": "notes-preserved",
+          "outcome": "success",
+          "scored": true
+        },
+        {
+          "category": "preservation",
+          "detail": null,
+          "name": "media-preserved",
+          "outcome": "success",
+          "scored": true
+        },
+        {
+          "category": "preservation",
+          "detail": null,
+          "name": "relationships-preserved",
+          "outcome": "success",
+          "scored": true
+        },
+        {
+          "category": "preservation",
+          "detail": null,
+          "name": "opaque-parts-preserved",
+          "outcome": "success",
+          "scored": true
+        },
+        {
+          "category": "byte-only",
+          "detail": null,
+          "name": "raw-untouched-part-equality",
+          "outcome": "success",
+          "scored": false
+        },
+        {
+          "category": "preservation",
+          "detail": null,
+          "name": "chart-topology-and-relations",
+          "outcome": "success",
+          "scored": true
+        },
+        {
+          "category": "semantic",
+          "detail": null,
+          "name": "chart-slide-structure",
+          "outcome": "success",
+          "scored": true
+        },
+        {
+          "category": "semantic",
+          "detail": null,
+          "name": "category-chart-exact-series-and-points",
+          "outcome": "success",
+          "scored": true
+        },
+        {
+          "category": "semantic",
+          "detail": null,
+          "name": "xy-chart-exact-series-and-points",
+          "outcome": "success",
+          "scored": true
+        },
+        {
+          "category": "semantic",
+          "detail": null,
+          "name": "bubble-chart-exact-series-and-points",
+          "outcome": "success",
+          "scored": true
+        },
+        {
+          "category": "semantic",
+          "detail": "source and result differ",
+          "name": "related-workbook-values",
+          "outcome": "failure",
+          "scored": true
+        },
+        {
+          "category": "preservation",
+          "detail": "source and result differ",
+          "name": "related-workbook-structure-and-formatting",
+          "outcome": "failure",
+          "scored": true
+        },
+        {
+          "category": "preservation",
+          "detail": "source and result differ",
+          "name": "chart-formatting-preserved",
+          "outcome": "failure",
+          "scored": true
+        },
+        {
+          "category": "preservation",
+          "detail": null,
+          "name": "notes-preserved",
+          "outcome": "success",
+          "scored": true
+        },
+        {
+          "category": "preservation",
+          "detail": null,
+          "name": "media-preserved",
+          "outcome": "success",
+          "scored": true
+        },
+        {
+          "category": "preservation",
+          "detail": null,
+          "name": "relationships-preserved",
+          "outcome": "success",
+          "scored": true
+        },
+        {
+          "category": "preservation",
+          "detail": null,
+          "name": "opaque-parts-preserved",
+          "outcome": "success",
+          "scored": true
+        },
+        {
+          "category": "byte-only",
+          "detail": null,
+          "name": "raw-untouched-part-equality",
+          "outcome": "success",
+          "scored": false
+        },
+        {
+          "category": "preservation",
+          "detail": null,
+          "name": "chart-topology-and-relations",
+          "outcome": "success",
+          "scored": true
+        },
+        {
+          "category": "semantic",
+          "detail": null,
+          "name": "chart-slide-structure",
+          "outcome": "success",
+          "scored": true
+        },
+        {
+          "category": "semantic",
+          "detail": null,
+          "name": "category-chart-exact-series-and-points",
+          "outcome": "success",
+          "scored": true
+        },
+        {
+          "category": "semantic",
+          "detail": null,
+          "name": "xy-chart-exact-series-and-points",
+          "outcome": "success",
+          "scored": true
+        },
+        {
+          "category": "semantic",
+          "detail": null,
+          "name": "bubble-chart-exact-series-and-points",
+          "outcome": "success",
+          "scored": true
+        },
+        {
+          "category": "semantic",
+          "detail": "source and result differ",
+          "name": "related-workbook-values",
+          "outcome": "failure",
+          "scored": true
+        },
+        {
+          "category": "preservation",
+          "detail": "source and result differ",
+          "name": "related-workbook-structure-and-formatting",
+          "outcome": "failure",
+          "scored": true
+        },
+        {
+          "category": "preservation",
+          "detail": "source and result differ",
+          "name": "chart-formatting-preserved",
+          "outcome": "failure",
+          "scored": true
+        },
+        {
+          "category": "preservation",
+          "detail": null,
+          "name": "notes-preserved",
+          "outcome": "success",
+          "scored": true
+        },
+        {
+          "category": "preservation",
+          "detail": null,
+          "name": "media-preserved",
+          "outcome": "success",
+          "scored": true
+        },
+        {
+          "category": "preservation",
+          "detail": null,
+          "name": "relationships-preserved",
+          "outcome": "success",
+          "scored": true
+        },
+        {
+          "category": "preservation",
+          "detail": null,
+          "name": "opaque-parts-preserved",
+          "outcome": "success",
+          "scored": true
+        },
+        {
+          "category": "byte-only",
+          "detail": null,
+          "name": "raw-untouched-part-equality",
+          "outcome": "success",
+          "scored": false
+        }
+      ],
+      "fixture": "charts",
+      "input_sha256": "172ed05b83cd7fb33ba565d275a0662f40d3f7f598883cb824045a8ac7885c93",
+      "lane": "chart-data",
+      "outcome": "failure",
+      "reason": "one or more scored semantic or preservation checks failed",
+      "samples": [
+        {
+          "checks": [
+            {
+              "category": "preservation",
+              "detail": null,
+              "name": "chart-topology-and-relations",
+              "outcome": "success",
+              "scored": true
+            },
+            {
+              "category": "semantic",
+              "detail": null,
+              "name": "chart-slide-structure",
+              "outcome": "success",
+              "scored": true
+            },
+            {
+              "category": "semantic",
+              "detail": null,
+              "name": "category-chart-exact-series-and-points",
+              "outcome": "success",
+              "scored": true
+            },
+            {
+              "category": "semantic",
+              "detail": null,
+              "name": "xy-chart-exact-series-and-points",
+              "outcome": "success",
+              "scored": true
+            },
+            {
+              "category": "semantic",
+              "detail": null,
+              "name": "bubble-chart-exact-series-and-points",
+              "outcome": "success",
+              "scored": true
+            },
+            {
+              "category": "semantic",
+              "detail": "source and result differ",
+              "name": "related-workbook-values",
+              "outcome": "failure",
+              "scored": true
+            },
+            {
+              "category": "preservation",
+              "detail": "source and result differ",
+              "name": "related-workbook-structure-and-formatting",
+              "outcome": "failure",
+              "scored": true
+            },
+            {
+              "category": "preservation",
+              "detail": "source and result differ",
+              "name": "chart-formatting-preserved",
+              "outcome": "failure",
+              "scored": true
+            },
+            {
+              "category": "preservation",
+              "detail": null,
+              "name": "notes-preserved",
+              "outcome": "success",
+              "scored": true
+            },
+            {
+              "category": "preservation",
+              "detail": null,
+              "name": "media-preserved",
+              "outcome": "success",
+              "scored": true
+            },
+            {
+              "category": "preservation",
+              "detail": null,
+              "name": "relationships-preserved",
+              "outcome": "success",
+              "scored": true
+            },
+            {
+              "category": "preservation",
+              "detail": null,
+              "name": "opaque-parts-preserved",
+              "outcome": "success",
+              "scored": true
+            },
+            {
+              "category": "byte-only",
+              "detail": null,
+              "name": "raw-untouched-part-equality",
+              "outcome": "success",
+              "scored": false
+            }
+          ],
+          "details": {
+            "artifact_dir": "raw/wolfppt-wheel/chart-data/warmup-1.pptx.adapter",
+            "candidate_path": "raw/wolfppt-wheel/chart-data/warmup-1.pptx",
+            "candidate_sha256": "c3c4e2bcb84935efc09b35a07fb97914356d6de592f9ef50e545e79e98bd7a17",
+            "command": [
+              "python",
+              "-m",
+              "pptbench.worker",
+              "wolfppt-wheel",
+              "chart-data",
+              "charts.pptx",
+              "warmup-1.pptx"
+            ],
+            "diagnostic": null,
+            "stderr_artifact": "raw/wolfppt-wheel/chart-data/warmup-1.pptx.adapter/stderr.bin",
+            "stderr_bytes": 0,
+            "stdout_artifact": "raw/wolfppt-wheel/chart-data/warmup-1.pptx.adapter/stdout.bin",
+            "stdout_bytes": 0
+          },
+          "elapsed_ms": 177.43258299742592,
+          "iteration": 1,
+          "outcome": "failure",
+          "output_path": null,
+          "output_sha256": null,
+          "peak_rss_bytes": 58474496,
+          "phase": "warmup",
+          "reason": "one or more scored semantic or preservation checks failed"
+        },
+        {
+          "checks": [
+            {
+              "category": "preservation",
+              "detail": null,
+              "name": "chart-topology-and-relations",
+              "outcome": "success",
+              "scored": true
+            },
+            {
+              "category": "semantic",
+              "detail": null,
+              "name": "chart-slide-structure",
+              "outcome": "success",
+              "scored": true
+            },
+            {
+              "category": "semantic",
+              "detail": null,
+              "name": "category-chart-exact-series-and-points",
+              "outcome": "success",
+              "scored": true
+            },
+            {
+              "category": "semantic",
+              "detail": null,
+              "name": "xy-chart-exact-series-and-points",
+              "outcome": "success",
+              "scored": true
+            },
+            {
+              "category": "semantic",
+              "detail": null,
+              "name": "bubble-chart-exact-series-and-points",
+              "outcome": "success",
+              "scored": true
+            },
+            {
+              "category": "semantic",
+              "detail": "source and result differ",
+              "name": "related-workbook-values",
+              "outcome": "failure",
+              "scored": true
+            },
+            {
+              "category": "preservation",
+              "detail": "source and result differ",
+              "name": "related-workbook-structure-and-formatting",
+              "outcome": "failure",
+              "scored": true
+            },
+            {
+              "category": "preservation",
+              "detail": "source and result differ",
+              "name": "chart-formatting-preserved",
+              "outcome": "failure",
+              "scored": true
+            },
+            {
+              "category": "preservation",
+              "detail": null,
+              "name": "notes-preserved",
+              "outcome": "success",
+              "scored": true
+            },
+            {
+              "category": "preservation",
+              "detail": null,
+              "name": "media-preserved",
+              "outcome": "success",
+              "scored": true
+            },
+            {
+              "category": "preservation",
+              "detail": null,
+              "name": "relationships-preserved",
+              "outcome": "success",
+              "scored": true
+            },
+            {
+              "category": "preservation",
+              "detail": null,
+              "name": "opaque-parts-preserved",
+              "outcome": "success",
+              "scored": true
+            },
+            {
+              "category": "byte-only",
+              "detail": null,
+              "name": "raw-untouched-part-equality",
+              "outcome": "success",
+              "scored": false
+            }
+          ],
+          "details": {
+            "artifact_dir": "raw/wolfppt-wheel/chart-data/measured-1.pptx.adapter",
+            "candidate_path": "raw/wolfppt-wheel/chart-data/measured-1.pptx",
+            "candidate_sha256": "c3c4e2bcb84935efc09b35a07fb97914356d6de592f9ef50e545e79e98bd7a17",
+            "command": [
+              "python",
+              "-m",
+              "pptbench.worker",
+              "wolfppt-wheel",
+              "chart-data",
+              "charts.pptx",
+              "measured-1.pptx"
+            ],
+            "diagnostic": null,
+            "stderr_artifact": "raw/wolfppt-wheel/chart-data/measured-1.pptx.adapter/stderr.bin",
+            "stderr_bytes": 0,
+            "stdout_artifact": "raw/wolfppt-wheel/chart-data/measured-1.pptx.adapter/stdout.bin",
+            "stdout_bytes": 0
+          },
+          "elapsed_ms": 182.62041600246448,
+          "iteration": 1,
+          "outcome": "failure",
+          "output_path": null,
+          "output_sha256": null,
+          "peak_rss_bytes": 58605568,
+          "phase": "measured",
+          "reason": "one or more scored semantic or preservation checks failed"
+        },
+        {
+          "checks": [
+            {
+              "category": "preservation",
+              "detail": null,
+              "name": "chart-topology-and-relations",
+              "outcome": "success",
+              "scored": true
+            },
+            {
+              "category": "semantic",
+              "detail": null,
+              "name": "chart-slide-structure",
+              "outcome": "success",
+              "scored": true
+            },
+            {
+              "category": "semantic",
+              "detail": null,
+              "name": "category-chart-exact-series-and-points",
+              "outcome": "success",
+              "scored": true
+            },
+            {
+              "category": "semantic",
+              "detail": null,
+              "name": "xy-chart-exact-series-and-points",
+              "outcome": "success",
+              "scored": true
+            },
+            {
+              "category": "semantic",
+              "detail": null,
+              "name": "bubble-chart-exact-series-and-points",
+              "outcome": "success",
+              "scored": true
+            },
+            {
+              "category": "semantic",
+              "detail": "source and result differ",
+              "name": "related-workbook-values",
+              "outcome": "failure",
+              "scored": true
+            },
+            {
+              "category": "preservation",
+              "detail": "source and result differ",
+              "name": "related-workbook-structure-and-formatting",
+              "outcome": "failure",
+              "scored": true
+            },
+            {
+              "category": "preservation",
+              "detail": "source and result differ",
+              "name": "chart-formatting-preserved",
+              "outcome": "failure",
+              "scored": true
+            },
+            {
+              "category": "preservation",
+              "detail": null,
+              "name": "notes-preserved",
+              "outcome": "success",
+              "scored": true
+            },
+            {
+              "category": "preservation",
+              "detail": null,
+              "name": "media-preserved",
+              "outcome": "success",
+              "scored": true
+            },
+            {
+              "category": "preservation",
+              "detail": null,
+              "name": "relationships-preserved",
+              "outcome": "success",
+              "scored": true
+            },
+            {
+              "category": "preservation",
+              "detail": null,
+              "name": "opaque-parts-preserved",
+              "outcome": "success",
+              "scored": true
+            },
+            {
+              "category": "byte-only",
+              "detail": null,
+              "name": "raw-untouched-part-equality",
+              "outcome": "success",
+              "scored": false
+            }
+          ],
+          "details": {
+            "artifact_dir": "raw/wolfppt-wheel/chart-data/measured-2.pptx.adapter",
+            "candidate_path": "raw/wolfppt-wheel/chart-data/measured-2.pptx",
+            "candidate_sha256": "c3c4e2bcb84935efc09b35a07fb97914356d6de592f9ef50e545e79e98bd7a17",
+            "command": [
+              "python",
+              "-m",
+              "pptbench.worker",
+              "wolfppt-wheel",
+              "chart-data",
+              "charts.pptx",
+              "measured-2.pptx"
+            ],
+            "diagnostic": null,
+            "stderr_artifact": "raw/wolfppt-wheel/chart-data/measured-2.pptx.adapter/stderr.bin",
+            "stderr_bytes": 0,
+            "stdout_artifact": "raw/wolfppt-wheel/chart-data/measured-2.pptx.adapter/stdout.bin",
+            "stdout_bytes": 0
+          },
+          "elapsed_ms": 180.54775000200607,
+          "iteration": 2,
+          "outcome": "failure",
+          "output_path": null,
+          "output_sha256": null,
+          "peak_rss_bytes": 58638336,
+          "phase": "measured",
+          "reason": "one or more scored semantic or preservation checks failed"
+        }
+      ]
+    }
+  ],
+  "schema_version": 2,
+  "status": "failure"
+}
