@@ -43,11 +43,7 @@ def available_adapters() -> list[AdapterInfo]:
 def adapter_home() -> Path | None:
     """Directory holding helper programs: PPTBENCH_ADAPTER_HOME or a source checkout's."""
     configured = os.environ.get("PPTBENCH_ADAPTER_HOME")
-    home = (
-        Path(configured)
-        if configured
-        else Path(__file__).resolve().parents[2] / "adapters"
-    )
+    home = Path(configured) if configured else Path(__file__).resolve().parents[2] / "adapters"
     return home.resolve() if home.is_dir() else None
 
 
@@ -265,9 +261,7 @@ def _container_info(adapter: str) -> AdapterInfo:
             adapter, None, None, False, "docker image inspect did not complete", build
         )
     if completed.returncode != 0:
-        return AdapterInfo(
-            adapter, None, None, False, f"helper image {tag} is not built", build
-        )
+        return AdapterInfo(adapter, None, None, False, f"helper image {tag} is not built", build)
     try:
         image = json.loads(completed.stdout)[0]
         labels = image["Config"]["Labels"] or {}
@@ -326,9 +320,7 @@ def _libreoffice_python_version(binary: Path) -> str:
     program = binary
     if binary.read_bytes()[:2] == b"#!":
         # Package-manager wrappers (e.g. Homebrew casks) exec the real binary.
-        match = _SCRIPT_EXEC.search(
-            binary.read_text(encoding="utf-8", errors="replace")
-        )
+        match = _SCRIPT_EXEC.search(binary.read_text(encoding="utf-8", errors="replace"))
         if match is not None:
             program = Path(match.group(1)).resolve()
     install = program.parent.parent
@@ -338,9 +330,7 @@ def _libreoffice_python_version(binary: Path) -> str:
     )
     for pattern in patterns:
         for header in sorted(install.glob(pattern)):
-            match = _PY_VERSION.search(
-                header.read_text(encoding="utf-8", errors="replace")
-            )
+            match = _PY_VERSION.search(header.read_text(encoding="utf-8", errors="replace"))
             if match is not None:
                 return match.group(1)
     return "unresolved"
@@ -429,18 +419,14 @@ def run_adapter(
             "outcome": "timeout",
             "reason": f"monitor exceeded {timeout_seconds + 5:g}s",
             "elapsed_ms": (perf_counter() - started) * 1000,
-            "details": _artifact_details(
-                artifact_dir, stdout_path, stderr_path, command
-            ),
+            "details": _artifact_details(artifact_dir, stdout_path, stderr_path, command),
         }
     if completed.returncode != 0 or not receipt_path.is_file():
         return {
             "outcome": "failure",
             "reason": "adapter monitor did not produce a receipt",
             "elapsed_ms": (perf_counter() - started) * 1000,
-            "details": _artifact_details(
-                artifact_dir, stdout_path, stderr_path, command
-            ),
+            "details": _artifact_details(artifact_dir, stdout_path, stderr_path, command),
         }
     try:
         receipt = json.loads(receipt_path.read_text(encoding="utf-8"))
@@ -452,9 +438,7 @@ def run_adapter(
             "outcome": "failure",
             "reason": "adapter monitor receipt is malformed",
             "elapsed_ms": (perf_counter() - started) * 1000,
-            "details": _artifact_details(
-                artifact_dir, stdout_path, stderr_path, command
-            ),
+            "details": _artifact_details(artifact_dir, stdout_path, stderr_path, command),
         }
     details = _artifact_details(artifact_dir, stdout_path, stderr_path, command)
     if outcome == "timeout":
@@ -579,11 +563,7 @@ def _executable_version(executable: Path) -> str | None:
         )
     except (OSError, subprocess.TimeoutExpired):
         return None
-    line = (
-        (completed.stdout or completed.stderr)
-        .decode("utf-8", errors="replace")
-        .splitlines()
-    )
+    line = (completed.stdout or completed.stderr).decode("utf-8", errors="replace").splitlines()
     return _sanitize_text(line[0])[:200] if line else None
 
 
@@ -604,9 +584,7 @@ def _artifact_details(
 def _diagnostic(path: Path) -> str | None:
     if not path.is_file() or path.stat().st_size == 0:
         return None
-    return _sanitize_text(path.read_bytes()[:4096].decode("utf-8", errors="replace"))[
-        :1000
-    ]
+    return _sanitize_text(path.read_bytes()[:4096].decode("utf-8", errors="replace"))[:1000]
 
 
 def _sanitize_text(value: str) -> str:
@@ -616,7 +594,5 @@ def _sanitize_text(value: str) -> str:
 def _redacted_command(command: list[str]) -> list[str]:
     redacted: list[str] = []
     for part in command:
-        redacted.append(
-            Path(part).name if Path(part).is_absolute() else _sanitize_text(part)
-        )
+        redacted.append(Path(part).name if Path(part).is_absolute() else _sanitize_text(part))
     return redacted

@@ -15,9 +15,7 @@ from typing import Any, NoReturn, Protocol, cast
 
 from .adapters import CONTAINER_IMAGES, LIBREOFFICE_SCRIPT, adapter_home, docker_command
 
-_UNO_SCRIPT_URL = (
-    "vnd.sun.star.script:pptbench_uno.py$run?language=Python&location=user"
-)
+_UNO_SCRIPT_URL = "vnd.sun.star.script:pptbench_uno.py$run?language=Python&location=user"
 
 
 class PresentationFactory(Protocol):
@@ -137,9 +135,7 @@ def _run_libreoffice(lane: str, source: Path, output: Path) -> None:
             check=False,
         )
         if not status_path.is_file():
-            raise RuntimeError(
-                f"soffice exited {completed.returncode} without a script status"
-            )
+            raise RuntimeError(f"soffice exited {completed.returncode} without a script status")
         status: dict[str, Any] = json.loads(status_path.read_text(encoding="utf-8"))
     if status.get("outcome") != "success":
         print(status.get("traceback", ""), file=sys.stderr)

@@ -41,7 +41,7 @@ A read/write round trip over `mixed-60` with 19 declared feature checks:
 
 `slide-count`, `slide-order-and-identifiers`, `slide-relationship-graph`, `shape-tree-semantics`, `text-content-and-order`, `text-run-formatting`, `table-cell-grid-and-text`, `table-cell-formatting`, `bullet-paragraph-properties`, `layout-geometry`, `slide-layout-semantics`, `notes-content`, `notes-relationships`, `media-part-presence`, `media-exact-bytes`, `theme-semantics`, `master-semantics`, `relationship-semantics`, `opaque-package-part`.
 
-Feature checks compare XML semantic signatures, so equivalent re-serialization passes while content or structure changes fail. A declared check whose feature is absent from the fixture reports `unscored` rather than pass or fail. A `package-readable` precondition and one byte-only observation (below) are recorded alongside the 19.
+Feature checks compare XML semantic signatures, so equivalent re-serialization passes while content or structure changes fail. Media checks compare, per owning part and relationship type, which media is referenced (`media-part-presence`) and its content hash (`media-exact-bytes`); `opaque-package-part` requires every source part PPTBench does not interpret to survive with the same content and the same relationship types reaching it. A declared check whose feature is absent from the fixture reports `unscored` rather than pass or fail. A `package-readable` precondition and one byte-only observation (below) are recorded alongside the 19.
 
 ### `template-mutation`
 
@@ -49,7 +49,7 @@ Three exact targeted edits in `mixed-60`: table cell (1,1) becomes `UPDATED-TABL
 
 - Exact targeted-edit checks (`table-cell-1-1-updated`, `table-cell-2-2-updated`, `bullet-paragraph-1-updated`) compare the exact text at the exact locations.
 - `only-declared-text-nodes-changed` compares whole-package semantic signatures of the expected result (input plus exactly those edits) against the adapter output, so wrong values, edits on the wrong slide or shape, and unrelated semantic collateral (rewritten text, dropped or injected shapes, changed notes) fail, while equivalent re-serialization passes.
-- Preservation checks hold notes semantics, media bytes, relationship graphs, and opaque parts unchanged.
+- Preservation checks hold notes semantics, media content hashes, relationship graphs, and opaque parts unchanged.
 - A byte-only observation compares raw bytes of untouched parts, excluding the two edited slides.
 
 ### `chart-data`
@@ -59,11 +59,15 @@ Replaces the data of all three charts in `charts`: category names and values, XY
 - Per-chart exact checks (`category-`, `xy-`, and `bubble-chart-exact-series-and-points`) verify chart kind, series identity, and the full target point mapping; a generic "some chart XML changed" signal does not pass.
 - `chart-topology-and-relations` and `chart-slide-structure` preserve chart/workbook wiring and slide structure.
 - `related-workbook-values` requires every chart formula to resolve to the same embedded workbook cells holding exactly the target values; `related-workbook-structure-and-formatting` preserves workbook structure and formatting outside the edited cells.
-- `chart-formatting-preserved`, the shared preservation checks, and a byte-only observation, each excluding `ppt/charts/` and `ppt/embeddings/`.
+- `chart-formatting-preserved` (chart XML without cached points, with axis ids compared only by which axes cross which), the shared preservation checks, and a byte-only observation, each excluding chart parts and the workbooks they embed.
 
 ### Check outcomes
 
 Every check declares `category` (`semantic`, `feature`, `preservation`, or `byte-only`) and `scored`. Semantic, feature, and preservation failures are score-affecting. Byte-only observations (`raw-untouched-part-equality`, `scored: false`) are recorded for information: two packages that differ byte-for-byte but agree semantically pass, byte equality is never required, and a byte difference alone is never called corruption. Scoring first re-verifies the input is the exact frozen artifact (`fixture-source-frozen`) and never scores from a stale or partial candidate.
+
+### What a scored check may observe
+
+Scored checks observe only what a user of the file can observe: content, formatting, structure, relationships resolved by type and target content, and media identified by content hash. Parts are identified by how a consumer reaches them, through the chain of relationship types from the package root, with same-type siblings ordered by where the owning XML first references them; slides follow the presentation's slide list. No scored check depends on part names, relationship ids, ZIP order, XML prefixes or attribute order, `true`/`1` boolean spellings, schema-default attribute values written out explicitly, empty `count="0"` lists, or save-time metadata (`created`, `modified`, `lastModifiedBy`, `revision`, application statistics and version stamps, thumbnails). A part no relationship reaches is an opaque part keyed by its content alone; a writer that adds an unreachable leftover is not penalized, a writer that loses a source part is. The test suite pins this with an equivalent rewrite (every part renamed and moved, every relationship id renumbered, every XML part re-encoded, ZIP order reversed, save-time metadata regenerated, recursively through embedded workbooks) that must score like the original, and one content loss per fixed check that must still fail after the same rewrite.
 
 ### Baseline damage is legitimate output
 
@@ -137,7 +141,7 @@ The WolfPPT candidate was the installed 0.1.0 wheel built from source revision `
 
 ## Observed run evidence (2026-10-02)
 
-Two six-adapter runs are retained in this repository. They differ only in the WolfPPT candidate:
+Three six-adapter runs are retained in this repository. `run-release` and `run` were scored by the earlier scorer, which keyed several checks on part names and relationship ids; `run-fair` repeats `run-release` under the name-independent scorer described in [What a scored check may observe](#what-a-scored-check-may-observe). `run-release` and `run` differ only in the WolfPPT candidate:
 
 - `run-release` (published run): WolfPPT 0.1.1, the latest public release, installed from the PyPI wheel `wolfppt-0.1.1-cp314-cp314-macosx_11_0_arm64.whl` (SHA-256 `202eb7b5cda0c20486a4eb8cddd57b208b2fd6cb9e65e7fccfee69584ea50d87`, receipt `provided-release-wheel`). The receipt records no source revision because the wheel's build commit cannot be verified from the artifact. The public mirror tags `v0.1.1` at `ae75230fb0551fc3796f16a8ba2315e680695d9e`.
   - Report dashboard: [evidence/2026-10-02/run-release/report/index.html](evidence/2026-10-02/run-release/report/index.html)
@@ -167,6 +171,31 @@ Failed scored checks, as recorded in `run-release/run.json`:
 - `pptx-automizer`: 12 feature-matrix checks, `template-package-semantics` (template-mutation), and `chart-package-semantics` (chart-data). Its single-file editing flow rebuilds the slide list from a template copy, so slide parts and charts are renamed or duplicated.
 
 Each adapter and lane ran one warmup plus three measured iterations with a 120 second child timeout and a 3600 second overall timeout on Python 3.14, macOS arm64. `apache-poi` and `open-xml-sdk` ran in linux/amd64 containers on a remote Docker engine, so their timings include remote container start and transport and are not comparable with the local adapters. In both runs the optional LibreOffice PDF render smoke succeeded for every candidate of every successful row; Open XML validation was not requested. This small synthetic snapshot is not evidence of engine-wide fidelity, rendering quality, or speed for any library.
+
+### Name-independent rerun (`run-fair`)
+
+`run-fair` repeats `run-release` with the same adapter set, WolfPPT 0.1.1 release wheel (same SHA-256 and `provided-release-wheel` receipt), iterations, warmups, timeouts, and render smoke, scored by the name-independent scorer. Adapter identities match `run-release` except `libreoffice`, whose `adapters/libreoffice/pptbench_uno.py` hash changed only through `ruff format` line wrapping.
+
+- Report dashboard: [evidence/2026-10-02/run-fair/report/index.html](evidence/2026-10-02/run-fair/report/index.html)
+- Outcome heatmap: [evidence/2026-10-02/run-fair/report/heatmap.svg](evidence/2026-10-02/run-fair/report/heatmap.svg)
+- Raw run report: [evidence/2026-10-02/run-fair/run.json](evidence/2026-10-02/run-fair/run.json)
+
+| Adapter | `feature-matrix` | `template-mutation` | `chart-data` |
+|---|---|---|---|
+| `python-pptx` 1.0.2 | failure | failure | success |
+| `wolfppt-wheel` (WolfPPT 0.1.1) | success | success | failure |
+| `apache-poi` 5.5.1 | success | success | success |
+| `libreoffice` 26.8.0.3 | failure | failure | failure |
+| `pptx-automizer` 0.9.4 | success | success | failure |
+| `open-xml-sdk` 3.5.1 | success | success | success |
+
+Failed scored checks, as recorded in `run-fair/run.json`:
+
+- `python-pptx`: `opaque-package-part` (feature-matrix) and `opaque-parts-preserved` (template-mutation): the unreachable opaque part is dropped on save. Its earlier `only-declared-text-nodes-changed` failure came from re-serialization of the edited slides and no longer counts.
+- `wolfppt-wheel`: `related-workbook-values` (the bubble workbook loses its `Size` header cell) and `related-workbook-structure-and-formatting` (the embedded workbooks lose their theme part, view settings, and style records, and gain an author). Its earlier `chart-formatting-preserved` failure came from renumbered chart axis ids and no longer counts.
+- `apache-poi`: none. Its earlier failures came from relationship order, core-property save metadata, application version stamps, and cell value spelling.
+- `libreoffice`: 13 feature-matrix checks, 5 template-mutation checks, and `chart-package-semantics` (chart-data: the first chart no longer references exactly one embedded workbook). Impress re-exports the whole package from its own document model, re-encoding media, replacing theme colors, rewriting layouts and masters, and dropping the opaque part.
+- `pptx-automizer`: `chart-formatting-preserved`, `related-workbook-values`, `related-workbook-structure-and-formatting`, and `relationships-preserved` (chart-data): each chart slide keeps a dangling chart relationship beside its new chart, the XY series formulas move to shifted workbook columns, and the edited workbooks gain cells. Its earlier feature-matrix and template-mutation failures came from renamed slide parts.
 
 ## Identity and privacy
 

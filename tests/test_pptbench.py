@@ -27,8 +27,9 @@ def test_real_python_pptx_template_edit_and_collateral_scoring(tmp_path: Path) -
         "bullet-paragraph-1-updated",
     ):
         assert outcomes[name]["outcome"] == "success"
+    # python-pptx re-serializes the two edited slides and drops the unreachable
+    # opaque part; only the opaque loss is a semantic failure.
     assert {check["name"] for check in checks if check["outcome"] == "failure"} == {
-        "only-declared-text-nodes-changed",
         "opaque-parts-preserved",
         "raw-untouched-part-equality",
     }

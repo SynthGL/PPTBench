@@ -15,7 +15,7 @@ Runs use a new or empty output root. Candidate paths and monitor artifact paths 
 Scoring has independent dimensions, each recorded per check:
 
 1. Exact targeted edits: the precise new values at the precise declared locations (table cells, a bullet paragraph, chart series and points).
-2. Field-specific Open XML semantics: XML signature comparison where equivalent ZIP/XML serialization is allowed.
+2. Field-specific Open XML semantics: XML signature comparison where equivalent ZIP/XML serialization is allowed. Parts are identified by the relationship types that reach them and their content (media and opaque parts by content hash), never by part name, relationship id, ZIP order, XML prefix, attribute order, explicitly written schema defaults, or save-time metadata.
 3. Unrelated-change preservation: whole-package semantic equality against the expected edited result, plus notes, media, relationship-graph, opaque-part, chart-topology, and embedded-workbook preservation outside the edited targets.
 4. Byte-only observations for selected untouched parts, recorded unscored.
 5. Optional local rendering and Open XML validator evidence, only when the tools are present and requested.

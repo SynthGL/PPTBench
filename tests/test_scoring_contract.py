@@ -2,10 +2,12 @@ from __future__ import annotations
 
 import hashlib
 import os
+import posixpath
 import shutil
 import subprocess
 import sys
 import zipfile
+from collections.abc import Callable
 from io import BytesIO
 from pathlib import Path
 from xml.etree import ElementTree as ET
@@ -425,6 +427,13 @@ def _assert_deterministic_archives(value: bytes) -> None:
                 _assert_deterministic_archives(part)
 
 
+_LANE_FIXTURES = {
+    "feature-matrix": "mixed-60",
+    "template-mutation": "mixed-60",
+    "chart-data": "charts",
+}
+
+
 def test_frozen_fixture_resources_are_reproducible_across_timestamps_and_processes(
     tmp_path: Path,
 ) -> None:
@@ -440,3 +449,352 @@ def test_frozen_fixture_resources_are_reproducible_across_timestamps_and_process
         assert first[identifier] == second[identifier] == frozen
         assert materialized[identifier].read_bytes() == frozen
         _assert_deterministic_archives(first[identifier])
+
+
+# Equivalent rewrites ------------------------------------------------------------------
+#
+# A writer may re-serialize a package into an equivalent form. These helpers model the
+# most aggressive such writer: every part renamed and moved, every relationship id
+# renumbered (and relationship order reversed), every XML part re-encoded with new
+# namespace prefixes and schema defaults written out, ZIP order reversed, and save-time
+# metadata regenerated, recursively through embedded packages. Scored checks must not
+# see any of it, yet must still catch a real content loss made before the rewrite.
+
+_R = "{http://schemas.openxmlformats.org/officeDocument/2006/relationships}"
+_REL = "{http://schemas.openxmlformats.org/package/2006/relationships}"
+_CT = "{http://schemas.openxmlformats.org/package/2006/content-types}"
+_CORE = "{http://schemas.openxmlformats.org/package/2006/metadata/core-properties}"
+_EXTENDED = "{http://schemas.openxmlformats.org/officeDocument/2006/extended-properties}"
+_DCTERMS = "{http://purl.org/dc/terms/}"
+
+
+def _rels_name(source: str) -> str:
+    directory, base = posixpath.split(source)
+    return posixpath.join(directory, "_rels", base + ".rels")
+
+
+def _is_xml(name: str, data: bytes) -> bool:
+    return name.endswith((".xml", ".rels")) or data.lstrip().startswith(b"<?xml")
+
+
+def _regenerate_save_time_metadata(root: ET.Element) -> None:
+    if root.tag == _CORE + "coreProperties":
+        for element in root:
+            if element.tag == _DCTERMS + "modified":
+                element.text = "2031-07-08T09:10:11Z"
+            elif element.tag == _CORE + "revision":
+                element.text = "42"
+        ET.SubElement(root, _CORE + "lastModifiedBy").text = "Equivalent Rewriter"
+    elif root.tag == _EXTENDED + "Properties":
+        for element in root:
+            if element.tag in {_EXTENDED + "AppVersion", _EXTENDED + "TotalTime"}:
+                element.text = "99.0000"
+
+
+def _write_schema_defaults(root: ET.Element) -> None:
+    for element in root.iter():
+        if element.tag == _P + "cNvSpPr":
+            element.set("txBox", {"1": "true"}.get(element.get("txBox", ""), "false"))
+        elif element.tag == _A + "tcPr":
+            element.attrib.setdefault("marL", "91440")
+        elif element.tag == _P + "cNvPr":
+            element.attrib.setdefault("hidden", "false")
+
+
+def _equivalent_rewrite(parts: dict[str, bytes]) -> dict[str, bytes]:
+    plumbing = {"[Content_Types].xml"}
+    content = [
+        name for name in sorted(parts) if name not in plumbing and not name.endswith(".rels")
+    ]
+    renamed = {
+        name: f"moved/{index:03d}-{hashlib.sha256(name.encode()).hexdigest()[:6]}"
+        + posixpath.splitext(name)[1]
+        for index, name in enumerate(reversed(content))
+    }
+    result: dict[str, bytes] = {}
+    id_maps: dict[str, dict[str, str]] = {}
+    for source in ["", *content]:
+        rels_name = _rels_name(source) if source else "_rels/.rels"
+        if rels_name not in parts:
+            continue
+        relationships = ET.fromstring(parts[rels_name])
+        entries = list(relationships)
+        id_map: dict[str, str] = {}
+        for element in entries:
+            relationships.remove(element)
+        for number, element in enumerate(reversed(entries)):
+            id_map[element.attrib["Id"]] = f"renumbered{number}"
+            element.set("Id", id_map[element.attrib["Id"]])
+            if element.get("TargetMode") != "External":
+                target = posixpath.normpath(
+                    posixpath.join(posixpath.dirname(source), element.attrib["Target"])
+                    if not element.attrib["Target"].startswith("/")
+                    else element.attrib["Target"].lstrip("/")
+                )
+                new_source = renamed.get(source, "")
+                new_target = renamed.get(target, target)
+                element.set(
+                    "Target",
+                    posixpath.relpath(new_target, posixpath.dirname(new_source))
+                    if new_source
+                    else "/" + new_target,
+                )
+            relationships.append(element)
+        id_maps[source] = id_map
+        new_rels = _rels_name(renamed[source]) if source else "_rels/.rels"
+        result[new_rels] = ET.tostring(relationships, encoding="utf-8")
+    for name in content:
+        data = parts[name]
+        if data.startswith(b"PK\x03\x04"):
+            data = _zip_bytes(_equivalent_rewrite(_unzip(data)))
+        elif _is_xml(name, data):
+            root = ET.fromstring(data)
+            id_map = id_maps.get(name, {})
+            for element in root.iter():
+                for attribute, value in element.attrib.items():
+                    if attribute.startswith(_R) and value in id_map:
+                        element.set(attribute, id_map[value])
+            _regenerate_save_time_metadata(root)
+            _write_schema_defaults(root)
+            data = ET.tostring(root, encoding="utf-8", xml_declaration=True)
+        result[renamed[name]] = data
+    content_types = ET.fromstring(parts["[Content_Types].xml"])
+    for element in content_types:
+        if element.tag == _CT + "Override":
+            old = element.attrib["PartName"].lstrip("/")
+            element.set("PartName", "/" + renamed.get(old, old))
+    result["[Content_Types].xml"] = ET.tostring(content_types, encoding="utf-8")
+    return dict(reversed(list(result.items())))
+
+
+def _unzip(value: bytes) -> dict[str, bytes]:
+    with zipfile.ZipFile(BytesIO(value)) as archive:
+        return {name: archive.read(name) for name in archive.namelist()}
+
+
+def _edit_xml(parts: dict[str, bytes], name: str, edit: Callable[[ET.Element], None]) -> None:
+    root = ET.fromstring(parts[name])
+    edit(root)
+    parts[name] = ET.tostring(root, encoding="utf-8")
+
+
+def _chart_named(parts: dict[str, bytes], kind: str) -> str:
+    return next(
+        name
+        for name, data in parts.items()
+        if name.startswith("ppt/charts/chart") and kind.encode() in data
+    )
+
+
+def _chart_workbook(parts: dict[str, bytes], chart: str) -> str:
+    relationships = ET.fromstring(parts[_rels_name(chart)])
+    target = next(
+        element.attrib["Target"]
+        for element in relationships
+        if element.attrib["Type"].endswith("/package")
+    )
+    return posixpath.normpath(posixpath.join(posixpath.dirname(chart), target))
+
+
+def _edit_workbook(
+    parts: dict[str, bytes],
+    chart_kind: str,
+    prefix: str,
+    edit: Callable[[ET.Element], None],
+) -> None:
+    workbook = _chart_workbook(parts, _chart_named(parts, chart_kind))
+    inner = _unzip(parts[workbook])
+    _edit_xml(inner, next(name for name in inner if name.startswith(prefix)), edit)
+    parts[workbook] = _zip_bytes(inner)
+
+
+def _produce(lane: str, source: Path, tmp_path: Path) -> dict[str, bytes]:
+    output = tmp_path / "produced.pptx"
+    if lane == "template-mutation":
+        _template_edit(source, output)
+    elif lane == "chart-data":
+        _chart_edit(source, output)
+    else:
+        shutil.copyfile(source, output)
+    return _unzip(output.read_bytes())
+
+
+def _score_parts(
+    lane: str, source: Path, parts: dict[str, bytes], tmp_path: Path
+) -> list[dict[str, object]]:
+    output = tmp_path / "rewritten.pptx"
+    output.write_bytes(_zip_bytes(parts))
+    return score(lane, source, output)
+
+
+def _set_first_text(root: ET.Element, value: str) -> None:
+    next(element for element in root.iter(_A + "t")).text = value
+
+
+def _add_external_link(root: ET.Element) -> None:
+    ET.SubElement(
+        root,
+        _REL + "Relationship",
+        {
+            "Id": "rIdAdded",
+            "Type": "http://schemas.openxmlformats.org/officeDocument/2006/relationships/hyperlink",
+            "Target": "https://example.invalid/",
+            "TargetMode": "External",
+        },
+    )
+
+
+def _retarget(rels: str, suffix: str, target: str) -> Callable[[dict[str, bytes]], None]:
+    def edit(parts: dict[str, bytes]) -> None:
+        def change(root: ET.Element) -> None:
+            next(e for e in root if e.attrib["Type"].endswith(suffix)).set("Target", target)
+
+        _edit_xml(parts, rels, change)
+
+    return edit
+
+
+def _drop_image_relationship(parts: dict[str, bytes]) -> None:
+    def drop(root: ET.Element) -> None:
+        root.remove(next(e for e in root if e.attrib["Type"].endswith("/image")))
+
+    _edit_xml(parts, "ppt/slides/_rels/slide2.xml.rels", drop)
+
+
+def _change_image(parts: dict[str, bytes]) -> None:
+    parts["ppt/media/image1.png"] += b"\x00re-encoded"
+
+
+def _drop_opaque(parts: dict[str, bytes]) -> None:
+    del parts["ppt/unknown/pptbench.xml"]
+
+
+def _change_opaque(parts: dict[str, bytes]) -> None:
+    _edit_xml(parts, "ppt/unknown/pptbench.xml", lambda root: setattr(root, "text", "lost"))
+
+
+def _change_notes(parts: dict[str, bytes]) -> None:
+    _edit_xml(parts, "ppt/notesSlides/notesSlide1.xml", lambda r: _set_first_text(r, "lost"))
+
+
+def _change_slide_text(parts: dict[str, bytes]) -> None:
+    _edit_xml(parts, "ppt/slides/slide1.xml", lambda r: _set_first_text(r, "lost"))
+
+
+def _change_theme(parts: dict[str, bytes]) -> None:
+    def recolor(root: ET.Element) -> None:
+        next(root.iter(_A + "srgbClr")).set("val", "FF00FF")
+
+    _edit_xml(parts, "ppt/theme/theme1.xml", recolor)
+
+
+def _change_master(parts: dict[str, bytes]) -> None:
+    def hide(root: ET.Element) -> None:
+        next(root.iter(_P + "cNvPr")).set("name", "lost")
+
+    _edit_xml(parts, "ppt/slideMasters/slideMaster1.xml", hide)
+
+
+def _change_layout(parts: dict[str, bytes]) -> None:
+    def rename(root: ET.Element) -> None:
+        next(root.iter(_P + "cSld")).set("name", "lost")
+
+    _edit_xml(parts, "ppt/slideLayouts/slideLayout1.xml", rename)
+
+
+def _link_notes(parts: dict[str, bytes]) -> None:
+    _edit_xml(parts, "ppt/notesSlides/_rels/notesSlide1.xml.rels", _add_external_link)
+
+
+def _restyle_bar_chart(parts: dict[str, bytes]) -> None:
+    def flip(root: ET.Element) -> None:
+        next(root.iter(_C + "barDir")).set("val", "bar")
+
+    _edit_xml(parts, _chart_named(parts, "barChart"), flip)
+
+
+def _change_series_header(parts: dict[str, bytes]) -> None:
+    def rename(root: ET.Element) -> None:
+        next(t for t in root.iter(_S + "t") if t.text == "Revenue").text = "Expenses"
+
+    _edit_workbook(parts, "barChart", "xl/sharedStrings", rename)
+
+
+def _restyle_workbook_cell(parts: dict[str, bytes]) -> None:
+    def restyle(root: ET.Element) -> None:
+        next(c for c in root.iter(_S + "c") if c.get("r") == "A2").set("s", "0")
+
+    _edit_workbook(parts, "barChart", "xl/worksheets/", restyle)
+
+
+def _share_workbook(parts: dict[str, bytes]) -> None:
+    shared = _chart_workbook(parts, _chart_named(parts, "barChart"))
+    scatter = _chart_named(parts, "scatterChart")
+    _retarget(_rels_name(scatter), "/package", "/" + shared)(parts)
+
+
+_LOSSES: list[tuple[str, str, Callable[[dict[str, bytes]], None]]] = [
+    ("feature-matrix", "media-part-presence", _drop_image_relationship),
+    ("feature-matrix", "media-exact-bytes", _change_image),
+    ("feature-matrix", "theme-semantics", _change_theme),
+    ("feature-matrix", "master-semantics", _change_master),
+    ("feature-matrix", "slide-layout-semantics", _change_layout),
+    ("feature-matrix", "notes-content", _change_notes),
+    ("feature-matrix", "notes-relationships", _link_notes),
+    ("feature-matrix", "relationship-semantics", _link_notes),
+    (
+        "feature-matrix",
+        "slide-relationship-graph",
+        _retarget(
+            "ppt/slides/_rels/slide1.xml.rels",
+            "/slideLayout",
+            "../slideLayouts/slideLayout1.xml",
+        ),
+    ),
+    ("feature-matrix", "opaque-package-part", _change_opaque),
+    ("template-mutation", "only-declared-text-nodes-changed", _change_slide_text),
+    ("template-mutation", "notes-preserved", _change_notes),
+    ("template-mutation", "media-preserved", _change_image),
+    ("template-mutation", "relationships-preserved", _link_notes),
+    ("template-mutation", "opaque-parts-preserved", _drop_opaque),
+    ("chart-data", "chart-topology-and-relations", _share_workbook),
+    ("chart-data", "related-workbook-values", _change_series_header),
+    ("chart-data", "related-workbook-structure-and-formatting", _restyle_workbook_cell),
+    ("chart-data", "chart-formatting-preserved", _restyle_bar_chart),
+]
+
+
+@pytest.mark.parametrize("lane", ["feature-matrix", "template-mutation", "chart-data"])
+def test_equivalent_rewrite_scores_like_the_original(lane: str, tmp_path: Path) -> None:
+    source = materialize(tmp_path)[_LANE_FIXTURES[lane]]
+    produced = _produce(lane, source, tmp_path)
+    rewritten = _equivalent_rewrite(produced)
+    assert not set(rewritten) & set(produced) - {"[Content_Types].xml", "_rels/.rels"}
+    checks = _score_parts(lane, source, rewritten, tmp_path)
+    assert not _scored_failures(checks)
+    assert {check["name"] for check in checks if check["scored"]} >= {
+        name for check_lane, name, _ in _LOSSES if check_lane == lane
+    }
+    assert all(
+        check["outcome"] == "failure"
+        for check in checks
+        if check["name"] == "raw-untouched-part-equality"
+    )
+
+
+@pytest.mark.parametrize(
+    ("lane", "check", "lose"),
+    _LOSSES,
+    ids=[f"{lane}:{check}" for lane, check, _ in _LOSSES],
+)
+def test_content_loss_survives_an_equivalent_rewrite(
+    lane: str,
+    check: str,
+    lose: Callable[[dict[str, bytes]], None],
+    tmp_path: Path,
+) -> None:
+    source = materialize(tmp_path)[_LANE_FIXTURES[lane]]
+    produced = _produce(lane, source, tmp_path)
+    lose(produced)
+    checks = _score_parts(lane, source, _equivalent_rewrite(produced), tmp_path)
+    assert check in {failure["name"] for failure in _scored_failures(checks)}

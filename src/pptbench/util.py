@@ -6,6 +6,7 @@ import hashlib
 import json
 import os
 import platform
+import posixpath
 import stat
 import sys
 import zipfile
@@ -13,6 +14,7 @@ from collections.abc import Iterable
 from io import BytesIO
 from pathlib import Path, PurePosixPath
 from typing import Any, BinaryIO
+from urllib.parse import unquote
 from xml.etree import ElementTree as ET
 
 _MAX_ZIP_MEMBERS = 4_096
@@ -108,22 +110,34 @@ def _validate_opc(parts: dict[str, bytes], *, require_presentation: bool) -> Non
     for required in ("[Content_Types].xml", "_rels/.rels"):
         if required not in parts:
             raise ValueError(f"missing required package part: {required}")
-    if require_presentation and "ppt/presentation.xml" not in parts:
-        raise ValueError("missing required PPTX presentation part")
     content_types = xml_root(parts["[Content_Types].xml"])
     if content_types.tag != _CONTENT_TYPES:
         raise ValueError("invalid [Content_Types].xml root")
     root_relationships = xml_root(parts["_rels/.rels"])
     if root_relationships.tag != _RELATIONSHIPS:
         raise ValueError("invalid package relationships root")
-    if require_presentation and xml_root(parts["ppt/presentation.xml"]).tag != _PRESENTATION:
-        raise ValueError("invalid PPTX presentation root")
+    if require_presentation:
+        main = _main_document(root_relationships, parts)
+        if main is None:
+            raise ValueError("missing required PPTX presentation part")
+        if xml_root(parts[main]).tag != _PRESENTATION:
+            raise ValueError("invalid PPTX presentation root")
     for name, data in parts.items():
         if not name.endswith(_XML_SUFFIXES):
             continue
         root = xml_root(data)
         if name.endswith(".rels"):
             _validate_relationships(name, root)
+
+
+def _main_document(relationships: ET.Element, parts: dict[str, bytes]) -> str | None:
+    """The part the package's officeDocument relationship names, whatever it is called."""
+    for relationship in relationships:
+        if relationship.attrib.get("Type", "").endswith("/officeDocument"):
+            target = unquote(relationship.attrib.get("Target", "")).lstrip("/")
+            name = posixpath.normpath(target) if target else ""
+            return name if name in parts else None
+    return None
 
 
 def _validate_relationships(name: str, root: ET.Element) -> None:

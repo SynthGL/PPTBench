@@ -1,10 +1,19 @@
-"""Exact Open XML semantic scorers with separate byte-preservation observations."""
+"""Exact Open XML semantic scorers with separate byte-preservation observations.
+
+Scored checks observe only what a user of the file can observe. Parts are resolved
+through the name-free :class:`~pptbench.semantics.PackageModel`: slides by
+presentation order, other parts by the relationship types that reach them, media by
+content hash. Part names, relationship ids, ZIP order, XML prefixes, attribute order,
+explicitly written schema defaults, and save-time metadata never decide a scored
+outcome; byte equality is recorded only as an unscored observation.
+"""
 
 from __future__ import annotations
 
-import posixpath
+import copy
 import re
 import zipfile
+from collections import Counter
 from collections.abc import Callable
 from decimal import Decimal, InvalidOperation
 from pathlib import Path
@@ -12,7 +21,8 @@ from typing import Any, TypeVar
 from xml.etree import ElementTree as ET
 
 from .fixtures import FROZEN_RECIPE, verify_fixture
-from .util import package_bytes, package_parts, sha256_bytes, xml_root
+from .semantics import ROOT, PackageModel, short_type
+from .util import package_bytes, package_parts
 
 Check = dict[str, Any]
 T = TypeVar("T")
@@ -21,9 +31,8 @@ _A = "{http://schemas.openxmlformats.org/drawingml/2006/main}"
 _C = "{http://schemas.openxmlformats.org/drawingml/2006/chart}"
 _P = "{http://schemas.openxmlformats.org/presentationml/2006/main}"
 _R = "{http://schemas.openxmlformats.org/officeDocument/2006/relationships}"
-_REL = "{http://schemas.openxmlformats.org/package/2006/relationships}"
-_SLIDE_NAME = re.compile(r"ppt/slides/slide(\d+)\.xml$")
 _CELL_RANGE = re.compile(r"^\$?([A-Z]+)\$?(\d+)(?::\$?([A-Z]+)\$?(\d+))?$")
+_CHART_OWNED = frozenset({"chart", "package"})
 
 
 def score(lane: str, source: Path, output: Path) -> list[Check]:
@@ -44,7 +53,10 @@ def score(lane: str, source: Path, output: Path) -> list[Check]:
     except (OSError, ValueError, ET.ParseError, zipfile.BadZipFile) as exc:
         return [_check("package-readable", False, str(exc))]
     if lane == "feature-matrix":
-        return _feature_matrix(before, after)
+        try:
+            return _feature_matrix(before, after)
+        except (KeyError, ValueError, ET.ParseError) as exc:
+            return [_check("package-readable", False, str(exc))]
     if lane == "template-mutation":
         try:
             return _template_mutation(before, after)
@@ -56,13 +68,15 @@ def score(lane: str, source: Path, output: Path) -> list[Check]:
 
 
 def _feature_matrix(before: dict[str, bytes], after: dict[str, bytes]) -> list[Check]:
+    source = PackageModel(before)
+    result = PackageModel(after)
     checks = [_check("package-readable", True)]
-    contracts: list[tuple[str, Callable[[dict[str, bytes]], object]]] = [
-        ("slide-count", _slide_count),
+    contracts: list[tuple[str, Callable[[PackageModel], object]]] = [
+        ("slide-count", lambda model: len(_slides(model))),
         ("slide-order-and-identifiers", _slide_identifiers),
         (
             "slide-relationship-graph",
-            lambda parts: _relationship_graph(parts, "ppt/slides/_rels/"),
+            lambda model: {number: model.outgoing(key) for number, key in _numbered_slides(model)},
         ),
         ("shape-tree-semantics", _slide_shape_trees),
         ("text-content-and-order", _slide_text),
@@ -71,103 +85,102 @@ def _feature_matrix(before: dict[str, bytes], after: dict[str, bytes]) -> list[C
         ("table-cell-formatting", _table_formatting),
         ("bullet-paragraph-properties", _paragraph_properties),
         ("layout-geometry", _shape_geometry),
+        ("slide-layout-semantics", lambda model: _nodes(model, "slideLayout")),
         (
-            "slide-layout-semantics",
-            lambda parts: _xml_part_signatures(parts, "ppt/slideLayouts/"),
+            "notes-content",
+            lambda model: {key: model.signature(key) for key in model.keys_of_type("notesSlide")},
         ),
-        ("notes-content", _notes_semantics),
         (
             "notes-relationships",
-            lambda parts: _relationship_graph(parts, "ppt/notesSlides/_rels/"),
+            lambda model: {key: model.outgoing(key) for key in model.keys_of_type("notesSlide")},
         ),
-        ("media-part-presence", lambda parts: _names(parts, "ppt/media/")),
-        ("media-exact-bytes", lambda parts: _hashes(parts, "ppt/media/")),
-        ("theme-semantics", lambda parts: _xml_part_signatures(parts, "ppt/theme/")),
         (
-            "master-semantics",
-            lambda parts: _xml_part_signatures(parts, "ppt/slideMasters/"),
+            "media-part-presence",
+            lambda model: sorted({(owner, rel_type) for owner, rel_type, _ in model.media()}),
         ),
-        ("relationship-semantics", lambda parts: _relationship_graph(parts, "")),
-        ("opaque-package-part", lambda parts: _hashes(parts, "ppt/unknown/")),
+        ("media-exact-bytes", lambda model: model.media()),
+        ("theme-semantics", lambda model: _nodes(model, "theme")),
+        ("master-semantics", lambda model: _nodes(model, "slideMaster")),
+        ("relationship-semantics", _relationship_graph),
+        (
+            "opaque-package-part",
+            lambda model: _retained(source.opaque_parts(), model.opaque_parts()),
+        ),
     ]
     for name, extractor in contracts:
-        expected = extractor(before)
+        expected = extractor(source)
         if _is_absent_feature(expected):
             checks.append(_unscored(name, "fixture does not contain this declared feature"))
         else:
-            checks.append(_equal(name, expected, extractor(after), category="feature"))
+            checks.append(_equal(name, expected, extractor(result), category="feature"))
     checks.append(_byte_observation("raw-untouched-part-equality", before, after))
     return checks
 
 
 def _template_mutation(before: dict[str, bytes], after: dict[str, bytes]) -> list[Check]:
-    expected, locations = _template_expected_parts(before)
-    result: list[Check] = []
-    for name, expected_value, actual_value in locations(after):
-        result.append(_check(name, actual_value == expected_value, "wrong target value"))
-    result.append(
+    source = PackageModel(before)
+    result = PackageModel(after)
+    expected = PackageModel(before)
+    source_slides = _slides(source)
+    table_part = _slide_name(source, source_slides, 5)
+    bullet_part = _slide_name(source, source_slides, 7)
+    table = copy.deepcopy(source.root(table_part))
+    bullet = copy.deepcopy(source.root(bullet_part))
+    for row, column, value in [(1, 1, "UPDATED-TABLE-A"), (2, 2, "UPDATED-TABLE-B")]:
+        _set_single_text(_table_cell(table, "PPTBenchTable", row, column), value)
+    _set_single_text(_shape_paragraph(bullet, "PPTBenchBullets", 1), "UPDATED-BULLET")
+    expected.replace_root(table_part, table)
+    expected.replace_root(bullet_part, bullet)
+
+    result_slides = _slides(result)
+    table_root = result.root(_slide_name(result, result_slides, 5))
+    bullet_root = result.root(_slide_name(result, result_slides, 7))
+    locations = [
+        (
+            "table-cell-1-1-updated",
+            "UPDATED-TABLE-A",
+            _single_text(_table_cell(table_root, "PPTBenchTable", 1, 1)),
+        ),
+        (
+            "table-cell-2-2-updated",
+            "UPDATED-TABLE-B",
+            _single_text(_table_cell(table_root, "PPTBenchTable", 2, 2)),
+        ),
+        (
+            "bullet-paragraph-1-updated",
+            "UPDATED-BULLET",
+            _single_text(_shape_paragraph(bullet_root, "PPTBenchBullets", 1)),
+        ),
+    ]
+    checks = [
+        _check(name, actual == wanted, "wrong target value") for name, wanted, actual in locations
+    ]
+    checks.append(
         _equal(
             "only-declared-text-nodes-changed",
-            _part_semantics(expected),
-            _part_semantics(after),
+            _package_semantics(expected),
+            _package_semantics(result),
             category="semantic",
         )
     )
-    result.extend(_preservation_checks(before, after))
-    result.append(
+    checks.extend(_preservation_checks(source, result))
+    checks.append(
         _byte_observation(
             "raw-untouched-part-equality",
             before,
             after,
-            exclude_names={"ppt/slides/slide5.xml", "ppt/slides/slide7.xml"},
+            exclude_names={table_part, bullet_part},
         )
     )
-    return result
-
-
-def _template_expected_parts(
-    before: dict[str, bytes],
-) -> tuple[dict[str, bytes], Callable[[dict[str, bytes]], list[tuple[str, str, str | None]]]]:
-    expected = dict(before)
-    table_part = _slide_part(before, 5)
-    bullet_part = _slide_part(before, 7)
-    table = xml_root(before[table_part])
-    bullet = xml_root(before[bullet_part])
-    table_targets = [(1, 1, "UPDATED-TABLE-A"), (2, 2, "UPDATED-TABLE-B")]
-    for row, column, value in table_targets:
-        _set_single_text(_table_cell(table, "PPTBenchTable", row, column), value)
-    _set_single_text(_shape_paragraph(bullet, "PPTBenchBullets", 1), "UPDATED-BULLET")
-    expected[table_part] = ET.tostring(table, encoding="utf-8")
-    expected[bullet_part] = ET.tostring(bullet, encoding="utf-8")
-
-    def locations(parts: dict[str, bytes]) -> list[tuple[str, str, str | None]]:
-        table_root = xml_root(parts[_slide_part(parts, 5)])
-        bullet_root = xml_root(parts[_slide_part(parts, 7)])
-        return [
-            (
-                "table-cell-1-1-updated",
-                "UPDATED-TABLE-A",
-                _single_text(_table_cell(table_root, "PPTBenchTable", 1, 1)),
-            ),
-            (
-                "table-cell-2-2-updated",
-                "UPDATED-TABLE-B",
-                _single_text(_table_cell(table_root, "PPTBenchTable", 2, 2)),
-            ),
-            (
-                "bullet-paragraph-1-updated",
-                "UPDATED-BULLET",
-                _single_text(_shape_paragraph(bullet_root, "PPTBenchBullets", 1)),
-            ),
-        ]
-
-    return expected, locations
+    return checks
 
 
 def _chart_data(before: dict[str, bytes], after: dict[str, bytes]) -> list[Check]:
     try:
-        source_links = _chart_links(before)
-        output_links = _chart_links(after)
+        source = PackageModel(before)
+        result = PackageModel(after)
+        source_links = _chart_links(source)
+        output_links = _chart_links(result)
         expected = _chart_contract()
         checks = [
             _equal(
@@ -178,52 +191,50 @@ def _chart_data(before: dict[str, bytes], after: dict[str, bytes]) -> list[Check
             ),
             _equal(
                 "chart-slide-structure",
-                _chart_slide_structure(before),
-                _chart_slide_structure(after),
+                _slide_shape_trees(source),
+                _slide_shape_trees(result),
             ),
         ]
-        expected_cells: dict[tuple[str, str, str], str] = {}
+        expected_cells: dict[tuple[int, str, str], str] = {}
         for slide_number, expected_chart in expected.items():
-            chart_part, workbook_part = output_links[slide_number]
-            root = xml_root(after[chart_part])
+            chart_key, _ = output_links[slide_number]
+            root = result.root(result.name_of[chart_key])
             chart_name = str(expected_chart["name"])
-            check_name = f"{chart_name}-chart-exact-series-and-points"
             refs = _validate_chart(root, expected_chart)
             checks.append(
                 _check(
-                    check_name,
+                    f"{chart_name}-chart-exact-series-and-points",
                     refs is not None,
                     "chart type, series, or point mapping differs",
                 )
             )
             if refs is not None:
                 for formula, values in refs:
-                    for sheet, coordinate, value in _formula_cells(
-                        after[workbook_part], formula, values
-                    ):
-                        key = (workbook_part, sheet, coordinate)
+                    for sheet, coordinate, value in _formula_cells(formula, values):
+                        key = (slide_number, sheet, coordinate)
                         if key in expected_cells and expected_cells[key] != value:
                             raise ValueError("chart series assign conflicting workbook values")
                         expected_cells[key] = value
-        checks.append(_workbook_values_check(before, after, source_links, expected_cells))
-        checks.append(_workbook_structure_check(before, after, source_links))
+        checks.append(
+            _workbook_values_check(source, result, source_links, output_links, expected_cells)
+        )
+        checks.append(_workbook_structure_check(source, result, source_links, output_links))
         checks.append(
             _equal(
                 "chart-formatting-preserved",
-                _chart_formats(before),
-                _chart_formats(after),
+                _chart_formats(source, source_links),
+                _chart_formats(result, output_links),
                 category="preservation",
             )
         )
-        checks.extend(
-            _preservation_checks(before, after, exclude_prefixes=("ppt/charts/", "ppt/embeddings/"))
-        )
+        checks.extend(_preservation_checks(source, result, exclude_kinds=_CHART_OWNED))
         checks.append(
             _byte_observation(
                 "raw-untouched-part-equality",
                 before,
                 after,
-                exclude_prefixes=("ppt/charts/", "ppt/embeddings/"),
+                exclude_names=_owned_names(source, _CHART_OWNED)
+                | _owned_names(result, _CHART_OWNED),
             )
         )
         return checks
@@ -306,20 +317,27 @@ def _validate_chart(
 
 
 def _workbook_values_check(
-    before: dict[str, bytes],
-    after: dict[str, bytes],
+    source: PackageModel,
+    result: PackageModel,
     source_links: dict[int, tuple[str, str]],
-    expected_cells: dict[tuple[str, str, str], str],
+    output_links: dict[int, tuple[str, str]],
+    expected_cells: dict[tuple[int, str, str], str],
 ) -> Check:
-    source_workbooks = {workbook for _, workbook in source_links.values()}
-    output_workbooks = {part for part, _, _ in expected_cells}
-    if source_workbooks != output_workbooks:
+    if {number: link[1] for number, link in source_links.items()} != {
+        number: link[1] for number, link in output_links.items()
+    }:
         return _check("related-workbook-identity", False, "chart workbook relations changed")
-    expected_grids = {part: _workbook_cells(before[part]) for part in source_workbooks}
-    actual_grids = {part: _workbook_cells(after[part]) for part in source_workbooks}
-    for (part, sheet, coordinate), expected_value in expected_cells.items():
+    expected_grids = {
+        number: _workbook_cells(source.data(workbook))
+        for number, (_, workbook) in source_links.items()
+    }
+    actual_grids = {
+        number: _workbook_cells(result.data(workbook))
+        for number, (_, workbook) in output_links.items()
+    }
+    for (number, sheet, coordinate), expected_value in expected_cells.items():
         try:
-            expected_grids[part][sheet][coordinate] = expected_value
+            expected_grids[number][sheet][coordinate] = _canonical_value(expected_value)
         except KeyError:
             return _check(
                 "related-workbook-values",
@@ -330,53 +348,65 @@ def _workbook_values_check(
 
 
 def _workbook_structure_check(
-    before: dict[str, bytes], after: dict[str, bytes], links: dict[int, tuple[str, str]]
+    source: PackageModel,
+    result: PackageModel,
+    source_links: dict[int, tuple[str, str]],
+    output_links: dict[int, tuple[str, str]],
 ) -> Check:
-    workbooks = {workbook for _, workbook in links.values()}
     return _equal(
         "related-workbook-structure-and-formatting",
-        {part: _workbook_structure(before[part]) for part in workbooks},
-        {part: _workbook_structure(after[part]) for part in workbooks},
+        {
+            number: _workbook_structure(source.data(workbook))
+            for number, (_, workbook) in source_links.items()
+        },
+        {
+            number: _workbook_structure(result.data(workbook))
+            for number, (_, workbook) in output_links.items()
+        },
         category="preservation",
     )
 
 
 def _preservation_checks(
-    before: dict[str, bytes],
-    after: dict[str, bytes],
+    source: PackageModel,
+    result: PackageModel,
     *,
-    exclude_prefixes: tuple[str, ...] = (),
+    exclude_kinds: frozenset[str] = frozenset(),
 ) -> list[Check]:
-    def filtered(parts: dict[str, bytes], prefix: str) -> dict[str, bytes]:
+    source_excluded = source.descendants(set(exclude_kinds))
+    result_excluded = result.descendants(set(exclude_kinds))
+
+    def notes(model: PackageModel, excluded: set[str]) -> dict[str, object]:
         return {
-            name: data
-            for name, data in parts.items()
-            if name.startswith(prefix) and not name.startswith(exclude_prefixes)
+            key: model.node(key) for key in model.keys_of_type("notesSlide") if key not in excluded
         }
 
     return [
         _equal(
             "notes-preserved",
-            _part_semantics(filtered(before, "ppt/notesSlides/")),
-            _part_semantics(filtered(after, "ppt/notesSlides/")),
+            notes(source, source_excluded),
+            notes(result, result_excluded),
             category="preservation",
         ),
         _equal(
             "media-preserved",
-            _hashes(filtered(before, "ppt/media/"), ""),
-            _hashes(filtered(after, "ppt/media/"), ""),
+            source.media(exclude=source_excluded),
+            result.media(exclude=result_excluded),
             category="preservation",
         ),
         _equal(
             "relationships-preserved",
-            _relationship_graph(before, ""),
-            _relationship_graph(after, ""),
+            _relationship_graph(source),
+            _relationship_graph(result),
             category="preservation",
         ),
         _equal(
             "opaque-parts-preserved",
-            _hashes(filtered(before, "ppt/unknown/"), ""),
-            _hashes(filtered(after, "ppt/unknown/"), ""),
+            source.opaque_parts(exclude=source_excluded),
+            _retained(
+                source.opaque_parts(exclude=source_excluded),
+                result.opaque_parts(exclude=result_excluded),
+            ),
             category="preservation",
         ),
     ]
@@ -419,19 +449,10 @@ def _byte_observation(
     after: dict[str, bytes],
     *,
     exclude_names: set[str] | None = None,
-    exclude_prefixes: tuple[str, ...] = (),
 ) -> Check:
     omitted = exclude_names or set()
-    before_untouched = {
-        part: value
-        for part, value in before.items()
-        if part not in omitted and not part.startswith(exclude_prefixes)
-    }
-    after_untouched = {
-        part: value
-        for part, value in after.items()
-        if part not in omitted and not part.startswith(exclude_prefixes)
-    }
+    before_untouched = {part: value for part, value in before.items() if part not in omitted}
+    after_untouched = {part: value for part, value in after.items() if part not in omitted}
     return _check(
         name,
         before_untouched == after_untouched,
@@ -441,160 +462,154 @@ def _byte_observation(
     )
 
 
-def _names(parts: dict[str, bytes], prefix: str) -> list[str]:
-    return sorted(name for name in parts if name.startswith(prefix))
+def _owned_names(model: PackageModel, kinds: frozenset[str]) -> set[str]:
+    return {model.name_of[key] for key in model.descendants(set(kinds))}
 
 
-def _hashes(parts: dict[str, bytes], prefix: str) -> dict[str, str]:
-    return {name: sha256_bytes(data) for name, data in parts.items() if name.startswith(prefix)}
+# Slides, in presentation order -----------------------------------------------------
 
 
-def _slide_count(parts: dict[str, bytes]) -> int:
-    return len(_slide_parts(parts))
+def _slides(model: PackageModel) -> list[str]:
+    """Slide keys in the order the presentation's slide list shows them."""
+    presentation = model.main_part()
+    root = model.root(model.name_of[presentation])
+    if root.tag != _P + "presentation":
+        raise ValueError("main document is not a presentation")
+    slides: list[str] = []
+    for slide_id in root.iter(_P + "sldId"):
+        rel_type, name = model.target(presentation, slide_id.attrib.get(_R + "id", ""))
+        if name is None or short_type(rel_type) != "slide":
+            raise ValueError("slide list entry does not resolve to a slide part")
+        slides.append(model.key_of[name])
+    return slides
 
 
-def _slide_parts(parts: dict[str, bytes]) -> list[tuple[int, str]]:
-    result: list[tuple[int, str]] = []
-    for name in parts:
-        match = _SLIDE_NAME.fullmatch(name)
-        if match:
-            result.append((int(match.group(1)), name))
-    return sorted(result)
+def _numbered_slides(model: PackageModel) -> list[tuple[int, str]]:
+    return list(enumerate(_slides(model), start=1))
 
 
-def _slide_part(parts: dict[str, bytes], number: int) -> str:
-    part = f"ppt/slides/slide{number}.xml"
-    if part not in parts:
-        raise ValueError(f"missing expected slide part: {part}")
-    return part
+def _slide_name(model: PackageModel, slides: list[str], number: int) -> str:
+    if number > len(slides):
+        raise ValueError(f"missing expected slide {number}")
+    return model.name_of[slides[number - 1]]
 
 
-def _slide_identifiers(parts: dict[str, bytes]) -> list[tuple[int, str]]:
-    return _slide_parts(parts)
+def _slide_roots(model: PackageModel) -> list[tuple[int, str, ET.Element]]:
+    return [
+        (number, key, model.root(model.name_of[key])) for number, key in _numbered_slides(model)
+    ]
 
 
-def _slide_shape_trees(parts: dict[str, bytes]) -> dict[str, object]:
-    return {name: _xml_signature(parts[name]) for _, name in _slide_parts(parts)}
-
-
-def _slide_text(parts: dict[str, bytes]) -> dict[str, list[str]]:
+def _slide_element_signatures(
+    model: PackageModel, select: Callable[[ET.Element], list[ET.Element]]
+) -> dict[int, list[object]]:
     return {
-        name: [
-            element.text or ""
-            for element in xml_root(parts[name]).iter()
-            if element.tag == _A + "t"
-        ]
-        for _, name in _slide_parts(parts)
+        number: [model.element_signature(key, element) for element in select(root)]
+        for number, key, root in _slide_roots(model)
     }
 
 
-def _text_formatting(parts: dict[str, bytes]) -> dict[str, list[object]]:
+def _slide_identifiers(model: PackageModel) -> list[tuple[int, str]]:
+    presentation = model.root(model.name_of[model.main_part()])
+    return [
+        (number, slide_id.attrib.get("id", ""))
+        for number, slide_id in enumerate(presentation.iter(_P + "sldId"), start=1)
+    ]
+
+
+def _slide_shape_trees(model: PackageModel) -> dict[int, object]:
+    return {number: model.signature(key) for number, key in _numbered_slides(model)}
+
+
+def _slide_text(model: PackageModel) -> dict[int, list[str]]:
     return {
-        name: [
-            _element_signature(element)
-            for element in xml_root(parts[name]).iter()
-            if element.tag in {_A + "rPr", _A + "endParaRPr"}
-        ]
-        for _, name in _slide_parts(parts)
+        number: [element.text or "" for element in root.iter(_A + "t")]
+        for number, _, root in _slide_roots(model)
     }
 
 
-def _table_grid(parts: dict[str, bytes]) -> dict[str, list[list[list[str]]]]:
-    output: dict[str, list[list[list[str]]]] = {}
-    for _, name in _slide_parts(parts):
-        grids: list[list[list[str]]] = []
-        for table in xml_root(parts[name]).iter(_A + "tbl"):
-            grids.append(
-                [
-                    [_single_text(cell) or "" for cell in row.findall(_A + "tc")]
-                    for row in table.findall(_A + "tr")
-                ]
-            )
-        output[name] = grids
-    return output
+def _text_formatting(model: PackageModel) -> dict[int, list[object]]:
+    return _slide_element_signatures(
+        model,
+        lambda root: [
+            element for element in root.iter() if element.tag in {_A + "rPr", _A + "endParaRPr"}
+        ],
+    )
 
 
-def _table_formatting(parts: dict[str, bytes]) -> dict[str, list[object]]:
+def _table_grid(model: PackageModel) -> dict[int, list[list[list[str]]]]:
     return {
-        name: [_element_signature(table) for table in xml_root(parts[name]).iter(_A + "tbl")]
-        for _, name in _slide_parts(parts)
-    }
-
-
-def _paragraph_properties(parts: dict[str, bytes]) -> dict[str, list[object]]:
-    return {
-        name: [_element_signature(paragraph) for paragraph in xml_root(parts[name]).iter(_A + "p")]
-        for _, name in _slide_parts(parts)
-    }
-
-
-def _shape_geometry(parts: dict[str, bytes]) -> dict[str, list[object]]:
-    return {
-        name: [
-            _element_signature(element)
-            for element in xml_root(parts[name]).iter()
-            if _local(element.tag) in {"xfrm", "off", "ext", "chOff", "chExt"}
-        ]
-        for _, name in _slide_parts(parts)
-    }
-
-
-def _notes_semantics(parts: dict[str, bytes]) -> dict[str, object]:
-    return _xml_part_signatures(parts, "ppt/notesSlides/")
-
-
-def _xml_part_signatures(parts: dict[str, bytes], prefix: str) -> dict[str, object]:
-    return {
-        name: _xml_signature(data)
-        for name, data in sorted(parts.items())
-        if name.startswith(prefix) and name.endswith((".xml", ".rels"))
-    }
-
-
-def _relationship_graph(
-    parts: dict[str, bytes], prefix: str
-) -> dict[str, list[tuple[str, str, str]]]:
-    graph: dict[str, list[tuple[str, str, str]]] = {}
-    for name, data in parts.items():
-        if name.endswith(".rels") and name.startswith(prefix):
-            root = xml_root(data)
-            graph[name] = [
-                (
-                    element.attrib.get("Id", ""),
-                    element.attrib.get("Type", ""),
-                    element.attrib.get("Target", ""),
-                )
-                for element in root
+        number: [
+            [
+                [_single_text(cell) or "" for cell in row.findall(_A + "tc")]
+                for row in table.findall(_A + "tr")
             ]
-    return dict(sorted(graph.items()))
-
-
-def _part_semantics(parts: dict[str, bytes]) -> dict[str, object]:
-    return {
-        name: _xml_signature(data) if name.endswith((".xml", ".rels")) else sha256_bytes(data)
-        for name, data in sorted(parts.items())
+            for table in root.iter(_A + "tbl")
+        ]
+        for number, _, root in _slide_roots(model)
     }
 
 
-def _xml_signature(data: bytes) -> object:
-    return _element_signature(xml_root(data))
+def _table_formatting(model: PackageModel) -> dict[int, list[object]]:
+    return _slide_element_signatures(model, lambda root: list(root.iter(_A + "tbl")))
 
 
-def _element_signature(element: ET.Element, *, in_text: bool = False) -> object:
-    text_sensitive = in_text or element.tag == _A + "t"
-    text = (
-        element.text if text_sensitive else (element.text if (element.text or "").strip() else None)
+def _paragraph_properties(model: PackageModel) -> dict[int, list[object]]:
+    return _slide_element_signatures(model, lambda root: list(root.iter(_A + "p")))
+
+
+def _shape_geometry(model: PackageModel) -> dict[int, list[object]]:
+    return _slide_element_signatures(
+        model,
+        lambda root: [
+            element
+            for element in root.iter()
+            if _local(element.tag) in {"xfrm", "off", "ext", "chOff", "chExt"}
+        ],
     )
-    return (
-        element.tag,
-        tuple(sorted(element.attrib.items())),
-        text,
-        tuple(_element_signature(child, in_text=text_sensitive) for child in element),
-    )
+
+
+# Whole-package views ---------------------------------------------------------------
+
+
+def _nodes(model: PackageModel, kind: str) -> dict[str, object]:
+    return {key: model.node(key) for key in model.keys_of_type(kind)}
+
+
+def _relationship_graph(model: PackageModel) -> dict[str, list[tuple[str, str]]]:
+    graph = {key: model.outgoing(key) for key in model.edges}
+    return {key: edges for key, edges in sorted(graph.items()) if edges}
+
+
+def _package_semantics(model: PackageModel) -> dict[str, object]:
+    """Every reachable part's content, type, and relationships; opaque parts aside."""
+    result: dict[str, object] = {ROOT: model.outgoing(ROOT)}
+    for key in model.part_keys():
+        if not model.is_save_time(key) and not model.is_opaque(key):
+            result[key] = model.node(key)
+    return result
 
 
 def _is_absent_feature(value: object) -> bool:
     return value in ({}, [], (), 0, None)
+
+
+def _retained(expected: list[T], actual: list[T]) -> list[T]:
+    """Expected entries still present in ``actual``, counted as a multiset.
+
+    Unreachable leftovers a writer adds are invisible to every reader, so only
+    losing a source part counts; added reachable parts change the relationship graph.
+    """
+    available = Counter(repr(entry) for entry in actual)
+    kept: list[T] = []
+    for entry in expected:
+        if available[repr(entry)]:
+            available[repr(entry)] -= 1
+            kept.append(entry)
+    return kept
+
+
+# Template targets --------------------------------------------------------------------
 
 
 def _shape_named(root: ET.Element, name: str) -> ET.Element:
@@ -641,10 +656,14 @@ def _set_single_text(element: ET.Element, value: str) -> None:
     texts[0].text = value
 
 
-def _chart_links(parts: dict[str, bytes]) -> dict[int, tuple[str, str]]:
+# Charts and embedded workbooks -------------------------------------------------------
+
+
+def _chart_links(model: PackageModel) -> dict[int, tuple[str, str]]:
+    """Chart slides mapped to (chart, embedded workbook) as a consumer resolves them."""
     links: dict[int, tuple[str, str]] = {}
-    for number, slide_part in _slide_parts(parts):
-        root = xml_root(parts[slide_part])
+    for number, key in _numbered_slides(model):
+        root = model.root(model.name_of[key])
         chart_ids = [
             element.attrib[_R + "id"]
             for element in root.iter(_C + "chart")
@@ -654,58 +673,49 @@ def _chart_links(parts: dict[str, bytes]) -> dict[int, tuple[str, str]]:
             continue
         if len(chart_ids) != 1:
             raise ValueError(f"slide {number} has an ambiguous chart relationship")
-        relationships = _relationships(parts, slide_part)
-        relation = relationships.get(chart_ids[0])
-        if relation is None:
+        rel_type, chart_name = model.target(key, chart_ids[0])
+        if chart_name is None or short_type(rel_type) != "chart":
             raise ValueError(f"slide {number} chart relationship is missing")
-        chart_part = _resolve_part(slide_part, relation[1])
-        chart_relationships = _relationships(parts, chart_part)
-        workbooks = [
-            _resolve_part(chart_part, target)
-            for _, target in chart_relationships.values()
-            if target.lower().endswith(".xlsx")
+        chart_key = model.key_of[chart_name]
+        external = [
+            element.attrib.get(_R + "id", "")
+            for element in model.root(chart_name).iter(_C + "externalData")
         ]
-        if len(workbooks) != 1:
-            raise ValueError(f"chart {chart_part} must relate to exactly one embedded workbook")
-        links[number] = (chart_part, workbooks[0])
+        if len(external) != 1:
+            raise ValueError(f"slide {number} chart must reference exactly one workbook")
+        workbook_type, workbook_name = model.target(chart_key, external[0])
+        if workbook_name is None or short_type(workbook_type) != "package":
+            raise ValueError(f"slide {number} chart workbook is not an embedded package")
+        links[number] = (chart_key, model.key_of[workbook_name])
     if set(links) != {1, 2, 3}:
         raise ValueError("chart fixture must contain exactly the declared three chart slides")
     return links
 
 
-def _relationships(parts: dict[str, bytes], source_part: str) -> dict[str, tuple[str, str]]:
-    relation_part = posixpath.join(
-        posixpath.dirname(source_part),
-        "_rels",
-        posixpath.basename(source_part) + ".rels",
-    )
-    if relation_part not in parts:
-        raise ValueError(f"missing relationships for {source_part}")
-    root = xml_root(parts[relation_part])
-    if root.tag != _REL + "Relationships":
-        raise ValueError(f"invalid relationships root: {relation_part}")
-    result: dict[str, tuple[str, str]] = {}
-    for element in root:
-        relation_id = element.attrib.get("Id")
-        relation_type = element.attrib.get("Type")
-        target = element.attrib.get("Target")
-        if not relation_id or not relation_type or not target or relation_id in result:
-            raise ValueError(f"malformed relationship in {relation_part}")
-        result[relation_id] = (relation_type, target)
-    return result
+def _chart_formats(model: PackageModel, links: dict[int, tuple[str, str]]) -> dict[int, object]:
+    return {
+        number: model.signature(chart, transform=_chart_formatting)
+        for number, (chart, _) in links.items()
+    }
 
 
-def _resolve_part(source_part: str, target: str) -> str:
-    if target.startswith("/") or "\\" in target:
-        raise ValueError("unsafe relationship target")
-    resolved = posixpath.normpath(posixpath.join(posixpath.dirname(source_part), target))
-    if resolved.startswith("../") or resolved == "..":
-        raise ValueError("relationship escapes package")
-    return resolved
+def _chart_formatting(root: ET.Element) -> ET.Element:
+    """Chart formatting only: no cached points, and axis ids reduced to their wiring.
 
-
-def _chart_slide_structure(parts: dict[str, bytes]) -> dict[str, object]:
-    return {name: _xml_signature(parts[name]) for _, name in _slide_parts(parts)}
+    Cached points change with every chart edit and other checks verify them. Axis ids
+    (``c:axId``/``c:crossAx``) are internal identifiers like relationship ids: only
+    which axes refer to which matters, so each is renumbered by first appearance.
+    """
+    stripped = copy.deepcopy(root)
+    for cache in stripped.iter():
+        if _local(cache.tag) in {"strCache", "numCache", "strLit", "numLit"}:
+            for value in cache.iter(_C + "v"):
+                value.text = None
+    axes: dict[str, str] = {}
+    for element in stripped.iter():
+        if element.tag in {_C + "axId", _C + "crossAx"} and "val" in element.attrib:
+            element.set("val", axes.setdefault(element.attrib["val"], str(len(axes))))
+    return stripped
 
 
 def _series_name(series: ET.Element) -> str | None:
@@ -775,7 +785,7 @@ def _numeric_sequence_equal(actual: list[str], expected: list[object]) -> bool:
         return False
 
 
-def _formula_cells(workbook: bytes, formula: str, values: list[str]) -> list[tuple[str, str, str]]:
+def _formula_cells(formula: str, values: list[str]) -> list[tuple[str, str, str]]:
     sheet, coordinates = _formula_coordinates(formula)
     if len(coordinates) != len(values):
         raise ValueError("chart formula length does not match its cached points")
@@ -817,24 +827,28 @@ def _column_name(number: int) -> str:
     return result
 
 
+def _workbook(value: bytes) -> tuple[PackageModel, str]:
+    model = PackageModel(package_bytes(value))
+    return model, model.main_part()
+
+
 def _workbook_cells(value: bytes) -> dict[str, dict[str, str]]:
-    parts = package_bytes(value)
-    shared = _shared_strings(parts)
-    workbook = xml_root(parts["xl/workbook.xml"])
-    relations = _relationships(parts, "xl/workbook.xml")
+    """Cell values by sheet name and coordinate, independent of storage form."""
+    model, workbook = _workbook(value)
+    shared = _shared_strings(model, workbook)
     sheets: dict[str, dict[str, str]] = {}
-    for sheet in workbook.iter():
+    for sheet in model.root(model.name_of[workbook]).iter():
         if _local(sheet.tag) != "sheet":
             continue
         name = sheet.attrib.get("name")
         relation_id = sheet.attrib.get(_R + "id")
-        if not name or not relation_id or relation_id not in relations:
+        if not name or not relation_id:
             raise ValueError("malformed workbook sheet relationship")
-        sheet_part = _resolve_part("xl/workbook.xml", relations[relation_id][1])
-        if sheet_part not in parts:
+        _, sheet_part = model.target(workbook, relation_id)
+        if sheet_part is None:
             raise ValueError("workbook sheet part is missing")
         cells: dict[str, str] = {}
-        for cell in xml_root(parts[sheet_part]).iter():
+        for cell in model.root(sheet_part).iter():
             if _local(cell.tag) != "c":
                 continue
             coordinate = cell.attrib.get("r")
@@ -845,19 +859,21 @@ def _workbook_cells(value: bytes) -> dict[str, dict[str, str]]:
     return sheets
 
 
-def _shared_strings(parts: dict[str, bytes]) -> list[str]:
-    part = "xl/sharedStrings.xml"
-    if part not in parts:
+def _shared_strings(model: PackageModel, workbook: str) -> list[str]:
+    tables = model.related(workbook, "sharedStrings")
+    if not tables:
         return []
+    if len(tables) != 1:
+        raise ValueError("workbook has more than one shared string table")
     return [
         "".join(node.text or "" for node in item.iter() if _local(node.tag) == "t")
-        for item in xml_root(parts[part]).iter()
+        for item in model.root(model.name_of[tables[0]]).iter()
         if _local(item.tag) == "si"
     ]
 
 
 def _cell_value(cell: ET.Element, shared: list[str]) -> str:
-    cell_type = cell.attrib.get("t")
+    cell_type = cell.attrib.get("t", "n")
     if cell_type == "inlineStr":
         inline = next((element for element in cell.iter() if _local(element.tag) == "is"), None)
         if inline is None:
@@ -871,97 +887,54 @@ def _cell_value(cell: ET.Element, shared: list[str]) -> str:
         if index < 0 or index >= len(shared):
             raise ValueError("shared string index is out of range")
         return shared[index]
+    if cell_type == "n":
+        return _canonical_value(value)
     return value
 
 
+def _canonical_value(value: str) -> str:
+    """One spelling per number: ``42``, ``42.0`` and ``4.2E1`` are the same cell value."""
+    try:
+        number = Decimal(value.strip())
+    except InvalidOperation:
+        return value
+    if not number.is_finite():
+        return value
+    normalized = number.normalize()
+    return format(normalized, "f") if normalized != 0 else "0"
+
+
 def _workbook_structure(value: bytes) -> dict[str, object]:
-    parts = package_bytes(value)
-    result: dict[str, object] = {}
-    for name, data in parts.items():
-        if name == "xl/sharedStrings.xml":
+    """Embedded workbook parts without cell values, which the values check verifies."""
+    model, _ = _workbook(value)
+    result: dict[str, object] = {ROOT: model.outgoing(ROOT)}
+    for key in model.part_keys():
+        if model.is_save_time(key):
             continue
-        if name == "docProps/core.xml":
-            result[name] = _core_properties_signature(xml_root(data))
-        elif name.startswith("xl/worksheets/") and name.endswith(".xml"):
-            result[name] = _worksheet_structure(xml_root(data))
-        elif name.endswith((".xml", ".rels")):
-            result[name] = _xml_signature(data)
+        kinds = {short_type(rel_type) for _, rel_type in model.incoming.get(key, [])}
+        if "sharedStrings" in kinds:
+            continue
+        if "worksheet" in kinds:
+            result[key] = (
+                model.content_type(model.name_of[key]),
+                model.signature(key, transform=_without_cell_values),
+                model.outgoing(key),
+            )
         else:
-            result[name] = sha256_bytes(data)
+            result[key] = model.node(key)
     return result
 
 
-def _core_properties_signature(root: ET.Element) -> object:
-    def signature(element: ET.Element) -> object:
-        text = (
-            None
-            if _local(element.tag) in {"created", "modified"}
-            else (element.text if (element.text or "").strip() else None)
-        )
-        return (
-            element.tag,
-            tuple(sorted(element.attrib.items())),
-            text,
-            tuple(signature(child) for child in element),
-        )
-
-    return signature(root)
-
-
-def _worksheet_structure(root: ET.Element) -> object:
-    def signature(element: ET.Element) -> object:
-        local_name = _local(element.tag)
-        attributes = tuple(
-            sorted(
-                (key, value)
-                for key, value in element.attrib.items()
-                if not (local_name == "c" and key == "t")
-            )
-        )
-        children = (
-            tuple(signature(child) for child in element if _local(child.tag) not in {"is", "v"})
-            if local_name == "c"
-            else tuple(signature(child) for child in element)
-        )
-        return (
-            element.tag,
-            attributes,
-            element.text if (element.text or "").strip() else None,
-            children,
-        )
-
-    return signature(root)
-
-
-def _chart_formats(parts: dict[str, bytes]) -> dict[str, object]:
-    return {
-        name: _chart_format_signature(xml_root(data))
-        for name, data in parts.items()
-        if name.startswith("ppt/charts/chart") and name.endswith(".xml")
-    }
-
-
-def _chart_format_signature(root: ET.Element) -> object:
-    def signature(element: ET.Element, data_cache: bool = False) -> object:
-        in_cache = data_cache or _local(element.tag) in {
-            "strCache",
-            "numCache",
-            "strLit",
-            "numLit",
-        }
-        text = (
-            None
-            if in_cache and _local(element.tag) == "v"
-            else (element.text if (element.text or "").strip() else None)
-        )
-        return (
-            element.tag,
-            tuple(sorted(element.attrib.items())),
-            text,
-            tuple(signature(child, in_cache) for child in element),
-        )
-
-    return signature(root)
+def _without_cell_values(root: ET.Element) -> ET.Element:
+    """Keep cell placement and style; drop value storage (type, value, inline string)."""
+    stripped = copy.deepcopy(root)
+    for cell in stripped.iter():
+        if _local(cell.tag) != "c":
+            continue
+        cell.attrib.pop("t", None)
+        for child in [child for child in cell if _local(child.tag) in {"is", "v"}]:
+            cell.remove(child)
+    return stripped
 
 
 def _local(tag: str) -> str:

@@ -117,9 +117,7 @@ def _replace_chart_data(document):
 
     xy = _shape_named(pages.getByIndex(1), "Chart 1").Model
     _, series = _single_series(xy)
-    _set_role_values(
-        xy, series, {"values-x": (5.0, 21.0, 55.0), "values-y": (13.0, 34.0, 89.0)}
-    )
+    _set_role_values(xy, series, {"values-x": (5.0, 21.0, 55.0), "values-y": (13.0, 34.0, 89.0)})
 
     bubble = _shape_named(pages.getByIndex(2), "Chart 1").Model
     _, series = _single_series(bubble)
