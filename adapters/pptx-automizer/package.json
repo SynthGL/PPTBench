@@ -1,0 +1,11 @@
+{
+  "name": "pptbench-pptx-automizer",
+  "private": true,
+  "version": "0.0.0",
+  "description": "PPTBench helper for pptx-automizer",
+  "license": "MIT",
+  "type": "commonjs",
+  "dependencies": {
+    "pptx-automizer": "0.9.4"
+  }
+}

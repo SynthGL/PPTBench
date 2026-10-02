@@ -12,6 +12,7 @@ import shlex
 import shutil
 import subprocess
 import sys
+from collections.abc import Callable
 from importlib.machinery import ModuleSpec
 from pathlib import Path
 from string import Formatter
@@ -24,15 +25,36 @@ from .util import sha256_file
 _SAFE_SEGMENT = re.compile(r"^[A-Za-z0-9][A-Za-z0-9_.-]*$")
 _SAFE_TEMPLATE_FIELDS = frozenset({"input", "output", "lane"})
 _PRIVATE_PATH = re.compile(r"(?:~|/(?:Users|home|var/folders)/)[^\s'\"]+")
+_SCRIPT_EXEC = re.compile(r'exec\s+"([^"]+)"')
+_PY_VERSION = re.compile(r'#define\s+PY_VERSION\s+"([^"]+)"')
+
+CONTAINER_IMAGES = {
+    "apache-poi": "pptbench/apache-poi:5.5.1",
+    "open-xml-sdk": "pptbench/open-xml-sdk:3.5.1",
+}
+LIBREOFFICE_SCRIPT = Path("libreoffice") / "pptbench_uno.py"
+AUTOMIZER_HELPER = Path("pptx-automizer") / "pptbench-automizer.js"
 
 
 def available_adapters() -> list[AdapterInfo]:
-    return [
-        python_pptx_info(),
-        wolfppt_info(),
-        external_command_info(),
-        libreoffice_info(),
-    ]
+    return [factory() for factory in _ADAPTER_INFO.values()]
+
+
+def adapter_home() -> Path | None:
+    """Directory holding helper programs: PPTBENCH_ADAPTER_HOME or a source checkout's."""
+    configured = os.environ.get("PPTBENCH_ADAPTER_HOME")
+    home = (
+        Path(configured)
+        if configured
+        else Path(__file__).resolve().parents[2] / "adapters"
+    )
+    return home.resolve() if home.is_dir() else None
+
+
+def docker_command() -> list[str]:
+    """Docker CLI prefix, honoring PPTBENCH_DOCKER_CONTEXT for remote engines."""
+    context = os.environ.get("PPTBENCH_DOCKER_CONTEXT")
+    return ["docker", "--context", context] if context else ["docker"]
 
 
 def python_pptx_info() -> AdapterInfo:
@@ -130,6 +152,212 @@ def libreoffice_info() -> AdapterInfo:
     )
 
 
+def libreoffice_uno_info() -> AdapterInfo:
+    """LibreOffice Impress driven through a Python-UNO script in a fresh profile."""
+    executable = shutil.which("soffice")
+    if executable is None:
+        return AdapterInfo(
+            "libreoffice",
+            None,
+            None,
+            False,
+            "soffice is not on PATH",
+            "install LibreOffice or put soffice on PATH",
+        )
+    script = _helper_file(LIBREOFFICE_SCRIPT)
+    if script is None:
+        return _missing_helper("libreoffice", LIBREOFFICE_SCRIPT)
+    binary = Path(executable).resolve()
+    banner = _executable_version(binary)
+    if banner is None:
+        return AdapterInfo(
+            "libreoffice",
+            None,
+            _file_identity(binary),
+            False,
+            "soffice --version produced no version banner",
+            "repair the LibreOffice installation",
+        )
+    parts = banner.split()
+    version = parts[1] if len(parts) > 1 else banner
+    build = parts[2] if len(parts) > 2 else "unknown"
+    python = _libreoffice_python_version(binary)
+    return AdapterInfo(
+        "libreoffice",
+        version,
+        f"libreoffice:{version};build:{build};runtime:LibreOffice embedded Python {python};"
+        f"{_file_identity(binary)};script:{sha256_file(script)}",
+        True,
+    )
+
+
+def pptx_automizer_info() -> AdapterInfo:
+    """pptx-automizer from the helper's npm lockfile, run by the local Node.js."""
+    node = shutil.which("node")
+    if node is None:
+        return AdapterInfo(
+            "pptx-automizer",
+            None,
+            None,
+            False,
+            "node is not on PATH",
+            "install Node.js 22 or newer",
+        )
+    helper = _helper_file(AUTOMIZER_HELPER)
+    if helper is None:
+        return _missing_helper("pptx-automizer", AUTOMIZER_HELPER)
+    package = helper.parent / "node_modules" / "pptx-automizer" / "package.json"
+    lockfile = helper.parent / "package-lock.json"
+    if not package.is_file() or not lockfile.is_file():
+        return AdapterInfo(
+            "pptx-automizer",
+            None,
+            None,
+            False,
+            "pptx-automizer is not installed next to the helper",
+            f"run npm ci in {AUTOMIZER_HELPER.parent.as_posix()} under the adapter home",
+        )
+    try:
+        version = str(json.loads(package.read_text(encoding="utf-8"))["version"])
+    except (KeyError, OSError, ValueError):
+        return AdapterInfo(
+            "pptx-automizer",
+            None,
+            None,
+            False,
+            "installed pptx-automizer package.json is unreadable",
+            f"run npm ci in {AUTOMIZER_HELPER.parent.as_posix()} under the adapter home",
+        )
+    runtime = _executable_version(Path(node).resolve()) or "unknown"
+    return AdapterInfo(
+        "pptx-automizer",
+        version,
+        f"pptx-automizer:{version};runtime:Node.js {runtime};"
+        f"lockfile:{sha256_file(lockfile)};helper:{sha256_file(helper)}",
+        True,
+    )
+
+
+def apache_poi_info() -> AdapterInfo:
+    return _container_info("apache-poi")
+
+
+def open_xml_sdk_info() -> AdapterInfo:
+    return _container_info("open-xml-sdk")
+
+
+def _container_info(adapter: str) -> AdapterInfo:
+    """Identity of a locally built helper image on the configured Docker engine."""
+    tag = CONTAINER_IMAGES[adapter]
+    build = f"docker build -t {tag} adapters/{adapter} (honor PPTBENCH_DOCKER_CONTEXT)"
+    if shutil.which("docker") is None:
+        return AdapterInfo(adapter, None, None, False, "docker is not on PATH", build)
+    try:
+        completed = subprocess.run(
+            [*docker_command(), "image", "inspect", tag],
+            stdin=subprocess.DEVNULL,
+            capture_output=True,
+            timeout=30,
+            check=False,
+        )
+    except (OSError, subprocess.TimeoutExpired):
+        return AdapterInfo(
+            adapter, None, None, False, "docker image inspect did not complete", build
+        )
+    if completed.returncode != 0:
+        return AdapterInfo(
+            adapter, None, None, False, f"helper image {tag} is not built", build
+        )
+    try:
+        image = json.loads(completed.stdout)[0]
+        labels = image["Config"]["Labels"] or {}
+        library = str(labels["org.pptbench.library"])
+        version = str(labels["org.pptbench.library-version"])
+        runtime = str(labels["org.pptbench.runtime"])
+        platform = f"{image['Os']}/{image['Architecture']}"
+        image_id = str(image["Id"])
+    except (IndexError, KeyError, TypeError, ValueError):
+        return AdapterInfo(
+            adapter,
+            None,
+            None,
+            False,
+            f"helper image {tag} lacks PPTBench labels",
+            build,
+        )
+    if labels.get("org.pptbench.adapter") != adapter:
+        return AdapterInfo(
+            adapter,
+            None,
+            None,
+            False,
+            f"helper image {tag} belongs to another adapter",
+            build,
+        )
+    return AdapterInfo(
+        adapter,
+        version,
+        f"{library}:{version};runtime:{runtime};platform:{platform};image:{image_id}",
+        True,
+    )
+
+
+def _helper_file(relative_path: Path) -> Path | None:
+    home = adapter_home()
+    if home is None:
+        return None
+    path = home / relative_path
+    return path if path.is_file() and not path.is_symlink() else None
+
+
+def _missing_helper(adapter: str, relative_path: Path) -> AdapterInfo:
+    return AdapterInfo(
+        adapter,
+        None,
+        None,
+        False,
+        f"helper program {relative_path.as_posix()} is not available",
+        "run from a PPTBench source checkout or set PPTBENCH_ADAPTER_HOME to its adapters/",
+    )
+
+
+def _libreoffice_python_version(binary: Path) -> str:
+    """Exact version of the Python embedded in the LibreOffice installation, if found."""
+    program = binary
+    if binary.read_bytes()[:2] == b"#!":
+        # Package-manager wrappers (e.g. Homebrew casks) exec the real binary.
+        match = _SCRIPT_EXEC.search(
+            binary.read_text(encoding="utf-8", errors="replace")
+        )
+        if match is not None:
+            program = Path(match.group(1)).resolve()
+    install = program.parent.parent
+    patterns = (
+        "Frameworks/LibreOfficePython.framework/Versions/*/include/python*/patchlevel.h",
+        "program/python-core-*/include/python*/patchlevel.h",
+    )
+    for pattern in patterns:
+        for header in sorted(install.glob(pattern)):
+            match = _PY_VERSION.search(
+                header.read_text(encoding="utf-8", errors="replace")
+            )
+            if match is not None:
+                return match.group(1)
+    return "unresolved"
+
+
+_ADAPTER_INFO: dict[str, Callable[[], AdapterInfo]] = {
+    "python-pptx": python_pptx_info,
+    "wolfppt-wheel": wolfppt_info,
+    "apache-poi": apache_poi_info,
+    "libreoffice": libreoffice_uno_info,
+    "pptx-automizer": pptx_automizer_info,
+    "open-xml-sdk": open_xml_sdk_info,
+    "external-command": external_command_info,
+    "libreoffice-render": libreoffice_info,
+}
+
+
 def run_adapter(
     adapter: str,
     lane: str,
@@ -142,9 +370,10 @@ def run_adapter(
         return {"outcome": "unsupported", "reason": "unsafe adapter or lane identifier"}
     if timeout_seconds <= 0:
         return {"outcome": "failure", "reason": "timeout must be positive"}
-    info = {item.name: item for item in available_adapters()}.get(adapter)
-    if info is None:
+    factory = _ADAPTER_INFO.get(adapter)
+    if factory is None:
         return {"outcome": "unsupported", "reason": f"unknown adapter: {adapter}"}
+    info = factory()
     if not info.available:
         return {
             "outcome": "unavailable",
@@ -200,14 +429,18 @@ def run_adapter(
             "outcome": "timeout",
             "reason": f"monitor exceeded {timeout_seconds + 5:g}s",
             "elapsed_ms": (perf_counter() - started) * 1000,
-            "details": _artifact_details(artifact_dir, stdout_path, stderr_path, command),
+            "details": _artifact_details(
+                artifact_dir, stdout_path, stderr_path, command
+            ),
         }
     if completed.returncode != 0 or not receipt_path.is_file():
         return {
             "outcome": "failure",
             "reason": "adapter monitor did not produce a receipt",
             "elapsed_ms": (perf_counter() - started) * 1000,
-            "details": _artifact_details(artifact_dir, stdout_path, stderr_path, command),
+            "details": _artifact_details(
+                artifact_dir, stdout_path, stderr_path, command
+            ),
         }
     try:
         receipt = json.loads(receipt_path.read_text(encoding="utf-8"))
@@ -219,7 +452,9 @@ def run_adapter(
             "outcome": "failure",
             "reason": "adapter monitor receipt is malformed",
             "elapsed_ms": (perf_counter() - started) * 1000,
-            "details": _artifact_details(artifact_dir, stdout_path, stderr_path, command),
+            "details": _artifact_details(
+                artifact_dir, stdout_path, stderr_path, command
+            ),
         }
     details = _artifact_details(artifact_dir, stdout_path, stderr_path, command)
     if outcome == "timeout":
@@ -261,6 +496,12 @@ def _adapter_command(adapter: str, lane: str, source: Path, output: Path) -> lis
             part.format(input=str(source), output=str(output), lane=lane)
             for part in _external_template(os.environ["PPTBENCH_EXTERNAL_COMMAND"])
         ]
+    if adapter == "pptx-automizer":
+        node = shutil.which("node")
+        helper = _helper_file(AUTOMIZER_HELPER)
+        if node is None or helper is None:
+            raise ValueError("pptx-automizer helper or node became unavailable")
+        return [node, str(helper), lane, str(source), str(output)]
     return [
         sys.executable,
         "-m",
@@ -338,7 +579,11 @@ def _executable_version(executable: Path) -> str | None:
         )
     except (OSError, subprocess.TimeoutExpired):
         return None
-    line = (completed.stdout or completed.stderr).decode("utf-8", errors="replace").splitlines()
+    line = (
+        (completed.stdout or completed.stderr)
+        .decode("utf-8", errors="replace")
+        .splitlines()
+    )
     return _sanitize_text(line[0])[:200] if line else None
 
 
@@ -359,7 +604,9 @@ def _artifact_details(
 def _diagnostic(path: Path) -> str | None:
     if not path.is_file() or path.stat().st_size == 0:
         return None
-    return _sanitize_text(path.read_bytes()[:4096].decode("utf-8", errors="replace"))[:1000]
+    return _sanitize_text(path.read_bytes()[:4096].decode("utf-8", errors="replace"))[
+        :1000
+    ]
 
 
 def _sanitize_text(value: str) -> str:
@@ -369,5 +616,7 @@ def _sanitize_text(value: str) -> str:
 def _redacted_command(command: list[str]) -> list[str]:
     redacted: list[str] = []
     for part in command:
-        redacted.append(Path(part).name if Path(part).is_absolute() else _sanitize_text(part))
+        redacted.append(
+            Path(part).name if Path(part).is_absolute() else _sanitize_text(part)
+        )
     return redacted

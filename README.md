@@ -71,10 +71,26 @@ Every check declares `category` (`semantic`, `feature`, `preservation`, or `byte
 
 ## Adapters
 
-Actually implemented integrations:
+Actually implemented integrations. Every attempt runs in a new child process, and `run.json` `adapters[]` records each adapter's library, exact version, and runtime identity.
 
 - `python-pptx` (default): invoked through its public API in an isolated child process.
 - `wolfppt-wheel` (default): present only when an installed `wolfppt` distribution is importable through its public `wolfppt.Presentation` API; it never resolves a checkout path. When it is not installed, its rows record `unavailable` with reason and recovery text.
+- `apache-poi`: Apache POI XSLF (`org.apache.poi:poi-ooxml` 5.5.1 from Maven Central) on an Eclipse Temurin 21 JRE. The Java helper in `adapters/apache-poi/` runs inside the locally built image `pptbench/apache-poi:5.5.1`. Table and text edits use `XSLFTable`, `XSLFTextParagraph`, and `XSLFTextRun`. Bar and scatter chart edits use the XDDF chart API (`replaceData` plus `plot`), which also writes the embedded workbook. `XDDFChart.getChartSeries()` does not return bubble charts, so the bubble chart wraps POI's typed `CTBubbleChart` in `XDDFBubbleChartData` and writes bubble sizes through the embedded `XSSFWorkbook`.
+- `open-xml-sdk`: `DocumentFormat.OpenXml` 3.5.1 from NuGet on the .NET 9 runtime. The C# helper in `adapters/open-xml-sdk/` runs inside the locally built image `pptbench/open-xml-sdk:3.5.1` and edits through the SDK's typed DOM: table cells and paragraphs (`DocumentFormat.OpenXml.Drawing`), chart caches (`DocumentFormat.OpenXml.Drawing.Charts`), and the embedded workbook (opened as a `SpreadsheetDocument`).
+- `libreoffice`: local headless LibreOffice Impress. `adapters/libreoffice/pptbench_uno.py` is a Python-UNO script that `soffice` runs as a user-profile script (`vnd.sun.star.script:...?language=Python&location=user`) inside a fresh, attempt-owned profile. It loads the deck through the PowerPoint import filter, edits through UNO (table cells, text paragraphs, and the chart's internal data provider), and stores with the `Impress Office Open XML` export filter. The script runs inside `soffice` because macOS launch constraints stop LibreOffice's bundled Python from running as a standalone interpreter.
+- `pptx-automizer`: npm `pptx-automizer` 0.9.4 on the local Node.js. Dependencies are pinned by `adapters/pptx-automizer/package-lock.json` (install with `npm ci` in that directory). pptx-automizer cannot jump to a shape inside an existing deck, so the helper uses the library's documented single-file editing flow: it loads the deck as a truncated root (`removeExistingSlides: true`, `cleanup: true`), loads it again as a template, and re-adds every slide in order with modification callbacks. Charts use `setChartData`, `setChartScatter`, and `setChartBubbles`, which write their own workbook column layout.
+
+Helper programs are found under `PPTBENCH_ADAPTER_HOME`, or under the checkout's `adapters/` directory when PPTBench runs from a source checkout. When a helper, its runtime, or its image is missing, the adapter's rows record `unavailable` with recovery text. Build the container helpers once per Docker engine and install the Node helper's locked dependencies:
+
+```sh
+docker build -t pptbench/apache-poi:5.5.1 adapters/apache-poi
+docker build -t pptbench/open-xml-sdk:3.5.1 adapters/open-xml-sdk
+(cd adapters/pptx-automizer && npm ci)
+```
+
+Container adapters use Docker's current context, or the context named by `PPTBENCH_DOCKER_CONTEXT` (for example a remote Linux engine reached over SSH). Each attempt runs `docker run --rm -i --network none --pull never <image> <lane>` and streams the input deck over stdin and the result over stdout, so no host directory is mounted. Their identity records the library and version labels, the runtime label, the engine platform, and the image ID.
+
+Timing comparability: elapsed time always covers the whole child. For `apache-poi` and `open-xml-sdk` that includes Docker CLI and container start, any remote transport, and JVM or .NET start. For `libreoffice` it includes `soffice` start and first-run profile creation. For `pptx-automizer` it includes Node.js start. Peak RSS for the container adapters measures only the local Docker CLI, not the process inside the container. Do not read these numbers as library-only processing speed or memory.
 
 Generic bridge, not an SDK integration:
 
@@ -119,6 +135,39 @@ Observed lane outcomes:
 
 The WolfPPT candidate was the installed 0.1.0 wheel built from source revision `5929d925536c3aa2e8ce49399c5d220bbf57df2a` (receipt `provided-release-wheel`), imported through the installed package rather than a source checkout. Each adapter and lane ran one warmup plus two measured iterations with a 20 second child timeout and a 120 second overall timeout on Python 3.14, macOS arm64. Timings include process startup and were taken with OS cache state uncontrolled. Every successful scored candidate passed the optional LibreOffice PDF render smoke; the Open XML validator was unavailable (`PPTBENCH_OPENXML_VALIDATOR` not configured). This small synthetic snapshot is not evidence of engine-wide rendering quality or speed superiority for either library, and no speed ranking is claimed.
 
+## Observed run evidence (2026-10-02)
+
+Two six-adapter runs are retained in this repository. They differ only in the WolfPPT candidate:
+
+- `run-release` (published run): WolfPPT 0.1.1, the latest public release, installed from the PyPI wheel `wolfppt-0.1.1-cp314-cp314-macosx_11_0_arm64.whl` (SHA-256 `202eb7b5cda0c20486a4eb8cddd57b208b2fd6cb9e65e7fccfee69584ea50d87`, receipt `provided-release-wheel`). The receipt records no source revision because the wheel's build commit cannot be verified from the artifact. The public mirror tags `v0.1.1` at `ae75230fb0551fc3796f16a8ba2315e680695d9e`.
+  - Report dashboard: [evidence/2026-10-02/run-release/report/index.html](evidence/2026-10-02/run-release/report/index.html)
+  - Outcome heatmap: [evidence/2026-10-02/run-release/report/heatmap.svg](evidence/2026-10-02/run-release/report/heatmap.svg)
+  - Raw run report: [evidence/2026-10-02/run-release/run.json](evidence/2026-10-02/run-release/run.json)
+- `run` (pre-release engine build): WolfPPT 0.2.0, a wheel built locally from unreleased source revision `44538fd3dc865b0368122689ad53cdfcf48c1ae9` (receipt `source-build-wheel`). It is retained for comparison and is not the published result. Its `libreoffice` identity records an earlier revision of `adapters/libreoffice/pptbench_uno.py` that differed only in exception handling.
+  - Report dashboard: [evidence/2026-10-02/run/report/index.html](evidence/2026-10-02/run/report/index.html)
+  - Raw run report: [evidence/2026-10-02/run/run.json](evidence/2026-10-02/run/run.json)
+
+Observed lane outcomes in `run-release`. Every outcome and every failed scored check listed below is identical in `run`:
+
+| Adapter | `feature-matrix` | `template-mutation` | `chart-data` |
+|---|---|---|---|
+| `python-pptx` 1.0.2 | failure | failure | success |
+| `wolfppt-wheel` (WolfPPT 0.1.1) | success | success | failure |
+| `apache-poi` 5.5.1 | failure | failure | failure |
+| `libreoffice` 26.8.0.3 | failure | failure | failure |
+| `pptx-automizer` 0.9.4 | failure | failure | failure |
+| `open-xml-sdk` 3.5.1 | success | success | success |
+
+Failed scored checks, as recorded in `run-release/run.json`:
+
+- `python-pptx`: `opaque-package-part` (feature-matrix); `only-declared-text-nodes-changed` and `opaque-parts-preserved` (template-mutation).
+- `wolfppt-wheel`: `chart-formatting-preserved`, `related-workbook-values`, and `related-workbook-structure-and-formatting` (chart-data).
+- `apache-poi`: `master-semantics` and `relationship-semantics` (feature-matrix); `only-declared-text-nodes-changed` and `relationships-preserved` (template-mutation); `related-workbook-values`, `related-workbook-structure-and-formatting`, and `relationships-preserved` (chart-data). The requested slide and chart-cache edits are present; POI rewrites `.rels` order, `[Content_Types].xml` order, and `docProps/core.xml`, and writes workbook values in its own cell representation.
+- `libreoffice`: 14 feature-matrix checks, 5 template-mutation checks, and `chart-package-semantics` (chart-data). Impress re-exports the whole package from its own document model.
+- `pptx-automizer`: 12 feature-matrix checks, `template-package-semantics` (template-mutation), and `chart-package-semantics` (chart-data). Its single-file editing flow rebuilds the slide list from a template copy, so slide parts and charts are renamed or duplicated.
+
+Each adapter and lane ran one warmup plus three measured iterations with a 120 second child timeout and a 3600 second overall timeout on Python 3.14, macOS arm64. `apache-poi` and `open-xml-sdk` ran in linux/amd64 containers on a remote Docker engine, so their timings include remote container start and transport and are not comparable with the local adapters. In both runs the optional LibreOffice PDF render smoke succeeded for every candidate of every successful row; Open XML validation was not requested. This small synthetic snapshot is not evidence of engine-wide fidelity, rendering quality, or speed for any library.
+
 ## Identity and privacy
 
 Adapter identity for installed packages hashes the installed package's module files and native binaries (`modules:<count>:<digest>`), not only `__init__.py`. Environment identity records Python version, implementation, platform, executable basename, and PID, never a private interpreter path. Command metadata reduces absolute paths to basenames and replaces private path prefixes (`~`, `/Users/...`, `/home/...`, `/var/folders/...`) with `<private-path>`; receipts persist run-relative artifact names, sanitized argv, byte counts, and bounded sanitized diagnostics, not raw tracebacks.
@@ -142,7 +191,7 @@ All receipt paths are relative to the run root:
 | `render/<adapter>/<lane>/<stem>.pdf` | Optional render evidence (only with `--render`) |
 | `report/index.html`, `report/heatmap.svg`, `report/report-manifest.json` | Generated by `pptbench report` |
 
-Cite observed runs by these run-relative paths together with the candidate SHA-256 values recorded in `run.json`. One retained local run is summarized under [Observed run evidence (2026-09-08)](#observed-run-evidence-2026-09-08); rates and comparisons are stated only from evidence linked from actual run roots.
+Cite observed runs by these run-relative paths together with the candidate SHA-256 values recorded in `run.json`. Retained runs are summarized under [Observed run evidence (2026-09-08)](#observed-run-evidence-2026-09-08) and [Observed run evidence (2026-10-02)](#observed-run-evidence-2026-10-02); rates and comparisons are stated only from evidence linked from actual run roots.
 
 ## Reports and optional evidence
 

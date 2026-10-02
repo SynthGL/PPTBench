@@ -3,10 +3,21 @@
 from __future__ import annotations
 
 import importlib
+import json
+import os
+import shutil
+import subprocess
 import sys
+import tempfile
 from collections.abc import Callable
 from pathlib import Path
-from typing import Any, Protocol, cast
+from typing import Any, NoReturn, Protocol, cast
+
+from .adapters import CONTAINER_IMAGES, LIBREOFFICE_SCRIPT, adapter_home, docker_command
+
+_UNO_SCRIPT_URL = (
+    "vnd.sun.star.script:pptbench_uno.py$run?language=Python&location=user"
+)
 
 
 class PresentationFactory(Protocol):
@@ -53,6 +64,11 @@ def _presentation(adapter: str) -> PresentationFactory:
 
 
 def edit(adapter: str, lane: str, source: Path, output: Path) -> None:
+    if adapter in CONTAINER_IMAGES:
+        _exec_container(adapter, lane, source, output)
+    if adapter == "libreoffice":
+        _run_libreoffice(lane, source, output)
+        return
     presentation = _presentation(adapter)(str(source))
     if lane == "template-mutation":
         _mutate_template(presentation)
@@ -61,6 +77,75 @@ def edit(adapter: str, lane: str, source: Path, output: Path) -> None:
     elif lane != "feature-matrix":
         raise ValueError(f"unsupported lane: {lane}")
     presentation.save(str(output))
+
+
+def _exec_container(adapter: str, lane: str, source: Path, output: Path) -> NoReturn:
+    """Replace this process with `docker run`, streaming the deck over stdin/stdout."""
+    input_fd = os.open(source, os.O_RDONLY)
+    output_fd = os.open(output, os.O_WRONLY | os.O_CREAT | os.O_EXCL, 0o644)
+    os.dup2(input_fd, 0)
+    os.dup2(output_fd, 1)
+    os.close(input_fd)
+    os.close(output_fd)
+    command = [
+        *docker_command(),
+        "run",
+        "--rm",
+        "-i",
+        "--network",
+        "none",
+        "--pull",
+        "never",
+        CONTAINER_IMAGES[adapter],
+        lane,
+    ]
+    os.execvp(command[0], command)
+
+
+def _run_libreoffice(lane: str, source: Path, output: Path) -> None:
+    """Run the Python-UNO script inside a headless soffice with a fresh profile."""
+    home = adapter_home()
+    soffice = shutil.which("soffice")
+    if home is None or soffice is None:
+        raise LookupError("soffice or the LibreOffice helper script is unavailable")
+    with tempfile.TemporaryDirectory(prefix="pptbench-libreoffice-") as scratch:
+        profile = Path(scratch) / "profile"
+        scripts = profile / "user" / "Scripts" / "python"
+        scripts.mkdir(parents=True)
+        shutil.copyfile(home / LIBREOFFICE_SCRIPT, scripts / LIBREOFFICE_SCRIPT.name)
+        status_path = Path(scratch) / "status.json"
+        environment = {
+            **os.environ,
+            "PPTBENCH_UNO_LANE": lane,
+            "PPTBENCH_UNO_INPUT": str(source.resolve()),
+            "PPTBENCH_UNO_OUTPUT": str(output.resolve()),
+            "PPTBENCH_UNO_STATUS": str(status_path),
+        }
+        completed = subprocess.run(
+            [
+                soffice,
+                f"-env:UserInstallation={profile.as_uri()}",
+                "--headless",
+                "--invisible",
+                "--norestore",
+                "--nologo",
+                "--nolockcheck",
+                _UNO_SCRIPT_URL,
+            ],
+            stdin=subprocess.DEVNULL,
+            env=environment,
+            check=False,
+        )
+        if not status_path.is_file():
+            raise RuntimeError(
+                f"soffice exited {completed.returncode} without a script status"
+            )
+        status: dict[str, Any] = json.loads(status_path.read_text(encoding="utf-8"))
+    if status.get("outcome") != "success":
+        print(status.get("traceback", ""), file=sys.stderr)
+        raise RuntimeError(str(status.get("error", "UNO script failed")))
+    if completed.returncode != 0:
+        raise RuntimeError(f"soffice exited {completed.returncode}")
 
 
 def _mutate_template(presentation: PresentationDocument) -> None:
@@ -124,6 +209,7 @@ def main() -> int:
         KeyError,
         LookupError,
         OSError,
+        RuntimeError,
         TypeError,
         ValueError,
     ) as exc:

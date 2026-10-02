@@ -11,3 +11,7 @@ runs/
 reports/
 .DS_Store
 render-profiles/
+node_modules/
+adapters/apache-poi/target/
+adapters/open-xml-sdk/bin/
+adapters/open-xml-sdk/obj/
