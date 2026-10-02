@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang='en'><head><meta charset='utf-8'><title>PPTBench report: run.json</title>
 <style>body{font:14px system-ui;margin:2rem;color:#18212b}table{border-collapse:collapse;width:100%}th,td{border:1px solid #ccd;padding:.45rem;text-align:left;vertical-align:top}pre{white-space:pre-wrap;max-width:70rem}.success{color:#146c43}.failure,.timeout,.tampered{color:#b42318}.unavailable,.unsupported{color:#7a5700}</style></head>
-<body><h1>PPTBench report: run.json</h1><p>Raw evidence: <code>run.json</code>, SHA-256 <code>eb9f9e4eeed248c575043197834c5d7f207ea0dedd1ed0496978be14f626e268</code>. Integrity: <strong class='success'>success</strong>; hashes verified.</p>
+<body><h1>PPTBench report: run.json</h1><p>Raw evidence: <code>run.json</code>, SHA-256 <code>fbf8926abbc672e47469e3ac2320d6c0f2ff2069843219313af7488f6202667d</code>. Integrity: <strong class='success'>success</strong>; hashes verified.</p>
 <p><label>adapter <select id='adapter'><option value=''>all</option><option>apache-poi</option><option>libreoffice</option><option>open-xml-sdk</option><option>pptx-automizer</option><option>python-pptx</option><option>wolfppt-wheel</option></select></label> <label>lane <select id='lane'><option value=''>all</option><option>chart-data</option><option>feature-matrix</option><option>template-mutation</option></select></label></p>
 <object type='image/svg+xml' data='heatmap.svg' aria-label='PPTBench status heatmap'></object>
 <table><thead><tr><th>adapter</th><th>lane</th><th>fixture</th><th>outcome</th><th>iterations, reasons, and feature results</th><th>result reason</th></tr></thead><tbody><tr data-adapter='python-pptx' data-lane='feature-matrix'><td>python-pptx</td><td>feature-matrix</td><td>mixed-60</td><td>failure</td><td><details><summary>all retained samples</summary><pre>[
@@ -158,7 +158,7 @@
     &quot;details&quot;: {
       &quot;artifact_dir&quot;: &quot;raw/python-pptx/feature-matrix/warmup-1.pptx.adapter&quot;,
       &quot;candidate_path&quot;: &quot;raw/python-pptx/feature-matrix/warmup-1.pptx&quot;,
-      &quot;candidate_sha256&quot;: &quot;30b38d2fc4392ca366ab788a58d385de4a2e5e0637771162bff5e64aced4c8ea&quot;,
+      &quot;candidate_sha256&quot;: &quot;d48d507343a90b697aeb5b90f2b2a24dcdf95d4f13c23e02be56321d9d531800&quot;,
       &quot;command&quot;: [
         &quot;python&quot;,
         &quot;-m&quot;,
@@ -174,12 +174,12 @@
       &quot;stdout_artifact&quot;: &quot;raw/python-pptx/feature-matrix/warmup-1.pptx.adapter/stdout.bin&quot;,
       &quot;stdout_bytes&quot;: 0
     },
-    &quot;elapsed_ms&quot;: 719.229958998767,
+    &quot;elapsed_ms&quot;: 672.0810420010821,
     &quot;iteration&quot;: 1,
     &quot;outcome&quot;: &quot;failure&quot;,
     &quot;output_path&quot;: null,
     &quot;output_sha256&quot;: null,
-    &quot;peak_rss_bytes&quot;: 48201728,
+    &quot;peak_rss_bytes&quot;: 47824896,
     &quot;phase&quot;: &quot;warmup&quot;,
     &quot;reason&quot;: &quot;one or more scored semantic or preservation checks failed&quot;
   },
@@ -336,7 +336,7 @@
     &quot;details&quot;: {
       &quot;artifact_dir&quot;: &quot;raw/python-pptx/feature-matrix/measured-1.pptx.adapter&quot;,
       &quot;candidate_path&quot;: &quot;raw/python-pptx/feature-matrix/measured-1.pptx&quot;,
-      &quot;candidate_sha256&quot;: &quot;43b0a4c1b6ecaa24cf86b0c8793ed68ee40ef867e05c560585ab6fd6c13315eb&quot;,
+      &quot;candidate_sha256&quot;: &quot;d48d507343a90b697aeb5b90f2b2a24dcdf95d4f13c23e02be56321d9d531800&quot;,
       &quot;command&quot;: [
         &quot;python&quot;,
         &quot;-m&quot;,
@@ -352,12 +352,12 @@
       &quot;stdout_artifact&quot;: &quot;raw/python-pptx/feature-matrix/measured-1.pptx.adapter/stdout.bin&quot;,
       &quot;stdout_bytes&quot;: 0
     },
-    &quot;elapsed_ms&quot;: 680.5637079996814,
+    &quot;elapsed_ms&quot;: 458.99008400010644,
     &quot;iteration&quot;: 1,
     &quot;outcome&quot;: &quot;failure&quot;,
     &quot;output_path&quot;: null,
     &quot;output_sha256&quot;: null,
-    &quot;peak_rss_bytes&quot;: 48267264,
+    &quot;peak_rss_bytes&quot;: 47906816,
     &quot;phase&quot;: &quot;measured&quot;,
     &quot;reason&quot;: &quot;one or more scored semantic or preservation checks failed&quot;
   },
@@ -514,7 +514,7 @@
     &quot;details&quot;: {
       &quot;artifact_dir&quot;: &quot;raw/python-pptx/feature-matrix/measured-2.pptx.adapter&quot;,
       &quot;candidate_path&quot;: &quot;raw/python-pptx/feature-matrix/measured-2.pptx&quot;,
-      &quot;candidate_sha256&quot;: &quot;43b0a4c1b6ecaa24cf86b0c8793ed68ee40ef867e05c560585ab6fd6c13315eb&quot;,
+      &quot;candidate_sha256&quot;: &quot;e37c0b7bfce7aa469a39484ebab3c81b9fe8c7b3961343c8194f912e69acb356&quot;,
       &quot;command&quot;: [
         &quot;python&quot;,
         &quot;-m&quot;,
@@ -530,12 +530,12 @@
       &quot;stdout_artifact&quot;: &quot;raw/python-pptx/feature-matrix/measured-2.pptx.adapter/stdout.bin&quot;,
       &quot;stdout_bytes&quot;: 0
     },
-    &quot;elapsed_ms&quot;: 879.1569169989089,
+    &quot;elapsed_ms&quot;: 344.14795900011086,
     &quot;iteration&quot;: 2,
     &quot;outcome&quot;: &quot;failure&quot;,
     &quot;output_path&quot;: null,
     &quot;output_sha256&quot;: null,
-    &quot;peak_rss_bytes&quot;: 47661056,
+    &quot;peak_rss_bytes&quot;: 47742976,
     &quot;phase&quot;: &quot;measured&quot;,
     &quot;reason&quot;: &quot;one or more scored semantic or preservation checks failed&quot;
   },
@@ -692,7 +692,7 @@
     &quot;details&quot;: {
       &quot;artifact_dir&quot;: &quot;raw/python-pptx/feature-matrix/measured-3.pptx.adapter&quot;,
       &quot;candidate_path&quot;: &quot;raw/python-pptx/feature-matrix/measured-3.pptx&quot;,
-      &quot;candidate_sha256&quot;: &quot;772790cdeef8da2e530fc119f44b5fbc2fb76116130c4b4795619bf58f02faad&quot;,
+      &quot;candidate_sha256&quot;: &quot;e37c0b7bfce7aa469a39484ebab3c81b9fe8c7b3961343c8194f912e69acb356&quot;,
       &quot;command&quot;: [
         &quot;python&quot;,
         &quot;-m&quot;,
@@ -708,12 +708,12 @@
       &quot;stdout_artifact&quot;: &quot;raw/python-pptx/feature-matrix/measured-3.pptx.adapter/stdout.bin&quot;,
       &quot;stdout_bytes&quot;: 0
     },
-    &quot;elapsed_ms&quot;: 1099.971416999324,
+    &quot;elapsed_ms&quot;: 345.50366700204904,
     &quot;iteration&quot;: 3,
     &quot;outcome&quot;: &quot;failure&quot;,
     &quot;output_path&quot;: null,
     &quot;output_sha256&quot;: null,
-    &quot;peak_rss_bytes&quot;: 47792128,
+    &quot;peak_rss_bytes&quot;: 47841280,
     &quot;phase&quot;: &quot;measured&quot;,
     &quot;reason&quot;: &quot;one or more scored semantic or preservation checks failed&quot;
   }
@@ -888,12 +888,12 @@
       &quot;stdout_artifact&quot;: &quot;raw/wolfppt-wheel/feature-matrix/warmup-1.pptx.adapter/stdout.bin&quot;,
       &quot;stdout_bytes&quot;: 0
     },
-    &quot;elapsed_ms&quot;: 2052.3172920002253,
+    &quot;elapsed_ms&quot;: 332.1697499995935,
     &quot;iteration&quot;: 1,
     &quot;outcome&quot;: &quot;success&quot;,
     &quot;output_path&quot;: &quot;raw/wolfppt-wheel/feature-matrix/warmup-1.pptx&quot;,
     &quot;output_sha256&quot;: &quot;1204a0fb452aece087c4786c0b2ca92bccbfedf66347c41b4b7b3b913c3afc2d&quot;,
-    &quot;peak_rss_bytes&quot;: 47742976,
+    &quot;peak_rss_bytes&quot;: 42483712,
     &quot;phase&quot;: &quot;warmup&quot;,
     &quot;reason&quot;: null
   },
@@ -1066,12 +1066,12 @@
       &quot;stdout_artifact&quot;: &quot;raw/wolfppt-wheel/feature-matrix/measured-1.pptx.adapter/stdout.bin&quot;,
       &quot;stdout_bytes&quot;: 0
     },
-    &quot;elapsed_ms&quot;: 675.0490830017952,
+    &quot;elapsed_ms&quot;: 348.4440829997766,
     &quot;iteration&quot;: 1,
     &quot;outcome&quot;: &quot;success&quot;,
     &quot;output_path&quot;: &quot;raw/wolfppt-wheel/feature-matrix/measured-1.pptx&quot;,
     &quot;output_sha256&quot;: &quot;1204a0fb452aece087c4786c0b2ca92bccbfedf66347c41b4b7b3b913c3afc2d&quot;,
-    &quot;peak_rss_bytes&quot;: 42156032,
+    &quot;peak_rss_bytes&quot;: 42434560,
     &quot;phase&quot;: &quot;measured&quot;,
     &quot;reason&quot;: null
   },
@@ -1244,12 +1244,12 @@
       &quot;stdout_artifact&quot;: &quot;raw/wolfppt-wheel/feature-matrix/measured-2.pptx.adapter/stdout.bin&quot;,
       &quot;stdout_bytes&quot;: 0
     },
-    &quot;elapsed_ms&quot;: 453.5832500005199,
+    &quot;elapsed_ms&quot;: 290.10616700179526,
     &quot;iteration&quot;: 2,
     &quot;outcome&quot;: &quot;success&quot;,
     &quot;output_path&quot;: &quot;raw/wolfppt-wheel/feature-matrix/measured-2.pptx&quot;,
     &quot;output_sha256&quot;: &quot;1204a0fb452aece087c4786c0b2ca92bccbfedf66347c41b4b7b3b913c3afc2d&quot;,
-    &quot;peak_rss_bytes&quot;: 42663936,
+    &quot;peak_rss_bytes&quot;: 42303488,
     &quot;phase&quot;: &quot;measured&quot;,
     &quot;reason&quot;: null
   },
@@ -1422,12 +1422,12 @@
       &quot;stdout_artifact&quot;: &quot;raw/wolfppt-wheel/feature-matrix/measured-3.pptx.adapter/stdout.bin&quot;,
       &quot;stdout_bytes&quot;: 0
     },
-    &quot;elapsed_ms&quot;: 621.3003329976345,
+    &quot;elapsed_ms&quot;: 294.3653340007586,
     &quot;iteration&quot;: 3,
     &quot;outcome&quot;: &quot;success&quot;,
     &quot;output_path&quot;: &quot;raw/wolfppt-wheel/feature-matrix/measured-3.pptx&quot;,
     &quot;output_sha256&quot;: &quot;1204a0fb452aece087c4786c0b2ca92bccbfedf66347c41b4b7b3b913c3afc2d&quot;,
-    &quot;peak_rss_bytes&quot;: 42532864,
+    &quot;peak_rss_bytes&quot;: 42418176,
     &quot;phase&quot;: &quot;measured&quot;,
     &quot;reason&quot;: null
   }
@@ -1586,7 +1586,7 @@
     &quot;details&quot;: {
       &quot;artifact_dir&quot;: &quot;raw/apache-poi/feature-matrix/warmup-1.pptx.adapter&quot;,
       &quot;candidate_path&quot;: &quot;raw/apache-poi/feature-matrix/warmup-1.pptx&quot;,
-      &quot;candidate_sha256&quot;: &quot;23299b5d1f1062ec7b16baad2c4e6cfca01c4ede60009a9705b90f3ec3b2bd68&quot;,
+      &quot;candidate_sha256&quot;: &quot;0ba49e7d8762a9c970593fd8a5603cde7d5400ab66adaad93510e6c61f81da8b&quot;,
       &quot;command&quot;: [
         &quot;python&quot;,
         &quot;-m&quot;,
@@ -1602,12 +1602,12 @@
       &quot;stdout_artifact&quot;: &quot;raw/apache-poi/feature-matrix/warmup-1.pptx.adapter/stdout.bin&quot;,
       &quot;stdout_bytes&quot;: 0
     },
-    &quot;elapsed_ms&quot;: 13736.87791699922,
+    &quot;elapsed_ms&quot;: 3523.115542000596,
     &quot;iteration&quot;: 1,
     &quot;outcome&quot;: &quot;success&quot;,
     &quot;output_path&quot;: &quot;raw/apache-poi/feature-matrix/warmup-1.pptx&quot;,
-    &quot;output_sha256&quot;: &quot;23299b5d1f1062ec7b16baad2c4e6cfca01c4ede60009a9705b90f3ec3b2bd68&quot;,
-    &quot;peak_rss_bytes&quot;: 30294016,
+    &quot;output_sha256&quot;: &quot;0ba49e7d8762a9c970593fd8a5603cde7d5400ab66adaad93510e6c61f81da8b&quot;,
+    &quot;peak_rss_bytes&quot;: 30621696,
     &quot;phase&quot;: &quot;warmup&quot;,
     &quot;reason&quot;: null
   },
@@ -1764,7 +1764,7 @@
     &quot;details&quot;: {
       &quot;artifact_dir&quot;: &quot;raw/apache-poi/feature-matrix/measured-1.pptx.adapter&quot;,
       &quot;candidate_path&quot;: &quot;raw/apache-poi/feature-matrix/measured-1.pptx&quot;,
-      &quot;candidate_sha256&quot;: &quot;bbf5307b2407f9e29e2bf4b9aa0884c5fff5cf15ad5553ab5d9d3f8db35c0148&quot;,
+      &quot;candidate_sha256&quot;: &quot;baf00f50be387086371d3f049e2e7207b58b09052f598a9ae13567fac870fc1e&quot;,
       &quot;command&quot;: [
         &quot;python&quot;,
         &quot;-m&quot;,
@@ -1780,12 +1780,12 @@
       &quot;stdout_artifact&quot;: &quot;raw/apache-poi/feature-matrix/measured-1.pptx.adapter/stdout.bin&quot;,
       &quot;stdout_bytes&quot;: 0
     },
-    &quot;elapsed_ms&quot;: 9629.501084000367,
+    &quot;elapsed_ms&quot;: 2096.9389590027276,
     &quot;iteration&quot;: 1,
     &quot;outcome&quot;: &quot;success&quot;,
     &quot;output_path&quot;: &quot;raw/apache-poi/feature-matrix/measured-1.pptx&quot;,
-    &quot;output_sha256&quot;: &quot;bbf5307b2407f9e29e2bf4b9aa0884c5fff5cf15ad5553ab5d9d3f8db35c0148&quot;,
-    &quot;peak_rss_bytes&quot;: 30883840,
+    &quot;output_sha256&quot;: &quot;baf00f50be387086371d3f049e2e7207b58b09052f598a9ae13567fac870fc1e&quot;,
+    &quot;peak_rss_bytes&quot;: 30031872,
     &quot;phase&quot;: &quot;measured&quot;,
     &quot;reason&quot;: null
   },
@@ -1942,7 +1942,7 @@
     &quot;details&quot;: {
       &quot;artifact_dir&quot;: &quot;raw/apache-poi/feature-matrix/measured-2.pptx.adapter&quot;,
       &quot;candidate_path&quot;: &quot;raw/apache-poi/feature-matrix/measured-2.pptx&quot;,
-      &quot;candidate_sha256&quot;: &quot;9e79ac0cdb166918c087d515fcfe0b17467f4c5dabb0a55c142996f1d54ac662&quot;,
+      &quot;candidate_sha256&quot;: &quot;6c441a367278c26d41ca36da71dc12efccc76a3b485dd2a0e18fb7331322c1f1&quot;,
       &quot;command&quot;: [
         &quot;python&quot;,
         &quot;-m&quot;,
@@ -1958,12 +1958,12 @@
       &quot;stdout_artifact&quot;: &quot;raw/apache-poi/feature-matrix/measured-2.pptx.adapter/stdout.bin&quot;,
       &quot;stdout_bytes&quot;: 0
     },
-    &quot;elapsed_ms&quot;: 12350.199250002333,
+    &quot;elapsed_ms&quot;: 2225.251207997644,
     &quot;iteration&quot;: 2,
     &quot;outcome&quot;: &quot;success&quot;,
     &quot;output_path&quot;: &quot;raw/apache-poi/feature-matrix/measured-2.pptx&quot;,
-    &quot;output_sha256&quot;: &quot;9e79ac0cdb166918c087d515fcfe0b17467f4c5dabb0a55c142996f1d54ac662&quot;,
-    &quot;peak_rss_bytes&quot;: 30408704,
+    &quot;output_sha256&quot;: &quot;6c441a367278c26d41ca36da71dc12efccc76a3b485dd2a0e18fb7331322c1f1&quot;,
+    &quot;peak_rss_bytes&quot;: 29982720,
     &quot;phase&quot;: &quot;measured&quot;,
     &quot;reason&quot;: null
   },
@@ -2120,7 +2120,7 @@
     &quot;details&quot;: {
       &quot;artifact_dir&quot;: &quot;raw/apache-poi/feature-matrix/measured-3.pptx.adapter&quot;,
       &quot;candidate_path&quot;: &quot;raw/apache-poi/feature-matrix/measured-3.pptx&quot;,
-      &quot;candidate_sha256&quot;: &quot;c183bf2d726d5bfc3f8042dd7c103ff802ea5b592d76d4e36a88bc8bae387fe8&quot;,
+      &quot;candidate_sha256&quot;: &quot;ac23280b417ba14a3a238bbae2c804a4ed626ed7a5e3bf6be6a353e557430997&quot;,
       &quot;command&quot;: [
         &quot;python&quot;,
         &quot;-m&quot;,
@@ -2136,12 +2136,12 @@
       &quot;stdout_artifact&quot;: &quot;raw/apache-poi/feature-matrix/measured-3.pptx.adapter/stdout.bin&quot;,
       &quot;stdout_bytes&quot;: 0
     },
-    &quot;elapsed_ms&quot;: 12068.494957999064,
+    &quot;elapsed_ms&quot;: 2121.21183400086,
     &quot;iteration&quot;: 3,
     &quot;outcome&quot;: &quot;success&quot;,
     &quot;output_path&quot;: &quot;raw/apache-poi/feature-matrix/measured-3.pptx&quot;,
-    &quot;output_sha256&quot;: &quot;c183bf2d726d5bfc3f8042dd7c103ff802ea5b592d76d4e36a88bc8bae387fe8&quot;,
-    &quot;peak_rss_bytes&quot;: 29917184,
+    &quot;output_sha256&quot;: &quot;ac23280b417ba14a3a238bbae2c804a4ed626ed7a5e3bf6be6a353e557430997&quot;,
+    &quot;peak_rss_bytes&quot;: 29982720,
     &quot;phase&quot;: &quot;measured&quot;,
     &quot;reason&quot;: null
   }
@@ -2300,7 +2300,7 @@
     &quot;details&quot;: {
       &quot;artifact_dir&quot;: &quot;raw/libreoffice/feature-matrix/warmup-1.pptx.adapter&quot;,
       &quot;candidate_path&quot;: &quot;raw/libreoffice/feature-matrix/warmup-1.pptx&quot;,
-      &quot;candidate_sha256&quot;: &quot;84080fec771fca2222e91da516112cfd2bb41db0ddd2404a61a8fd7e3dfab44d&quot;,
+      &quot;candidate_sha256&quot;: &quot;599d97c1dc940ab7b99d4e88507691e519e7ff3484a0192ace5fb2a7f6c162cb&quot;,
       &quot;command&quot;: [
         &quot;python&quot;,
         &quot;-m&quot;,
@@ -2316,12 +2316,12 @@
       &quot;stdout_artifact&quot;: &quot;raw/libreoffice/feature-matrix/warmup-1.pptx.adapter/stdout.bin&quot;,
       &quot;stdout_bytes&quot;: 0
     },
-    &quot;elapsed_ms&quot;: 5405.659832998936,
+    &quot;elapsed_ms&quot;: 3663.938040997891,
     &quot;iteration&quot;: 1,
     &quot;outcome&quot;: &quot;failure&quot;,
     &quot;output_path&quot;: null,
     &quot;output_sha256&quot;: null,
-    &quot;peak_rss_bytes&quot;: 295632896,
+    &quot;peak_rss_bytes&quot;: 294043648,
     &quot;phase&quot;: &quot;warmup&quot;,
     &quot;reason&quot;: &quot;one or more scored semantic or preservation checks failed&quot;
   },
@@ -2478,7 +2478,7 @@
     &quot;details&quot;: {
       &quot;artifact_dir&quot;: &quot;raw/libreoffice/feature-matrix/measured-1.pptx.adapter&quot;,
       &quot;candidate_path&quot;: &quot;raw/libreoffice/feature-matrix/measured-1.pptx&quot;,
-      &quot;candidate_sha256&quot;: &quot;2db58d507a2f55efccb4ba361be41620ef02a21859891b4d0d679eb9a8ffeed7&quot;,
+      &quot;candidate_sha256&quot;: &quot;28fab830f30d806b56614f45a373cb0215743d98bf13ab690d5ad802d328038f&quot;,
       &quot;command&quot;: [
         &quot;python&quot;,
         &quot;-m&quot;,
@@ -2494,12 +2494,12 @@
       &quot;stdout_artifact&quot;: &quot;raw/libreoffice/feature-matrix/measured-1.pptx.adapter/stdout.bin&quot;,
       &quot;stdout_bytes&quot;: 0
     },
-    &quot;elapsed_ms&quot;: 5402.904667000257,
+    &quot;elapsed_ms&quot;: 4380.13245899856,
     &quot;iteration&quot;: 1,
     &quot;outcome&quot;: &quot;failure&quot;,
     &quot;output_path&quot;: null,
     &quot;output_sha256&quot;: null,
-    &quot;peak_rss_bytes&quot;: 295075840,
+    &quot;peak_rss_bytes&quot;: 293535744,
     &quot;phase&quot;: &quot;measured&quot;,
     &quot;reason&quot;: &quot;one or more scored semantic or preservation checks failed&quot;
   },
@@ -2656,7 +2656,7 @@
     &quot;details&quot;: {
       &quot;artifact_dir&quot;: &quot;raw/libreoffice/feature-matrix/measured-2.pptx.adapter&quot;,
       &quot;candidate_path&quot;: &quot;raw/libreoffice/feature-matrix/measured-2.pptx&quot;,
-      &quot;candidate_sha256&quot;: &quot;2ed6fcaa1b17378e67be9997d3c0e57081cde3ff712510b98478086c78ec2d97&quot;,
+      &quot;candidate_sha256&quot;: &quot;2b74778a5c7984cf69bc58c123bdd246ffcda4eee5b221569c86e079de64808f&quot;,
       &quot;command&quot;: [
         &quot;python&quot;,
         &quot;-m&quot;,
@@ -2672,12 +2672,12 @@
       &quot;stdout_artifact&quot;: &quot;raw/libreoffice/feature-matrix/measured-2.pptx.adapter/stdout.bin&quot;,
       &quot;stdout_bytes&quot;: 0
     },
-    &quot;elapsed_ms&quot;: 5749.745540997537,
+    &quot;elapsed_ms&quot;: 4562.664083001437,
     &quot;iteration&quot;: 2,
     &quot;outcome&quot;: &quot;failure&quot;,
     &quot;output_path&quot;: null,
     &quot;output_sha256&quot;: null,
-    &quot;peak_rss_bytes&quot;: 293421056,
+    &quot;peak_rss_bytes&quot;: 295452672,
     &quot;phase&quot;: &quot;measured&quot;,
     &quot;reason&quot;: &quot;one or more scored semantic or preservation checks failed&quot;
   },
@@ -2834,7 +2834,7 @@
     &quot;details&quot;: {
       &quot;artifact_dir&quot;: &quot;raw/libreoffice/feature-matrix/measured-3.pptx.adapter&quot;,
       &quot;candidate_path&quot;: &quot;raw/libreoffice/feature-matrix/measured-3.pptx&quot;,
-      &quot;candidate_sha256&quot;: &quot;f2442980a5bc5dfc079b0ad130572a1cb6d9c82618267a316b3472414ad76441&quot;,
+      &quot;candidate_sha256&quot;: &quot;50dbb73920bc2b52af0bb5e009e7fa290478a3691df5735d113a681826488adb&quot;,
       &quot;command&quot;: [
         &quot;python&quot;,
         &quot;-m&quot;,
@@ -2850,12 +2850,12 @@
       &quot;stdout_artifact&quot;: &quot;raw/libreoffice/feature-matrix/measured-3.pptx.adapter/stdout.bin&quot;,
       &quot;stdout_bytes&quot;: 0
     },
-    &quot;elapsed_ms&quot;: 6619.69562500235,
+    &quot;elapsed_ms&quot;: 4657.948000000033,
     &quot;iteration&quot;: 3,
     &quot;outcome&quot;: &quot;failure&quot;,
     &quot;output_path&quot;: null,
     &quot;output_sha256&quot;: null,
-    &quot;peak_rss_bytes&quot;: 295780352,
+    &quot;peak_rss_bytes&quot;: 295174144,
     &quot;phase&quot;: &quot;measured&quot;,
     &quot;reason&quot;: &quot;one or more scored semantic or preservation checks failed&quot;
   }
@@ -3014,7 +3014,7 @@
     &quot;details&quot;: {
       &quot;artifact_dir&quot;: &quot;raw/pptx-automizer/feature-matrix/warmup-1.pptx.adapter&quot;,
       &quot;candidate_path&quot;: &quot;raw/pptx-automizer/feature-matrix/warmup-1.pptx&quot;,
-      &quot;candidate_sha256&quot;: &quot;4b2a7b04f335fd405cb089ca7379f955554046b9e768d8a31df7cacb47124e11&quot;,
+      &quot;candidate_sha256&quot;: &quot;504c07010dd64ea9572efc9ffca9c9ce9f94b7982a948d87bac2e8fabc872821&quot;,
       &quot;command&quot;: [
         &quot;node&quot;,
         &quot;pptbench-automizer.js&quot;,
@@ -3028,12 +3028,12 @@
       &quot;stdout_artifact&quot;: &quot;raw/pptx-automizer/feature-matrix/warmup-1.pptx.adapter/stdout.bin&quot;,
       &quot;stdout_bytes&quot;: 0
     },
-    &quot;elapsed_ms&quot;: 1683.6717920014053,
+    &quot;elapsed_ms&quot;: 1655.7106250002107,
     &quot;iteration&quot;: 1,
     &quot;outcome&quot;: &quot;success&quot;,
     &quot;output_path&quot;: &quot;raw/pptx-automizer/feature-matrix/warmup-1.pptx&quot;,
-    &quot;output_sha256&quot;: &quot;4b2a7b04f335fd405cb089ca7379f955554046b9e768d8a31df7cacb47124e11&quot;,
-    &quot;peak_rss_bytes&quot;: 119439360,
+    &quot;output_sha256&quot;: &quot;504c07010dd64ea9572efc9ffca9c9ce9f94b7982a948d87bac2e8fabc872821&quot;,
+    &quot;peak_rss_bytes&quot;: 116097024,
     &quot;phase&quot;: &quot;warmup&quot;,
     &quot;reason&quot;: null
   },
@@ -3190,7 +3190,7 @@
     &quot;details&quot;: {
       &quot;artifact_dir&quot;: &quot;raw/pptx-automizer/feature-matrix/measured-1.pptx.adapter&quot;,
       &quot;candidate_path&quot;: &quot;raw/pptx-automizer/feature-matrix/measured-1.pptx&quot;,
-      &quot;candidate_sha256&quot;: &quot;6b58d743368b35d6129dd93c48bc73abd795dfcdd7a2e31e071c5f061a599418&quot;,
+      &quot;candidate_sha256&quot;: &quot;7242fcfe666c14c734f5dae06b086a5a8c7eb61f31d3646bd1196bbcc8cb2677&quot;,
       &quot;command&quot;: [
         &quot;node&quot;,
         &quot;pptbench-automizer.js&quot;,
@@ -3204,12 +3204,12 @@
       &quot;stdout_artifact&quot;: &quot;raw/pptx-automizer/feature-matrix/measured-1.pptx.adapter/stdout.bin&quot;,
       &quot;stdout_bytes&quot;: 0
     },
-    &quot;elapsed_ms&quot;: 1469.0499999996973,
+    &quot;elapsed_ms&quot;: 969.8254169998108,
     &quot;iteration&quot;: 1,
     &quot;outcome&quot;: &quot;success&quot;,
     &quot;output_path&quot;: &quot;raw/pptx-automizer/feature-matrix/measured-1.pptx&quot;,
-    &quot;output_sha256&quot;: &quot;6b58d743368b35d6129dd93c48bc73abd795dfcdd7a2e31e071c5f061a599418&quot;,
-    &quot;peak_rss_bytes&quot;: 118161408,
+    &quot;output_sha256&quot;: &quot;7242fcfe666c14c734f5dae06b086a5a8c7eb61f31d3646bd1196bbcc8cb2677&quot;,
+    &quot;peak_rss_bytes&quot;: 116539392,
     &quot;phase&quot;: &quot;measured&quot;,
     &quot;reason&quot;: null
   },
@@ -3366,7 +3366,7 @@
     &quot;details&quot;: {
       &quot;artifact_dir&quot;: &quot;raw/pptx-automizer/feature-matrix/measured-2.pptx.adapter&quot;,
       &quot;candidate_path&quot;: &quot;raw/pptx-automizer/feature-matrix/measured-2.pptx&quot;,
-      &quot;candidate_sha256&quot;: &quot;597eb2fd9acb07f66406d6aaf1ad14616430e19de4017bfc6ffdae10f570c56d&quot;,
+      &quot;candidate_sha256&quot;: &quot;83261fb902a4bcafdabbd165b6ca438a4642c7f3e64d2d90c158a5dbc2918b41&quot;,
       &quot;command&quot;: [
         &quot;node&quot;,
         &quot;pptbench-automizer.js&quot;,
@@ -3380,12 +3380,12 @@
       &quot;stdout_artifact&quot;: &quot;raw/pptx-automizer/feature-matrix/measured-2.pptx.adapter/stdout.bin&quot;,
       &quot;stdout_bytes&quot;: 0
     },
-    &quot;elapsed_ms&quot;: 1122.4901249988761,
+    &quot;elapsed_ms&quot;: 1142.744707998645,
     &quot;iteration&quot;: 2,
     &quot;outcome&quot;: &quot;success&quot;,
     &quot;output_path&quot;: &quot;raw/pptx-automizer/feature-matrix/measured-2.pptx&quot;,
-    &quot;output_sha256&quot;: &quot;597eb2fd9acb07f66406d6aaf1ad14616430e19de4017bfc6ffdae10f570c56d&quot;,
-    &quot;peak_rss_bytes&quot;: 113803264,
+    &quot;output_sha256&quot;: &quot;83261fb902a4bcafdabbd165b6ca438a4642c7f3e64d2d90c158a5dbc2918b41&quot;,
+    &quot;peak_rss_bytes&quot;: 117866496,
     &quot;phase&quot;: &quot;measured&quot;,
     &quot;reason&quot;: null
   },
@@ -3542,7 +3542,7 @@
     &quot;details&quot;: {
       &quot;artifact_dir&quot;: &quot;raw/pptx-automizer/feature-matrix/measured-3.pptx.adapter&quot;,
       &quot;candidate_path&quot;: &quot;raw/pptx-automizer/feature-matrix/measured-3.pptx&quot;,
-      &quot;candidate_sha256&quot;: &quot;e2c98a8a8e6885fd7092dae9aec8e0c6e042ec2b73d1d3321c37379c227ea601&quot;,
+      &quot;candidate_sha256&quot;: &quot;d0f2b772e2cc9bb0879e5158fb6943eb0ae1f359323a31ad7848bda635ea1b76&quot;,
       &quot;command&quot;: [
         &quot;node&quot;,
         &quot;pptbench-automizer.js&quot;,
@@ -3556,12 +3556,12 @@
       &quot;stdout_artifact&quot;: &quot;raw/pptx-automizer/feature-matrix/measured-3.pptx.adapter/stdout.bin&quot;,
       &quot;stdout_bytes&quot;: 0
     },
-    &quot;elapsed_ms&quot;: 1903.0429580016062,
+    &quot;elapsed_ms&quot;: 930.914374999702,
     &quot;iteration&quot;: 3,
     &quot;outcome&quot;: &quot;success&quot;,
     &quot;output_path&quot;: &quot;raw/pptx-automizer/feature-matrix/measured-3.pptx&quot;,
-    &quot;output_sha256&quot;: &quot;e2c98a8a8e6885fd7092dae9aec8e0c6e042ec2b73d1d3321c37379c227ea601&quot;,
-    &quot;peak_rss_bytes&quot;: 117571584,
+    &quot;output_sha256&quot;: &quot;d0f2b772e2cc9bb0879e5158fb6943eb0ae1f359323a31ad7848bda635ea1b76&quot;,
+    &quot;peak_rss_bytes&quot;: 117325824,
     &quot;phase&quot;: &quot;measured&quot;,
     &quot;reason&quot;: null
   }
@@ -3736,12 +3736,12 @@
       &quot;stdout_artifact&quot;: &quot;raw/open-xml-sdk/feature-matrix/warmup-1.pptx.adapter/stdout.bin&quot;,
       &quot;stdout_bytes&quot;: 0
     },
-    &quot;elapsed_ms&quot;: 5390.268582999852,
+    &quot;elapsed_ms&quot;: 2530.4952090009465,
     &quot;iteration&quot;: 1,
     &quot;outcome&quot;: &quot;success&quot;,
     &quot;output_path&quot;: &quot;raw/open-xml-sdk/feature-matrix/warmup-1.pptx&quot;,
     &quot;output_sha256&quot;: &quot;7415c850f702270ca550f8887b5add6fedadc50b8abc194bccc39cbe4fd50401&quot;,
-    &quot;peak_rss_bytes&quot;: 30015488,
+    &quot;peak_rss_bytes&quot;: 29835264,
     &quot;phase&quot;: &quot;warmup&quot;,
     &quot;reason&quot;: null
   },
@@ -3914,12 +3914,12 @@
       &quot;stdout_artifact&quot;: &quot;raw/open-xml-sdk/feature-matrix/measured-1.pptx.adapter/stdout.bin&quot;,
       &quot;stdout_bytes&quot;: 0
     },
-    &quot;elapsed_ms&quot;: 1844.1205420022015,
+    &quot;elapsed_ms&quot;: 2556.0358750008163,
     &quot;iteration&quot;: 1,
     &quot;outcome&quot;: &quot;success&quot;,
     &quot;output_path&quot;: &quot;raw/open-xml-sdk/feature-matrix/measured-1.pptx&quot;,
     &quot;output_sha256&quot;: &quot;7415c850f702270ca550f8887b5add6fedadc50b8abc194bccc39cbe4fd50401&quot;,
-    &quot;peak_rss_bytes&quot;: 29786112,
+    &quot;peak_rss_bytes&quot;: 30572544,
     &quot;phase&quot;: &quot;measured&quot;,
     &quot;reason&quot;: null
   },
@@ -4092,12 +4092,12 @@
       &quot;stdout_artifact&quot;: &quot;raw/open-xml-sdk/feature-matrix/measured-2.pptx.adapter/stdout.bin&quot;,
       &quot;stdout_bytes&quot;: 0
     },
-    &quot;elapsed_ms&quot;: 2568.5923749988433,
+    &quot;elapsed_ms&quot;: 2217.0767089992296,
     &quot;iteration&quot;: 2,
     &quot;outcome&quot;: &quot;success&quot;,
     &quot;output_path&quot;: &quot;raw/open-xml-sdk/feature-matrix/measured-2.pptx&quot;,
     &quot;output_sha256&quot;: &quot;7415c850f702270ca550f8887b5add6fedadc50b8abc194bccc39cbe4fd50401&quot;,
-    &quot;peak_rss_bytes&quot;: 30277632,
+    &quot;peak_rss_bytes&quot;: 30900224,
     &quot;phase&quot;: &quot;measured&quot;,
     &quot;reason&quot;: null
   },
@@ -4270,12 +4270,12 @@
       &quot;stdout_artifact&quot;: &quot;raw/open-xml-sdk/feature-matrix/measured-3.pptx.adapter/stdout.bin&quot;,
       &quot;stdout_bytes&quot;: 0
     },
-    &quot;elapsed_ms&quot;: 2033.8361659996735,
+    &quot;elapsed_ms&quot;: 1887.312083003053,
     &quot;iteration&quot;: 3,
     &quot;outcome&quot;: &quot;success&quot;,
     &quot;output_path&quot;: &quot;raw/open-xml-sdk/feature-matrix/measured-3.pptx&quot;,
     &quot;output_sha256&quot;: &quot;7415c850f702270ca550f8887b5add6fedadc50b8abc194bccc39cbe4fd50401&quot;,
-    &quot;peak_rss_bytes&quot;: 29933568,
+    &quot;peak_rss_bytes&quot;: 30130176,
     &quot;phase&quot;: &quot;measured&quot;,
     &quot;reason&quot;: null
   }
@@ -4350,7 +4350,7 @@
     &quot;details&quot;: {
       &quot;artifact_dir&quot;: &quot;raw/python-pptx/template-mutation/warmup-1.pptx.adapter&quot;,
       &quot;candidate_path&quot;: &quot;raw/python-pptx/template-mutation/warmup-1.pptx&quot;,
-      &quot;candidate_sha256&quot;: &quot;5015cc456226523f066c2d5ed278364203c622f37ab6b03018b3cf8296d60913&quot;,
+      &quot;candidate_sha256&quot;: &quot;bb047a5ce9955ef43922ac8ae820731bae294bc8aa3339775d548151a31815d9&quot;,
       &quot;command&quot;: [
         &quot;python&quot;,
         &quot;-m&quot;,
@@ -4366,12 +4366,12 @@
       &quot;stdout_artifact&quot;: &quot;raw/python-pptx/template-mutation/warmup-1.pptx.adapter/stdout.bin&quot;,
       &quot;stdout_bytes&quot;: 0
     },
-    &quot;elapsed_ms&quot;: 571.4525840012357,
+    &quot;elapsed_ms&quot;: 952.4436250030703,
     &quot;iteration&quot;: 1,
     &quot;outcome&quot;: &quot;failure&quot;,
     &quot;output_path&quot;: null,
     &quot;output_sha256&quot;: null,
-    &quot;peak_rss_bytes&quot;: 48005120,
+    &quot;peak_rss_bytes&quot;: 48300032,
     &quot;phase&quot;: &quot;warmup&quot;,
     &quot;reason&quot;: &quot;one or more scored semantic or preservation checks failed&quot;
   },
@@ -4444,7 +4444,7 @@
     &quot;details&quot;: {
       &quot;artifact_dir&quot;: &quot;raw/python-pptx/template-mutation/measured-1.pptx.adapter&quot;,
       &quot;candidate_path&quot;: &quot;raw/python-pptx/template-mutation/measured-1.pptx&quot;,
-      &quot;candidate_sha256&quot;: &quot;d0da4cc423b761d42fc43c4bf0f58a93f9137924d0ffa3402440b447f355872f&quot;,
+      &quot;candidate_sha256&quot;: &quot;bb047a5ce9955ef43922ac8ae820731bae294bc8aa3339775d548151a31815d9&quot;,
       &quot;command&quot;: [
         &quot;python&quot;,
         &quot;-m&quot;,
@@ -4460,7 +4460,7 @@
       &quot;stdout_artifact&quot;: &quot;raw/python-pptx/template-mutation/measured-1.pptx.adapter/stdout.bin&quot;,
       &quot;stdout_bytes&quot;: 0
     },
-    &quot;elapsed_ms&quot;: 878.0068330015638,
+    &quot;elapsed_ms&quot;: 719.3260839994764,
     &quot;iteration&quot;: 1,
     &quot;outcome&quot;: &quot;failure&quot;,
     &quot;output_path&quot;: null,
@@ -4538,7 +4538,7 @@
     &quot;details&quot;: {
       &quot;artifact_dir&quot;: &quot;raw/python-pptx/template-mutation/measured-2.pptx.adapter&quot;,
       &quot;candidate_path&quot;: &quot;raw/python-pptx/template-mutation/measured-2.pptx&quot;,
-      &quot;candidate_sha256&quot;: &quot;ebfa7cc430949fe59c335f024debb1e1e46ceb42b86e34617cc002ec353f7b6f&quot;,
+      &quot;candidate_sha256&quot;: &quot;f58c087425dfdf232156b846bda58dfddda0697f0dbaf6f61d8f9d5cfd2e7f12&quot;,
       &quot;command&quot;: [
         &quot;python&quot;,
         &quot;-m&quot;,
@@ -4554,12 +4554,12 @@
       &quot;stdout_artifact&quot;: &quot;raw/python-pptx/template-mutation/measured-2.pptx.adapter/stdout.bin&quot;,
       &quot;stdout_bytes&quot;: 0
     },
-    &quot;elapsed_ms&quot;: 863.4376669979247,
+    &quot;elapsed_ms&quot;: 458.5919589990226,
     &quot;iteration&quot;: 2,
     &quot;outcome&quot;: &quot;failure&quot;,
     &quot;output_path&quot;: null,
     &quot;output_sha256&quot;: null,
-    &quot;peak_rss_bytes&quot;: 48201728,
+    &quot;peak_rss_bytes&quot;: 47988736,
     &quot;phase&quot;: &quot;measured&quot;,
     &quot;reason&quot;: &quot;one or more scored semantic or preservation checks failed&quot;
   },
@@ -4632,7 +4632,7 @@
     &quot;details&quot;: {
       &quot;artifact_dir&quot;: &quot;raw/python-pptx/template-mutation/measured-3.pptx.adapter&quot;,
       &quot;candidate_path&quot;: &quot;raw/python-pptx/template-mutation/measured-3.pptx&quot;,
-      &quot;candidate_sha256&quot;: &quot;fa7c920d650883221b89fbd6fba86021500ef1925919b588f16e56de836416e3&quot;,
+      &quot;candidate_sha256&quot;: &quot;f58c087425dfdf232156b846bda58dfddda0697f0dbaf6f61d8f9d5cfd2e7f12&quot;,
       &quot;command&quot;: [
         &quot;python&quot;,
         &quot;-m&quot;,
@@ -4648,12 +4648,12 @@
       &quot;stdout_artifact&quot;: &quot;raw/python-pptx/template-mutation/measured-3.pptx.adapter/stdout.bin&quot;,
       &quot;stdout_bytes&quot;: 0
     },
-    &quot;elapsed_ms&quot;: 837.6574579997396,
+    &quot;elapsed_ms&quot;: 338.7617499975022,
     &quot;iteration&quot;: 3,
     &quot;outcome&quot;: &quot;failure&quot;,
     &quot;output_path&quot;: null,
     &quot;output_sha256&quot;: null,
-    &quot;peak_rss_bytes&quot;: 48447488,
+    &quot;peak_rss_bytes&quot;: 47742976,
     &quot;phase&quot;: &quot;measured&quot;,
     &quot;reason&quot;: &quot;one or more scored semantic or preservation checks failed&quot;
   }
@@ -4744,12 +4744,12 @@
       &quot;stdout_artifact&quot;: &quot;raw/wolfppt-wheel/template-mutation/warmup-1.pptx.adapter/stdout.bin&quot;,
       &quot;stdout_bytes&quot;: 0
     },
-    &quot;elapsed_ms&quot;: 660.6332080009452,
+    &quot;elapsed_ms&quot;: 445.76824999967357,
     &quot;iteration&quot;: 1,
     &quot;outcome&quot;: &quot;success&quot;,
     &quot;output_path&quot;: &quot;raw/wolfppt-wheel/template-mutation/warmup-1.pptx&quot;,
     &quot;output_sha256&quot;: &quot;038c2ffd7e6dd2ef4a08ec923696326cb3774c53b1801e6a6a537fafe01a3eb3&quot;,
-    &quot;peak_rss_bytes&quot;: 44072960,
+    &quot;peak_rss_bytes&quot;: 44007424,
     &quot;phase&quot;: &quot;warmup&quot;,
     &quot;reason&quot;: null
   },
@@ -4838,12 +4838,12 @@
       &quot;stdout_artifact&quot;: &quot;raw/wolfppt-wheel/template-mutation/measured-1.pptx.adapter/stdout.bin&quot;,
       &quot;stdout_bytes&quot;: 0
     },
-    &quot;elapsed_ms&quot;: 457.79570800004876,
+    &quot;elapsed_ms&quot;: 389.8407090018736,
     &quot;iteration&quot;: 1,
     &quot;outcome&quot;: &quot;success&quot;,
     &quot;output_path&quot;: &quot;raw/wolfppt-wheel/template-mutation/measured-1.pptx&quot;,
     &quot;output_sha256&quot;: &quot;038c2ffd7e6dd2ef4a08ec923696326cb3774c53b1801e6a6a537fafe01a3eb3&quot;,
-    &quot;peak_rss_bytes&quot;: 44318720,
+    &quot;peak_rss_bytes&quot;: 44105728,
     &quot;phase&quot;: &quot;measured&quot;,
     &quot;reason&quot;: null
   },
@@ -4932,12 +4932,12 @@
       &quot;stdout_artifact&quot;: &quot;raw/wolfppt-wheel/template-mutation/measured-2.pptx.adapter/stdout.bin&quot;,
       &quot;stdout_bytes&quot;: 0
     },
-    &quot;elapsed_ms&quot;: 547.9602500017791,
+    &quot;elapsed_ms&quot;: 342.38545799962594,
     &quot;iteration&quot;: 2,
     &quot;outcome&quot;: &quot;success&quot;,
     &quot;output_path&quot;: &quot;raw/wolfppt-wheel/template-mutation/measured-2.pptx&quot;,
     &quot;output_sha256&quot;: &quot;038c2ffd7e6dd2ef4a08ec923696326cb3774c53b1801e6a6a537fafe01a3eb3&quot;,
-    &quot;peak_rss_bytes&quot;: 44056576,
+    &quot;peak_rss_bytes&quot;: 43827200,
     &quot;phase&quot;: &quot;measured&quot;,
     &quot;reason&quot;: null
   },
@@ -5026,12 +5026,12 @@
       &quot;stdout_artifact&quot;: &quot;raw/wolfppt-wheel/template-mutation/measured-3.pptx.adapter/stdout.bin&quot;,
       &quot;stdout_bytes&quot;: 0
     },
-    &quot;elapsed_ms&quot;: 895.1394169998821,
+    &quot;elapsed_ms&quot;: 337.519833999977,
     &quot;iteration&quot;: 3,
     &quot;outcome&quot;: &quot;success&quot;,
     &quot;output_path&quot;: &quot;raw/wolfppt-wheel/template-mutation/measured-3.pptx&quot;,
     &quot;output_sha256&quot;: &quot;038c2ffd7e6dd2ef4a08ec923696326cb3774c53b1801e6a6a537fafe01a3eb3&quot;,
-    &quot;peak_rss_bytes&quot;: 44269568,
+    &quot;peak_rss_bytes&quot;: 44056576,
     &quot;phase&quot;: &quot;measured&quot;,
     &quot;reason&quot;: null
   }
@@ -5106,7 +5106,7 @@
     &quot;details&quot;: {
       &quot;artifact_dir&quot;: &quot;raw/apache-poi/template-mutation/warmup-1.pptx.adapter&quot;,
       &quot;candidate_path&quot;: &quot;raw/apache-poi/template-mutation/warmup-1.pptx&quot;,
-      &quot;candidate_sha256&quot;: &quot;7de1c94f49f3ca7fcc99efbfaa02a2403bcb83092e339b0b7e75acc3d46b878d&quot;,
+      &quot;candidate_sha256&quot;: &quot;410ded21e831040a82ced15878513a2c2678307679c509fbec9eda9811b061c3&quot;,
       &quot;command&quot;: [
         &quot;python&quot;,
         &quot;-m&quot;,
@@ -5122,12 +5122,12 @@
       &quot;stdout_artifact&quot;: &quot;raw/apache-poi/template-mutation/warmup-1.pptx.adapter/stdout.bin&quot;,
       &quot;stdout_bytes&quot;: 0
     },
-    &quot;elapsed_ms&quot;: 8816.193541999382,
+    &quot;elapsed_ms&quot;: 2224.946166999871,
     &quot;iteration&quot;: 1,
     &quot;outcome&quot;: &quot;success&quot;,
     &quot;output_path&quot;: &quot;raw/apache-poi/template-mutation/warmup-1.pptx&quot;,
-    &quot;output_sha256&quot;: &quot;7de1c94f49f3ca7fcc99efbfaa02a2403bcb83092e339b0b7e75acc3d46b878d&quot;,
-    &quot;peak_rss_bytes&quot;: 30294016,
+    &quot;output_sha256&quot;: &quot;410ded21e831040a82ced15878513a2c2678307679c509fbec9eda9811b061c3&quot;,
+    &quot;peak_rss_bytes&quot;: 30474240,
     &quot;phase&quot;: &quot;warmup&quot;,
     &quot;reason&quot;: null
   },
@@ -5200,7 +5200,7 @@
     &quot;details&quot;: {
       &quot;artifact_dir&quot;: &quot;raw/apache-poi/template-mutation/measured-1.pptx.adapter&quot;,
       &quot;candidate_path&quot;: &quot;raw/apache-poi/template-mutation/measured-1.pptx&quot;,
-      &quot;candidate_sha256&quot;: &quot;63b69cf86957db649c31c30de0bb9e89c431b7b21f202a5301adf311b6360da2&quot;,
+      &quot;candidate_sha256&quot;: &quot;c7b3858c89996efec0e854d3b1ac50ae0a342ba40c82e4f17607c4d217f8df5b&quot;,
       &quot;command&quot;: [
         &quot;python&quot;,
         &quot;-m&quot;,
@@ -5216,12 +5216,12 @@
       &quot;stdout_artifact&quot;: &quot;raw/apache-poi/template-mutation/measured-1.pptx.adapter/stdout.bin&quot;,
       &quot;stdout_bytes&quot;: 0
     },
-    &quot;elapsed_ms&quot;: 2556.882125001721,
+    &quot;elapsed_ms&quot;: 2150.9809999988647,
     &quot;iteration&quot;: 1,
     &quot;outcome&quot;: &quot;success&quot;,
     &quot;output_path&quot;: &quot;raw/apache-poi/template-mutation/measured-1.pptx&quot;,
-    &quot;output_sha256&quot;: &quot;63b69cf86957db649c31c30de0bb9e89c431b7b21f202a5301adf311b6360da2&quot;,
-    &quot;peak_rss_bytes&quot;: 30097408,
+    &quot;output_sha256&quot;: &quot;c7b3858c89996efec0e854d3b1ac50ae0a342ba40c82e4f17607c4d217f8df5b&quot;,
+    &quot;peak_rss_bytes&quot;: 30048256,
     &quot;phase&quot;: &quot;measured&quot;,
     &quot;reason&quot;: null
   },
@@ -5294,7 +5294,7 @@
     &quot;details&quot;: {
       &quot;artifact_dir&quot;: &quot;raw/apache-poi/template-mutation/measured-2.pptx.adapter&quot;,
       &quot;candidate_path&quot;: &quot;raw/apache-poi/template-mutation/measured-2.pptx&quot;,
-      &quot;candidate_sha256&quot;: &quot;66f962ec014c42a9542909342d5681df8c9997c1553e422b50c1a71be73e4f55&quot;,
+      &quot;candidate_sha256&quot;: &quot;74f53158e30eea04dde743484aa9f88ddaedf965ace881b73c9ecec90a8bf15c&quot;,
       &quot;command&quot;: [
         &quot;python&quot;,
         &quot;-m&quot;,
@@ -5310,12 +5310,12 @@
       &quot;stdout_artifact&quot;: &quot;raw/apache-poi/template-mutation/measured-2.pptx.adapter/stdout.bin&quot;,
       &quot;stdout_bytes&quot;: 0
     },
-    &quot;elapsed_ms&quot;: 2565.679291001288,
+    &quot;elapsed_ms&quot;: 2282.9116670000076,
     &quot;iteration&quot;: 2,
     &quot;outcome&quot;: &quot;success&quot;,
     &quot;output_path&quot;: &quot;raw/apache-poi/template-mutation/measured-2.pptx&quot;,
-    &quot;output_sha256&quot;: &quot;66f962ec014c42a9542909342d5681df8c9997c1553e422b50c1a71be73e4f55&quot;,
-    &quot;peak_rss_bytes&quot;: 29999104,
+    &quot;output_sha256&quot;: &quot;74f53158e30eea04dde743484aa9f88ddaedf965ace881b73c9ecec90a8bf15c&quot;,
+    &quot;peak_rss_bytes&quot;: 30130176,
     &quot;phase&quot;: &quot;measured&quot;,
     &quot;reason&quot;: null
   },
@@ -5388,7 +5388,7 @@
     &quot;details&quot;: {
       &quot;artifact_dir&quot;: &quot;raw/apache-poi/template-mutation/measured-3.pptx.adapter&quot;,
       &quot;candidate_path&quot;: &quot;raw/apache-poi/template-mutation/measured-3.pptx&quot;,
-      &quot;candidate_sha256&quot;: &quot;c83dc48681034b5803db3dd94d47569a120305d623c7fc6799bbeb675ed35156&quot;,
+      &quot;candidate_sha256&quot;: &quot;e30facf27266fa2ee720aa2ee9f06b84d2640b9a6fb1fdcd3c2200263cc7ee57&quot;,
       &quot;command&quot;: [
         &quot;python&quot;,
         &quot;-m&quot;,
@@ -5404,12 +5404,12 @@
       &quot;stdout_artifact&quot;: &quot;raw/apache-poi/template-mutation/measured-3.pptx.adapter/stdout.bin&quot;,
       &quot;stdout_bytes&quot;: 0
     },
-    &quot;elapsed_ms&quot;: 2472.3454159975518,
+    &quot;elapsed_ms&quot;: 2120.872583000164,
     &quot;iteration&quot;: 3,
     &quot;outcome&quot;: &quot;success&quot;,
     &quot;output_path&quot;: &quot;raw/apache-poi/template-mutation/measured-3.pptx&quot;,
-    &quot;output_sha256&quot;: &quot;c83dc48681034b5803db3dd94d47569a120305d623c7fc6799bbeb675ed35156&quot;,
-    &quot;peak_rss_bytes&quot;: 29949952,
+    &quot;output_sha256&quot;: &quot;e30facf27266fa2ee720aa2ee9f06b84d2640b9a6fb1fdcd3c2200263cc7ee57&quot;,
+    &quot;peak_rss_bytes&quot;: 30588928,
     &quot;phase&quot;: &quot;measured&quot;,
     &quot;reason&quot;: null
   }
@@ -5484,7 +5484,7 @@
     &quot;details&quot;: {
       &quot;artifact_dir&quot;: &quot;raw/libreoffice/template-mutation/warmup-1.pptx.adapter&quot;,
       &quot;candidate_path&quot;: &quot;raw/libreoffice/template-mutation/warmup-1.pptx&quot;,
-      &quot;candidate_sha256&quot;: &quot;750e86cb8363ba89ef0c845f01f77135d8be569b33c0672fb0c9bdf227028c69&quot;,
+      &quot;candidate_sha256&quot;: &quot;8886a8c954211478c95bf3c09c693b22d731d8a91deee35eefc26b47224d27a7&quot;,
       &quot;command&quot;: [
         &quot;python&quot;,
         &quot;-m&quot;,
@@ -5500,12 +5500,12 @@
       &quot;stdout_artifact&quot;: &quot;raw/libreoffice/template-mutation/warmup-1.pptx.adapter/stdout.bin&quot;,
       &quot;stdout_bytes&quot;: 0
     },
-    &quot;elapsed_ms&quot;: 6760.331499997847,
+    &quot;elapsed_ms&quot;: 4297.096625003178,
     &quot;iteration&quot;: 1,
     &quot;outcome&quot;: &quot;failure&quot;,
     &quot;output_path&quot;: null,
     &quot;output_sha256&quot;: null,
-    &quot;peak_rss_bytes&quot;: 297631744,
+    &quot;peak_rss_bytes&quot;: 295714816,
     &quot;phase&quot;: &quot;warmup&quot;,
     &quot;reason&quot;: &quot;one or more scored semantic or preservation checks failed&quot;
   },
@@ -5578,7 +5578,7 @@
     &quot;details&quot;: {
       &quot;artifact_dir&quot;: &quot;raw/libreoffice/template-mutation/measured-1.pptx.adapter&quot;,
       &quot;candidate_path&quot;: &quot;raw/libreoffice/template-mutation/measured-1.pptx&quot;,
-      &quot;candidate_sha256&quot;: &quot;68a32ef1971094572fade0461a107b1cf854c8b98b491c3bde2f2c7e7059eca6&quot;,
+      &quot;candidate_sha256&quot;: &quot;e12965cf9681f9ff0c4633e3fee3100d0ad0547e861e05ae7b73d11f950c6d93&quot;,
       &quot;command&quot;: [
         &quot;python&quot;,
         &quot;-m&quot;,
@@ -5594,12 +5594,12 @@
       &quot;stdout_artifact&quot;: &quot;raw/libreoffice/template-mutation/measured-1.pptx.adapter/stdout.bin&quot;,
       &quot;stdout_bytes&quot;: 0
     },
-    &quot;elapsed_ms&quot;: 6966.723334000562,
+    &quot;elapsed_ms&quot;: 4378.017582999746,
     &quot;iteration&quot;: 1,
     &quot;outcome&quot;: &quot;failure&quot;,
     &quot;output_path&quot;: null,
     &quot;output_sha256&quot;: null,
-    &quot;peak_rss_bytes&quot;: 299483136,
+    &quot;peak_rss_bytes&quot;: 296271872,
     &quot;phase&quot;: &quot;measured&quot;,
     &quot;reason&quot;: &quot;one or more scored semantic or preservation checks failed&quot;
   },
@@ -5672,7 +5672,7 @@
     &quot;details&quot;: {
       &quot;artifact_dir&quot;: &quot;raw/libreoffice/template-mutation/measured-2.pptx.adapter&quot;,
       &quot;candidate_path&quot;: &quot;raw/libreoffice/template-mutation/measured-2.pptx&quot;,
-      &quot;candidate_sha256&quot;: &quot;aaceebbf246cd7477e3602c211bb34f1dd2f5343783d282c9758fabc5625d218&quot;,
+      &quot;candidate_sha256&quot;: &quot;e599b7fc08c2e4c729f6724b0fc0db899edb21f7a8a5489edf9c48b1d55e8a4c&quot;,
       &quot;command&quot;: [
         &quot;python&quot;,
         &quot;-m&quot;,
@@ -5688,12 +5688,12 @@
       &quot;stdout_artifact&quot;: &quot;raw/libreoffice/template-mutation/measured-2.pptx.adapter/stdout.bin&quot;,
       &quot;stdout_bytes&quot;: 0
     },
-    &quot;elapsed_ms&quot;: 6006.883416001074,
+    &quot;elapsed_ms&quot;: 3437.5748749989725,
     &quot;iteration&quot;: 2,
     &quot;outcome&quot;: &quot;failure&quot;,
     &quot;output_path&quot;: null,
     &quot;output_sha256&quot;: null,
-    &quot;peak_rss_bytes&quot;: 298270720,
+    &quot;peak_rss_bytes&quot;: 295649280,
     &quot;phase&quot;: &quot;measured&quot;,
     &quot;reason&quot;: &quot;one or more scored semantic or preservation checks failed&quot;
   },
@@ -5766,7 +5766,7 @@
     &quot;details&quot;: {
       &quot;artifact_dir&quot;: &quot;raw/libreoffice/template-mutation/measured-3.pptx.adapter&quot;,
       &quot;candidate_path&quot;: &quot;raw/libreoffice/template-mutation/measured-3.pptx&quot;,
-      &quot;candidate_sha256&quot;: &quot;0cd519ed605f15cc1a8240af624612eaa07afae463a2a4e1f9fbcaa038e4dac1&quot;,
+      &quot;candidate_sha256&quot;: &quot;b86cd647a62a80a8a90f776f468a519467c2b1bcc6df3886f35e312297176457&quot;,
       &quot;command&quot;: [
         &quot;python&quot;,
         &quot;-m&quot;,
@@ -5782,12 +5782,12 @@
       &quot;stdout_artifact&quot;: &quot;raw/libreoffice/template-mutation/measured-3.pptx.adapter/stdout.bin&quot;,
       &quot;stdout_bytes&quot;: 0
     },
-    &quot;elapsed_ms&quot;: 6772.878625000885,
+    &quot;elapsed_ms&quot;: 3848.075041001721,
     &quot;iteration&quot;: 3,
     &quot;outcome&quot;: &quot;failure&quot;,
     &quot;output_path&quot;: null,
     &quot;output_sha256&quot;: null,
-    &quot;peak_rss_bytes&quot;: 297172992,
+    &quot;peak_rss_bytes&quot;: 296222720,
     &quot;phase&quot;: &quot;measured&quot;,
     &quot;reason&quot;: &quot;one or more scored semantic or preservation checks failed&quot;
   }
@@ -5862,7 +5862,7 @@
     &quot;details&quot;: {
       &quot;artifact_dir&quot;: &quot;raw/pptx-automizer/template-mutation/warmup-1.pptx.adapter&quot;,
       &quot;candidate_path&quot;: &quot;raw/pptx-automizer/template-mutation/warmup-1.pptx&quot;,
-      &quot;candidate_sha256&quot;: &quot;06607a780a6c2b3da8caf614e70b773e68b0a61ca57fa71c46e945a72c67400c&quot;,
+      &quot;candidate_sha256&quot;: &quot;a00091ce1b6d80b18ef3748a848d297d7a5cb81cf3cc1937d9f54a3747f52154&quot;,
       &quot;command&quot;: [
         &quot;node&quot;,
         &quot;pptbench-automizer.js&quot;,
@@ -5876,12 +5876,12 @@
       &quot;stdout_artifact&quot;: &quot;raw/pptx-automizer/template-mutation/warmup-1.pptx.adapter/stdout.bin&quot;,
       &quot;stdout_bytes&quot;: 0
     },
-    &quot;elapsed_ms&quot;: 2180.735583999194,
+    &quot;elapsed_ms&quot;: 663.2112500010408,
     &quot;iteration&quot;: 1,
     &quot;outcome&quot;: &quot;success&quot;,
     &quot;output_path&quot;: &quot;raw/pptx-automizer/template-mutation/warmup-1.pptx&quot;,
-    &quot;output_sha256&quot;: &quot;06607a780a6c2b3da8caf614e70b773e68b0a61ca57fa71c46e945a72c67400c&quot;,
-    &quot;peak_rss_bytes&quot;: 117456896,
+    &quot;output_sha256&quot;: &quot;a00091ce1b6d80b18ef3748a848d297d7a5cb81cf3cc1937d9f54a3747f52154&quot;,
+    &quot;peak_rss_bytes&quot;: 113033216,
     &quot;phase&quot;: &quot;warmup&quot;,
     &quot;reason&quot;: null
   },
@@ -5954,7 +5954,7 @@
     &quot;details&quot;: {
       &quot;artifact_dir&quot;: &quot;raw/pptx-automizer/template-mutation/measured-1.pptx.adapter&quot;,
       &quot;candidate_path&quot;: &quot;raw/pptx-automizer/template-mutation/measured-1.pptx&quot;,
-      &quot;candidate_sha256&quot;: &quot;466d80d3d092fd390157ac5577d2d6717f40c9b867e6d9d9c9b06544729ba2b6&quot;,
+      &quot;candidate_sha256&quot;: &quot;a00091ce1b6d80b18ef3748a848d297d7a5cb81cf3cc1937d9f54a3747f52154&quot;,
       &quot;command&quot;: [
         &quot;node&quot;,
         &quot;pptbench-automizer.js&quot;,
@@ -5968,12 +5968,12 @@
       &quot;stdout_artifact&quot;: &quot;raw/pptx-automizer/template-mutation/measured-1.pptx.adapter/stdout.bin&quot;,
       &quot;stdout_bytes&quot;: 0
     },
-    &quot;elapsed_ms&quot;: 2640.5036659998586,
+    &quot;elapsed_ms&quot;: 769.3195829997421,
     &quot;iteration&quot;: 1,
     &quot;outcome&quot;: &quot;success&quot;,
     &quot;output_path&quot;: &quot;raw/pptx-automizer/template-mutation/measured-1.pptx&quot;,
-    &quot;output_sha256&quot;: &quot;466d80d3d092fd390157ac5577d2d6717f40c9b867e6d9d9c9b06544729ba2b6&quot;,
-    &quot;peak_rss_bytes&quot;: 116998144,
+    &quot;output_sha256&quot;: &quot;a00091ce1b6d80b18ef3748a848d297d7a5cb81cf3cc1937d9f54a3747f52154&quot;,
+    &quot;peak_rss_bytes&quot;: 114900992,
     &quot;phase&quot;: &quot;measured&quot;,
     &quot;reason&quot;: null
   },
@@ -6046,7 +6046,7 @@
     &quot;details&quot;: {
       &quot;artifact_dir&quot;: &quot;raw/pptx-automizer/template-mutation/measured-2.pptx.adapter&quot;,
       &quot;candidate_path&quot;: &quot;raw/pptx-automizer/template-mutation/measured-2.pptx&quot;,
-      &quot;candidate_sha256&quot;: &quot;718d376d3a53447e5566a5aa30a6e0a8cb8ff474384c2ec197c9e1f0179e276d&quot;,
+      &quot;candidate_sha256&quot;: &quot;0446979db9109c8614fe16d9d54eebc6fa3de1b21871a9f3c72701361bd175c6&quot;,
       &quot;command&quot;: [
         &quot;node&quot;,
         &quot;pptbench-automizer.js&quot;,
@@ -6060,12 +6060,12 @@
       &quot;stdout_artifact&quot;: &quot;raw/pptx-automizer/template-mutation/measured-2.pptx.adapter/stdout.bin&quot;,
       &quot;stdout_bytes&quot;: 0
     },
-    &quot;elapsed_ms&quot;: 1901.2305830001424,
+    &quot;elapsed_ms&quot;: 661.2095000018599,
     &quot;iteration&quot;: 2,
     &quot;outcome&quot;: &quot;success&quot;,
     &quot;output_path&quot;: &quot;raw/pptx-automizer/template-mutation/measured-2.pptx&quot;,
-    &quot;output_sha256&quot;: &quot;718d376d3a53447e5566a5aa30a6e0a8cb8ff474384c2ec197c9e1f0179e276d&quot;,
-    &quot;peak_rss_bytes&quot;: 117145600,
+    &quot;output_sha256&quot;: &quot;0446979db9109c8614fe16d9d54eebc6fa3de1b21871a9f3c72701361bd175c6&quot;,
+    &quot;peak_rss_bytes&quot;: 116424704,
     &quot;phase&quot;: &quot;measured&quot;,
     &quot;reason&quot;: null
   },
@@ -6138,7 +6138,7 @@
     &quot;details&quot;: {
       &quot;artifact_dir&quot;: &quot;raw/pptx-automizer/template-mutation/measured-3.pptx.adapter&quot;,
       &quot;candidate_path&quot;: &quot;raw/pptx-automizer/template-mutation/measured-3.pptx&quot;,
-      &quot;candidate_sha256&quot;: &quot;4d64f48aaf0bcf923b9d4d241bac9c9b5960607554ae50edea8eb5d4b8293bc2&quot;,
+      &quot;candidate_sha256&quot;: &quot;eeebb8999611a9c040154d68e5e6066c4cd640eef7da1c77232ee6bd2bf08081&quot;,
       &quot;command&quot;: [
         &quot;node&quot;,
         &quot;pptbench-automizer.js&quot;,
@@ -6152,12 +6152,12 @@
       &quot;stdout_artifact&quot;: &quot;raw/pptx-automizer/template-mutation/measured-3.pptx.adapter/stdout.bin&quot;,
       &quot;stdout_bytes&quot;: 0
     },
-    &quot;elapsed_ms&quot;: 1855.6590420012071,
+    &quot;elapsed_ms&quot;: 596.06870800053,
     &quot;iteration&quot;: 3,
     &quot;outcome&quot;: &quot;success&quot;,
     &quot;output_path&quot;: &quot;raw/pptx-automizer/template-mutation/measured-3.pptx&quot;,
-    &quot;output_sha256&quot;: &quot;4d64f48aaf0bcf923b9d4d241bac9c9b5960607554ae50edea8eb5d4b8293bc2&quot;,
-    &quot;peak_rss_bytes&quot;: 115900416,
+    &quot;output_sha256&quot;: &quot;eeebb8999611a9c040154d68e5e6066c4cd640eef7da1c77232ee6bd2bf08081&quot;,
+    &quot;peak_rss_bytes&quot;: 114884608,
     &quot;phase&quot;: &quot;measured&quot;,
     &quot;reason&quot;: null
   }
@@ -6248,12 +6248,12 @@
       &quot;stdout_artifact&quot;: &quot;raw/open-xml-sdk/template-mutation/warmup-1.pptx.adapter/stdout.bin&quot;,
       &quot;stdout_bytes&quot;: 0
     },
-    &quot;elapsed_ms&quot;: 17838.87387499999,
+    &quot;elapsed_ms&quot;: 1825.0038330006646,
     &quot;iteration&quot;: 1,
     &quot;outcome&quot;: &quot;success&quot;,
     &quot;output_path&quot;: &quot;raw/open-xml-sdk/template-mutation/warmup-1.pptx&quot;,
     &quot;output_sha256&quot;: &quot;9375592b524090cd92158bf7f3f81d69babe0d5172644b12c36378b7df8d0f91&quot;,
-    &quot;peak_rss_bytes&quot;: 29999104,
+    &quot;peak_rss_bytes&quot;: 30572544,
     &quot;phase&quot;: &quot;warmup&quot;,
     &quot;reason&quot;: null
   },
@@ -6342,12 +6342,12 @@
       &quot;stdout_artifact&quot;: &quot;raw/open-xml-sdk/template-mutation/measured-1.pptx.adapter/stdout.bin&quot;,
       &quot;stdout_bytes&quot;: 0
     },
-    &quot;elapsed_ms&quot;: 4171.455874999083,
+    &quot;elapsed_ms&quot;: 1801.7287500006205,
     &quot;iteration&quot;: 1,
     &quot;outcome&quot;: &quot;success&quot;,
     &quot;output_path&quot;: &quot;raw/open-xml-sdk/template-mutation/measured-1.pptx&quot;,
     &quot;output_sha256&quot;: &quot;9375592b524090cd92158bf7f3f81d69babe0d5172644b12c36378b7df8d0f91&quot;,
-    &quot;peak_rss_bytes&quot;: 30113792,
+    &quot;peak_rss_bytes&quot;: 30195712,
     &quot;phase&quot;: &quot;measured&quot;,
     &quot;reason&quot;: null
   },
@@ -6436,12 +6436,12 @@
       &quot;stdout_artifact&quot;: &quot;raw/open-xml-sdk/template-mutation/measured-2.pptx.adapter/stdout.bin&quot;,
       &quot;stdout_bytes&quot;: 0
     },
-    &quot;elapsed_ms&quot;: 7553.036375000374,
+    &quot;elapsed_ms&quot;: 1917.3018330002378,
     &quot;iteration&quot;: 2,
     &quot;outcome&quot;: &quot;success&quot;,
     &quot;output_path&quot;: &quot;raw/open-xml-sdk/template-mutation/measured-2.pptx&quot;,
     &quot;output_sha256&quot;: &quot;9375592b524090cd92158bf7f3f81d69babe0d5172644b12c36378b7df8d0f91&quot;,
-    &quot;peak_rss_bytes&quot;: 30097408,
+    &quot;peak_rss_bytes&quot;: 29982720,
     &quot;phase&quot;: &quot;measured&quot;,
     &quot;reason&quot;: null
   },
@@ -6530,12 +6530,12 @@
       &quot;stdout_artifact&quot;: &quot;raw/open-xml-sdk/template-mutation/measured-3.pptx.adapter/stdout.bin&quot;,
       &quot;stdout_bytes&quot;: 0
     },
-    &quot;elapsed_ms&quot;: 11524.76708299946,
+    &quot;elapsed_ms&quot;: 2491.1535419996653,
     &quot;iteration&quot;: 3,
     &quot;outcome&quot;: &quot;success&quot;,
     &quot;output_path&quot;: &quot;raw/open-xml-sdk/template-mutation/measured-3.pptx&quot;,
     &quot;output_sha256&quot;: &quot;9375592b524090cd92158bf7f3f81d69babe0d5172644b12c36378b7df8d0f91&quot;,
-    &quot;peak_rss_bytes&quot;: 29900800,
+    &quot;peak_rss_bytes&quot;: 30949376,
     &quot;phase&quot;: &quot;measured&quot;,
     &quot;reason&quot;: null
   }
@@ -6638,7 +6638,7 @@
     &quot;details&quot;: {
       &quot;artifact_dir&quot;: &quot;raw/python-pptx/chart-data/warmup-1.pptx.adapter&quot;,
       &quot;candidate_path&quot;: &quot;raw/python-pptx/chart-data/warmup-1.pptx&quot;,
-      &quot;candidate_sha256&quot;: &quot;e66ef41a1ba9b0041842b30e9a01f41dd6247e21350f6e986af11fc95438e23f&quot;,
+      &quot;candidate_sha256&quot;: &quot;e71334475ba1fe02a375bb94a881b7ddd82bdb508fa499e8af0ce7544a57b74e&quot;,
       &quot;command&quot;: [
         &quot;python&quot;,
         &quot;-m&quot;,
@@ -6654,12 +6654,12 @@
       &quot;stdout_artifact&quot;: &quot;raw/python-pptx/chart-data/warmup-1.pptx.adapter/stdout.bin&quot;,
       &quot;stdout_bytes&quot;: 0
     },
-    &quot;elapsed_ms&quot;: 1361.2532500010275,
+    &quot;elapsed_ms&quot;: 458.6738329999207,
     &quot;iteration&quot;: 1,
     &quot;outcome&quot;: &quot;success&quot;,
     &quot;output_path&quot;: &quot;raw/python-pptx/chart-data/warmup-1.pptx&quot;,
-    &quot;output_sha256&quot;: &quot;e66ef41a1ba9b0041842b30e9a01f41dd6247e21350f6e986af11fc95438e23f&quot;,
-    &quot;peak_rss_bytes&quot;: 50184192,
+    &quot;output_sha256&quot;: &quot;e71334475ba1fe02a375bb94a881b7ddd82bdb508fa499e8af0ce7544a57b74e&quot;,
+    &quot;peak_rss_bytes&quot;: 50348032,
     &quot;phase&quot;: &quot;warmup&quot;,
     &quot;reason&quot;: null
   },
@@ -6760,7 +6760,7 @@
     &quot;details&quot;: {
       &quot;artifact_dir&quot;: &quot;raw/python-pptx/chart-data/measured-1.pptx.adapter&quot;,
       &quot;candidate_path&quot;: &quot;raw/python-pptx/chart-data/measured-1.pptx&quot;,
-      &quot;candidate_sha256&quot;: &quot;2d2f5baeabab199494388c0995f36c84fd21c1a3e022f9f25bae4c183fceb88d&quot;,
+      &quot;candidate_sha256&quot;: &quot;e9ea664a8549fa91a8b288880b473f23996e9b4d43fb04a4af58b1d6657315d0&quot;,
       &quot;command&quot;: [
         &quot;python&quot;,
         &quot;-m&quot;,
@@ -6776,12 +6776,12 @@
       &quot;stdout_artifact&quot;: &quot;raw/python-pptx/chart-data/measured-1.pptx.adapter/stdout.bin&quot;,
       &quot;stdout_bytes&quot;: 0
     },
-    &quot;elapsed_ms&quot;: 1579.8471250018338,
+    &quot;elapsed_ms&quot;: 342.1660839994729,
     &quot;iteration&quot;: 1,
     &quot;outcome&quot;: &quot;success&quot;,
     &quot;output_path&quot;: &quot;raw/python-pptx/chart-data/measured-1.pptx&quot;,
-    &quot;output_sha256&quot;: &quot;2d2f5baeabab199494388c0995f36c84fd21c1a3e022f9f25bae4c183fceb88d&quot;,
-    &quot;peak_rss_bytes&quot;: 50315264,
+    &quot;output_sha256&quot;: &quot;e9ea664a8549fa91a8b288880b473f23996e9b4d43fb04a4af58b1d6657315d0&quot;,
+    &quot;peak_rss_bytes&quot;: 50495488,
     &quot;phase&quot;: &quot;measured&quot;,
     &quot;reason&quot;: null
   },
@@ -6882,7 +6882,7 @@
     &quot;details&quot;: {
       &quot;artifact_dir&quot;: &quot;raw/python-pptx/chart-data/measured-2.pptx.adapter&quot;,
       &quot;candidate_path&quot;: &quot;raw/python-pptx/chart-data/measured-2.pptx&quot;,
-      &quot;candidate_sha256&quot;: &quot;b56d7a13ec2931d232c02272f909f3ee23bc8a22eec89d80d0953185ee795de3&quot;,
+      &quot;candidate_sha256&quot;: &quot;e9ea664a8549fa91a8b288880b473f23996e9b4d43fb04a4af58b1d6657315d0&quot;,
       &quot;command&quot;: [
         &quot;python&quot;,
         &quot;-m&quot;,
@@ -6898,12 +6898,12 @@
       &quot;stdout_artifact&quot;: &quot;raw/python-pptx/chart-data/measured-2.pptx.adapter/stdout.bin&quot;,
       &quot;stdout_bytes&quot;: 0
     },
-    &quot;elapsed_ms&quot;: 1382.376582998404,
+    &quot;elapsed_ms&quot;: 338.980583997909,
     &quot;iteration&quot;: 2,
     &quot;outcome&quot;: &quot;success&quot;,
     &quot;output_path&quot;: &quot;raw/python-pptx/chart-data/measured-2.pptx&quot;,
-    &quot;output_sha256&quot;: &quot;b56d7a13ec2931d232c02272f909f3ee23bc8a22eec89d80d0953185ee795de3&quot;,
-    &quot;peak_rss_bytes&quot;: 50528256,
+    &quot;output_sha256&quot;: &quot;e9ea664a8549fa91a8b288880b473f23996e9b4d43fb04a4af58b1d6657315d0&quot;,
+    &quot;peak_rss_bytes&quot;: 50233344,
     &quot;phase&quot;: &quot;measured&quot;,
     &quot;reason&quot;: null
   },
@@ -7004,7 +7004,7 @@
     &quot;details&quot;: {
       &quot;artifact_dir&quot;: &quot;raw/python-pptx/chart-data/measured-3.pptx.adapter&quot;,
       &quot;candidate_path&quot;: &quot;raw/python-pptx/chart-data/measured-3.pptx&quot;,
-      &quot;candidate_sha256&quot;: &quot;bae9c4d975d52cad12fcd8316033c163c461417c7112b0310e9a3cfefc627dfd&quot;,
+      &quot;candidate_sha256&quot;: &quot;18722ca09d7f8a66f8126d600cedf26da65fa0bcd41735f264cc6c7f89b9d4c2&quot;,
       &quot;command&quot;: [
         &quot;python&quot;,
         &quot;-m&quot;,
@@ -7020,12 +7020,12 @@
       &quot;stdout_artifact&quot;: &quot;raw/python-pptx/chart-data/measured-3.pptx.adapter/stdout.bin&quot;,
       &quot;stdout_bytes&quot;: 0
     },
-    &quot;elapsed_ms&quot;: 1962.3630839996622,
+    &quot;elapsed_ms&quot;: 290.78020799715887,
     &quot;iteration&quot;: 3,
     &quot;outcome&quot;: &quot;success&quot;,
     &quot;output_path&quot;: &quot;raw/python-pptx/chart-data/measured-3.pptx&quot;,
-    &quot;output_sha256&quot;: &quot;bae9c4d975d52cad12fcd8316033c163c461417c7112b0310e9a3cfefc627dfd&quot;,
-    &quot;peak_rss_bytes&quot;: 50282496,
+    &quot;output_sha256&quot;: &quot;18722ca09d7f8a66f8126d600cedf26da65fa0bcd41735f264cc6c7f89b9d4c2&quot;,
+    &quot;peak_rss_bytes&quot;: 50348032,
     &quot;phase&quot;: &quot;measured&quot;,
     &quot;reason&quot;: null
   }
@@ -7144,12 +7144,12 @@
       &quot;stdout_artifact&quot;: &quot;raw/wolfppt-wheel/chart-data/warmup-1.pptx.adapter/stdout.bin&quot;,
       &quot;stdout_bytes&quot;: 0
     },
-    &quot;elapsed_ms&quot;: 2498.474708001595,
+    &quot;elapsed_ms&quot;: 445.2743340007146,
     &quot;iteration&quot;: 1,
     &quot;outcome&quot;: &quot;failure&quot;,
     &quot;output_path&quot;: null,
     &quot;output_sha256&quot;: null,
-    &quot;peak_rss_bytes&quot;: 59506688,
+    &quot;peak_rss_bytes&quot;: 59064320,
     &quot;phase&quot;: &quot;warmup&quot;,
     &quot;reason&quot;: &quot;one or more scored semantic or preservation checks failed&quot;
   },
@@ -7266,12 +7266,12 @@
       &quot;stdout_artifact&quot;: &quot;raw/wolfppt-wheel/chart-data/measured-1.pptx.adapter/stdout.bin&quot;,
       &quot;stdout_bytes&quot;: 0
     },
-    &quot;elapsed_ms&quot;: 2695.6235830002697,
+    &quot;elapsed_ms&quot;: 399.51304200076265,
     &quot;iteration&quot;: 1,
     &quot;outcome&quot;: &quot;failure&quot;,
     &quot;output_path&quot;: null,
     &quot;output_sha256&quot;: null,
-    &quot;peak_rss_bytes&quot;: 59244544,
+    &quot;peak_rss_bytes&quot;: 59179008,
     &quot;phase&quot;: &quot;measured&quot;,
     &quot;reason&quot;: &quot;one or more scored semantic or preservation checks failed&quot;
   },
@@ -7388,12 +7388,12 @@
       &quot;stdout_artifact&quot;: &quot;raw/wolfppt-wheel/chart-data/measured-2.pptx.adapter/stdout.bin&quot;,
       &quot;stdout_bytes&quot;: 0
     },
-    &quot;elapsed_ms&quot;: 2326.4089160002186,
+    &quot;elapsed_ms&quot;: 402.88283299742034,
     &quot;iteration&quot;: 2,
     &quot;outcome&quot;: &quot;failure&quot;,
     &quot;output_path&quot;: null,
     &quot;output_sha256&quot;: null,
-    &quot;peak_rss_bytes&quot;: 59326464,
+    &quot;peak_rss_bytes&quot;: 59179008,
     &quot;phase&quot;: &quot;measured&quot;,
     &quot;reason&quot;: &quot;one or more scored semantic or preservation checks failed&quot;
   },
@@ -7510,12 +7510,12 @@
       &quot;stdout_artifact&quot;: &quot;raw/wolfppt-wheel/chart-data/measured-3.pptx.adapter/stdout.bin&quot;,
       &quot;stdout_bytes&quot;: 0
     },
-    &quot;elapsed_ms&quot;: 2431.143332996726,
+    &quot;elapsed_ms&quot;: 463.6497920000693,
     &quot;iteration&quot;: 3,
     &quot;outcome&quot;: &quot;failure&quot;,
     &quot;output_path&quot;: null,
     &quot;output_sha256&quot;: null,
-    &quot;peak_rss_bytes&quot;: 59555840,
+    &quot;peak_rss_bytes&quot;: 59260928,
     &quot;phase&quot;: &quot;measured&quot;,
     &quot;reason&quot;: &quot;one or more scored semantic or preservation checks failed&quot;
   }
@@ -7618,7 +7618,7 @@
     &quot;details&quot;: {
       &quot;artifact_dir&quot;: &quot;raw/apache-poi/chart-data/warmup-1.pptx.adapter&quot;,
       &quot;candidate_path&quot;: &quot;raw/apache-poi/chart-data/warmup-1.pptx&quot;,
-      &quot;candidate_sha256&quot;: &quot;7cc33f599981827353e3cd340855a9af220026b19203cf2d9cc4f1570bee3832&quot;,
+      &quot;candidate_sha256&quot;: &quot;519b50924be0eae1d6e074360c70dc9534662349e3450d20c44a23d4b762f60f&quot;,
       &quot;command&quot;: [
         &quot;python&quot;,
         &quot;-m&quot;,
@@ -7634,12 +7634,12 @@
       &quot;stdout_artifact&quot;: &quot;raw/apache-poi/chart-data/warmup-1.pptx.adapter/stdout.bin&quot;,
       &quot;stdout_bytes&quot;: 0
     },
-    &quot;elapsed_ms&quot;: 41216.6086670004,
+    &quot;elapsed_ms&quot;: 3215.5711670020537,
     &quot;iteration&quot;: 1,
     &quot;outcome&quot;: &quot;success&quot;,
     &quot;output_path&quot;: &quot;raw/apache-poi/chart-data/warmup-1.pptx&quot;,
-    &quot;output_sha256&quot;: &quot;7cc33f599981827353e3cd340855a9af220026b19203cf2d9cc4f1570bee3832&quot;,
-    &quot;peak_rss_bytes&quot;: 29966336,
+    &quot;output_sha256&quot;: &quot;519b50924be0eae1d6e074360c70dc9534662349e3450d20c44a23d4b762f60f&quot;,
+    &quot;peak_rss_bytes&quot;: 30179328,
     &quot;phase&quot;: &quot;warmup&quot;,
     &quot;reason&quot;: null
   },
@@ -7740,7 +7740,7 @@
     &quot;details&quot;: {
       &quot;artifact_dir&quot;: &quot;raw/apache-poi/chart-data/measured-1.pptx.adapter&quot;,
       &quot;candidate_path&quot;: &quot;raw/apache-poi/chart-data/measured-1.pptx&quot;,
-      &quot;candidate_sha256&quot;: &quot;ab11ac4a27d3625bf0e1189dbc19a3162775b887ab4947b788fe9a3ff3c366bf&quot;,
+      &quot;candidate_sha256&quot;: &quot;0b335a65735a1c7bd2fe62a1a8f4bc055bef84d66ad6497c95ff2e0183d98e3f&quot;,
       &quot;command&quot;: [
         &quot;python&quot;,
         &quot;-m&quot;,
@@ -7756,12 +7756,12 @@
       &quot;stdout_artifact&quot;: &quot;raw/apache-poi/chart-data/measured-1.pptx.adapter/stdout.bin&quot;,
       &quot;stdout_bytes&quot;: 0
     },
-    &quot;elapsed_ms&quot;: 7390.451875002327,
+    &quot;elapsed_ms&quot;: 3237.619999999879,
     &quot;iteration&quot;: 1,
     &quot;outcome&quot;: &quot;success&quot;,
     &quot;output_path&quot;: &quot;raw/apache-poi/chart-data/measured-1.pptx&quot;,
-    &quot;output_sha256&quot;: &quot;ab11ac4a27d3625bf0e1189dbc19a3162775b887ab4947b788fe9a3ff3c366bf&quot;,
-    &quot;peak_rss_bytes&quot;: 30457856,
+    &quot;output_sha256&quot;: &quot;0b335a65735a1c7bd2fe62a1a8f4bc055bef84d66ad6497c95ff2e0183d98e3f&quot;,
+    &quot;peak_rss_bytes&quot;: 30130176,
     &quot;phase&quot;: &quot;measured&quot;,
     &quot;reason&quot;: null
   },
@@ -7862,7 +7862,7 @@
     &quot;details&quot;: {
       &quot;artifact_dir&quot;: &quot;raw/apache-poi/chart-data/measured-2.pptx.adapter&quot;,
       &quot;candidate_path&quot;: &quot;raw/apache-poi/chart-data/measured-2.pptx&quot;,
-      &quot;candidate_sha256&quot;: &quot;f99c1caf372451b7e0ec0ebcd3c371982c11e6ff121ba4c3d6d45bef78f6d58c&quot;,
+      &quot;candidate_sha256&quot;: &quot;ba3bee287597c0806cc11792f556173ea29afc0d5e3da85847bc72645e9d25b3&quot;,
       &quot;command&quot;: [
         &quot;python&quot;,
         &quot;-m&quot;,
@@ -7878,12 +7878,12 @@
       &quot;stdout_artifact&quot;: &quot;raw/apache-poi/chart-data/measured-2.pptx.adapter/stdout.bin&quot;,
       &quot;stdout_bytes&quot;: 0
     },
-    &quot;elapsed_ms&quot;: 13198.974207996798,
+    &quot;elapsed_ms&quot;: 3264.52445799805,
     &quot;iteration&quot;: 2,
     &quot;outcome&quot;: &quot;success&quot;,
     &quot;output_path&quot;: &quot;raw/apache-poi/chart-data/measured-2.pptx&quot;,
-    &quot;output_sha256&quot;: &quot;f99c1caf372451b7e0ec0ebcd3c371982c11e6ff121ba4c3d6d45bef78f6d58c&quot;,
-    &quot;peak_rss_bytes&quot;: 29769728,
+    &quot;output_sha256&quot;: &quot;ba3bee287597c0806cc11792f556173ea29afc0d5e3da85847bc72645e9d25b3&quot;,
+    &quot;peak_rss_bytes&quot;: 30326784,
     &quot;phase&quot;: &quot;measured&quot;,
     &quot;reason&quot;: null
   },
@@ -7984,7 +7984,7 @@
     &quot;details&quot;: {
       &quot;artifact_dir&quot;: &quot;raw/apache-poi/chart-data/measured-3.pptx.adapter&quot;,
       &quot;candidate_path&quot;: &quot;raw/apache-poi/chart-data/measured-3.pptx&quot;,
-      &quot;candidate_sha256&quot;: &quot;03cdfebf8cd3e23977952dbc960f7daa51c4ff71a9ff14c575a40853cfd44b95&quot;,
+      &quot;candidate_sha256&quot;: &quot;46a88d4e76b7a1dfa80efc307d7af14689be0fddfdbc94f1bd00936af0b212ef&quot;,
       &quot;command&quot;: [
         &quot;python&quot;,
         &quot;-m&quot;,
@@ -8000,12 +8000,12 @@
       &quot;stdout_artifact&quot;: &quot;raw/apache-poi/chart-data/measured-3.pptx.adapter/stdout.bin&quot;,
       &quot;stdout_bytes&quot;: 0
     },
-    &quot;elapsed_ms&quot;: 4669.899708998855,
+    &quot;elapsed_ms&quot;: 3332.5635000001057,
     &quot;iteration&quot;: 3,
     &quot;outcome&quot;: &quot;success&quot;,
     &quot;output_path&quot;: &quot;raw/apache-poi/chart-data/measured-3.pptx&quot;,
-    &quot;output_sha256&quot;: &quot;03cdfebf8cd3e23977952dbc960f7daa51c4ff71a9ff14c575a40853cfd44b95&quot;,
-    &quot;peak_rss_bytes&quot;: 30031872,
+    &quot;output_sha256&quot;: &quot;46a88d4e76b7a1dfa80efc307d7af14689be0fddfdbc94f1bd00936af0b212ef&quot;,
+    &quot;peak_rss_bytes&quot;: 29818880,
     &quot;phase&quot;: &quot;measured&quot;,
     &quot;reason&quot;: null
   }
@@ -8024,7 +8024,7 @@
     &quot;details&quot;: {
       &quot;artifact_dir&quot;: &quot;raw/libreoffice/chart-data/warmup-1.pptx.adapter&quot;,
       &quot;candidate_path&quot;: &quot;raw/libreoffice/chart-data/warmup-1.pptx&quot;,
-      &quot;candidate_sha256&quot;: &quot;ce71d4cc6f1b4a644bb468806da1a75246162a78977944192fa515a915cc324c&quot;,
+      &quot;candidate_sha256&quot;: &quot;f15d43205b6e8bf93e4ddd03ebcb0f45681d873d638d44ebd0d9d4709196d88c&quot;,
       &quot;command&quot;: [
         &quot;python&quot;,
         &quot;-m&quot;,
@@ -8040,12 +8040,12 @@
       &quot;stdout_artifact&quot;: &quot;raw/libreoffice/chart-data/warmup-1.pptx.adapter/stdout.bin&quot;,
       &quot;stdout_bytes&quot;: 0
     },
-    &quot;elapsed_ms&quot;: 9531.146124998486,
+    &quot;elapsed_ms&quot;: 3295.837792000384,
     &quot;iteration&quot;: 1,
     &quot;outcome&quot;: &quot;failure&quot;,
     &quot;output_path&quot;: null,
     &quot;output_sha256&quot;: null,
-    &quot;peak_rss_bytes&quot;: 248889344,
+    &quot;peak_rss_bytes&quot;: 246267904,
     &quot;phase&quot;: &quot;warmup&quot;,
     &quot;reason&quot;: &quot;one or more scored semantic or preservation checks failed&quot;
   },
@@ -8062,7 +8062,7 @@
     &quot;details&quot;: {
       &quot;artifact_dir&quot;: &quot;raw/libreoffice/chart-data/measured-1.pptx.adapter&quot;,
       &quot;candidate_path&quot;: &quot;raw/libreoffice/chart-data/measured-1.pptx&quot;,
-      &quot;candidate_sha256&quot;: &quot;42c13ffefea06f3073667a81e681d864db613069c4d56a6c67fc9c6f41616f41&quot;,
+      &quot;candidate_sha256&quot;: &quot;2449a4bf582da53b215a9f091f801901cad137472b19f5f3fb932c373c4059dc&quot;,
       &quot;command&quot;: [
         &quot;python&quot;,
         &quot;-m&quot;,
@@ -8078,12 +8078,12 @@
       &quot;stdout_artifact&quot;: &quot;raw/libreoffice/chart-data/measured-1.pptx.adapter/stdout.bin&quot;,
       &quot;stdout_bytes&quot;: 0
     },
-    &quot;elapsed_ms&quot;: 7770.37754200137,
+    &quot;elapsed_ms&quot;: 3333.8458750004065,
     &quot;iteration&quot;: 1,
     &quot;outcome&quot;: &quot;failure&quot;,
     &quot;output_path&quot;: null,
     &quot;output_sha256&quot;: null,
-    &quot;peak_rss_bytes&quot;: 249053184,
+    &quot;peak_rss_bytes&quot;: 246005760,
     &quot;phase&quot;: &quot;measured&quot;,
     &quot;reason&quot;: &quot;one or more scored semantic or preservation checks failed&quot;
   },
@@ -8100,7 +8100,7 @@
     &quot;details&quot;: {
       &quot;artifact_dir&quot;: &quot;raw/libreoffice/chart-data/measured-2.pptx.adapter&quot;,
       &quot;candidate_path&quot;: &quot;raw/libreoffice/chart-data/measured-2.pptx&quot;,
-      &quot;candidate_sha256&quot;: &quot;661772e8480153d043e123e74cc71532a89571dcdf7ee09e81da88a3b89c274f&quot;,
+      &quot;candidate_sha256&quot;: &quot;064c46a34ef949b231239bcdfb9e3a064e8fa20d9913249cef703767dfce2601&quot;,
       &quot;command&quot;: [
         &quot;python&quot;,
         &quot;-m&quot;,
@@ -8116,26 +8116,52 @@
       &quot;stdout_artifact&quot;: &quot;raw/libreoffice/chart-data/measured-2.pptx.adapter/stdout.bin&quot;,
       &quot;stdout_bytes&quot;: 0
     },
-    &quot;elapsed_ms&quot;: 8066.853874999651,
+    &quot;elapsed_ms&quot;: 3433.865708000667,
     &quot;iteration&quot;: 2,
     &quot;outcome&quot;: &quot;failure&quot;,
     &quot;output_path&quot;: null,
     &quot;output_sha256&quot;: null,
-    &quot;peak_rss_bytes&quot;: 250052608,
+    &quot;peak_rss_bytes&quot;: 247300096,
     &quot;phase&quot;: &quot;measured&quot;,
     &quot;reason&quot;: &quot;one or more scored semantic or preservation checks failed&quot;
   },
   {
-    &quot;checks&quot;: [],
-    &quot;details&quot;: {},
-    &quot;elapsed_ms&quot;: null,
+    &quot;checks&quot;: [
+      {
+        &quot;category&quot;: &quot;semantic&quot;,
+        &quot;detail&quot;: &quot;slide 1 chart must reference exactly one workbook&quot;,
+        &quot;name&quot;: &quot;chart-package-semantics&quot;,
+        &quot;outcome&quot;: &quot;failure&quot;,
+        &quot;scored&quot;: true
+      }
+    ],
+    &quot;details&quot;: {
+      &quot;artifact_dir&quot;: &quot;raw/libreoffice/chart-data/measured-3.pptx.adapter&quot;,
+      &quot;candidate_path&quot;: &quot;raw/libreoffice/chart-data/measured-3.pptx&quot;,
+      &quot;candidate_sha256&quot;: &quot;a261d8b908b2625ee525582ddd6842f6c8ffcbf2e22c15a320b2e2672d13b7ea&quot;,
+      &quot;command&quot;: [
+        &quot;python&quot;,
+        &quot;-m&quot;,
+        &quot;pptbench.worker&quot;,
+        &quot;libreoffice&quot;,
+        &quot;chart-data&quot;,
+        &quot;charts.pptx&quot;,
+        &quot;measured-3.pptx&quot;
+      ],
+      &quot;diagnostic&quot;: &quot;Fontconfig warning: no &lt;cachedir&gt; elements found. Check configuration.\nFontconfig warning: adding &lt;cachedir&gt;/usr/local/var/cache/fontconfig&lt;/cachedir&gt;\nFontconfig warning: adding &lt;cachedir prefix=\&quot;xdg\&quot;&gt;fontconfig&lt;/cachedir&gt;\nFontconfig warning: no &lt;cachedir&gt; elements found. Check configuration.\nFontconfig warning: adding &lt;cachedir&gt;/usr/local/var/cache/fontconfig&lt;/cachedir&gt;\nFontconfig warning: adding &lt;cachedir prefix=\&quot;xdg\&quot;&gt;fontconfig&lt;/cachedir&gt;\n&quot;,
+      &quot;stderr_artifact&quot;: &quot;raw/libreoffice/chart-data/measured-3.pptx.adapter/stderr.bin&quot;,
+      &quot;stderr_bytes&quot;: 446,
+      &quot;stdout_artifact&quot;: &quot;raw/libreoffice/chart-data/measured-3.pptx.adapter/stdout.bin&quot;,
+      &quot;stdout_bytes&quot;: 0
+    },
+    &quot;elapsed_ms&quot;: 3592.125457998918,
     &quot;iteration&quot;: 3,
-    &quot;outcome&quot;: &quot;unavailable&quot;,
+    &quot;outcome&quot;: &quot;failure&quot;,
     &quot;output_path&quot;: null,
     &quot;output_sha256&quot;: null,
-    &quot;peak_rss_bytes&quot;: null,
+    &quot;peak_rss_bytes&quot;: 245284864,
     &quot;phase&quot;: &quot;measured&quot;,
-    &quot;reason&quot;: &quot;soffice --version produced no version banner&quot;
+    &quot;reason&quot;: &quot;one or more scored semantic or preservation checks failed&quot;
   }
 ]</pre></details></td><td>one or more scored semantic or preservation checks failed</td></tr>
 <tr data-adapter='pptx-automizer' data-lane='chart-data'><td>pptx-automizer</td><td>chart-data</td><td>charts</td><td>failure</td><td><details><summary>all retained samples</summary><pre>[
@@ -8236,7 +8262,7 @@
     &quot;details&quot;: {
       &quot;artifact_dir&quot;: &quot;raw/pptx-automizer/chart-data/warmup-1.pptx.adapter&quot;,
       &quot;candidate_path&quot;: &quot;raw/pptx-automizer/chart-data/warmup-1.pptx&quot;,
-      &quot;candidate_sha256&quot;: &quot;92637166f983792d67c8cc933c2ab2d8dae36a9380fdf442b645832ff2aefb31&quot;,
+      &quot;candidate_sha256&quot;: &quot;5cc8fabcbea84f22211c7ce9831b933507463813ce17c735fedcd4d52f73e75e&quot;,
       &quot;command&quot;: [
         &quot;node&quot;,
         &quot;pptbench-automizer.js&quot;,
@@ -8250,12 +8276,12 @@
       &quot;stdout_artifact&quot;: &quot;raw/pptx-automizer/chart-data/warmup-1.pptx.adapter/stdout.bin&quot;,
       &quot;stdout_bytes&quot;: 0
     },
-    &quot;elapsed_ms&quot;: 1472.8478329998325,
+    &quot;elapsed_ms&quot;: 667.4351660003595,
     &quot;iteration&quot;: 1,
     &quot;outcome&quot;: &quot;failure&quot;,
     &quot;output_path&quot;: null,
     &quot;output_sha256&quot;: null,
-    &quot;peak_rss_bytes&quot;: 86982656,
+    &quot;peak_rss_bytes&quot;: 86016000,
     &quot;phase&quot;: &quot;warmup&quot;,
     &quot;reason&quot;: &quot;one or more scored semantic or preservation checks failed&quot;
   },
@@ -8356,7 +8382,7 @@
     &quot;details&quot;: {
       &quot;artifact_dir&quot;: &quot;raw/pptx-automizer/chart-data/measured-1.pptx.adapter&quot;,
       &quot;candidate_path&quot;: &quot;raw/pptx-automizer/chart-data/measured-1.pptx&quot;,
-      &quot;candidate_sha256&quot;: &quot;f39de239b18a028fd08b7334488ed9953ff7cf7006ced0425d2ba4b5440615cf&quot;,
+      &quot;candidate_sha256&quot;: &quot;5cc8fabcbea84f22211c7ce9831b933507463813ce17c735fedcd4d52f73e75e&quot;,
       &quot;command&quot;: [
         &quot;node&quot;,
         &quot;pptbench-automizer.js&quot;,
@@ -8370,12 +8396,12 @@
       &quot;stdout_artifact&quot;: &quot;raw/pptx-automizer/chart-data/measured-1.pptx.adapter/stdout.bin&quot;,
       &quot;stdout_bytes&quot;: 0
     },
-    &quot;elapsed_ms&quot;: 1794.4520829987596,
+    &quot;elapsed_ms&quot;: 460.24208400194766,
     &quot;iteration&quot;: 1,
     &quot;outcome&quot;: &quot;failure&quot;,
     &quot;output_path&quot;: null,
     &quot;output_sha256&quot;: null,
-    &quot;peak_rss_bytes&quot;: 86982656,
+    &quot;peak_rss_bytes&quot;: 86409216,
     &quot;phase&quot;: &quot;measured&quot;,
     &quot;reason&quot;: &quot;one or more scored semantic or preservation checks failed&quot;
   },
@@ -8476,7 +8502,7 @@
     &quot;details&quot;: {
       &quot;artifact_dir&quot;: &quot;raw/pptx-automizer/chart-data/measured-2.pptx.adapter&quot;,
       &quot;candidate_path&quot;: &quot;raw/pptx-automizer/chart-data/measured-2.pptx&quot;,
-      &quot;candidate_sha256&quot;: &quot;de1234e67011a0d07e81206a919e4da2429842a0e92be1e42876d182b8ad413b&quot;,
+      &quot;candidate_sha256&quot;: &quot;5cc8fabcbea84f22211c7ce9831b933507463813ce17c735fedcd4d52f73e75e&quot;,
       &quot;command&quot;: [
         &quot;node&quot;,
         &quot;pptbench-automizer.js&quot;,
@@ -8490,12 +8516,12 @@
       &quot;stdout_artifact&quot;: &quot;raw/pptx-automizer/chart-data/measured-2.pptx.adapter/stdout.bin&quot;,
       &quot;stdout_bytes&quot;: 0
     },
-    &quot;elapsed_ms&quot;: 1066.2939579997328,
+    &quot;elapsed_ms&quot;: 450.9558329991705,
     &quot;iteration&quot;: 2,
     &quot;outcome&quot;: &quot;failure&quot;,
     &quot;output_path&quot;: null,
     &quot;output_sha256&quot;: null,
-    &quot;peak_rss_bytes&quot;: 86278144,
+    &quot;peak_rss_bytes&quot;: 86097920,
     &quot;phase&quot;: &quot;measured&quot;,
     &quot;reason&quot;: &quot;one or more scored semantic or preservation checks failed&quot;
   },
@@ -8596,7 +8622,7 @@
     &quot;details&quot;: {
       &quot;artifact_dir&quot;: &quot;raw/pptx-automizer/chart-data/measured-3.pptx.adapter&quot;,
       &quot;candidate_path&quot;: &quot;raw/pptx-automizer/chart-data/measured-3.pptx&quot;,
-      &quot;candidate_sha256&quot;: &quot;6e39471ce32a60427c0a066a93b135f42c189142d94be091520440b95a2aa212&quot;,
+      &quot;candidate_sha256&quot;: &quot;a4eb50e8c7d583d9a7538cf70f41253b084f5369ff40aa61482f724385a03f1d&quot;,
       &quot;command&quot;: [
         &quot;node&quot;,
         &quot;pptbench-automizer.js&quot;,
@@ -8610,12 +8636,12 @@
       &quot;stdout_artifact&quot;: &quot;raw/pptx-automizer/chart-data/measured-3.pptx.adapter/stdout.bin&quot;,
       &quot;stdout_bytes&quot;: 0
     },
-    &quot;elapsed_ms&quot;: 978.5880410017853,
+    &quot;elapsed_ms&quot;: 473.3213750005234,
     &quot;iteration&quot;: 3,
     &quot;outcome&quot;: &quot;failure&quot;,
     &quot;output_path&quot;: null,
     &quot;output_sha256&quot;: null,
-    &quot;peak_rss_bytes&quot;: 85016576,
+    &quot;peak_rss_bytes&quot;: 87621632,
     &quot;phase&quot;: &quot;measured&quot;,
     &quot;reason&quot;: &quot;one or more scored semantic or preservation checks failed&quot;
   }
@@ -8734,12 +8760,12 @@
       &quot;stdout_artifact&quot;: &quot;raw/open-xml-sdk/chart-data/warmup-1.pptx.adapter/stdout.bin&quot;,
       &quot;stdout_bytes&quot;: 0
     },
-    &quot;elapsed_ms&quot;: 5814.801583997905,
+    &quot;elapsed_ms&quot;: 8150.845042000583,
     &quot;iteration&quot;: 1,
     &quot;outcome&quot;: &quot;success&quot;,
     &quot;output_path&quot;: &quot;raw/open-xml-sdk/chart-data/warmup-1.pptx&quot;,
     &quot;output_sha256&quot;: &quot;6db42228220db40a15e4f8d62d39c26ed9325d99851df25ba9715081c64596e6&quot;,
-    &quot;peak_rss_bytes&quot;: 30015488,
+    &quot;peak_rss_bytes&quot;: 30359552,
     &quot;phase&quot;: &quot;warmup&quot;,
     &quot;reason&quot;: null
   },
@@ -8856,12 +8882,12 @@
       &quot;stdout_artifact&quot;: &quot;raw/open-xml-sdk/chart-data/measured-1.pptx.adapter/stdout.bin&quot;,
       &quot;stdout_bytes&quot;: 0
     },
-    &quot;elapsed_ms&quot;: 3630.855084000359,
+    &quot;elapsed_ms&quot;: 5036.573165998561,
     &quot;iteration&quot;: 1,
     &quot;outcome&quot;: &quot;success&quot;,
     &quot;output_path&quot;: &quot;raw/open-xml-sdk/chart-data/measured-1.pptx&quot;,
     &quot;output_sha256&quot;: &quot;6db42228220db40a15e4f8d62d39c26ed9325d99851df25ba9715081c64596e6&quot;,
-    &quot;peak_rss_bytes&quot;: 29736960,
+    &quot;peak_rss_bytes&quot;: 30457856,
     &quot;phase&quot;: &quot;measured&quot;,
     &quot;reason&quot;: null
   },
@@ -8978,12 +9004,12 @@
       &quot;stdout_artifact&quot;: &quot;raw/open-xml-sdk/chart-data/measured-2.pptx.adapter/stdout.bin&quot;,
       &quot;stdout_bytes&quot;: 0
     },
-    &quot;elapsed_ms&quot;: 4389.11179200295,
+    &quot;elapsed_ms&quot;: 3397.626207999565,
     &quot;iteration&quot;: 2,
     &quot;outcome&quot;: &quot;success&quot;,
     &quot;output_path&quot;: &quot;raw/open-xml-sdk/chart-data/measured-2.pptx&quot;,
     &quot;output_sha256&quot;: &quot;6db42228220db40a15e4f8d62d39c26ed9325d99851df25ba9715081c64596e6&quot;,
-    &quot;peak_rss_bytes&quot;: 29802496,
+    &quot;peak_rss_bytes&quot;: 30294016,
     &quot;phase&quot;: &quot;measured&quot;,
     &quot;reason&quot;: null
   },
@@ -9100,12 +9126,12 @@
       &quot;stdout_artifact&quot;: &quot;raw/open-xml-sdk/chart-data/measured-3.pptx.adapter/stdout.bin&quot;,
       &quot;stdout_bytes&quot;: 0
     },
-    &quot;elapsed_ms&quot;: 3129.483042001084,
+    &quot;elapsed_ms&quot;: 3021.2935420022404,
     &quot;iteration&quot;: 3,
     &quot;outcome&quot;: &quot;success&quot;,
     &quot;output_path&quot;: &quot;raw/open-xml-sdk/chart-data/measured-3.pptx&quot;,
     &quot;output_sha256&quot;: &quot;6db42228220db40a15e4f8d62d39c26ed9325d99851df25ba9715081c64596e6&quot;,
-    &quot;peak_rss_bytes&quot;: 29949952,
+    &quot;peak_rss_bytes&quot;: 30294016,
     &quot;phase&quot;: &quot;measured&quot;,
     &quot;reason&quot;: null
   }

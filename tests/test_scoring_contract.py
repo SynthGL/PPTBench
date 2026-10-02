@@ -455,7 +455,9 @@ def test_frozen_fixture_resources_are_reproducible_across_timestamps_and_process
 #
 # A writer may re-serialize a package into an equivalent form. These helpers model the
 # most aggressive such writer: every part renamed and moved, every relationship id
-# renumbered (and relationship order reversed), every XML part re-encoded with new
+# renumbered (and relationship order reversed), every internal id family (shape,
+# slide, master, layout, chart axis, comment author) renumbered in reverse order with
+# every reference rewritten through the same map, every XML part re-encoded with new
 # namespace prefixes and schema defaults written out, ZIP order reversed, and save-time
 # metadata regenerated, recursively through embedded packages. Scored checks must not
 # see any of it, yet must still catch a real content loss made before the rewrite.
@@ -466,6 +468,52 @@ _CT = "{http://schemas.openxmlformats.org/package/2006/content-types}"
 _CORE = "{http://schemas.openxmlformats.org/package/2006/metadata/core-properties}"
 _EXTENDED = "{http://schemas.openxmlformats.org/officeDocument/2006/extended-properties}"
 _DCTERMS = "{http://purl.org/dc/terms/}"
+_P14 = "{http://schemas.microsoft.com/office/powerpoint/2010/main}"
+_SHAPE_REFERENCES = (
+    ("stCxn", "id"),
+    ("endCxn", "id"),
+    *((tag, "spid") for tag in ("spTgt", "bldP", "bldDgm", "bldOleChart", "bldGraphic", "inkTgt")),
+)
+# (definitions, references, first new value); tags match in full or by local name.
+_PART_ID_FAMILIES = (
+    ((("cNvPr", "id"),), _SHAPE_REFERENCES, 5_000),
+    (((_P + "sldId", "id"),), ((_P14 + "sldId", "id"),), 9_000),
+    (((_P + "sldMasterId", "id"),), (), 2_147_490_000),
+    (((_P + "sldLayoutId", "id"),), (), 2_147_490_000),
+    (((_C + "axId", "val"),), ((_C + "crossAx", "val"),), 700_000_000),
+)
+_AUTHOR_DEFINITIONS = ((_P + "cmAuthor", "id"),)
+_AUTHOR_REFERENCES = ((_P + "cm", "authorId"),)
+
+
+def _id_attribute(element: ET.Element, roles: tuple[tuple[str, str], ...]) -> str | None:
+    for tag, attribute in roles:
+        if tag in (element.tag, element.tag.rsplit("}", 1)[-1]) and attribute in element.attrib:
+            return attribute
+    return None
+
+
+def _renumber_ids(
+    root: ET.Element,
+    definitions: tuple[tuple[str, str], ...],
+    references: tuple[tuple[str, str], ...],
+    base: int,
+    mapping: dict[str, str] | None = None,
+) -> dict[str, str]:
+    """Renumber one id family in reverse order of definition, references included."""
+    if mapping is None:
+        values: list[str] = []
+        for element in root.iter():
+            attribute = _id_attribute(element, definitions)
+            if attribute is not None and element.attrib[attribute] not in values:
+                values.append(element.attrib[attribute])
+        mapping = {value: str(base + 7 * (len(values) - i)) for i, value in enumerate(values)}
+    for element in root.iter():
+        for roles in (definitions, references):
+            attribute = _id_attribute(element, roles)
+            if attribute is not None and element.attrib[attribute] in mapping:
+                element.set(attribute, mapping[element.attrib[attribute]])
+    return mapping
 
 
 def _rels_name(source: str) -> str:
@@ -543,6 +591,12 @@ def _equivalent_rewrite(parts: dict[str, bytes]) -> dict[str, bytes]:
         id_maps[source] = id_map
         new_rels = _rels_name(renamed[source]) if source else "_rels/.rels"
         result[new_rels] = ET.tostring(relationships, encoding="utf-8")
+    authors: dict[str, str] = {}
+    for name in content:
+        if _is_xml(name, parts[name]) and not parts[name].startswith(b"PK\x03\x04"):
+            root = ET.fromstring(parts[name])
+            if root.tag == _P + "cmAuthorLst":
+                authors = _renumber_ids(root, _AUTHOR_DEFINITIONS, (), 50)
     for name in content:
         data = parts[name]
         if data.startswith(b"PK\x03\x04"):
@@ -554,6 +608,9 @@ def _equivalent_rewrite(parts: dict[str, bytes]) -> dict[str, bytes]:
                 for attribute, value in element.attrib.items():
                     if attribute.startswith(_R) and value in id_map:
                         element.set(attribute, id_map[value])
+            for definitions, references, base in _PART_ID_FAMILIES:
+                _renumber_ids(root, definitions, references, base)
+            _renumber_ids(root, _AUTHOR_DEFINITIONS, _AUTHOR_REFERENCES, 0, authors)
             _regenerate_save_time_metadata(root)
             _write_schema_defaults(root)
             data = ET.tostring(root, encoding="utf-8", xml_declaration=True)
@@ -727,6 +784,14 @@ def _restyle_workbook_cell(parts: dict[str, bytes]) -> None:
     _edit_workbook(parts, "barChart", "xl/worksheets/", restyle)
 
 
+def _cross_bar_axis_with_itself(parts: dict[str, bytes]) -> None:
+    def rewire(root: ET.Element) -> None:
+        first_axis = next(root.iter(_C + "axId")).attrib["val"]
+        next(root.iter(_C + "crossAx")).set("val", first_axis)
+
+    _edit_xml(parts, _chart_named(parts, "barChart"), rewire)
+
+
 def _share_workbook(parts: dict[str, bytes]) -> None:
     shared = _chart_workbook(parts, _chart_named(parts, "barChart"))
     scatter = _chart_named(parts, "scatterChart")
@@ -761,6 +826,7 @@ _LOSSES: list[tuple[str, str, Callable[[dict[str, bytes]], None]]] = [
     ("chart-data", "related-workbook-values", _change_series_header),
     ("chart-data", "related-workbook-structure-and-formatting", _restyle_workbook_cell),
     ("chart-data", "chart-formatting-preserved", _restyle_bar_chart),
+    ("chart-data", "chart-formatting-preserved", _cross_bar_axis_with_itself),
 ]
 
 

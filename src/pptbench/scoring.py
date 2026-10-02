@@ -700,21 +700,15 @@ def _chart_formats(model: PackageModel, links: dict[int, tuple[str, str]]) -> di
 
 
 def _chart_formatting(root: ET.Element) -> ET.Element:
-    """Chart formatting only: no cached points, and axis ids reduced to their wiring.
+    """Chart formatting only: cached points change with every edit; other checks verify them.
 
-    Cached points change with every chart edit and other checks verify them. Axis ids
-    (``c:axId``/``c:crossAx``) are internal identifiers like relationship ids: only
-    which axes refer to which matters, so each is renumbered by first appearance.
+    Axis ids are already renumbered by the package model, like every internal id family.
     """
     stripped = copy.deepcopy(root)
     for cache in stripped.iter():
         if _local(cache.tag) in {"strCache", "numCache", "strLit", "numLit"}:
             for value in cache.iter(_C + "v"):
                 value.text = None
-    axes: dict[str, str] = {}
-    for element in stripped.iter():
-        if element.tag in {_C + "axId", _C + "crossAx"} and "val" in element.attrib:
-            element.set("val", axes.setdefault(element.attrib["val"], str(len(axes))))
     return stripped
 
 

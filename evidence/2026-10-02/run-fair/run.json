@@ -99,11 +99,11 @@
       "source_revision": null
     }
   },
-  "created_at_utc": "2026-10-02T07:47:30.948634+00:00",
+  "created_at_utc": "2026-10-02T08:04:46.558936+00:00",
   "environment": {
     "executable": "python",
     "implementation": "CPython",
-    "pid": "1860",
+    "pid": "18610",
     "platform": "macOS-26.5.1-arm64-arm-64bit-Mach-O",
     "python": "3.14.0"
   },
@@ -258,10 +258,10 @@
           "feature-matrix",
           "warmup-1.pptx"
         ],
-        "elapsed_ms": 8377.649417001521,
+        "elapsed_ms": 3864.180832999409,
         "outcome": "success",
         "output_path": "render/wolfppt-wheel/feature-matrix/warmup-1.pdf",
-        "output_sha256": "34a99406acbd7d78e2c91dabc1db8d02c368de226ec8ec77c816c5b7231d0b59",
+        "output_sha256": "93247e157f531fef57c0485df52fb2fb54f44ca5f3f287635354f2ff3010c548",
         "source_path": "raw/wolfppt-wheel/feature-matrix/warmup-1.pptx",
         "source_sha256": "1204a0fb452aece087c4786c0b2ca92bccbfedf66347c41b4b7b3b913c3afc2d",
         "stderr_bytes": 487,
@@ -278,10 +278,10 @@
           "feature-matrix",
           "measured-1.pptx"
         ],
-        "elapsed_ms": 5512.719917001959,
+        "elapsed_ms": 3572.623582997039,
         "outcome": "success",
         "output_path": "render/wolfppt-wheel/feature-matrix/measured-1.pdf",
-        "output_sha256": "ec361e96535c946357455054e45e569ce58e3014255c38285c5582dff3563ca7",
+        "output_sha256": "a88c42c0fa4f8de5c5bee49a25389e760bc44e5ca15098a738c3ed48bc0fc92b",
         "source_path": "raw/wolfppt-wheel/feature-matrix/measured-1.pptx",
         "source_sha256": "1204a0fb452aece087c4786c0b2ca92bccbfedf66347c41b4b7b3b913c3afc2d",
         "stderr_bytes": 487,
@@ -298,10 +298,10 @@
           "feature-matrix",
           "measured-2.pptx"
         ],
-        "elapsed_ms": 9522.313332996418,
+        "elapsed_ms": 3734.8725000010745,
         "outcome": "success",
         "output_path": "render/wolfppt-wheel/feature-matrix/measured-2.pdf",
-        "output_sha256": "83d89b50a14e7ab3330313b38ff1f6945ae633c1ab13ac456cd7b8bb613fd394",
+        "output_sha256": "c89607d455a6392be281b0769d63144cdca84c36a1377fd2e25c010783905e15",
         "source_path": "raw/wolfppt-wheel/feature-matrix/measured-2.pptx",
         "source_sha256": "1204a0fb452aece087c4786c0b2ca92bccbfedf66347c41b4b7b3b913c3afc2d",
         "stderr_bytes": 487,
@@ -318,10 +318,10 @@
           "feature-matrix",
           "measured-3.pptx"
         ],
-        "elapsed_ms": 9600.272791998577,
+        "elapsed_ms": 3586.212958001852,
         "outcome": "success",
         "output_path": "render/wolfppt-wheel/feature-matrix/measured-3.pdf",
-        "output_sha256": "cc5d3c9b0dea22847f0bc8e5f47a425131cbc2258858f9de81d6c5c6a0dd311f",
+        "output_sha256": "50e5348694eb3ba6db13105ee2dd0a3b0d26b016826c38e8f913751e3f010b43",
         "source_path": "raw/wolfppt-wheel/feature-matrix/measured-3.pptx",
         "source_sha256": "1204a0fb452aece087c4786c0b2ca92bccbfedf66347c41b4b7b3b913c3afc2d",
         "stderr_bytes": 487,
@@ -338,12 +338,12 @@
           "feature-matrix",
           "warmup-1.pptx"
         ],
-        "elapsed_ms": 9907.29595800076,
+        "elapsed_ms": 3675.2655830023286,
         "outcome": "success",
         "output_path": "render/apache-poi/feature-matrix/warmup-1.pdf",
-        "output_sha256": "f8655fcbb6e36ce18370a9f236c473cbc45f50af2dcce4558025a6469454c827",
+        "output_sha256": "e18b2dbc45b3cf46d55409ecc4267268829f3565b8b9e32fb9a08f43f0e6f7c4",
         "source_path": "raw/apache-poi/feature-matrix/warmup-1.pptx",
-        "source_sha256": "23299b5d1f1062ec7b16baad2c4e6cfca01c4ede60009a9705b90f3ec3b2bd68",
+        "source_sha256": "0ba49e7d8762a9c970593fd8a5603cde7d5400ab66adaad93510e6c61f81da8b",
         "stderr_bytes": 487,
         "stdout_bytes": 279
       },
@@ -358,12 +358,12 @@
           "feature-matrix",
           "measured-1.pptx"
         ],
-        "elapsed_ms": 7298.623083999701,
+        "elapsed_ms": 3843.9426669974637,
         "outcome": "success",
         "output_path": "render/apache-poi/feature-matrix/measured-1.pdf",
-        "output_sha256": "2e7544324d1812ccad92e75b3e6ec28e5b74877375660b7b23b7673f6fda19b5",
+        "output_sha256": "f4978691eeebf931e5f08bef2f25c3601f837484fee5123e5ee1b3753966d669",
         "source_path": "raw/apache-poi/feature-matrix/measured-1.pptx",
-        "source_sha256": "bbf5307b2407f9e29e2bf4b9aa0884c5fff5cf15ad5553ab5d9d3f8db35c0148",
+        "source_sha256": "baf00f50be387086371d3f049e2e7207b58b09052f598a9ae13567fac870fc1e",
         "stderr_bytes": 487,
         "stdout_bytes": 283
       },
@@ -378,12 +378,12 @@
           "feature-matrix",
           "measured-2.pptx"
         ],
-        "elapsed_ms": 6374.009125000157,
+        "elapsed_ms": 4240.674417000264,
         "outcome": "success",
         "output_path": "render/apache-poi/feature-matrix/measured-2.pdf",
-        "output_sha256": "4b7d2a7f8bbafe82c2c789045d576a2043f730f5b4a86881d722f9ab2cce453b",
+        "output_sha256": "feada9ef3d7cfd9f5ec517cd6d1b49d1d793aaedba1dfeea036337ac582394d8",
         "source_path": "raw/apache-poi/feature-matrix/measured-2.pptx",
-        "source_sha256": "9e79ac0cdb166918c087d515fcfe0b17467f4c5dabb0a55c142996f1d54ac662",
+        "source_sha256": "6c441a367278c26d41ca36da71dc12efccc76a3b485dd2a0e18fb7331322c1f1",
         "stderr_bytes": 487,
         "stdout_bytes": 283
       },
@@ -398,12 +398,12 @@
           "feature-matrix",
           "measured-3.pptx"
         ],
-        "elapsed_ms": 5630.28395800211,
+        "elapsed_ms": 3593.762250002328,
         "outcome": "success",
         "output_path": "render/apache-poi/feature-matrix/measured-3.pdf",
-        "output_sha256": "d39502c8d4737f78c3ecd5e6107edfab15c40a78715414c23a4b032dee189e51",
+        "output_sha256": "6c738de9946df465c6eca4ea5c79890d33e9666656eaa1b35ee6a73bc3a6949c",
         "source_path": "raw/apache-poi/feature-matrix/measured-3.pptx",
-        "source_sha256": "c183bf2d726d5bfc3f8042dd7c103ff802ea5b592d76d4e36a88bc8bae387fe8",
+        "source_sha256": "ac23280b417ba14a3a238bbae2c804a4ed626ed7a5e3bf6be6a353e557430997",
         "stderr_bytes": 487,
         "stdout_bytes": 283
       },
@@ -418,12 +418,12 @@
           "feature-matrix",
           "warmup-1.pptx"
         ],
-        "elapsed_ms": 5600.052916001005,
+        "elapsed_ms": 4593.698167002003,
         "outcome": "success",
         "output_path": "render/pptx-automizer/feature-matrix/warmup-1.pdf",
-        "output_sha256": "b5e60f854997fef2edb73ae899e8c35ec4a38708ffebb4f54da928dc388e95af",
+        "output_sha256": "cb72b6fbb0acdf32f8e4470da2a7157b1abd72850f1109496d1383a31b6457a5",
         "source_path": "raw/pptx-automizer/feature-matrix/warmup-1.pptx",
-        "source_sha256": "4b2a7b04f335fd405cb089ca7379f955554046b9e768d8a31df7cacb47124e11",
+        "source_sha256": "504c07010dd64ea9572efc9ffca9c9ce9f94b7982a948d87bac2e8fabc872821",
         "stderr_bytes": 487,
         "stdout_bytes": 287
       },
@@ -438,12 +438,12 @@
           "feature-matrix",
           "measured-1.pptx"
         ],
-        "elapsed_ms": 5278.440958001738,
+        "elapsed_ms": 4381.246416000067,
         "outcome": "success",
         "output_path": "render/pptx-automizer/feature-matrix/measured-1.pdf",
-        "output_sha256": "88ca134b9c20e9fcb010f95352bcba952a71d82108d393b97ede408f5ba094ee",
+        "output_sha256": "e38a016ff0cba8d0708c096fcf22adb9d3dedb5e76398aaeda16eca837eb2cc9",
         "source_path": "raw/pptx-automizer/feature-matrix/measured-1.pptx",
-        "source_sha256": "6b58d743368b35d6129dd93c48bc73abd795dfcdd7a2e31e071c5f061a599418",
+        "source_sha256": "7242fcfe666c14c734f5dae06b086a5a8c7eb61f31d3646bd1196bbcc8cb2677",
         "stderr_bytes": 487,
         "stdout_bytes": 291
       },
@@ -458,12 +458,12 @@
           "feature-matrix",
           "measured-2.pptx"
         ],
-        "elapsed_ms": 4909.3286670031375,
+        "elapsed_ms": 4408.372792000591,
         "outcome": "success",
         "output_path": "render/pptx-automizer/feature-matrix/measured-2.pdf",
-        "output_sha256": "afa78012736df549050f21fe84915fa9f02d4601fef9c5707253e628dd19addb",
+        "output_sha256": "415c726eb6d55686b7d0039af8d3219dda87430d6a5edd6f54d6d601b59e445e",
         "source_path": "raw/pptx-automizer/feature-matrix/measured-2.pptx",
-        "source_sha256": "597eb2fd9acb07f66406d6aaf1ad14616430e19de4017bfc6ffdae10f570c56d",
+        "source_sha256": "83261fb902a4bcafdabbd165b6ca438a4642c7f3e64d2d90c158a5dbc2918b41",
         "stderr_bytes": 487,
         "stdout_bytes": 291
       },
@@ -478,12 +478,12 @@
           "feature-matrix",
           "measured-3.pptx"
         ],
-        "elapsed_ms": 6445.028416997957,
+        "elapsed_ms": 4349.511958997027,
         "outcome": "success",
         "output_path": "render/pptx-automizer/feature-matrix/measured-3.pdf",
-        "output_sha256": "6304c3a9aafd6a34e31922cd05d09def41f57b0d38d318fd3eccd348db004360",
+        "output_sha256": "3af18f10579b30174f1320f4415b916b879f271ea77044bb0761ec1daadef9c9",
         "source_path": "raw/pptx-automizer/feature-matrix/measured-3.pptx",
-        "source_sha256": "e2c98a8a8e6885fd7092dae9aec8e0c6e042ec2b73d1d3321c37379c227ea601",
+        "source_sha256": "d0f2b772e2cc9bb0879e5158fb6943eb0ae1f359323a31ad7848bda635ea1b76",
         "stderr_bytes": 487,
         "stdout_bytes": 291
       },
@@ -498,10 +498,10 @@
           "feature-matrix",
           "warmup-1.pptx"
         ],
-        "elapsed_ms": 5400.900874999934,
+        "elapsed_ms": 4802.86220799826,
         "outcome": "success",
         "output_path": "render/open-xml-sdk/feature-matrix/warmup-1.pdf",
-        "output_sha256": "3e7e021a09893baadd0b9509792b521664f0ec57848b9bac3012551857736a7b",
+        "output_sha256": "a5b54c893182449ddcce8394d0d919c989602bbb008afc2e31a5d061d278388c",
         "source_path": "raw/open-xml-sdk/feature-matrix/warmup-1.pptx",
         "source_sha256": "7415c850f702270ca550f8887b5add6fedadc50b8abc194bccc39cbe4fd50401",
         "stderr_bytes": 487,
@@ -518,10 +518,10 @@
           "feature-matrix",
           "measured-1.pptx"
         ],
-        "elapsed_ms": 5751.2783340025635,
+        "elapsed_ms": 3878.8599590006925,
         "outcome": "success",
         "output_path": "render/open-xml-sdk/feature-matrix/measured-1.pdf",
-        "output_sha256": "17cf07717cb46b7537a8b9e8672f28d73e0757ff49c6b5f4303c9e50f1f9cb77",
+        "output_sha256": "3f8b7c613d4851ef049f07e417c347759fea5bfafb1e9f4318fab170b86522dd",
         "source_path": "raw/open-xml-sdk/feature-matrix/measured-1.pptx",
         "source_sha256": "7415c850f702270ca550f8887b5add6fedadc50b8abc194bccc39cbe4fd50401",
         "stderr_bytes": 487,
@@ -538,10 +538,10 @@
           "feature-matrix",
           "measured-2.pptx"
         ],
-        "elapsed_ms": 5757.714208000834,
+        "elapsed_ms": 4662.913125001069,
         "outcome": "success",
         "output_path": "render/open-xml-sdk/feature-matrix/measured-2.pdf",
-        "output_sha256": "0a785224fcb8fd9d59afa1edf0239b0819da254da20050e472609c1d44b79a44",
+        "output_sha256": "e287a1e76b41c72895e460af4c252b7c0dbaf1505b9cb77db7141ebd1a0f1053",
         "source_path": "raw/open-xml-sdk/feature-matrix/measured-2.pptx",
         "source_sha256": "7415c850f702270ca550f8887b5add6fedadc50b8abc194bccc39cbe4fd50401",
         "stderr_bytes": 487,
@@ -558,10 +558,10 @@
           "feature-matrix",
           "measured-3.pptx"
         ],
-        "elapsed_ms": 6819.390292002936,
+        "elapsed_ms": 4000.076334003097,
         "outcome": "success",
         "output_path": "render/open-xml-sdk/feature-matrix/measured-3.pdf",
-        "output_sha256": "4ee0bf2d62936fbf750036d2b732271a15c4a5811d96f672bde2ac943082abee",
+        "output_sha256": "ca67e25644370b580c520ced80efa2f0d095a51cc87e1dc05d41a1495ce5ab1e",
         "source_path": "raw/open-xml-sdk/feature-matrix/measured-3.pptx",
         "source_sha256": "7415c850f702270ca550f8887b5add6fedadc50b8abc194bccc39cbe4fd50401",
         "stderr_bytes": 487,
@@ -578,10 +578,10 @@
           "template-mutation",
           "warmup-1.pptx"
         ],
-        "elapsed_ms": 7166.67008299919,
+        "elapsed_ms": 3849.9284999998054,
         "outcome": "success",
         "output_path": "render/wolfppt-wheel/template-mutation/warmup-1.pdf",
-        "output_sha256": "8531c0a56baaa23e7fc6280d837ff96ebd0c56a15ee97684330c890198d8aac3",
+        "output_sha256": "06ed01a774baedbda50745c2862d66791709ecfbc34d7825a3045fa200a3074a",
         "source_path": "raw/wolfppt-wheel/template-mutation/warmup-1.pptx",
         "source_sha256": "038c2ffd7e6dd2ef4a08ec923696326cb3774c53b1801e6a6a537fafe01a3eb3",
         "stderr_bytes": 487,
@@ -598,10 +598,10 @@
           "template-mutation",
           "measured-1.pptx"
         ],
-        "elapsed_ms": 6604.32000000219,
+        "elapsed_ms": 3812.7392910027993,
         "outcome": "success",
         "output_path": "render/wolfppt-wheel/template-mutation/measured-1.pdf",
-        "output_sha256": "788c7101494dfc0250b7a252984a3e5472e9c9874678b2ce39ac76f5ec45acbe",
+        "output_sha256": "88ff3ab43d3c887a51ed204e31901db5668bbb0940ce6638ad0cfa6796c9697c",
         "source_path": "raw/wolfppt-wheel/template-mutation/measured-1.pptx",
         "source_sha256": "038c2ffd7e6dd2ef4a08ec923696326cb3774c53b1801e6a6a537fafe01a3eb3",
         "stderr_bytes": 487,
@@ -618,10 +618,10 @@
           "template-mutation",
           "measured-2.pptx"
         ],
-        "elapsed_ms": 7127.6017500022135,
+        "elapsed_ms": 3757.229416998598,
         "outcome": "success",
         "output_path": "render/wolfppt-wheel/template-mutation/measured-2.pdf",
-        "output_sha256": "0bf9d62536eac91c9e036a461be87f834cc0f2d7c609b6b706add3bb2f64f093",
+        "output_sha256": "7ef31b7adf4fe46dc31121c6a593cf6e2543b3afbf7712485e84d96d2350ba95",
         "source_path": "raw/wolfppt-wheel/template-mutation/measured-2.pptx",
         "source_sha256": "038c2ffd7e6dd2ef4a08ec923696326cb3774c53b1801e6a6a537fafe01a3eb3",
         "stderr_bytes": 487,
@@ -638,10 +638,10 @@
           "template-mutation",
           "measured-3.pptx"
         ],
-        "elapsed_ms": 6420.051832999889,
+        "elapsed_ms": 3534.2108750010084,
         "outcome": "success",
         "output_path": "render/wolfppt-wheel/template-mutation/measured-3.pdf",
-        "output_sha256": "3930b554df80519d9db0626dc37f9a0c2363e12905e30085562b6b7e43aac4f1",
+        "output_sha256": "37e231b2cabc106cdc4b9ac3ac1dc84aea2f2158fc2e8889364133d4dd111c63",
         "source_path": "raw/wolfppt-wheel/template-mutation/measured-3.pptx",
         "source_sha256": "038c2ffd7e6dd2ef4a08ec923696326cb3774c53b1801e6a6a537fafe01a3eb3",
         "stderr_bytes": 487,
@@ -658,12 +658,12 @@
           "template-mutation",
           "warmup-1.pptx"
         ],
-        "elapsed_ms": 6736.152582998329,
+        "elapsed_ms": 2987.6155000019935,
         "outcome": "success",
         "output_path": "render/apache-poi/template-mutation/warmup-1.pdf",
-        "output_sha256": "123ec7285635731978ed18d1fe39c48eacb22906f261d0ff4712359d752e91b5",
+        "output_sha256": "eed1f7197202d7abe2f8871454c3912730f5655c3758bf8b1f33d298d1b761af",
         "source_path": "raw/apache-poi/template-mutation/warmup-1.pptx",
-        "source_sha256": "7de1c94f49f3ca7fcc99efbfaa02a2403bcb83092e339b0b7e75acc3d46b878d",
+        "source_sha256": "410ded21e831040a82ced15878513a2c2678307679c509fbec9eda9811b061c3",
         "stderr_bytes": 487,
         "stdout_bytes": 285
       },
@@ -678,12 +678,12 @@
           "template-mutation",
           "measured-1.pptx"
         ],
-        "elapsed_ms": 7023.176708000392,
+        "elapsed_ms": 2959.769042001426,
         "outcome": "success",
         "output_path": "render/apache-poi/template-mutation/measured-1.pdf",
-        "output_sha256": "35fc801cd67e4e6711997dd76fb8550f5279582f7659ede06745bf21bfde7a92",
+        "output_sha256": "f01b0bdabb11bf81865f81d12af4a5d00a85c598c726946ad802f99e6ac8c1c9",
         "source_path": "raw/apache-poi/template-mutation/measured-1.pptx",
-        "source_sha256": "63b69cf86957db649c31c30de0bb9e89c431b7b21f202a5301adf311b6360da2",
+        "source_sha256": "c7b3858c89996efec0e854d3b1ac50ae0a342ba40c82e4f17607c4d217f8df5b",
         "stderr_bytes": 487,
         "stdout_bytes": 289
       },
@@ -698,12 +698,12 @@
           "template-mutation",
           "measured-2.pptx"
         ],
-        "elapsed_ms": 7386.525292000442,
+        "elapsed_ms": 2970.3131249989383,
         "outcome": "success",
         "output_path": "render/apache-poi/template-mutation/measured-2.pdf",
-        "output_sha256": "5759e018f1b9e1aa69ef23c67b3608502f82d4183f7a2672f977a8b2e148a61a",
+        "output_sha256": "dbe2151511f693db1ce0dc765c365526d64c7d98ae286deafe97910dda5d10b5",
         "source_path": "raw/apache-poi/template-mutation/measured-2.pptx",
-        "source_sha256": "66f962ec014c42a9542909342d5681df8c9997c1553e422b50c1a71be73e4f55",
+        "source_sha256": "74f53158e30eea04dde743484aa9f88ddaedf965ace881b73c9ecec90a8bf15c",
         "stderr_bytes": 487,
         "stdout_bytes": 289
       },
@@ -718,12 +718,12 @@
           "template-mutation",
           "measured-3.pptx"
         ],
-        "elapsed_ms": 6167.8537919979135,
+        "elapsed_ms": 2992.2955420006474,
         "outcome": "success",
         "output_path": "render/apache-poi/template-mutation/measured-3.pdf",
-        "output_sha256": "7ec5e08a4c8447cdf03aa4814c792df59356345f2ff30984572557fc9f366e9c",
+        "output_sha256": "eced2697c6fb818fd12d51979bd728bae68ac464c55c3016555cee5f1f007d7d",
         "source_path": "raw/apache-poi/template-mutation/measured-3.pptx",
-        "source_sha256": "c83dc48681034b5803db3dd94d47569a120305d623c7fc6799bbeb675ed35156",
+        "source_sha256": "e30facf27266fa2ee720aa2ee9f06b84d2640b9a6fb1fdcd3c2200263cc7ee57",
         "stderr_bytes": 487,
         "stdout_bytes": 289
       },
@@ -738,12 +738,12 @@
           "template-mutation",
           "warmup-1.pptx"
         ],
-        "elapsed_ms": 6406.801457997062,
+        "elapsed_ms": 3181.67966600231,
         "outcome": "success",
         "output_path": "render/pptx-automizer/template-mutation/warmup-1.pdf",
-        "output_sha256": "c14a8959dd361fd35324c4b139eadb84189f27b7cdca9848486d60dd631a2bfc",
+        "output_sha256": "1a5a7fccbd2fef36d96620f3af3d0e1d911ee0f1c2a2cac0f76fc01b37b46c28",
         "source_path": "raw/pptx-automizer/template-mutation/warmup-1.pptx",
-        "source_sha256": "06607a780a6c2b3da8caf614e70b773e68b0a61ca57fa71c46e945a72c67400c",
+        "source_sha256": "a00091ce1b6d80b18ef3748a848d297d7a5cb81cf3cc1937d9f54a3747f52154",
         "stderr_bytes": 487,
         "stdout_bytes": 293
       },
@@ -758,12 +758,12 @@
           "template-mutation",
           "measured-1.pptx"
         ],
-        "elapsed_ms": 6635.965500001475,
+        "elapsed_ms": 4164.2626659995585,
         "outcome": "success",
         "output_path": "render/pptx-automizer/template-mutation/measured-1.pdf",
-        "output_sha256": "55e920f6318a6ac227c6ee038446a5825bd2b7a1b0e20636094ac88cefdb67ea",
+        "output_sha256": "2912940700f20ca1ca2a0af80600ff4d367fe765566b79cce04e43b559834056",
         "source_path": "raw/pptx-automizer/template-mutation/measured-1.pptx",
-        "source_sha256": "466d80d3d092fd390157ac5577d2d6717f40c9b867e6d9d9c9b06544729ba2b6",
+        "source_sha256": "a00091ce1b6d80b18ef3748a848d297d7a5cb81cf3cc1937d9f54a3747f52154",
         "stderr_bytes": 487,
         "stdout_bytes": 297
       },
@@ -778,12 +778,12 @@
           "template-mutation",
           "measured-2.pptx"
         ],
-        "elapsed_ms": 7043.365875000745,
+        "elapsed_ms": 3956.3693339987367,
         "outcome": "success",
         "output_path": "render/pptx-automizer/template-mutation/measured-2.pdf",
-        "output_sha256": "afdf246e7dc5f371d442e07a65a494f228e17949f89edbfe31b4f854efba12c8",
+        "output_sha256": "b5f0f41a88be9f2e8f183d0be4338755db495be675878dce45493081a5aee2c0",
         "source_path": "raw/pptx-automizer/template-mutation/measured-2.pptx",
-        "source_sha256": "718d376d3a53447e5566a5aa30a6e0a8cb8ff474384c2ec197c9e1f0179e276d",
+        "source_sha256": "0446979db9109c8614fe16d9d54eebc6fa3de1b21871a9f3c72701361bd175c6",
         "stderr_bytes": 487,
         "stdout_bytes": 297
       },
@@ -798,12 +798,12 @@
           "template-mutation",
           "measured-3.pptx"
         ],
-        "elapsed_ms": 7214.482416002284,
+        "elapsed_ms": 4561.875084000349,
         "outcome": "success",
         "output_path": "render/pptx-automizer/template-mutation/measured-3.pdf",
-        "output_sha256": "4028f4706f4ddaf240bbcaa38bbf12e1b3d3f466095a5d41b5fe53f9b1a25710",
+        "output_sha256": "ac9097d5bbed565bf859433284f1f8d518da43b7fcc7c1e42af5767cba623f52",
         "source_path": "raw/pptx-automizer/template-mutation/measured-3.pptx",
-        "source_sha256": "4d64f48aaf0bcf923b9d4d241bac9c9b5960607554ae50edea8eb5d4b8293bc2",
+        "source_sha256": "eeebb8999611a9c040154d68e5e6066c4cd640eef7da1c77232ee6bd2bf08081",
         "stderr_bytes": 487,
         "stdout_bytes": 297
       },
@@ -818,10 +818,10 @@
           "template-mutation",
           "warmup-1.pptx"
         ],
-        "elapsed_ms": 6711.519666998356,
+        "elapsed_ms": 4059.1884159985057,
         "outcome": "success",
         "output_path": "render/open-xml-sdk/template-mutation/warmup-1.pdf",
-        "output_sha256": "f414437fd05683c882dccc5a873128ce7a73f9ff2bcb0be91cc7f2a62c678320",
+        "output_sha256": "37e5c8c37ffec76d0b5b9a9c76b320fc2245bd06e659413857aa67df58353e63",
         "source_path": "raw/open-xml-sdk/template-mutation/warmup-1.pptx",
         "source_sha256": "9375592b524090cd92158bf7f3f81d69babe0d5172644b12c36378b7df8d0f91",
         "stderr_bytes": 487,
@@ -838,10 +838,10 @@
           "template-mutation",
           "measured-1.pptx"
         ],
-        "elapsed_ms": 6676.003749998927,
+        "elapsed_ms": 3786.314125001809,
         "outcome": "success",
         "output_path": "render/open-xml-sdk/template-mutation/measured-1.pdf",
-        "output_sha256": "8dcdc2799eaf9438e2e150520364b9fa25256b76d7a8006c175d0b6d3d25eecc",
+        "output_sha256": "980214c1dae62e9e31a36ed4a271decd25e3754ee99c5737ad39e8cf6016fbad",
         "source_path": "raw/open-xml-sdk/template-mutation/measured-1.pptx",
         "source_sha256": "9375592b524090cd92158bf7f3f81d69babe0d5172644b12c36378b7df8d0f91",
         "stderr_bytes": 487,
@@ -858,10 +858,10 @@
           "template-mutation",
           "measured-2.pptx"
         ],
-        "elapsed_ms": 7429.079749999801,
+        "elapsed_ms": 4397.631833999185,
         "outcome": "success",
         "output_path": "render/open-xml-sdk/template-mutation/measured-2.pdf",
-        "output_sha256": "24bbf51a3f9c4ec09a3998f09cf8b4a4338076742521145deda0a85b2fccd996",
+        "output_sha256": "60e937022b455bd4f33df6fecbe00928bb91a93a61e78a850a13107a25e0f022",
         "source_path": "raw/open-xml-sdk/template-mutation/measured-2.pptx",
         "source_sha256": "9375592b524090cd92158bf7f3f81d69babe0d5172644b12c36378b7df8d0f91",
         "stderr_bytes": 487,
@@ -878,10 +878,10 @@
           "template-mutation",
           "measured-3.pptx"
         ],
-        "elapsed_ms": 6820.188833000429,
+        "elapsed_ms": 6101.830708001216,
         "outcome": "success",
         "output_path": "render/open-xml-sdk/template-mutation/measured-3.pdf",
-        "output_sha256": "c2d22983e26a371a27c57802acc21ad60810a3fcfe66a2ea98eac09f6f36b889",
+        "output_sha256": "dda10c3903fcc262ffdd64b7e2d604a1a3a1664de86d102815c4b538c953f9c8",
         "source_path": "raw/open-xml-sdk/template-mutation/measured-3.pptx",
         "source_sha256": "9375592b524090cd92158bf7f3f81d69babe0d5172644b12c36378b7df8d0f91",
         "stderr_bytes": 487,
@@ -898,12 +898,12 @@
           "chart-data",
           "warmup-1.pptx"
         ],
-        "elapsed_ms": 6506.103667001298,
+        "elapsed_ms": 4270.187665999401,
         "outcome": "success",
         "output_path": "render/python-pptx/chart-data/warmup-1.pdf",
-        "output_sha256": "e2a29d7f3af71f040173084a43eb8d0d666195c2e21f0f7554024ba6dda0992c",
+        "output_sha256": "179b642520f0dd3cfe096352e8e685649307fd0d42c1e67beeed0c362e334fd4",
         "source_path": "raw/python-pptx/chart-data/warmup-1.pptx",
-        "source_sha256": "e66ef41a1ba9b0041842b30e9a01f41dd6247e21350f6e986af11fc95438e23f",
+        "source_sha256": "e71334475ba1fe02a375bb94a881b7ddd82bdb508fa499e8af0ce7544a57b74e",
         "stderr_bytes": 446,
         "stdout_bytes": 273
       },
@@ -918,12 +918,12 @@
           "chart-data",
           "measured-1.pptx"
         ],
-        "elapsed_ms": 7016.803958002129,
+        "elapsed_ms": 4340.78508300081,
         "outcome": "success",
         "output_path": "render/python-pptx/chart-data/measured-1.pdf",
-        "output_sha256": "12eace375cc00a59842f099ccd45d587bc4bf685c3e22086f25ed2e46ffdd76f",
+        "output_sha256": "ee140d840af782b74e5fb144f1e33b5360c3262cb8772cf6dcd19387bbd60247",
         "source_path": "raw/python-pptx/chart-data/measured-1.pptx",
-        "source_sha256": "2d2f5baeabab199494388c0995f36c84fd21c1a3e022f9f25bae4c183fceb88d",
+        "source_sha256": "e9ea664a8549fa91a8b288880b473f23996e9b4d43fb04a4af58b1d6657315d0",
         "stderr_bytes": 446,
         "stdout_bytes": 277
       },
@@ -938,12 +938,12 @@
           "chart-data",
           "measured-2.pptx"
         ],
-        "elapsed_ms": 7062.441375001072,
+        "elapsed_ms": 5232.997667000745,
         "outcome": "success",
         "output_path": "render/python-pptx/chart-data/measured-2.pdf",
-        "output_sha256": "ec7aa5b43408ce81d0a53e46c00eebbe11f0424793ac16bbb6a94bec1704610e",
+        "output_sha256": "a18750f5cc51ee145a7c90ef6da8fa8f725c6ad30e3560f26a17f3b21a802919",
         "source_path": "raw/python-pptx/chart-data/measured-2.pptx",
-        "source_sha256": "b56d7a13ec2931d232c02272f909f3ee23bc8a22eec89d80d0953185ee795de3",
+        "source_sha256": "e9ea664a8549fa91a8b288880b473f23996e9b4d43fb04a4af58b1d6657315d0",
         "stderr_bytes": 446,
         "stdout_bytes": 277
       },
@@ -958,12 +958,12 @@
           "chart-data",
           "measured-3.pptx"
         ],
-        "elapsed_ms": 8895.750833999045,
+        "elapsed_ms": 7114.1197500001,
         "outcome": "success",
         "output_path": "render/python-pptx/chart-data/measured-3.pdf",
-        "output_sha256": "02265ba52a51fc193e02100936ed9acf3248496d3629eb0a8a746ec3477272bb",
+        "output_sha256": "77c7c3b57d6463d29ec663c95506a478389b80cb434459726457ef56195bd9bd",
         "source_path": "raw/python-pptx/chart-data/measured-3.pptx",
-        "source_sha256": "bae9c4d975d52cad12fcd8316033c163c461417c7112b0310e9a3cfefc627dfd",
+        "source_sha256": "18722ca09d7f8a66f8126d600cedf26da65fa0bcd41735f264cc6c7f89b9d4c2",
         "stderr_bytes": 446,
         "stdout_bytes": 277
       },
@@ -978,12 +978,12 @@
           "chart-data",
           "warmup-1.pptx"
         ],
-        "elapsed_ms": 7170.443750001141,
+        "elapsed_ms": 5556.983499998751,
         "outcome": "success",
         "output_path": "render/apache-poi/chart-data/warmup-1.pdf",
-        "output_sha256": "7cd96eb30a58703d22a867c923b94b0602cb3738c141be6efaf7bda63c5ed099",
+        "output_sha256": "275ea69edc8abe84d929ccd963fe65b2179873e5bfa50026a45826ecaccffe59",
         "source_path": "raw/apache-poi/chart-data/warmup-1.pptx",
-        "source_sha256": "7cc33f599981827353e3cd340855a9af220026b19203cf2d9cc4f1570bee3832",
+        "source_sha256": "519b50924be0eae1d6e074360c70dc9534662349e3450d20c44a23d4b762f60f",
         "stderr_bytes": 446,
         "stdout_bytes": 271
       },
@@ -998,12 +998,12 @@
           "chart-data",
           "measured-1.pptx"
         ],
-        "elapsed_ms": 7515.550874999462,
+        "elapsed_ms": 6060.6997499999125,
         "outcome": "success",
         "output_path": "render/apache-poi/chart-data/measured-1.pdf",
-        "output_sha256": "945579038f1e9d849742c10f1ac35690fd66328fb549cbb1c3af25c18f5b4131",
+        "output_sha256": "673fd90bd65fd1ece01fcb28f15624e91813d4e24768263a074f34a4df679147",
         "source_path": "raw/apache-poi/chart-data/measured-1.pptx",
-        "source_sha256": "ab11ac4a27d3625bf0e1189dbc19a3162775b887ab4947b788fe9a3ff3c366bf",
+        "source_sha256": "0b335a65735a1c7bd2fe62a1a8f4bc055bef84d66ad6497c95ff2e0183d98e3f",
         "stderr_bytes": 446,
         "stdout_bytes": 275
       },
@@ -1018,12 +1018,12 @@
           "chart-data",
           "measured-2.pptx"
         ],
-        "elapsed_ms": 7109.469041999546,
+        "elapsed_ms": 7663.657458997477,
         "outcome": "success",
         "output_path": "render/apache-poi/chart-data/measured-2.pdf",
-        "output_sha256": "7ae25a9f80180e1e137d671e1ac73e8fce8137b8911553b3c47bdef2bf50252d",
+        "output_sha256": "99ed5547f3668637a5c8d24faec1f6ef9d32688f49c4b3a939b6d938d4a6041f",
         "source_path": "raw/apache-poi/chart-data/measured-2.pptx",
-        "source_sha256": "f99c1caf372451b7e0ec0ebcd3c371982c11e6ff121ba4c3d6d45bef78f6d58c",
+        "source_sha256": "ba3bee287597c0806cc11792f556173ea29afc0d5e3da85847bc72645e9d25b3",
         "stderr_bytes": 446,
         "stdout_bytes": 275
       },
@@ -1038,12 +1038,12 @@
           "chart-data",
           "measured-3.pptx"
         ],
-        "elapsed_ms": 7259.547499998007,
+        "elapsed_ms": 6898.308249998081,
         "outcome": "success",
         "output_path": "render/apache-poi/chart-data/measured-3.pdf",
-        "output_sha256": "309b0e12e94c26b226fd16d4194f19ac138a4c50cc3e926a1a51ff9c67b5a7bc",
+        "output_sha256": "9fa39336edf1064f99488572e26ff982f79ec39364e03f1ecd4447d467e518b5",
         "source_path": "raw/apache-poi/chart-data/measured-3.pptx",
-        "source_sha256": "03cdfebf8cd3e23977952dbc960f7daa51c4ff71a9ff14c575a40853cfd44b95",
+        "source_sha256": "46a88d4e76b7a1dfa80efc307d7af14689be0fddfdbc94f1bd00936af0b212ef",
         "stderr_bytes": 446,
         "stdout_bytes": 275
       },
@@ -1058,10 +1058,10 @@
           "chart-data",
           "warmup-1.pptx"
         ],
-        "elapsed_ms": 6779.504874997656,
+        "elapsed_ms": 5785.260832999484,
         "outcome": "success",
         "output_path": "render/open-xml-sdk/chart-data/warmup-1.pdf",
-        "output_sha256": "dcd6bd44c264d207603f22301c9ebea504fb0e0d123d26696483a6dd9343590e",
+        "output_sha256": "41ecab6c9cd69a57572db7394ddf30520491f0da2bbfab0ac21151f0436e2054",
         "source_path": "raw/open-xml-sdk/chart-data/warmup-1.pptx",
         "source_sha256": "6db42228220db40a15e4f8d62d39c26ed9325d99851df25ba9715081c64596e6",
         "stderr_bytes": 446,
@@ -1078,10 +1078,10 @@
           "chart-data",
           "measured-1.pptx"
         ],
-        "elapsed_ms": 6577.255958000023,
+        "elapsed_ms": 5429.1410420009925,
         "outcome": "success",
         "output_path": "render/open-xml-sdk/chart-data/measured-1.pdf",
-        "output_sha256": "224ca39dbb3993b68bcebab13eb0049b787b9643eed6a1aa0396b2867b1c8f26",
+        "output_sha256": "017e7ea49d78c057dcb543ead4c189c1e67a3e3e48964906f56236ac70ba4266",
         "source_path": "raw/open-xml-sdk/chart-data/measured-1.pptx",
         "source_sha256": "6db42228220db40a15e4f8d62d39c26ed9325d99851df25ba9715081c64596e6",
         "stderr_bytes": 446,
@@ -1098,10 +1098,10 @@
           "chart-data",
           "measured-2.pptx"
         ],
-        "elapsed_ms": 7329.272958999354,
+        "elapsed_ms": 5327.0614159991965,
         "outcome": "success",
         "output_path": "render/open-xml-sdk/chart-data/measured-2.pdf",
-        "output_sha256": "ed68a1b81e531ca83fb60e078f8e5ae1c815cb26df4cbda0761364a4190a6a61",
+        "output_sha256": "bab69c2c8ebfe94d932b6c0e65e839c07444ef658f25062111bf51af7a460c2f",
         "source_path": "raw/open-xml-sdk/chart-data/measured-2.pptx",
         "source_sha256": "6db42228220db40a15e4f8d62d39c26ed9325d99851df25ba9715081c64596e6",
         "stderr_bytes": 446,
@@ -1118,10 +1118,10 @@
           "chart-data",
           "measured-3.pptx"
         ],
-        "elapsed_ms": 7063.24033400233,
+        "elapsed_ms": 7888.271916999656,
         "outcome": "success",
         "output_path": "render/open-xml-sdk/chart-data/measured-3.pdf",
-        "output_sha256": "b4ddef0d1868983f8ec57e395dd8b40ec2bf9a9c2cec29f901e3eb9094e5b08d",
+        "output_sha256": "01fc822e8ac1467619298dc130093db5151972dbfedd0e058413bf73088715a1",
         "source_path": "raw/open-xml-sdk/chart-data/measured-3.pptx",
         "source_sha256": "6db42228220db40a15e4f8d62d39c26ed9325d99851df25ba9715081c64596e6",
         "stderr_bytes": 446,
@@ -1881,7 +1881,7 @@
           "details": {
             "artifact_dir": "raw/python-pptx/feature-matrix/warmup-1.pptx.adapter",
             "candidate_path": "raw/python-pptx/feature-matrix/warmup-1.pptx",
-            "candidate_sha256": "30b38d2fc4392ca366ab788a58d385de4a2e5e0637771162bff5e64aced4c8ea",
+            "candidate_sha256": "d48d507343a90b697aeb5b90f2b2a24dcdf95d4f13c23e02be56321d9d531800",
             "command": [
               "python",
               "-m",
@@ -1897,12 +1897,12 @@
             "stdout_artifact": "raw/python-pptx/feature-matrix/warmup-1.pptx.adapter/stdout.bin",
             "stdout_bytes": 0
           },
-          "elapsed_ms": 719.229958998767,
+          "elapsed_ms": 672.0810420010821,
           "iteration": 1,
           "outcome": "failure",
           "output_path": null,
           "output_sha256": null,
-          "peak_rss_bytes": 48201728,
+          "peak_rss_bytes": 47824896,
           "phase": "warmup",
           "reason": "one or more scored semantic or preservation checks failed"
         },
@@ -2059,7 +2059,7 @@
           "details": {
             "artifact_dir": "raw/python-pptx/feature-matrix/measured-1.pptx.adapter",
             "candidate_path": "raw/python-pptx/feature-matrix/measured-1.pptx",
-            "candidate_sha256": "43b0a4c1b6ecaa24cf86b0c8793ed68ee40ef867e05c560585ab6fd6c13315eb",
+            "candidate_sha256": "d48d507343a90b697aeb5b90f2b2a24dcdf95d4f13c23e02be56321d9d531800",
             "command": [
               "python",
               "-m",
@@ -2075,12 +2075,12 @@
             "stdout_artifact": "raw/python-pptx/feature-matrix/measured-1.pptx.adapter/stdout.bin",
             "stdout_bytes": 0
           },
-          "elapsed_ms": 680.5637079996814,
+          "elapsed_ms": 458.99008400010644,
           "iteration": 1,
           "outcome": "failure",
           "output_path": null,
           "output_sha256": null,
-          "peak_rss_bytes": 48267264,
+          "peak_rss_bytes": 47906816,
           "phase": "measured",
           "reason": "one or more scored semantic or preservation checks failed"
         },
@@ -2237,7 +2237,7 @@
           "details": {
             "artifact_dir": "raw/python-pptx/feature-matrix/measured-2.pptx.adapter",
             "candidate_path": "raw/python-pptx/feature-matrix/measured-2.pptx",
-            "candidate_sha256": "43b0a4c1b6ecaa24cf86b0c8793ed68ee40ef867e05c560585ab6fd6c13315eb",
+            "candidate_sha256": "e37c0b7bfce7aa469a39484ebab3c81b9fe8c7b3961343c8194f912e69acb356",
             "command": [
               "python",
               "-m",
@@ -2253,12 +2253,12 @@
             "stdout_artifact": "raw/python-pptx/feature-matrix/measured-2.pptx.adapter/stdout.bin",
             "stdout_bytes": 0
           },
-          "elapsed_ms": 879.1569169989089,
+          "elapsed_ms": 344.14795900011086,
           "iteration": 2,
           "outcome": "failure",
           "output_path": null,
           "output_sha256": null,
-          "peak_rss_bytes": 47661056,
+          "peak_rss_bytes": 47742976,
           "phase": "measured",
           "reason": "one or more scored semantic or preservation checks failed"
         },
@@ -2415,7 +2415,7 @@
           "details": {
             "artifact_dir": "raw/python-pptx/feature-matrix/measured-3.pptx.adapter",
             "candidate_path": "raw/python-pptx/feature-matrix/measured-3.pptx",
-            "candidate_sha256": "772790cdeef8da2e530fc119f44b5fbc2fb76116130c4b4795619bf58f02faad",
+            "candidate_sha256": "e37c0b7bfce7aa469a39484ebab3c81b9fe8c7b3961343c8194f912e69acb356",
             "command": [
               "python",
               "-m",
@@ -2431,12 +2431,12 @@
             "stdout_artifact": "raw/python-pptx/feature-matrix/measured-3.pptx.adapter/stdout.bin",
             "stdout_bytes": 0
           },
-          "elapsed_ms": 1099.971416999324,
+          "elapsed_ms": 345.50366700204904,
           "iteration": 3,
           "outcome": "failure",
           "output_path": null,
           "output_sha256": null,
-          "peak_rss_bytes": 47792128,
+          "peak_rss_bytes": 47841280,
           "phase": "measured",
           "reason": "one or more scored semantic or preservation checks failed"
         }
@@ -3209,12 +3209,12 @@
             "stdout_artifact": "raw/wolfppt-wheel/feature-matrix/warmup-1.pptx.adapter/stdout.bin",
             "stdout_bytes": 0
           },
-          "elapsed_ms": 2052.3172920002253,
+          "elapsed_ms": 332.1697499995935,
           "iteration": 1,
           "outcome": "success",
           "output_path": "raw/wolfppt-wheel/feature-matrix/warmup-1.pptx",
           "output_sha256": "1204a0fb452aece087c4786c0b2ca92bccbfedf66347c41b4b7b3b913c3afc2d",
-          "peak_rss_bytes": 47742976,
+          "peak_rss_bytes": 42483712,
           "phase": "warmup",
           "reason": null
         },
@@ -3387,12 +3387,12 @@
             "stdout_artifact": "raw/wolfppt-wheel/feature-matrix/measured-1.pptx.adapter/stdout.bin",
             "stdout_bytes": 0
           },
-          "elapsed_ms": 675.0490830017952,
+          "elapsed_ms": 348.4440829997766,
           "iteration": 1,
           "outcome": "success",
           "output_path": "raw/wolfppt-wheel/feature-matrix/measured-1.pptx",
           "output_sha256": "1204a0fb452aece087c4786c0b2ca92bccbfedf66347c41b4b7b3b913c3afc2d",
-          "peak_rss_bytes": 42156032,
+          "peak_rss_bytes": 42434560,
           "phase": "measured",
           "reason": null
         },
@@ -3565,12 +3565,12 @@
             "stdout_artifact": "raw/wolfppt-wheel/feature-matrix/measured-2.pptx.adapter/stdout.bin",
             "stdout_bytes": 0
           },
-          "elapsed_ms": 453.5832500005199,
+          "elapsed_ms": 290.10616700179526,
           "iteration": 2,
           "outcome": "success",
           "output_path": "raw/wolfppt-wheel/feature-matrix/measured-2.pptx",
           "output_sha256": "1204a0fb452aece087c4786c0b2ca92bccbfedf66347c41b4b7b3b913c3afc2d",
-          "peak_rss_bytes": 42663936,
+          "peak_rss_bytes": 42303488,
           "phase": "measured",
           "reason": null
         },
@@ -3743,12 +3743,12 @@
             "stdout_artifact": "raw/wolfppt-wheel/feature-matrix/measured-3.pptx.adapter/stdout.bin",
             "stdout_bytes": 0
           },
-          "elapsed_ms": 621.3003329976345,
+          "elapsed_ms": 294.3653340007586,
           "iteration": 3,
           "outcome": "success",
           "output_path": "raw/wolfppt-wheel/feature-matrix/measured-3.pptx",
           "output_sha256": "1204a0fb452aece087c4786c0b2ca92bccbfedf66347c41b4b7b3b913c3afc2d",
-          "peak_rss_bytes": 42532864,
+          "peak_rss_bytes": 42418176,
           "phase": "measured",
           "reason": null
         }
@@ -4505,7 +4505,7 @@
           "details": {
             "artifact_dir": "raw/apache-poi/feature-matrix/warmup-1.pptx.adapter",
             "candidate_path": "raw/apache-poi/feature-matrix/warmup-1.pptx",
-            "candidate_sha256": "23299b5d1f1062ec7b16baad2c4e6cfca01c4ede60009a9705b90f3ec3b2bd68",
+            "candidate_sha256": "0ba49e7d8762a9c970593fd8a5603cde7d5400ab66adaad93510e6c61f81da8b",
             "command": [
               "python",
               "-m",
@@ -4521,12 +4521,12 @@
             "stdout_artifact": "raw/apache-poi/feature-matrix/warmup-1.pptx.adapter/stdout.bin",
             "stdout_bytes": 0
           },
-          "elapsed_ms": 13736.87791699922,
+          "elapsed_ms": 3523.115542000596,
           "iteration": 1,
           "outcome": "success",
           "output_path": "raw/apache-poi/feature-matrix/warmup-1.pptx",
-          "output_sha256": "23299b5d1f1062ec7b16baad2c4e6cfca01c4ede60009a9705b90f3ec3b2bd68",
-          "peak_rss_bytes": 30294016,
+          "output_sha256": "0ba49e7d8762a9c970593fd8a5603cde7d5400ab66adaad93510e6c61f81da8b",
+          "peak_rss_bytes": 30621696,
           "phase": "warmup",
           "reason": null
         },
@@ -4683,7 +4683,7 @@
           "details": {
             "artifact_dir": "raw/apache-poi/feature-matrix/measured-1.pptx.adapter",
             "candidate_path": "raw/apache-poi/feature-matrix/measured-1.pptx",
-            "candidate_sha256": "bbf5307b2407f9e29e2bf4b9aa0884c5fff5cf15ad5553ab5d9d3f8db35c0148",
+            "candidate_sha256": "baf00f50be387086371d3f049e2e7207b58b09052f598a9ae13567fac870fc1e",
             "command": [
               "python",
               "-m",
@@ -4699,12 +4699,12 @@
             "stdout_artifact": "raw/apache-poi/feature-matrix/measured-1.pptx.adapter/stdout.bin",
             "stdout_bytes": 0
           },
-          "elapsed_ms": 9629.501084000367,
+          "elapsed_ms": 2096.9389590027276,
           "iteration": 1,
           "outcome": "success",
           "output_path": "raw/apache-poi/feature-matrix/measured-1.pptx",
-          "output_sha256": "bbf5307b2407f9e29e2bf4b9aa0884c5fff5cf15ad5553ab5d9d3f8db35c0148",
-          "peak_rss_bytes": 30883840,
+          "output_sha256": "baf00f50be387086371d3f049e2e7207b58b09052f598a9ae13567fac870fc1e",
+          "peak_rss_bytes": 30031872,
           "phase": "measured",
           "reason": null
         },
@@ -4861,7 +4861,7 @@
           "details": {
             "artifact_dir": "raw/apache-poi/feature-matrix/measured-2.pptx.adapter",
             "candidate_path": "raw/apache-poi/feature-matrix/measured-2.pptx",
-            "candidate_sha256": "9e79ac0cdb166918c087d515fcfe0b17467f4c5dabb0a55c142996f1d54ac662",
+            "candidate_sha256": "6c441a367278c26d41ca36da71dc12efccc76a3b485dd2a0e18fb7331322c1f1",
             "command": [
               "python",
               "-m",
@@ -4877,12 +4877,12 @@
             "stdout_artifact": "raw/apache-poi/feature-matrix/measured-2.pptx.adapter/stdout.bin",
             "stdout_bytes": 0
           },
-          "elapsed_ms": 12350.199250002333,
+          "elapsed_ms": 2225.251207997644,
           "iteration": 2,
           "outcome": "success",
           "output_path": "raw/apache-poi/feature-matrix/measured-2.pptx",
-          "output_sha256": "9e79ac0cdb166918c087d515fcfe0b17467f4c5dabb0a55c142996f1d54ac662",
-          "peak_rss_bytes": 30408704,
+          "output_sha256": "6c441a367278c26d41ca36da71dc12efccc76a3b485dd2a0e18fb7331322c1f1",
+          "peak_rss_bytes": 29982720,
           "phase": "measured",
           "reason": null
         },
@@ -5039,7 +5039,7 @@
           "details": {
             "artifact_dir": "raw/apache-poi/feature-matrix/measured-3.pptx.adapter",
             "candidate_path": "raw/apache-poi/feature-matrix/measured-3.pptx",
-            "candidate_sha256": "c183bf2d726d5bfc3f8042dd7c103ff802ea5b592d76d4e36a88bc8bae387fe8",
+            "candidate_sha256": "ac23280b417ba14a3a238bbae2c804a4ed626ed7a5e3bf6be6a353e557430997",
             "command": [
               "python",
               "-m",
@@ -5055,12 +5055,12 @@
             "stdout_artifact": "raw/apache-poi/feature-matrix/measured-3.pptx.adapter/stdout.bin",
             "stdout_bytes": 0
           },
-          "elapsed_ms": 12068.494957999064,
+          "elapsed_ms": 2121.21183400086,
           "iteration": 3,
           "outcome": "success",
           "output_path": "raw/apache-poi/feature-matrix/measured-3.pptx",
-          "output_sha256": "c183bf2d726d5bfc3f8042dd7c103ff802ea5b592d76d4e36a88bc8bae387fe8",
-          "peak_rss_bytes": 29917184,
+          "output_sha256": "ac23280b417ba14a3a238bbae2c804a4ed626ed7a5e3bf6be6a353e557430997",
+          "peak_rss_bytes": 29982720,
           "phase": "measured",
           "reason": null
         }
@@ -5817,7 +5817,7 @@
           "details": {
             "artifact_dir": "raw/libreoffice/feature-matrix/warmup-1.pptx.adapter",
             "candidate_path": "raw/libreoffice/feature-matrix/warmup-1.pptx",
-            "candidate_sha256": "84080fec771fca2222e91da516112cfd2bb41db0ddd2404a61a8fd7e3dfab44d",
+            "candidate_sha256": "599d97c1dc940ab7b99d4e88507691e519e7ff3484a0192ace5fb2a7f6c162cb",
             "command": [
               "python",
               "-m",
@@ -5833,12 +5833,12 @@
             "stdout_artifact": "raw/libreoffice/feature-matrix/warmup-1.pptx.adapter/stdout.bin",
             "stdout_bytes": 0
           },
-          "elapsed_ms": 5405.659832998936,
+          "elapsed_ms": 3663.938040997891,
           "iteration": 1,
           "outcome": "failure",
           "output_path": null,
           "output_sha256": null,
-          "peak_rss_bytes": 295632896,
+          "peak_rss_bytes": 294043648,
           "phase": "warmup",
           "reason": "one or more scored semantic or preservation checks failed"
         },
@@ -5995,7 +5995,7 @@
           "details": {
             "artifact_dir": "raw/libreoffice/feature-matrix/measured-1.pptx.adapter",
             "candidate_path": "raw/libreoffice/feature-matrix/measured-1.pptx",
-            "candidate_sha256": "2db58d507a2f55efccb4ba361be41620ef02a21859891b4d0d679eb9a8ffeed7",
+            "candidate_sha256": "28fab830f30d806b56614f45a373cb0215743d98bf13ab690d5ad802d328038f",
             "command": [
               "python",
               "-m",
@@ -6011,12 +6011,12 @@
             "stdout_artifact": "raw/libreoffice/feature-matrix/measured-1.pptx.adapter/stdout.bin",
             "stdout_bytes": 0
           },
-          "elapsed_ms": 5402.904667000257,
+          "elapsed_ms": 4380.13245899856,
           "iteration": 1,
           "outcome": "failure",
           "output_path": null,
           "output_sha256": null,
-          "peak_rss_bytes": 295075840,
+          "peak_rss_bytes": 293535744,
           "phase": "measured",
           "reason": "one or more scored semantic or preservation checks failed"
         },
@@ -6173,7 +6173,7 @@
           "details": {
             "artifact_dir": "raw/libreoffice/feature-matrix/measured-2.pptx.adapter",
             "candidate_path": "raw/libreoffice/feature-matrix/measured-2.pptx",
-            "candidate_sha256": "2ed6fcaa1b17378e67be9997d3c0e57081cde3ff712510b98478086c78ec2d97",
+            "candidate_sha256": "2b74778a5c7984cf69bc58c123bdd246ffcda4eee5b221569c86e079de64808f",
             "command": [
               "python",
               "-m",
@@ -6189,12 +6189,12 @@
             "stdout_artifact": "raw/libreoffice/feature-matrix/measured-2.pptx.adapter/stdout.bin",
             "stdout_bytes": 0
           },
-          "elapsed_ms": 5749.745540997537,
+          "elapsed_ms": 4562.664083001437,
           "iteration": 2,
           "outcome": "failure",
           "output_path": null,
           "output_sha256": null,
-          "peak_rss_bytes": 293421056,
+          "peak_rss_bytes": 295452672,
           "phase": "measured",
           "reason": "one or more scored semantic or preservation checks failed"
         },
@@ -6351,7 +6351,7 @@
           "details": {
             "artifact_dir": "raw/libreoffice/feature-matrix/measured-3.pptx.adapter",
             "candidate_path": "raw/libreoffice/feature-matrix/measured-3.pptx",
-            "candidate_sha256": "f2442980a5bc5dfc079b0ad130572a1cb6d9c82618267a316b3472414ad76441",
+            "candidate_sha256": "50dbb73920bc2b52af0bb5e009e7fa290478a3691df5735d113a681826488adb",
             "command": [
               "python",
               "-m",
@@ -6367,12 +6367,12 @@
             "stdout_artifact": "raw/libreoffice/feature-matrix/measured-3.pptx.adapter/stdout.bin",
             "stdout_bytes": 0
           },
-          "elapsed_ms": 6619.69562500235,
+          "elapsed_ms": 4657.948000000033,
           "iteration": 3,
           "outcome": "failure",
           "output_path": null,
           "output_sha256": null,
-          "peak_rss_bytes": 295780352,
+          "peak_rss_bytes": 295174144,
           "phase": "measured",
           "reason": "one or more scored semantic or preservation checks failed"
         }
@@ -7129,7 +7129,7 @@
           "details": {
             "artifact_dir": "raw/pptx-automizer/feature-matrix/warmup-1.pptx.adapter",
             "candidate_path": "raw/pptx-automizer/feature-matrix/warmup-1.pptx",
-            "candidate_sha256": "4b2a7b04f335fd405cb089ca7379f955554046b9e768d8a31df7cacb47124e11",
+            "candidate_sha256": "504c07010dd64ea9572efc9ffca9c9ce9f94b7982a948d87bac2e8fabc872821",
             "command": [
               "node",
               "pptbench-automizer.js",
@@ -7143,12 +7143,12 @@
             "stdout_artifact": "raw/pptx-automizer/feature-matrix/warmup-1.pptx.adapter/stdout.bin",
             "stdout_bytes": 0
           },
-          "elapsed_ms": 1683.6717920014053,
+          "elapsed_ms": 1655.7106250002107,
           "iteration": 1,
           "outcome": "success",
           "output_path": "raw/pptx-automizer/feature-matrix/warmup-1.pptx",
-          "output_sha256": "4b2a7b04f335fd405cb089ca7379f955554046b9e768d8a31df7cacb47124e11",
-          "peak_rss_bytes": 119439360,
+          "output_sha256": "504c07010dd64ea9572efc9ffca9c9ce9f94b7982a948d87bac2e8fabc872821",
+          "peak_rss_bytes": 116097024,
           "phase": "warmup",
           "reason": null
         },
@@ -7305,7 +7305,7 @@
           "details": {
             "artifact_dir": "raw/pptx-automizer/feature-matrix/measured-1.pptx.adapter",
             "candidate_path": "raw/pptx-automizer/feature-matrix/measured-1.pptx",
-            "candidate_sha256": "6b58d743368b35d6129dd93c48bc73abd795dfcdd7a2e31e071c5f061a599418",
+            "candidate_sha256": "7242fcfe666c14c734f5dae06b086a5a8c7eb61f31d3646bd1196bbcc8cb2677",
             "command": [
               "node",
               "pptbench-automizer.js",
@@ -7319,12 +7319,12 @@
             "stdout_artifact": "raw/pptx-automizer/feature-matrix/measured-1.pptx.adapter/stdout.bin",
             "stdout_bytes": 0
           },
-          "elapsed_ms": 1469.0499999996973,
+          "elapsed_ms": 969.8254169998108,
           "iteration": 1,
           "outcome": "success",
           "output_path": "raw/pptx-automizer/feature-matrix/measured-1.pptx",
-          "output_sha256": "6b58d743368b35d6129dd93c48bc73abd795dfcdd7a2e31e071c5f061a599418",
-          "peak_rss_bytes": 118161408,
+          "output_sha256": "7242fcfe666c14c734f5dae06b086a5a8c7eb61f31d3646bd1196bbcc8cb2677",
+          "peak_rss_bytes": 116539392,
           "phase": "measured",
           "reason": null
         },
@@ -7481,7 +7481,7 @@
           "details": {
             "artifact_dir": "raw/pptx-automizer/feature-matrix/measured-2.pptx.adapter",
             "candidate_path": "raw/pptx-automizer/feature-matrix/measured-2.pptx",
-            "candidate_sha256": "597eb2fd9acb07f66406d6aaf1ad14616430e19de4017bfc6ffdae10f570c56d",
+            "candidate_sha256": "83261fb902a4bcafdabbd165b6ca438a4642c7f3e64d2d90c158a5dbc2918b41",
             "command": [
               "node",
               "pptbench-automizer.js",
@@ -7495,12 +7495,12 @@
             "stdout_artifact": "raw/pptx-automizer/feature-matrix/measured-2.pptx.adapter/stdout.bin",
             "stdout_bytes": 0
           },
-          "elapsed_ms": 1122.4901249988761,
+          "elapsed_ms": 1142.744707998645,
           "iteration": 2,
           "outcome": "success",
           "output_path": "raw/pptx-automizer/feature-matrix/measured-2.pptx",
-          "output_sha256": "597eb2fd9acb07f66406d6aaf1ad14616430e19de4017bfc6ffdae10f570c56d",
-          "peak_rss_bytes": 113803264,
+          "output_sha256": "83261fb902a4bcafdabbd165b6ca438a4642c7f3e64d2d90c158a5dbc2918b41",
+          "peak_rss_bytes": 117866496,
           "phase": "measured",
           "reason": null
         },
@@ -7657,7 +7657,7 @@
           "details": {
             "artifact_dir": "raw/pptx-automizer/feature-matrix/measured-3.pptx.adapter",
             "candidate_path": "raw/pptx-automizer/feature-matrix/measured-3.pptx",
-            "candidate_sha256": "e2c98a8a8e6885fd7092dae9aec8e0c6e042ec2b73d1d3321c37379c227ea601",
+            "candidate_sha256": "d0f2b772e2cc9bb0879e5158fb6943eb0ae1f359323a31ad7848bda635ea1b76",
             "command": [
               "node",
               "pptbench-automizer.js",
@@ -7671,12 +7671,12 @@
             "stdout_artifact": "raw/pptx-automizer/feature-matrix/measured-3.pptx.adapter/stdout.bin",
             "stdout_bytes": 0
           },
-          "elapsed_ms": 1903.0429580016062,
+          "elapsed_ms": 930.914374999702,
           "iteration": 3,
           "outcome": "success",
           "output_path": "raw/pptx-automizer/feature-matrix/measured-3.pptx",
-          "output_sha256": "e2c98a8a8e6885fd7092dae9aec8e0c6e042ec2b73d1d3321c37379c227ea601",
-          "peak_rss_bytes": 117571584,
+          "output_sha256": "d0f2b772e2cc9bb0879e5158fb6943eb0ae1f359323a31ad7848bda635ea1b76",
+          "peak_rss_bytes": 117325824,
           "phase": "measured",
           "reason": null
         }
@@ -8449,12 +8449,12 @@
             "stdout_artifact": "raw/open-xml-sdk/feature-matrix/warmup-1.pptx.adapter/stdout.bin",
             "stdout_bytes": 0
           },
-          "elapsed_ms": 5390.268582999852,
+          "elapsed_ms": 2530.4952090009465,
           "iteration": 1,
           "outcome": "success",
           "output_path": "raw/open-xml-sdk/feature-matrix/warmup-1.pptx",
           "output_sha256": "7415c850f702270ca550f8887b5add6fedadc50b8abc194bccc39cbe4fd50401",
-          "peak_rss_bytes": 30015488,
+          "peak_rss_bytes": 29835264,
           "phase": "warmup",
           "reason": null
         },
@@ -8627,12 +8627,12 @@
             "stdout_artifact": "raw/open-xml-sdk/feature-matrix/measured-1.pptx.adapter/stdout.bin",
             "stdout_bytes": 0
           },
-          "elapsed_ms": 1844.1205420022015,
+          "elapsed_ms": 2556.0358750008163,
           "iteration": 1,
           "outcome": "success",
           "output_path": "raw/open-xml-sdk/feature-matrix/measured-1.pptx",
           "output_sha256": "7415c850f702270ca550f8887b5add6fedadc50b8abc194bccc39cbe4fd50401",
-          "peak_rss_bytes": 29786112,
+          "peak_rss_bytes": 30572544,
           "phase": "measured",
           "reason": null
         },
@@ -8805,12 +8805,12 @@
             "stdout_artifact": "raw/open-xml-sdk/feature-matrix/measured-2.pptx.adapter/stdout.bin",
             "stdout_bytes": 0
           },
-          "elapsed_ms": 2568.5923749988433,
+          "elapsed_ms": 2217.0767089992296,
           "iteration": 2,
           "outcome": "success",
           "output_path": "raw/open-xml-sdk/feature-matrix/measured-2.pptx",
           "output_sha256": "7415c850f702270ca550f8887b5add6fedadc50b8abc194bccc39cbe4fd50401",
-          "peak_rss_bytes": 30277632,
+          "peak_rss_bytes": 30900224,
           "phase": "measured",
           "reason": null
         },
@@ -8983,12 +8983,12 @@
             "stdout_artifact": "raw/open-xml-sdk/feature-matrix/measured-3.pptx.adapter/stdout.bin",
             "stdout_bytes": 0
           },
-          "elapsed_ms": 2033.8361659996735,
+          "elapsed_ms": 1887.312083003053,
           "iteration": 3,
           "outcome": "success",
           "output_path": "raw/open-xml-sdk/feature-matrix/measured-3.pptx",
           "output_sha256": "7415c850f702270ca550f8887b5add6fedadc50b8abc194bccc39cbe4fd50401",
-          "peak_rss_bytes": 29933568,
+          "peak_rss_bytes": 30130176,
           "phase": "measured",
           "reason": null
         }
@@ -9325,7 +9325,7 @@
           "details": {
             "artifact_dir": "raw/python-pptx/template-mutation/warmup-1.pptx.adapter",
             "candidate_path": "raw/python-pptx/template-mutation/warmup-1.pptx",
-            "candidate_sha256": "5015cc456226523f066c2d5ed278364203c622f37ab6b03018b3cf8296d60913",
+            "candidate_sha256": "bb047a5ce9955ef43922ac8ae820731bae294bc8aa3339775d548151a31815d9",
             "command": [
               "python",
               "-m",
@@ -9341,12 +9341,12 @@
             "stdout_artifact": "raw/python-pptx/template-mutation/warmup-1.pptx.adapter/stdout.bin",
             "stdout_bytes": 0
           },
-          "elapsed_ms": 571.4525840012357,
+          "elapsed_ms": 952.4436250030703,
           "iteration": 1,
           "outcome": "failure",
           "output_path": null,
           "output_sha256": null,
-          "peak_rss_bytes": 48005120,
+          "peak_rss_bytes": 48300032,
           "phase": "warmup",
           "reason": "one or more scored semantic or preservation checks failed"
         },
@@ -9419,7 +9419,7 @@
           "details": {
             "artifact_dir": "raw/python-pptx/template-mutation/measured-1.pptx.adapter",
             "candidate_path": "raw/python-pptx/template-mutation/measured-1.pptx",
-            "candidate_sha256": "d0da4cc423b761d42fc43c4bf0f58a93f9137924d0ffa3402440b447f355872f",
+            "candidate_sha256": "bb047a5ce9955ef43922ac8ae820731bae294bc8aa3339775d548151a31815d9",
             "command": [
               "python",
               "-m",
@@ -9435,7 +9435,7 @@
             "stdout_artifact": "raw/python-pptx/template-mutation/measured-1.pptx.adapter/stdout.bin",
             "stdout_bytes": 0
           },
-          "elapsed_ms": 878.0068330015638,
+          "elapsed_ms": 719.3260839994764,
           "iteration": 1,
           "outcome": "failure",
           "output_path": null,
@@ -9513,7 +9513,7 @@
           "details": {
             "artifact_dir": "raw/python-pptx/template-mutation/measured-2.pptx.adapter",
             "candidate_path": "raw/python-pptx/template-mutation/measured-2.pptx",
-            "candidate_sha256": "ebfa7cc430949fe59c335f024debb1e1e46ceb42b86e34617cc002ec353f7b6f",
+            "candidate_sha256": "f58c087425dfdf232156b846bda58dfddda0697f0dbaf6f61d8f9d5cfd2e7f12",
             "command": [
               "python",
               "-m",
@@ -9529,12 +9529,12 @@
             "stdout_artifact": "raw/python-pptx/template-mutation/measured-2.pptx.adapter/stdout.bin",
             "stdout_bytes": 0
           },
-          "elapsed_ms": 863.4376669979247,
+          "elapsed_ms": 458.5919589990226,
           "iteration": 2,
           "outcome": "failure",
           "output_path": null,
           "output_sha256": null,
-          "peak_rss_bytes": 48201728,
+          "peak_rss_bytes": 47988736,
           "phase": "measured",
           "reason": "one or more scored semantic or preservation checks failed"
         },
@@ -9607,7 +9607,7 @@
           "details": {
             "artifact_dir": "raw/python-pptx/template-mutation/measured-3.pptx.adapter",
             "candidate_path": "raw/python-pptx/template-mutation/measured-3.pptx",
-            "candidate_sha256": "fa7c920d650883221b89fbd6fba86021500ef1925919b588f16e56de836416e3",
+            "candidate_sha256": "f58c087425dfdf232156b846bda58dfddda0697f0dbaf6f61d8f9d5cfd2e7f12",
             "command": [
               "python",
               "-m",
@@ -9623,12 +9623,12 @@
             "stdout_artifact": "raw/python-pptx/template-mutation/measured-3.pptx.adapter/stdout.bin",
             "stdout_bytes": 0
           },
-          "elapsed_ms": 837.6574579997396,
+          "elapsed_ms": 338.7617499975022,
           "iteration": 3,
           "outcome": "failure",
           "output_path": null,
           "output_sha256": null,
-          "peak_rss_bytes": 48447488,
+          "peak_rss_bytes": 47742976,
           "phase": "measured",
           "reason": "one or more scored semantic or preservation checks failed"
         }
@@ -9981,12 +9981,12 @@
             "stdout_artifact": "raw/wolfppt-wheel/template-mutation/warmup-1.pptx.adapter/stdout.bin",
             "stdout_bytes": 0
           },
-          "elapsed_ms": 660.6332080009452,
+          "elapsed_ms": 445.76824999967357,
           "iteration": 1,
           "outcome": "success",
           "output_path": "raw/wolfppt-wheel/template-mutation/warmup-1.pptx",
           "output_sha256": "038c2ffd7e6dd2ef4a08ec923696326cb3774c53b1801e6a6a537fafe01a3eb3",
-          "peak_rss_bytes": 44072960,
+          "peak_rss_bytes": 44007424,
           "phase": "warmup",
           "reason": null
         },
@@ -10075,12 +10075,12 @@
             "stdout_artifact": "raw/wolfppt-wheel/template-mutation/measured-1.pptx.adapter/stdout.bin",
             "stdout_bytes": 0
           },
-          "elapsed_ms": 457.79570800004876,
+          "elapsed_ms": 389.8407090018736,
           "iteration": 1,
           "outcome": "success",
           "output_path": "raw/wolfppt-wheel/template-mutation/measured-1.pptx",
           "output_sha256": "038c2ffd7e6dd2ef4a08ec923696326cb3774c53b1801e6a6a537fafe01a3eb3",
-          "peak_rss_bytes": 44318720,
+          "peak_rss_bytes": 44105728,
           "phase": "measured",
           "reason": null
         },
@@ -10169,12 +10169,12 @@
             "stdout_artifact": "raw/wolfppt-wheel/template-mutation/measured-2.pptx.adapter/stdout.bin",
             "stdout_bytes": 0
           },
-          "elapsed_ms": 547.9602500017791,
+          "elapsed_ms": 342.38545799962594,
           "iteration": 2,
           "outcome": "success",
           "output_path": "raw/wolfppt-wheel/template-mutation/measured-2.pptx",
           "output_sha256": "038c2ffd7e6dd2ef4a08ec923696326cb3774c53b1801e6a6a537fafe01a3eb3",
-          "peak_rss_bytes": 44056576,
+          "peak_rss_bytes": 43827200,
           "phase": "measured",
           "reason": null
         },
@@ -10263,12 +10263,12 @@
             "stdout_artifact": "raw/wolfppt-wheel/template-mutation/measured-3.pptx.adapter/stdout.bin",
             "stdout_bytes": 0
           },
-          "elapsed_ms": 895.1394169998821,
+          "elapsed_ms": 337.519833999977,
           "iteration": 3,
           "outcome": "success",
           "output_path": "raw/wolfppt-wheel/template-mutation/measured-3.pptx",
           "output_sha256": "038c2ffd7e6dd2ef4a08ec923696326cb3774c53b1801e6a6a537fafe01a3eb3",
-          "peak_rss_bytes": 44269568,
+          "peak_rss_bytes": 44056576,
           "phase": "measured",
           "reason": null
         }
@@ -10605,7 +10605,7 @@
           "details": {
             "artifact_dir": "raw/apache-poi/template-mutation/warmup-1.pptx.adapter",
             "candidate_path": "raw/apache-poi/template-mutation/warmup-1.pptx",
-            "candidate_sha256": "7de1c94f49f3ca7fcc99efbfaa02a2403bcb83092e339b0b7e75acc3d46b878d",
+            "candidate_sha256": "410ded21e831040a82ced15878513a2c2678307679c509fbec9eda9811b061c3",
             "command": [
               "python",
               "-m",
@@ -10621,12 +10621,12 @@
             "stdout_artifact": "raw/apache-poi/template-mutation/warmup-1.pptx.adapter/stdout.bin",
             "stdout_bytes": 0
           },
-          "elapsed_ms": 8816.193541999382,
+          "elapsed_ms": 2224.946166999871,
           "iteration": 1,
           "outcome": "success",
           "output_path": "raw/apache-poi/template-mutation/warmup-1.pptx",
-          "output_sha256": "7de1c94f49f3ca7fcc99efbfaa02a2403bcb83092e339b0b7e75acc3d46b878d",
-          "peak_rss_bytes": 30294016,
+          "output_sha256": "410ded21e831040a82ced15878513a2c2678307679c509fbec9eda9811b061c3",
+          "peak_rss_bytes": 30474240,
           "phase": "warmup",
           "reason": null
         },
@@ -10699,7 +10699,7 @@
           "details": {
             "artifact_dir": "raw/apache-poi/template-mutation/measured-1.pptx.adapter",
             "candidate_path": "raw/apache-poi/template-mutation/measured-1.pptx",
-            "candidate_sha256": "63b69cf86957db649c31c30de0bb9e89c431b7b21f202a5301adf311b6360da2",
+            "candidate_sha256": "c7b3858c89996efec0e854d3b1ac50ae0a342ba40c82e4f17607c4d217f8df5b",
             "command": [
               "python",
               "-m",
@@ -10715,12 +10715,12 @@
             "stdout_artifact": "raw/apache-poi/template-mutation/measured-1.pptx.adapter/stdout.bin",
             "stdout_bytes": 0
           },
-          "elapsed_ms": 2556.882125001721,
+          "elapsed_ms": 2150.9809999988647,
           "iteration": 1,
           "outcome": "success",
           "output_path": "raw/apache-poi/template-mutation/measured-1.pptx",
-          "output_sha256": "63b69cf86957db649c31c30de0bb9e89c431b7b21f202a5301adf311b6360da2",
-          "peak_rss_bytes": 30097408,
+          "output_sha256": "c7b3858c89996efec0e854d3b1ac50ae0a342ba40c82e4f17607c4d217f8df5b",
+          "peak_rss_bytes": 30048256,
           "phase": "measured",
           "reason": null
         },
@@ -10793,7 +10793,7 @@
           "details": {
             "artifact_dir": "raw/apache-poi/template-mutation/measured-2.pptx.adapter",
             "candidate_path": "raw/apache-poi/template-mutation/measured-2.pptx",
-            "candidate_sha256": "66f962ec014c42a9542909342d5681df8c9997c1553e422b50c1a71be73e4f55",
+            "candidate_sha256": "74f53158e30eea04dde743484aa9f88ddaedf965ace881b73c9ecec90a8bf15c",
             "command": [
               "python",
               "-m",
@@ -10809,12 +10809,12 @@
             "stdout_artifact": "raw/apache-poi/template-mutation/measured-2.pptx.adapter/stdout.bin",
             "stdout_bytes": 0
           },
-          "elapsed_ms": 2565.679291001288,
+          "elapsed_ms": 2282.9116670000076,
           "iteration": 2,
           "outcome": "success",
           "output_path": "raw/apache-poi/template-mutation/measured-2.pptx",
-          "output_sha256": "66f962ec014c42a9542909342d5681df8c9997c1553e422b50c1a71be73e4f55",
-          "peak_rss_bytes": 29999104,
+          "output_sha256": "74f53158e30eea04dde743484aa9f88ddaedf965ace881b73c9ecec90a8bf15c",
+          "peak_rss_bytes": 30130176,
           "phase": "measured",
           "reason": null
         },
@@ -10887,7 +10887,7 @@
           "details": {
             "artifact_dir": "raw/apache-poi/template-mutation/measured-3.pptx.adapter",
             "candidate_path": "raw/apache-poi/template-mutation/measured-3.pptx",
-            "candidate_sha256": "c83dc48681034b5803db3dd94d47569a120305d623c7fc6799bbeb675ed35156",
+            "candidate_sha256": "e30facf27266fa2ee720aa2ee9f06b84d2640b9a6fb1fdcd3c2200263cc7ee57",
             "command": [
               "python",
               "-m",
@@ -10903,12 +10903,12 @@
             "stdout_artifact": "raw/apache-poi/template-mutation/measured-3.pptx.adapter/stdout.bin",
             "stdout_bytes": 0
           },
-          "elapsed_ms": 2472.3454159975518,
+          "elapsed_ms": 2120.872583000164,
           "iteration": 3,
           "outcome": "success",
           "output_path": "raw/apache-poi/template-mutation/measured-3.pptx",
-          "output_sha256": "c83dc48681034b5803db3dd94d47569a120305d623c7fc6799bbeb675ed35156",
-          "peak_rss_bytes": 29949952,
+          "output_sha256": "e30facf27266fa2ee720aa2ee9f06b84d2640b9a6fb1fdcd3c2200263cc7ee57",
+          "peak_rss_bytes": 30588928,
           "phase": "measured",
           "reason": null
         }
@@ -11245,7 +11245,7 @@
           "details": {
             "artifact_dir": "raw/libreoffice/template-mutation/warmup-1.pptx.adapter",
             "candidate_path": "raw/libreoffice/template-mutation/warmup-1.pptx",
-            "candidate_sha256": "750e86cb8363ba89ef0c845f01f77135d8be569b33c0672fb0c9bdf227028c69",
+            "candidate_sha256": "8886a8c954211478c95bf3c09c693b22d731d8a91deee35eefc26b47224d27a7",
             "command": [
               "python",
               "-m",
@@ -11261,12 +11261,12 @@
             "stdout_artifact": "raw/libreoffice/template-mutation/warmup-1.pptx.adapter/stdout.bin",
             "stdout_bytes": 0
           },
-          "elapsed_ms": 6760.331499997847,
+          "elapsed_ms": 4297.096625003178,
           "iteration": 1,
           "outcome": "failure",
           "output_path": null,
           "output_sha256": null,
-          "peak_rss_bytes": 297631744,
+          "peak_rss_bytes": 295714816,
           "phase": "warmup",
           "reason": "one or more scored semantic or preservation checks failed"
         },
@@ -11339,7 +11339,7 @@
           "details": {
             "artifact_dir": "raw/libreoffice/template-mutation/measured-1.pptx.adapter",
             "candidate_path": "raw/libreoffice/template-mutation/measured-1.pptx",
-            "candidate_sha256": "68a32ef1971094572fade0461a107b1cf854c8b98b491c3bde2f2c7e7059eca6",
+            "candidate_sha256": "e12965cf9681f9ff0c4633e3fee3100d0ad0547e861e05ae7b73d11f950c6d93",
             "command": [
               "python",
               "-m",
@@ -11355,12 +11355,12 @@
             "stdout_artifact": "raw/libreoffice/template-mutation/measured-1.pptx.adapter/stdout.bin",
             "stdout_bytes": 0
           },
-          "elapsed_ms": 6966.723334000562,
+          "elapsed_ms": 4378.017582999746,
           "iteration": 1,
           "outcome": "failure",
           "output_path": null,
           "output_sha256": null,
-          "peak_rss_bytes": 299483136,
+          "peak_rss_bytes": 296271872,
           "phase": "measured",
           "reason": "one or more scored semantic or preservation checks failed"
         },
@@ -11433,7 +11433,7 @@
           "details": {
             "artifact_dir": "raw/libreoffice/template-mutation/measured-2.pptx.adapter",
             "candidate_path": "raw/libreoffice/template-mutation/measured-2.pptx",
-            "candidate_sha256": "aaceebbf246cd7477e3602c211bb34f1dd2f5343783d282c9758fabc5625d218",
+            "candidate_sha256": "e599b7fc08c2e4c729f6724b0fc0db899edb21f7a8a5489edf9c48b1d55e8a4c",
             "command": [
               "python",
               "-m",
@@ -11449,12 +11449,12 @@
             "stdout_artifact": "raw/libreoffice/template-mutation/measured-2.pptx.adapter/stdout.bin",
             "stdout_bytes": 0
           },
-          "elapsed_ms": 6006.883416001074,
+          "elapsed_ms": 3437.5748749989725,
           "iteration": 2,
           "outcome": "failure",
           "output_path": null,
           "output_sha256": null,
-          "peak_rss_bytes": 298270720,
+          "peak_rss_bytes": 295649280,
           "phase": "measured",
           "reason": "one or more scored semantic or preservation checks failed"
         },
@@ -11527,7 +11527,7 @@
           "details": {
             "artifact_dir": "raw/libreoffice/template-mutation/measured-3.pptx.adapter",
             "candidate_path": "raw/libreoffice/template-mutation/measured-3.pptx",
-            "candidate_sha256": "0cd519ed605f15cc1a8240af624612eaa07afae463a2a4e1f9fbcaa038e4dac1",
+            "candidate_sha256": "b86cd647a62a80a8a90f776f468a519467c2b1bcc6df3886f35e312297176457",
             "command": [
               "python",
               "-m",
@@ -11543,12 +11543,12 @@
             "stdout_artifact": "raw/libreoffice/template-mutation/measured-3.pptx.adapter/stdout.bin",
             "stdout_bytes": 0
           },
-          "elapsed_ms": 6772.878625000885,
+          "elapsed_ms": 3848.075041001721,
           "iteration": 3,
           "outcome": "failure",
           "output_path": null,
           "output_sha256": null,
-          "peak_rss_bytes": 297172992,
+          "peak_rss_bytes": 296222720,
           "phase": "measured",
           "reason": "one or more scored semantic or preservation checks failed"
         }
@@ -11885,7 +11885,7 @@
           "details": {
             "artifact_dir": "raw/pptx-automizer/template-mutation/warmup-1.pptx.adapter",
             "candidate_path": "raw/pptx-automizer/template-mutation/warmup-1.pptx",
-            "candidate_sha256": "06607a780a6c2b3da8caf614e70b773e68b0a61ca57fa71c46e945a72c67400c",
+            "candidate_sha256": "a00091ce1b6d80b18ef3748a848d297d7a5cb81cf3cc1937d9f54a3747f52154",
             "command": [
               "node",
               "pptbench-automizer.js",
@@ -11899,12 +11899,12 @@
             "stdout_artifact": "raw/pptx-automizer/template-mutation/warmup-1.pptx.adapter/stdout.bin",
             "stdout_bytes": 0
           },
-          "elapsed_ms": 2180.735583999194,
+          "elapsed_ms": 663.2112500010408,
           "iteration": 1,
           "outcome": "success",
           "output_path": "raw/pptx-automizer/template-mutation/warmup-1.pptx",
-          "output_sha256": "06607a780a6c2b3da8caf614e70b773e68b0a61ca57fa71c46e945a72c67400c",
-          "peak_rss_bytes": 117456896,
+          "output_sha256": "a00091ce1b6d80b18ef3748a848d297d7a5cb81cf3cc1937d9f54a3747f52154",
+          "peak_rss_bytes": 113033216,
           "phase": "warmup",
           "reason": null
         },
@@ -11977,7 +11977,7 @@
           "details": {
             "artifact_dir": "raw/pptx-automizer/template-mutation/measured-1.pptx.adapter",
             "candidate_path": "raw/pptx-automizer/template-mutation/measured-1.pptx",
-            "candidate_sha256": "466d80d3d092fd390157ac5577d2d6717f40c9b867e6d9d9c9b06544729ba2b6",
+            "candidate_sha256": "a00091ce1b6d80b18ef3748a848d297d7a5cb81cf3cc1937d9f54a3747f52154",
             "command": [
               "node",
               "pptbench-automizer.js",
@@ -11991,12 +11991,12 @@
             "stdout_artifact": "raw/pptx-automizer/template-mutation/measured-1.pptx.adapter/stdout.bin",
             "stdout_bytes": 0
           },
-          "elapsed_ms": 2640.5036659998586,
+          "elapsed_ms": 769.3195829997421,
           "iteration": 1,
           "outcome": "success",
           "output_path": "raw/pptx-automizer/template-mutation/measured-1.pptx",
-          "output_sha256": "466d80d3d092fd390157ac5577d2d6717f40c9b867e6d9d9c9b06544729ba2b6",
-          "peak_rss_bytes": 116998144,
+          "output_sha256": "a00091ce1b6d80b18ef3748a848d297d7a5cb81cf3cc1937d9f54a3747f52154",
+          "peak_rss_bytes": 114900992,
           "phase": "measured",
           "reason": null
         },
@@ -12069,7 +12069,7 @@
           "details": {
             "artifact_dir": "raw/pptx-automizer/template-mutation/measured-2.pptx.adapter",
             "candidate_path": "raw/pptx-automizer/template-mutation/measured-2.pptx",
-            "candidate_sha256": "718d376d3a53447e5566a5aa30a6e0a8cb8ff474384c2ec197c9e1f0179e276d",
+            "candidate_sha256": "0446979db9109c8614fe16d9d54eebc6fa3de1b21871a9f3c72701361bd175c6",
             "command": [
               "node",
               "pptbench-automizer.js",
@@ -12083,12 +12083,12 @@
             "stdout_artifact": "raw/pptx-automizer/template-mutation/measured-2.pptx.adapter/stdout.bin",
             "stdout_bytes": 0
           },
-          "elapsed_ms": 1901.2305830001424,
+          "elapsed_ms": 661.2095000018599,
           "iteration": 2,
           "outcome": "success",
           "output_path": "raw/pptx-automizer/template-mutation/measured-2.pptx",
-          "output_sha256": "718d376d3a53447e5566a5aa30a6e0a8cb8ff474384c2ec197c9e1f0179e276d",
-          "peak_rss_bytes": 117145600,
+          "output_sha256": "0446979db9109c8614fe16d9d54eebc6fa3de1b21871a9f3c72701361bd175c6",
+          "peak_rss_bytes": 116424704,
           "phase": "measured",
           "reason": null
         },
@@ -12161,7 +12161,7 @@
           "details": {
             "artifact_dir": "raw/pptx-automizer/template-mutation/measured-3.pptx.adapter",
             "candidate_path": "raw/pptx-automizer/template-mutation/measured-3.pptx",
-            "candidate_sha256": "4d64f48aaf0bcf923b9d4d241bac9c9b5960607554ae50edea8eb5d4b8293bc2",
+            "candidate_sha256": "eeebb8999611a9c040154d68e5e6066c4cd640eef7da1c77232ee6bd2bf08081",
             "command": [
               "node",
               "pptbench-automizer.js",
@@ -12175,12 +12175,12 @@
             "stdout_artifact": "raw/pptx-automizer/template-mutation/measured-3.pptx.adapter/stdout.bin",
             "stdout_bytes": 0
           },
-          "elapsed_ms": 1855.6590420012071,
+          "elapsed_ms": 596.06870800053,
           "iteration": 3,
           "outcome": "success",
           "output_path": "raw/pptx-automizer/template-mutation/measured-3.pptx",
-          "output_sha256": "4d64f48aaf0bcf923b9d4d241bac9c9b5960607554ae50edea8eb5d4b8293bc2",
-          "peak_rss_bytes": 115900416,
+          "output_sha256": "eeebb8999611a9c040154d68e5e6066c4cd640eef7da1c77232ee6bd2bf08081",
+          "peak_rss_bytes": 114884608,
           "phase": "measured",
           "reason": null
         }
@@ -12533,12 +12533,12 @@
             "stdout_artifact": "raw/open-xml-sdk/template-mutation/warmup-1.pptx.adapter/stdout.bin",
             "stdout_bytes": 0
           },
-          "elapsed_ms": 17838.87387499999,
+          "elapsed_ms": 1825.0038330006646,
           "iteration": 1,
           "outcome": "success",
           "output_path": "raw/open-xml-sdk/template-mutation/warmup-1.pptx",
           "output_sha256": "9375592b524090cd92158bf7f3f81d69babe0d5172644b12c36378b7df8d0f91",
-          "peak_rss_bytes": 29999104,
+          "peak_rss_bytes": 30572544,
           "phase": "warmup",
           "reason": null
         },
@@ -12627,12 +12627,12 @@
             "stdout_artifact": "raw/open-xml-sdk/template-mutation/measured-1.pptx.adapter/stdout.bin",
             "stdout_bytes": 0
           },
-          "elapsed_ms": 4171.455874999083,
+          "elapsed_ms": 1801.7287500006205,
           "iteration": 1,
           "outcome": "success",
           "output_path": "raw/open-xml-sdk/template-mutation/measured-1.pptx",
           "output_sha256": "9375592b524090cd92158bf7f3f81d69babe0d5172644b12c36378b7df8d0f91",
-          "peak_rss_bytes": 30113792,
+          "peak_rss_bytes": 30195712,
           "phase": "measured",
           "reason": null
         },
@@ -12721,12 +12721,12 @@
             "stdout_artifact": "raw/open-xml-sdk/template-mutation/measured-2.pptx.adapter/stdout.bin",
             "stdout_bytes": 0
           },
-          "elapsed_ms": 7553.036375000374,
+          "elapsed_ms": 1917.3018330002378,
           "iteration": 2,
           "outcome": "success",
           "output_path": "raw/open-xml-sdk/template-mutation/measured-2.pptx",
           "output_sha256": "9375592b524090cd92158bf7f3f81d69babe0d5172644b12c36378b7df8d0f91",
-          "peak_rss_bytes": 30097408,
+          "peak_rss_bytes": 29982720,
           "phase": "measured",
           "reason": null
         },
@@ -12815,12 +12815,12 @@
             "stdout_artifact": "raw/open-xml-sdk/template-mutation/measured-3.pptx.adapter/stdout.bin",
             "stdout_bytes": 0
           },
-          "elapsed_ms": 11524.76708299946,
+          "elapsed_ms": 2491.1535419996653,
           "iteration": 3,
           "outcome": "success",
           "output_path": "raw/open-xml-sdk/template-mutation/measured-3.pptx",
           "output_sha256": "9375592b524090cd92158bf7f3f81d69babe0d5172644b12c36378b7df8d0f91",
-          "peak_rss_bytes": 29900800,
+          "peak_rss_bytes": 30949376,
           "phase": "measured",
           "reason": null
         }
@@ -13297,7 +13297,7 @@
           "details": {
             "artifact_dir": "raw/python-pptx/chart-data/warmup-1.pptx.adapter",
             "candidate_path": "raw/python-pptx/chart-data/warmup-1.pptx",
-            "candidate_sha256": "e66ef41a1ba9b0041842b30e9a01f41dd6247e21350f6e986af11fc95438e23f",
+            "candidate_sha256": "e71334475ba1fe02a375bb94a881b7ddd82bdb508fa499e8af0ce7544a57b74e",
             "command": [
               "python",
               "-m",
@@ -13313,12 +13313,12 @@
             "stdout_artifact": "raw/python-pptx/chart-data/warmup-1.pptx.adapter/stdout.bin",
             "stdout_bytes": 0
           },
-          "elapsed_ms": 1361.2532500010275,
+          "elapsed_ms": 458.6738329999207,
           "iteration": 1,
           "outcome": "success",
           "output_path": "raw/python-pptx/chart-data/warmup-1.pptx",
-          "output_sha256": "e66ef41a1ba9b0041842b30e9a01f41dd6247e21350f6e986af11fc95438e23f",
-          "peak_rss_bytes": 50184192,
+          "output_sha256": "e71334475ba1fe02a375bb94a881b7ddd82bdb508fa499e8af0ce7544a57b74e",
+          "peak_rss_bytes": 50348032,
           "phase": "warmup",
           "reason": null
         },
@@ -13419,7 +13419,7 @@
           "details": {
             "artifact_dir": "raw/python-pptx/chart-data/measured-1.pptx.adapter",
             "candidate_path": "raw/python-pptx/chart-data/measured-1.pptx",
-            "candidate_sha256": "2d2f5baeabab199494388c0995f36c84fd21c1a3e022f9f25bae4c183fceb88d",
+            "candidate_sha256": "e9ea664a8549fa91a8b288880b473f23996e9b4d43fb04a4af58b1d6657315d0",
             "command": [
               "python",
               "-m",
@@ -13435,12 +13435,12 @@
             "stdout_artifact": "raw/python-pptx/chart-data/measured-1.pptx.adapter/stdout.bin",
             "stdout_bytes": 0
           },
-          "elapsed_ms": 1579.8471250018338,
+          "elapsed_ms": 342.1660839994729,
           "iteration": 1,
           "outcome": "success",
           "output_path": "raw/python-pptx/chart-data/measured-1.pptx",
-          "output_sha256": "2d2f5baeabab199494388c0995f36c84fd21c1a3e022f9f25bae4c183fceb88d",
-          "peak_rss_bytes": 50315264,
+          "output_sha256": "e9ea664a8549fa91a8b288880b473f23996e9b4d43fb04a4af58b1d6657315d0",
+          "peak_rss_bytes": 50495488,
           "phase": "measured",
           "reason": null
         },
@@ -13541,7 +13541,7 @@
           "details": {
             "artifact_dir": "raw/python-pptx/chart-data/measured-2.pptx.adapter",
             "candidate_path": "raw/python-pptx/chart-data/measured-2.pptx",
-            "candidate_sha256": "b56d7a13ec2931d232c02272f909f3ee23bc8a22eec89d80d0953185ee795de3",
+            "candidate_sha256": "e9ea664a8549fa91a8b288880b473f23996e9b4d43fb04a4af58b1d6657315d0",
             "command": [
               "python",
               "-m",
@@ -13557,12 +13557,12 @@
             "stdout_artifact": "raw/python-pptx/chart-data/measured-2.pptx.adapter/stdout.bin",
             "stdout_bytes": 0
           },
-          "elapsed_ms": 1382.376582998404,
+          "elapsed_ms": 338.980583997909,
           "iteration": 2,
           "outcome": "success",
           "output_path": "raw/python-pptx/chart-data/measured-2.pptx",
-          "output_sha256": "b56d7a13ec2931d232c02272f909f3ee23bc8a22eec89d80d0953185ee795de3",
-          "peak_rss_bytes": 50528256,
+          "output_sha256": "e9ea664a8549fa91a8b288880b473f23996e9b4d43fb04a4af58b1d6657315d0",
+          "peak_rss_bytes": 50233344,
           "phase": "measured",
           "reason": null
         },
@@ -13663,7 +13663,7 @@
           "details": {
             "artifact_dir": "raw/python-pptx/chart-data/measured-3.pptx.adapter",
             "candidate_path": "raw/python-pptx/chart-data/measured-3.pptx",
-            "candidate_sha256": "bae9c4d975d52cad12fcd8316033c163c461417c7112b0310e9a3cfefc627dfd",
+            "candidate_sha256": "18722ca09d7f8a66f8126d600cedf26da65fa0bcd41735f264cc6c7f89b9d4c2",
             "command": [
               "python",
               "-m",
@@ -13679,12 +13679,12 @@
             "stdout_artifact": "raw/python-pptx/chart-data/measured-3.pptx.adapter/stdout.bin",
             "stdout_bytes": 0
           },
-          "elapsed_ms": 1962.3630839996622,
+          "elapsed_ms": 290.78020799715887,
           "iteration": 3,
           "outcome": "success",
           "output_path": "raw/python-pptx/chart-data/measured-3.pptx",
-          "output_sha256": "bae9c4d975d52cad12fcd8316033c163c461417c7112b0310e9a3cfefc627dfd",
-          "peak_rss_bytes": 50282496,
+          "output_sha256": "18722ca09d7f8a66f8126d600cedf26da65fa0bcd41735f264cc6c7f89b9d4c2",
+          "peak_rss_bytes": 50348032,
           "phase": "measured",
           "reason": null
         }
@@ -14177,12 +14177,12 @@
             "stdout_artifact": "raw/wolfppt-wheel/chart-data/warmup-1.pptx.adapter/stdout.bin",
             "stdout_bytes": 0
           },
-          "elapsed_ms": 2498.474708001595,
+          "elapsed_ms": 445.2743340007146,
           "iteration": 1,
           "outcome": "failure",
           "output_path": null,
           "output_sha256": null,
-          "peak_rss_bytes": 59506688,
+          "peak_rss_bytes": 59064320,
           "phase": "warmup",
           "reason": "one or more scored semantic or preservation checks failed"
         },
@@ -14299,12 +14299,12 @@
             "stdout_artifact": "raw/wolfppt-wheel/chart-data/measured-1.pptx.adapter/stdout.bin",
             "stdout_bytes": 0
           },
-          "elapsed_ms": 2695.6235830002697,
+          "elapsed_ms": 399.51304200076265,
           "iteration": 1,
           "outcome": "failure",
           "output_path": null,
           "output_sha256": null,
-          "peak_rss_bytes": 59244544,
+          "peak_rss_bytes": 59179008,
           "phase": "measured",
           "reason": "one or more scored semantic or preservation checks failed"
         },
@@ -14421,12 +14421,12 @@
             "stdout_artifact": "raw/wolfppt-wheel/chart-data/measured-2.pptx.adapter/stdout.bin",
             "stdout_bytes": 0
           },
-          "elapsed_ms": 2326.4089160002186,
+          "elapsed_ms": 402.88283299742034,
           "iteration": 2,
           "outcome": "failure",
           "output_path": null,
           "output_sha256": null,
-          "peak_rss_bytes": 59326464,
+          "peak_rss_bytes": 59179008,
           "phase": "measured",
           "reason": "one or more scored semantic or preservation checks failed"
         },
@@ -14543,12 +14543,12 @@
             "stdout_artifact": "raw/wolfppt-wheel/chart-data/measured-3.pptx.adapter/stdout.bin",
             "stdout_bytes": 0
           },
-          "elapsed_ms": 2431.143332996726,
+          "elapsed_ms": 463.6497920000693,
           "iteration": 3,
           "outcome": "failure",
           "output_path": null,
           "output_sha256": null,
-          "peak_rss_bytes": 59555840,
+          "peak_rss_bytes": 59260928,
           "phase": "measured",
           "reason": "one or more scored semantic or preservation checks failed"
         }
@@ -15025,7 +15025,7 @@
           "details": {
             "artifact_dir": "raw/apache-poi/chart-data/warmup-1.pptx.adapter",
             "candidate_path": "raw/apache-poi/chart-data/warmup-1.pptx",
-            "candidate_sha256": "7cc33f599981827353e3cd340855a9af220026b19203cf2d9cc4f1570bee3832",
+            "candidate_sha256": "519b50924be0eae1d6e074360c70dc9534662349e3450d20c44a23d4b762f60f",
             "command": [
               "python",
               "-m",
@@ -15041,12 +15041,12 @@
             "stdout_artifact": "raw/apache-poi/chart-data/warmup-1.pptx.adapter/stdout.bin",
             "stdout_bytes": 0
           },
-          "elapsed_ms": 41216.6086670004,
+          "elapsed_ms": 3215.5711670020537,
           "iteration": 1,
           "outcome": "success",
           "output_path": "raw/apache-poi/chart-data/warmup-1.pptx",
-          "output_sha256": "7cc33f599981827353e3cd340855a9af220026b19203cf2d9cc4f1570bee3832",
-          "peak_rss_bytes": 29966336,
+          "output_sha256": "519b50924be0eae1d6e074360c70dc9534662349e3450d20c44a23d4b762f60f",
+          "peak_rss_bytes": 30179328,
           "phase": "warmup",
           "reason": null
         },
@@ -15147,7 +15147,7 @@
           "details": {
             "artifact_dir": "raw/apache-poi/chart-data/measured-1.pptx.adapter",
             "candidate_path": "raw/apache-poi/chart-data/measured-1.pptx",
-            "candidate_sha256": "ab11ac4a27d3625bf0e1189dbc19a3162775b887ab4947b788fe9a3ff3c366bf",
+            "candidate_sha256": "0b335a65735a1c7bd2fe62a1a8f4bc055bef84d66ad6497c95ff2e0183d98e3f",
             "command": [
               "python",
               "-m",
@@ -15163,12 +15163,12 @@
             "stdout_artifact": "raw/apache-poi/chart-data/measured-1.pptx.adapter/stdout.bin",
             "stdout_bytes": 0
           },
-          "elapsed_ms": 7390.451875002327,
+          "elapsed_ms": 3237.619999999879,
           "iteration": 1,
           "outcome": "success",
           "output_path": "raw/apache-poi/chart-data/measured-1.pptx",
-          "output_sha256": "ab11ac4a27d3625bf0e1189dbc19a3162775b887ab4947b788fe9a3ff3c366bf",
-          "peak_rss_bytes": 30457856,
+          "output_sha256": "0b335a65735a1c7bd2fe62a1a8f4bc055bef84d66ad6497c95ff2e0183d98e3f",
+          "peak_rss_bytes": 30130176,
           "phase": "measured",
           "reason": null
         },
@@ -15269,7 +15269,7 @@
           "details": {
             "artifact_dir": "raw/apache-poi/chart-data/measured-2.pptx.adapter",
             "candidate_path": "raw/apache-poi/chart-data/measured-2.pptx",
-            "candidate_sha256": "f99c1caf372451b7e0ec0ebcd3c371982c11e6ff121ba4c3d6d45bef78f6d58c",
+            "candidate_sha256": "ba3bee287597c0806cc11792f556173ea29afc0d5e3da85847bc72645e9d25b3",
             "command": [
               "python",
               "-m",
@@ -15285,12 +15285,12 @@
             "stdout_artifact": "raw/apache-poi/chart-data/measured-2.pptx.adapter/stdout.bin",
             "stdout_bytes": 0
           },
-          "elapsed_ms": 13198.974207996798,
+          "elapsed_ms": 3264.52445799805,
           "iteration": 2,
           "outcome": "success",
           "output_path": "raw/apache-poi/chart-data/measured-2.pptx",
-          "output_sha256": "f99c1caf372451b7e0ec0ebcd3c371982c11e6ff121ba4c3d6d45bef78f6d58c",
-          "peak_rss_bytes": 29769728,
+          "output_sha256": "ba3bee287597c0806cc11792f556173ea29afc0d5e3da85847bc72645e9d25b3",
+          "peak_rss_bytes": 30326784,
           "phase": "measured",
           "reason": null
         },
@@ -15391,7 +15391,7 @@
           "details": {
             "artifact_dir": "raw/apache-poi/chart-data/measured-3.pptx.adapter",
             "candidate_path": "raw/apache-poi/chart-data/measured-3.pptx",
-            "candidate_sha256": "03cdfebf8cd3e23977952dbc960f7daa51c4ff71a9ff14c575a40853cfd44b95",
+            "candidate_sha256": "46a88d4e76b7a1dfa80efc307d7af14689be0fddfdbc94f1bd00936af0b212ef",
             "command": [
               "python",
               "-m",
@@ -15407,12 +15407,12 @@
             "stdout_artifact": "raw/apache-poi/chart-data/measured-3.pptx.adapter/stdout.bin",
             "stdout_bytes": 0
           },
-          "elapsed_ms": 4669.899708998855,
+          "elapsed_ms": 3332.5635000001057,
           "iteration": 3,
           "outcome": "success",
           "output_path": "raw/apache-poi/chart-data/measured-3.pptx",
-          "output_sha256": "03cdfebf8cd3e23977952dbc960f7daa51c4ff71a9ff14c575a40853cfd44b95",
-          "peak_rss_bytes": 30031872,
+          "output_sha256": "46a88d4e76b7a1dfa80efc307d7af14689be0fddfdbc94f1bd00936af0b212ef",
+          "peak_rss_bytes": 29818880,
           "phase": "measured",
           "reason": null
         }
@@ -15421,6 +15421,13 @@
     {
       "adapter": "libreoffice",
       "checks": [
+        {
+          "category": "semantic",
+          "detail": "slide 1 chart must reference exactly one workbook",
+          "name": "chart-package-semantics",
+          "outcome": "failure",
+          "scored": true
+        },
         {
           "category": "semantic",
           "detail": "slide 1 chart must reference exactly one workbook",
@@ -15462,7 +15469,7 @@
           "details": {
             "artifact_dir": "raw/libreoffice/chart-data/warmup-1.pptx.adapter",
             "candidate_path": "raw/libreoffice/chart-data/warmup-1.pptx",
-            "candidate_sha256": "ce71d4cc6f1b4a644bb468806da1a75246162a78977944192fa515a915cc324c",
+            "candidate_sha256": "f15d43205b6e8bf93e4ddd03ebcb0f45681d873d638d44ebd0d9d4709196d88c",
             "command": [
               "python",
               "-m",
@@ -15478,12 +15485,12 @@
             "stdout_artifact": "raw/libreoffice/chart-data/warmup-1.pptx.adapter/stdout.bin",
             "stdout_bytes": 0
           },
-          "elapsed_ms": 9531.146124998486,
+          "elapsed_ms": 3295.837792000384,
           "iteration": 1,
           "outcome": "failure",
           "output_path": null,
           "output_sha256": null,
-          "peak_rss_bytes": 248889344,
+          "peak_rss_bytes": 246267904,
           "phase": "warmup",
           "reason": "one or more scored semantic or preservation checks failed"
         },
@@ -15500,7 +15507,7 @@
           "details": {
             "artifact_dir": "raw/libreoffice/chart-data/measured-1.pptx.adapter",
             "candidate_path": "raw/libreoffice/chart-data/measured-1.pptx",
-            "candidate_sha256": "42c13ffefea06f3073667a81e681d864db613069c4d56a6c67fc9c6f41616f41",
+            "candidate_sha256": "2449a4bf582da53b215a9f091f801901cad137472b19f5f3fb932c373c4059dc",
             "command": [
               "python",
               "-m",
@@ -15516,12 +15523,12 @@
             "stdout_artifact": "raw/libreoffice/chart-data/measured-1.pptx.adapter/stdout.bin",
             "stdout_bytes": 0
           },
-          "elapsed_ms": 7770.37754200137,
+          "elapsed_ms": 3333.8458750004065,
           "iteration": 1,
           "outcome": "failure",
           "output_path": null,
           "output_sha256": null,
-          "peak_rss_bytes": 249053184,
+          "peak_rss_bytes": 246005760,
           "phase": "measured",
           "reason": "one or more scored semantic or preservation checks failed"
         },
@@ -15538,7 +15545,7 @@
           "details": {
             "artifact_dir": "raw/libreoffice/chart-data/measured-2.pptx.adapter",
             "candidate_path": "raw/libreoffice/chart-data/measured-2.pptx",
-            "candidate_sha256": "661772e8480153d043e123e74cc71532a89571dcdf7ee09e81da88a3b89c274f",
+            "candidate_sha256": "064c46a34ef949b231239bcdfb9e3a064e8fa20d9913249cef703767dfce2601",
             "command": [
               "python",
               "-m",
@@ -15554,26 +15561,52 @@
             "stdout_artifact": "raw/libreoffice/chart-data/measured-2.pptx.adapter/stdout.bin",
             "stdout_bytes": 0
           },
-          "elapsed_ms": 8066.853874999651,
+          "elapsed_ms": 3433.865708000667,
           "iteration": 2,
           "outcome": "failure",
           "output_path": null,
           "output_sha256": null,
-          "peak_rss_bytes": 250052608,
+          "peak_rss_bytes": 247300096,
           "phase": "measured",
           "reason": "one or more scored semantic or preservation checks failed"
         },
         {
-          "checks": [],
-          "details": {},
-          "elapsed_ms": null,
+          "checks": [
+            {
+              "category": "semantic",
+              "detail": "slide 1 chart must reference exactly one workbook",
+              "name": "chart-package-semantics",
+              "outcome": "failure",
+              "scored": true
+            }
+          ],
+          "details": {
+            "artifact_dir": "raw/libreoffice/chart-data/measured-3.pptx.adapter",
+            "candidate_path": "raw/libreoffice/chart-data/measured-3.pptx",
+            "candidate_sha256": "a261d8b908b2625ee525582ddd6842f6c8ffcbf2e22c15a320b2e2672d13b7ea",
+            "command": [
+              "python",
+              "-m",
+              "pptbench.worker",
+              "libreoffice",
+              "chart-data",
+              "charts.pptx",
+              "measured-3.pptx"
+            ],
+            "diagnostic": "Fontconfig warning: no <cachedir> elements found. Check configuration.\nFontconfig warning: adding <cachedir>/usr/local/var/cache/fontconfig</cachedir>\nFontconfig warning: adding <cachedir prefix=\"xdg\">fontconfig</cachedir>\nFontconfig warning: no <cachedir> elements found. Check configuration.\nFontconfig warning: adding <cachedir>/usr/local/var/cache/fontconfig</cachedir>\nFontconfig warning: adding <cachedir prefix=\"xdg\">fontconfig</cachedir>\n",
+            "stderr_artifact": "raw/libreoffice/chart-data/measured-3.pptx.adapter/stderr.bin",
+            "stderr_bytes": 446,
+            "stdout_artifact": "raw/libreoffice/chart-data/measured-3.pptx.adapter/stdout.bin",
+            "stdout_bytes": 0
+          },
+          "elapsed_ms": 3592.125457998918,
           "iteration": 3,
-          "outcome": "unavailable",
+          "outcome": "failure",
           "output_path": null,
           "output_sha256": null,
-          "peak_rss_bytes": null,
+          "peak_rss_bytes": 245284864,
           "phase": "measured",
-          "reason": "soffice --version produced no version banner"
+          "reason": "one or more scored semantic or preservation checks failed"
         }
       ]
     },
@@ -16048,7 +16081,7 @@
           "details": {
             "artifact_dir": "raw/pptx-automizer/chart-data/warmup-1.pptx.adapter",
             "candidate_path": "raw/pptx-automizer/chart-data/warmup-1.pptx",
-            "candidate_sha256": "92637166f983792d67c8cc933c2ab2d8dae36a9380fdf442b645832ff2aefb31",
+            "candidate_sha256": "5cc8fabcbea84f22211c7ce9831b933507463813ce17c735fedcd4d52f73e75e",
             "command": [
               "node",
               "pptbench-automizer.js",
@@ -16062,12 +16095,12 @@
             "stdout_artifact": "raw/pptx-automizer/chart-data/warmup-1.pptx.adapter/stdout.bin",
             "stdout_bytes": 0
           },
-          "elapsed_ms": 1472.8478329998325,
+          "elapsed_ms": 667.4351660003595,
           "iteration": 1,
           "outcome": "failure",
           "output_path": null,
           "output_sha256": null,
-          "peak_rss_bytes": 86982656,
+          "peak_rss_bytes": 86016000,
           "phase": "warmup",
           "reason": "one or more scored semantic or preservation checks failed"
         },
@@ -16168,7 +16201,7 @@
           "details": {
             "artifact_dir": "raw/pptx-automizer/chart-data/measured-1.pptx.adapter",
             "candidate_path": "raw/pptx-automizer/chart-data/measured-1.pptx",
-            "candidate_sha256": "f39de239b18a028fd08b7334488ed9953ff7cf7006ced0425d2ba4b5440615cf",
+            "candidate_sha256": "5cc8fabcbea84f22211c7ce9831b933507463813ce17c735fedcd4d52f73e75e",
             "command": [
               "node",
               "pptbench-automizer.js",
@@ -16182,12 +16215,12 @@
             "stdout_artifact": "raw/pptx-automizer/chart-data/measured-1.pptx.adapter/stdout.bin",
             "stdout_bytes": 0
           },
-          "elapsed_ms": 1794.4520829987596,
+          "elapsed_ms": 460.24208400194766,
           "iteration": 1,
           "outcome": "failure",
           "output_path": null,
           "output_sha256": null,
-          "peak_rss_bytes": 86982656,
+          "peak_rss_bytes": 86409216,
           "phase": "measured",
           "reason": "one or more scored semantic or preservation checks failed"
         },
@@ -16288,7 +16321,7 @@
           "details": {
             "artifact_dir": "raw/pptx-automizer/chart-data/measured-2.pptx.adapter",
             "candidate_path": "raw/pptx-automizer/chart-data/measured-2.pptx",
-            "candidate_sha256": "de1234e67011a0d07e81206a919e4da2429842a0e92be1e42876d182b8ad413b",
+            "candidate_sha256": "5cc8fabcbea84f22211c7ce9831b933507463813ce17c735fedcd4d52f73e75e",
             "command": [
               "node",
               "pptbench-automizer.js",
@@ -16302,12 +16335,12 @@
             "stdout_artifact": "raw/pptx-automizer/chart-data/measured-2.pptx.adapter/stdout.bin",
             "stdout_bytes": 0
           },
-          "elapsed_ms": 1066.2939579997328,
+          "elapsed_ms": 450.9558329991705,
           "iteration": 2,
           "outcome": "failure",
           "output_path": null,
           "output_sha256": null,
-          "peak_rss_bytes": 86278144,
+          "peak_rss_bytes": 86097920,
           "phase": "measured",
           "reason": "one or more scored semantic or preservation checks failed"
         },
@@ -16408,7 +16441,7 @@
           "details": {
             "artifact_dir": "raw/pptx-automizer/chart-data/measured-3.pptx.adapter",
             "candidate_path": "raw/pptx-automizer/chart-data/measured-3.pptx",
-            "candidate_sha256": "6e39471ce32a60427c0a066a93b135f42c189142d94be091520440b95a2aa212",
+            "candidate_sha256": "a4eb50e8c7d583d9a7538cf70f41253b084f5369ff40aa61482f724385a03f1d",
             "command": [
               "node",
               "pptbench-automizer.js",
@@ -16422,12 +16455,12 @@
             "stdout_artifact": "raw/pptx-automizer/chart-data/measured-3.pptx.adapter/stdout.bin",
             "stdout_bytes": 0
           },
-          "elapsed_ms": 978.5880410017853,
+          "elapsed_ms": 473.3213750005234,
           "iteration": 3,
           "outcome": "failure",
           "output_path": null,
           "output_sha256": null,
-          "peak_rss_bytes": 85016576,
+          "peak_rss_bytes": 87621632,
           "phase": "measured",
           "reason": "one or more scored semantic or preservation checks failed"
         }
@@ -16920,12 +16953,12 @@
             "stdout_artifact": "raw/open-xml-sdk/chart-data/warmup-1.pptx.adapter/stdout.bin",
             "stdout_bytes": 0
           },
-          "elapsed_ms": 5814.801583997905,
+          "elapsed_ms": 8150.845042000583,
           "iteration": 1,
           "outcome": "success",
           "output_path": "raw/open-xml-sdk/chart-data/warmup-1.pptx",
           "output_sha256": "6db42228220db40a15e4f8d62d39c26ed9325d99851df25ba9715081c64596e6",
-          "peak_rss_bytes": 30015488,
+          "peak_rss_bytes": 30359552,
           "phase": "warmup",
           "reason": null
         },
@@ -17042,12 +17075,12 @@
             "stdout_artifact": "raw/open-xml-sdk/chart-data/measured-1.pptx.adapter/stdout.bin",
             "stdout_bytes": 0
           },
-          "elapsed_ms": 3630.855084000359,
+          "elapsed_ms": 5036.573165998561,
           "iteration": 1,
           "outcome": "success",
           "output_path": "raw/open-xml-sdk/chart-data/measured-1.pptx",
           "output_sha256": "6db42228220db40a15e4f8d62d39c26ed9325d99851df25ba9715081c64596e6",
-          "peak_rss_bytes": 29736960,
+          "peak_rss_bytes": 30457856,
           "phase": "measured",
           "reason": null
         },
@@ -17164,12 +17197,12 @@
             "stdout_artifact": "raw/open-xml-sdk/chart-data/measured-2.pptx.adapter/stdout.bin",
             "stdout_bytes": 0
           },
-          "elapsed_ms": 4389.11179200295,
+          "elapsed_ms": 3397.626207999565,
           "iteration": 2,
           "outcome": "success",
           "output_path": "raw/open-xml-sdk/chart-data/measured-2.pptx",
           "output_sha256": "6db42228220db40a15e4f8d62d39c26ed9325d99851df25ba9715081c64596e6",
-          "peak_rss_bytes": 29802496,
+          "peak_rss_bytes": 30294016,
           "phase": "measured",
           "reason": null
         },
@@ -17286,12 +17319,12 @@
             "stdout_artifact": "raw/open-xml-sdk/chart-data/measured-3.pptx.adapter/stdout.bin",
             "stdout_bytes": 0
           },
-          "elapsed_ms": 3129.483042001084,
+          "elapsed_ms": 3021.2935420022404,
           "iteration": 3,
           "outcome": "success",
           "output_path": "raw/open-xml-sdk/chart-data/measured-3.pptx",
           "output_sha256": "6db42228220db40a15e4f8d62d39c26ed9325d99851df25ba9715081c64596e6",
-          "peak_rss_bytes": 29949952,
+          "peak_rss_bytes": 30294016,
           "phase": "measured",
           "reason": null
         }

@@ -4,7 +4,7 @@
     "outcome": "success",
     "problems": []
   },
-  "raw_sha256": "eb9f9e4eeed248c575043197834c5d7f207ea0dedd1ed0496978be14f626e268",
+  "raw_sha256": "fbf8926abbc672e47469e3ac2320d6c0f2ff2069843219313af7488f6202667d",
   "schema_version": 2,
   "svg": "heatmap.svg"
 }

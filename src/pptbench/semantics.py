@@ -14,6 +14,7 @@ from __future__ import annotations
 import posixpath
 from collections import Counter, deque
 from collections.abc import Callable, Iterable
+from copy import deepcopy
 from dataclasses import dataclass
 from io import BytesIO
 from urllib.parse import unquote
@@ -341,7 +342,121 @@ def semantic_root(value: bytes) -> ET.Element:
         else:
             scopes.pop()
     assert root is not None  # xml_root already proved the document has a root
+    _canonicalize_ids(root)
     return root
+
+
+# Internal integer ids --------------------------------------------------------------
+#
+# Shape, slide, master, layout, axis, and comment-author ids only tie a definition to
+# its references; a writer may renumber them consistently. Each family is renumbered
+# by order of first use within its scope, and every reference goes through the same
+# map, so a renumbering is invisible while a reference to a different target is not.
+# A reference to an undefined id becomes ``dangling``. Comment authors are defined in
+# the presentation's comment-author part and referenced from per-slide comment parts;
+# :meth:`PackageModel.root` resolves those references across parts.
+
+_P = "{http://schemas.openxmlformats.org/presentationml/2006/main}"
+_P14 = "{http://schemas.microsoft.com/office/powerpoint/2010/main}"
+_C = "{http://schemas.openxmlformats.org/drawingml/2006/chart}"
+_DANGLING_ID = "dangling"
+
+
+@dataclass(frozen=True)
+class _IdFamily:
+    """Attributes that define ids of one family and attributes that refer to them."""
+
+    definitions: frozenset[tuple[str, str]]
+    references: frozenset[tuple[str, str]] = frozenset()
+    by_local_name: bool = False
+
+    def attribute(self, element: ET.Element, roles: frozenset[tuple[str, str]]) -> str | None:
+        tag = _local(element.tag) if self.by_local_name else element.tag
+        for role_tag, attribute in roles:
+            if role_tag == tag and attribute in element.attrib:
+                return attribute
+        return None
+
+
+_SHAPE_IDS = _IdFamily(
+    definitions=frozenset({("cNvPr", "id")}),
+    references=frozenset(
+        {
+            ("stCxn", "id"),
+            ("endCxn", "id"),
+            *(
+                (tag, "spid")
+                for tag in (
+                    "spTgt",
+                    "bldP",
+                    "bldDgm",
+                    "bldOleChart",
+                    "bldGraphic",
+                    "inkTgt",
+                )
+            ),
+        }
+    ),
+    by_local_name=True,
+)
+_COMMENT_AUTHOR_IDS = _IdFamily(
+    definitions=frozenset({(_P + "cmAuthor", "id")}),
+    references=frozenset({(_P + "cm", "authorId")}),
+)
+_ID_FAMILIES = (
+    _SHAPE_IDS,
+    _IdFamily(
+        definitions=frozenset({(_P + "sldId", "id")}),
+        references=frozenset({(_P14 + "sldId", "id")}),
+    ),
+    _IdFamily(definitions=frozenset({(_P + "sldMasterId", "id")})),
+    _IdFamily(definitions=frozenset({(_P + "sldLayoutId", "id")})),
+    _IdFamily(definitions=frozenset({(_P14 + "creationId", "val")})),
+    _IdFamily(
+        definitions=frozenset({(_C + "axId", "val")}),
+        references=frozenset({(_C + "crossAx", "val")}),
+    ),
+    _IdFamily(definitions=_COMMENT_AUTHOR_IDS.definitions),
+)
+
+
+def _canonicalize_ids(root: ET.Element) -> None:
+    """Renumber every id family of one part in place (see the section comment)."""
+    for family in _ID_FAMILIES:
+        _id_map(root, family, rewrite=True)
+
+
+def _id_map(root: ET.Element, family: _IdFamily, *, rewrite: bool = False) -> dict[str, str]:
+    """Map a family's ids to their order of first use; optionally rewrite in place."""
+    elements = list(root.iter())
+    defined = {
+        element.attrib[attribute]
+        for element in elements
+        if (attribute := family.attribute(element, family.definitions)) is not None
+    }
+    mapping: dict[str, str] = {}
+    for element in elements:
+        for roles in (family.definitions, family.references):
+            attribute = family.attribute(element, roles)
+            if attribute is None:
+                continue
+            value = element.attrib[attribute]
+            canonical = (
+                mapping.setdefault(value, str(len(mapping))) if value in defined else _DANGLING_ID
+            )
+            if rewrite:
+                element.set(attribute, canonical)
+    return mapping
+
+
+def _remap_references(root: ET.Element, family: _IdFamily, mapping: dict[str, str]) -> ET.Element:
+    """Copy of ``root`` with a family's references resolved through another part's map."""
+    remapped = deepcopy(root)
+    for element in remapped.iter():
+        attribute = family.attribute(element, family.references)
+        if attribute is not None:
+            element.set(attribute, mapping.get(element.attrib[attribute], _DANGLING_ID))
+    return remapped
 
 
 def _resolve_prefixes(value: str, scope: dict[str, str]) -> str:
@@ -432,7 +547,9 @@ class PackageModel:
         self._lookup = {name.lower(): name for name in parts}
         self._content_types = _content_types(parts)
         self._relationship_cache: dict[str, list[Relationship]] = {}
+        self._parsed_cache: dict[str, ET.Element] = {}
         self._root_cache: dict[str, ET.Element] = {}
+        self._comment_author_map: dict[str, str] | None = None
         self._shallow_cache: dict[str, str] = {}
         self.key_of: dict[str, str] = {}
         self.name_of: dict[str, str] = {}
@@ -501,7 +618,7 @@ class PackageModel:
         explicit: list[Relationship] = []
         if source and self.is_xml(source):
             seen: set[str] = set()
-            for element in self.root(source).iter():
+            for element in self._parsed(source).iter():
                 for name, value in element.attrib.items():
                     if _is_relationship_attribute(name) and value in by_id and value not in seen:
                         seen.add(value)
@@ -533,7 +650,7 @@ class PackageModel:
                 cached = sha256_bytes(
                     repr(
                         element_signature(
-                            self.root(name),
+                            self._parsed(name),
                             lambda value: ("rel", types.get(value, "dangling")),
                         )
                     ).encode()
@@ -558,12 +675,35 @@ class PackageModel:
             return content_type.endswith(("+xml", "/xml"))
         return name.lower().endswith((".xml", ".rels"))
 
-    def root(self, name: str) -> ET.Element:
-        cached = self._root_cache.get(name)
+    def _parsed(self, name: str) -> ET.Element:
+        """Part content parsed on its own, with only part-local ids canonicalized."""
+        cached = self._parsed_cache.get(name)
         if cached is None:
             cached = semantic_root(self.parts[name])
+            self._parsed_cache[name] = cached
+        return cached
+
+    def root(self, name: str) -> ET.Element:
+        """Part content with ids canonicalized, including ids defined in other parts."""
+        cached = self._root_cache.get(name)
+        if cached is None:
+            cached = self._parsed(name)
+            if any(
+                short_type(rel_type) == "comments"
+                for _, rel_type in self.incoming.get(self.key_of.get(name, ""), [])
+            ):
+                cached = _remap_references(cached, _COMMENT_AUTHOR_IDS, self._comment_authors())
             self._root_cache[name] = cached
         return cached
+
+    def _comment_authors(self) -> dict[str, str]:
+        """Comment-author ids of the presentation mapped to their order of first use."""
+        if self._comment_author_map is None:
+            authors = self.keys_of_type("commentAuthors")
+            self._comment_author_map = (
+                _id_map(xml_root(self.data(authors[0])), _COMMENT_AUTHOR_IDS) if authors else {}
+            )
+        return self._comment_author_map
 
     def data(self, key: str) -> bytes:
         return self.parts[self.name_of[key]]
@@ -620,7 +760,6 @@ class PackageModel:
     def replace_root(self, name: str, root: ET.Element) -> None:
         """Substitute a part's parsed content, e.g. to model an expected edit."""
         self._root_cache[name] = root
-        self._shallow_cache.clear()
 
     def resolver(self, key: str) -> Callable[[str], object]:
         """Map a part's relationship ids to what they reach (type and target identity)."""
