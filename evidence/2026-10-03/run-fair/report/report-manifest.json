@@ -1,0 +1,10 @@
+{
+  "html": "index.html",
+  "integrity": {
+    "outcome": "success",
+    "problems": []
+  },
+  "raw_sha256": "1c46e8af977626930ba87035a3f08e1355d8de59f3ff83431156f584c4e38d49",
+  "schema_version": 2,
+  "svg": "heatmap.svg"
+}
